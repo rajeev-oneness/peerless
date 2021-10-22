@@ -1,0 +1,44 @@
+.main-sidebar .sidebar .sidebar-logout {
+    position: fixed;
+    bottom: 0;
+    background-color: #343a40;
+}
+
+.box-profile .change-image {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translate(200%, 10%);
+    cursor: pointer;
+}
+
+.croppie-container {
+    height: auto;
+}
+
+.user-profile-holder {
+    display: flex;
+}
+
+.user-profile-holder img {
+    height: 50px;
+    margin-right: 20px;
+    padding: 1px;
+    border: 3px solid #b7b7b7;
+    border-radius: 50%;
+}
+
+.user-profile-holder .name {
+    font-weight: 600;
+    color: #6c757d;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+.action-button {
+    border-radius: 0;
+}
+
+.action-button i {
+    margin-right: 3px;
+}
