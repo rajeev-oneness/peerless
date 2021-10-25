@@ -28,6 +28,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/', [UserController::class, 'index'])->name('user.employee.list');
         Route::get('/create', [UserController::class, 'create'])->name('user.employee.create');
         Route::post('/store', [UserController::class, 'store'])->name('user.employee.store');
+        Route::post('/show', [UserController::class, 'show'])->name('user.employee.show');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('user.employee.edit');
+        Route::post('/{id}/update', [UserController::class, 'update'])->name('user.employee.update');
         Route::post('/destroy', [UserController::class, 'destroy'])->name('user.employee.destroy');
         Route::post('/block', [UserController::class, 'block'])->name('user.employee.block');
     });

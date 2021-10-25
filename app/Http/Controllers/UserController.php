@@ -75,9 +75,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $data = User::findOrFail($request->id);
+        $user_name = $data->name;
+        $user_email = $data->email;
+        $user_mobile = $data->mobile;
+        $user_image_path = asset($data->image_path);
+        $user_type = $data->type->name;
+        $user_type_color = $data->type->color;
+        $user_parent = $data->parent_id ? $data->parent->name : null;
+
+        return response()->json(['error' => false, 'data' => ['name' => $user_name, 'email' => $user_email, 'mobile' => $user_mobile, 'image_path' => $user_image_path, 'user_type' => $user_type, 'user_type_color' => $user_type_color, 'user_parent' => $user_parent]]);
     }
 
     /**
@@ -86,9 +95,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $data = (object)[];
+        $data->user = User::findOrFail($id);
+        $data->users = User::select('id', 'name', 'user_type')->where('id', '!=', $id)->orderBy('name')->get();
+        $data->user_type = UserType::all();
+        return view('admin.employee.edit', compact('data'));
     }
 
     /**
@@ -100,7 +113,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:1|max:255',
+            'mobile' => 'nullable|numeric|min:1',
+            'parent_id' => 'nullable|numeric|min:1',
+            'user_type' => 'required|numeric|min:1',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->mobile = $request->mobile;
+        $user->parent_id = $request->parent_id ? $request->parent_id : 0;
+        $user->user_type = $request->user_type;
+        $user->save();
+
+        return redirect()->route('user.employee.list')->with('success', 'User updated');
     }
 
     /**

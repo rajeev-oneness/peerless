@@ -52,15 +52,15 @@
                                         {{$item->parent_id == 0 ? 'NA' : $item->parent->name}}
                                     </td>
                                     <td class="text-right">
-                                        <a href="#" class="badge badge-dark action-button" title="View">View</a>
+                                        <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.employee.show')}}', {{$item->id}})">View</a>
                                         @if ($item->user_type != 1)
                                             @if ($item->block == 0)
                                                 <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'block')">Block</a>
                                             @else
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'block')">BLOCKED</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'activate')">BLOCKED</a>
                                             @endif
 
-                                            <a href="#" class="badge badge-dark action-button" title="Edit">Edit</a>
+                                            <a href="{{route('user.employee.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
 
                                             <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.employee.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
                                         @endif
@@ -81,6 +81,35 @@
 
 @section('script')
     <script>
-        
+        function viewDeta1ls(route, id) {
+            $.ajax({
+                url : route,
+                method : 'post',
+                data : {'_token' : '{{csrf_token()}}', id : id},
+                success : function(result) {
+                    if (result.error == false) {
+                        let mobileShow = '<em class="text-muted">No data</em>';
+                        if (result.data.mobile != null) {
+                            mobileShow = result.data.mobile;
+                        }
+
+                        let parentShow = '<em class="text-muted">No data</em>';
+                        if (result.data.user_parent != null) {
+                            parentShow = result.data.user_parent;
+                        }
+
+                        let content = '';
+                        content += '<div class="w-100 mb-3 text-uppercase"><div class="badge badge-'+result.data.user_type_color+' rounded-0">'+result.data.user_type+'</div></div>';
+                        content += '<div class="w-100 user-profile-holder mb-3"><img src="'+result.data.image_path+'"></div>';
+                        content += '<p class="text-muted small mb-1">Name</p><h6>'+result.data.name+'</h6>';
+                        content += '<p class="text-muted small mb-1">Email</p><h6>'+result.data.email+'</h6>';
+                        content += '<p class="text-muted small mb-1">Phone number</p><h6>'+mobileShow+'</h6>';
+                        content += '<p class="text-muted small mb-1">Parent</p><h6>'+parentShow+'</h6>';
+                        $('#appendContent').html(content);
+                        $('#userDetails').modal('show');
+                    }
+                }
+            });
+        }
     </script>
 @endsection

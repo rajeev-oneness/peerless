@@ -131,7 +131,10 @@
 
         </div>
 
+        {{-- profile page image change modal --}}
         @include('admin.modal.image-change-crop')
+        {{-- user details modal --}}
+        @include('admin.modal.user-details')
 
         <footer class="main-footer">
             <div class="">
@@ -206,7 +209,7 @@
                                 response.message,
                                 'success'
                             )
-                        } else if (type == 'block') {
+                        } else if (type == 'block' || type == 'activate') {
                             if (response.title == 'Blocked') {
                                 $('#tr_'+id+' .block-button').text('BLOCKED');
                             } else {
