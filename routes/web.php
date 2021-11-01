@@ -34,4 +34,24 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::post('/destroy', [UserController::class, 'destroy'])->name('user.employee.destroy');
         Route::post('/block', [UserController::class, 'block'])->name('user.employee.block');
     });
+
+    // role
+    Route::group(['prefix' => 'employee/role'], function () {
+        Route::get('/', [RoleController::class, 'index'])->name('user.role.list');
+        Route::post('/store', [RoleController::class, 'store'])->name('user.role.store');
+        Route::post('/show', [RoleController::class, 'show'])->name('user.role.show');
+        Route::post('/destroy', [RoleController::class, 'destroy'])->name('user.role.destroy');
+    });
+
+    // agreement
+    Route::group(['prefix' => 'agreement'], function () {
+        Route::get('/', [AgreementController::class, 'index'])->name('user.agreement.list');
+        Route::get('/create', [AgreementController::class, 'create'])->name('user.agreement.create');
+        Route::post('/store', [AgreementController::class, 'store'])->name('user.agreement.store');
+        Route::post('/show', [AgreementController::class, 'show'])->name('user.agreement.show');
+        Route::get('/{id}/view', [AgreementController::class, 'details'])->name('user.agreement.details');
+        Route::get('/{id}/edit', [AgreementController::class, 'edit'])->name('user.agreement.edit');
+        Route::post('/{id}/update', [AgreementController::class, 'update'])->name('user.agreement.update');
+        Route::post('/destroy', [AgreementController::class, 'destroy'])->name('user.agreement.destroy');
+    });
 });

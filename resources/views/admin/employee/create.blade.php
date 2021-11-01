@@ -73,10 +73,10 @@
                                 <label for="password" class="col-sm-2 col-form-label">Password <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <div class="custom-control custom-switch mt-2 mb-2">
-                                        <input type="checkbox" class="custom-control-input" id="sendPassword" name="sendPassword" onclick="mailSendChk()" checked>
-                                        <label class="custom-control-label" for="sendPassword">Send welcome mail & password</label>
+                                        <input type="checkbox" class="custom-control-input" id="sendPassword" name="sendPassword" onclick="mailSendChk()">
+                                        <label class="custom-control-label" for="sendPassword">Send password via mail</label>
                                     </div>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Type manual password" value="" style="display: none">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Type manual password" value="" st yle="display: none">
                                     @error('password') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>

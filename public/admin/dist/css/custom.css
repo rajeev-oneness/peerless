@@ -47,6 +47,10 @@
     text-transform: uppercase;
 }
 
+.single-line {
+    white-space: nowrap;
+}
+
 .modal-dialog-slideout {
     min-height: 100%;
     margin: 0 0 0 auto;
@@ -78,10 +82,21 @@
 
 .modal-dialog-slideout .modal-header,
 .modal-dialog-slideout .modal-footer {
-    height: 69px;
+    height: 56px;
     display: block;
+    padding: 0.75rem 1rem;
 }
 
 .modal-dialog-slideout .modal-header h5 {
     float: left;
+}
+
+.btn-group.btn-group-toggle > .btn {
+    border: 2px solid transparent;
+    width: 25px;
+    height: 25px;
+}
+
+.btn-group.btn-group-toggle > .btn.active {
+    border: 2px solid #000 !important;
 }

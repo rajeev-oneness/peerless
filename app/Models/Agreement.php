@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UserType extends Model
+class Agreement extends Model
 {
     use HasFactory, SoftDeletes;
-
-    public function usersList() {
-        return $this->hasMany('App\Models\User', 'user_type', 'id');
-    }
 }

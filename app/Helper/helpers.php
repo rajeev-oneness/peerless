@@ -21,3 +21,8 @@ function generateUniqueAlphaNumeric($length = 8)
 	}
 	return $random_string;
 }
+
+function words($string, $words = 100)
+{
+	return \Illuminate\Support\Str::limit($string, $words);
+}

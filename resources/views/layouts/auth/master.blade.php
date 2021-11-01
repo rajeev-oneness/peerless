@@ -68,6 +68,20 @@
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-header">MANAGEMENT</li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.agreement.list') }}" class="nav-link {{ (request()->is('user/agreement*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>Agreement</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>Field</p>
+                            </a>
+                        </li>
+                        <li class="nav-header">SETTINGS</li>
                         <li class="nav-item">
                             <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
@@ -205,9 +219,7 @@
                         if (type == 'delete') {
                             $('#tr_'+id).remove();
                             Swal.fire(
-                                response.title,
-                                response.message,
-                                'success'
+                                response.title, response.message, 'success'
                             )
                         } else if (type == 'block' || type == 'activate') {
                             if (response.title == 'Blocked') {
@@ -216,9 +228,7 @@
                                 $('#tr_'+id+' .block-button').text('Block');
                             }
                             Swal.fire(
-                                response.title+'!',
-                                response.message,
-                                'success'
+                                response.title+'!', response.message, 'success'
                             )
                         }
                     }
@@ -226,6 +236,11 @@
             }
         });
     }
+
+    // clear modal footer on hide
+    $('#userDetails').on('hidden.bs.modal', function (event) {
+        $('#userDetails .modal-content .modal-footer').remove();
+    });
 </script>
 
 @yield('script')
