@@ -53,5 +53,19 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/{id}/edit', [AgreementController::class, 'edit'])->name('user.agreement.edit');
         Route::post('/{id}/update', [AgreementController::class, 'update'])->name('user.agreement.update');
         Route::post('/destroy', [AgreementController::class, 'destroy'])->name('user.agreement.destroy');
+        Route::get('/{id}/fields', [AgreementController::class, 'fieldsIndex'])->name('user.agreement.fields');
+        Route::post('/fields/store', [AgreementController::class, 'fieldsStore'])->name('user.agreement.fields.store');
+    });
+
+    // field
+    Route::group(['prefix' => 'field'], function () {
+        Route::get('/', [FieldController::class, 'index'])->name('user.field.list');
+        Route::get('/create', [FieldController::class, 'create'])->name('user.field.create');
+        Route::post('/store', [FieldController::class, 'store'])->name('user.field.store');
+        Route::post('/show', [FieldController::class, 'show'])->name('user.field.show');
+        Route::get('/{id}/view', [FieldController::class, 'details'])->name('user.field.details');
+        Route::get('/{id}/edit', [FieldController::class, 'edit'])->name('user.field.edit');
+        Route::post('/{id}/update', [FieldController::class, 'update'])->name('user.field.update');
+        Route::post('/destroy', [FieldController::class, 'destroy'])->name('user.field.destroy');
     });
 });

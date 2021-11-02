@@ -1,8 +1,11 @@
 @extends('layouts.auth.master')
 
-@section('title', 'Agreement management')
+@section('title', 'Fields for agreement')
 
 @section('content')
+
+<link rel="stylesheet" href="{{asset('admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css')}}">
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -15,48 +18,41 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="{{route('user.agreement.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Add</a>
+                            <a href="{{route('user.agreement.list')}}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back</a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-sm table-bordered table-hover" id="showRoleTable">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Fields</th>
-                                    <th class="text-right">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($data as $index => $item)
-                                <tr id="tr_{{$item->id}}">
-                                    <td>{{$index+1}}</td>
-                                    <td>
-                                        <h6 class="font-weight-bold single-line">{{$item->name}}</h6>
-                                    </td>
-                                    <td>
-                                        <p class="small text-muted">{{words($item->description, 200)}}</p>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('user.agreement.fields', $item->id)}}" class="badge badge-dark action-button" title="Setup fields">Setup</a>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="single-line">
-                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.agreement.show')}}', {{$item->id}})">View</a>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="font-weight-bold">{{$data->agreement->name}}</h6>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.agreement.show')}}', {{$data->agreement->id}})">Quick view</a>
+                            </div>
+                        </div>
 
-                                            <a href="{{route('user.agreement.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
-    
-                                            <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @empty
-                                    <tr><td colspan="100%"><em>No records found</em></td></tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="{{route('user.agreement.fields.store')}}" method="POST" class="w-100">
+                                @csrf
+                                    <div class="form-group">
+                                        <label class="text-muted font-weight-light">Setup fields <i class="fas fa-chevron-down"></i></label>
+                                        <select name="field_id[]" id="field_id" class="duallistbox" multiple="multiple">
+                                            @foreach($data->fields as $key => $field)
+                                                <option value="{{$field->id}}" @if(in_array($field->id, $data->agreementFields)){{('selected')}} @endif>{{$field->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @error('agreement_id') <p class="small text-danger">{{$message}}</p> @enderror
+                                        @error('field_id') <p class="small text-danger">{{$message}}</p> @enderror
+                                        <input type="hidden" name="agreement_id" id="agreement_id" value="{{$data->agreement->id}}">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,6 +62,8 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js')}}"></script>
+
     <script>
         function viewDeta1ls(route, id) {
             $.ajax({
@@ -113,5 +111,12 @@
                 }
             });
         }
+
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox({
+            selectorMinimalHeight : 200
+        });
+
+
     </script>
 @endsection

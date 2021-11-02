@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
+                            <a href="{{ route('user.field.list') }}" class="nav-link {{ (request()->is('user/field*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>Field</p>
                             </a>
