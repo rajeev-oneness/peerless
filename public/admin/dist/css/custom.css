@@ -7,9 +7,13 @@
 .box-profile .change-image {
     position: absolute;
     right: 50%;
-    bottom: 0;
+    bottom: 8px;
     transform: translate(200%, 10%);
+}
+
+.box-profile .change-image label {
     cursor: pointer;
+    margin-bottom: 0;
 }
 
 .croppie-container {
