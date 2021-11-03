@@ -68,4 +68,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::post('/{id}/update', [FieldController::class, 'update'])->name('user.field.update');
         Route::post('/destroy', [FieldController::class, 'destroy'])->name('user.field.destroy');
     });
+
+    // logs
+    Route::group(['prefix' => 'logs'], function () {
+        Route::get('/', [LogController::class, 'logsIndex'])->name('user.logs');
+        Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
+    });
 });

@@ -115,3 +115,28 @@ function SendMail($data) {
                 ->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
     });
 }
+
+function createNotification($sender, $receiver, $type)
+{
+    switch ($type) {
+        case 'user_registration':
+            $title = 'Registration successfull';
+            $message = 'Please check & update your profile as needed';
+            $route = 'user.profile';
+            break;
+        default:
+            $title = '';
+            $message = '';
+            $route = '';
+            break;
+    }
+
+	$notification = new App\Models\Notification;
+	$notification->sender_id = $sender;
+	$notification->receiver_id = $receiver;
+	$notification->type = $type;
+	$notification->title = $title;
+	$notification->message = $message;
+	$notification->route = $route;
+	$notification->save();
+}

@@ -73,34 +73,29 @@ class UserController extends Controller
             $user->password = Hash::make($password);
             $user->save();
 
-            $email_data = [
-                'name' => $request->name,
-                'subject' => 'User registration mail',
-                'email' => $request->email,
-                'password' => $password,
-                'blade_file' => 'user-registration',
-            ];
+            if (empty($request->password) || ($request->password == null)) {
+                // dd('here');
+                $email_data = [
+                    'name' => $request->name,
+                    'subject' => 'User registration mail',
+                    'email' => $request->email,
+                    'password' => $password,
+                    'blade_file' => 'user-registration',
+                ];
 
-            SendMail($email_data);
+                SendMail($email_data);
+            }
+
+            // notification params -> $sender, $receiver, $type
+            createNotification(1, $user->id, 'user_registration');
 
             DB::commit();
             return redirect()->route('user.employee.list')->with('success', 'User created');
         } catch(Exception $e) {
             DB::rollback();
-            return redirect()->route('user.employee.list')->with('error', 'Something happened. Try again');
+            $error['email'] = 'Something went wrong. Try using manual password';
+            return redirect(route('user.employee.create'))->withErrors($error)->withInput($request->all());
         }
-
-        // Mail::send('mail/' . $templateName, $email_data, function ($message) use ($email_data, $to, $subject) {
-        //     $message->to($to, $email_data['name'])->subject($subject)
-        //             ->from('onenesstechsolution@gmail.com', 'Uniby');
-        // });
-
-        // send email with the template
-        // Mail::send('user-registration', $email_data, function ($message) use ($email_data) {
-        //     $message->to($email_data['email'], $email_data['name'])
-        //         ->subject('Welcome to MyNotePaper')
-        //         ->from('info@mynotepaper.com', 'MyNotePaper');
-        // });
     }
 
     /**

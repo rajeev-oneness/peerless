@@ -25,6 +25,43 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        @php
+                            if ($notification->unreadCount > 0) {
+                                echo '<span class="badge badge-danger navbar-badge">'.$notification->unreadCount.'</span>';
+                            } elseif ($notification->unreadCount > 99) {
+                                echo '<span class="badge badge-danger navbar-badge">99+</span>';
+                            } else {
+                                echo '';
+                            }
+                        @endphp
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        @if ($notification->unreadCount > 0)
+                            <span class="dropdown-header">{{$notification->unreadCount}} Unread {{($notification->unreadCount == 1 ? 'Notification' : 'Notifications')}}</span>
+                            <div class="dropdown-divider"></div>
+                        @endif
+
+                        @forelse ($notification as $index => $noti)
+                            <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}">
+                                <h6 class="noti-title">{{$noti->title}}</h6>
+                                <p class="noti-desc">{{$noti->message}}</p>
+                                <p class="noti-timing text-muted"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                        @empty
+                        <a href="#" class="dropdown-item py-4">
+                            <p class="small text-muted text-center">No notifications yet</p>
+                        </a>
+                        @endforelse
+
+                        @if ($notification->unreadCount > 0)
+                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                        @endif
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button" title="Fullscreen">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -41,7 +78,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">{{env('APP_NAME')}} Admin</span>
             </a>
 
             <div class="sidebar">
@@ -86,6 +123,12 @@
                             <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
                                 <p>Profile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.logs') }}" class="nav-link {{ (request()->is('user/logs*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>Activity &amp; Logs</p>
                             </a>
                         </li>
                         <li class="nav-item sidebar-logout">

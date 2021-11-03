@@ -204,3 +204,42 @@
 {
 	background-color: #000000;
 }
+
+.pagination-view {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.navbar-badge {
+    font-weight: 600;
+    font-size: 12px;
+    right: -1px;
+    top: 5px;
+}
+
+.navbar-nav .dropdown-item.unread {
+    background-color: #c0c0c0;
+}
+
+.navbar-nav .noti-title {
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+
+.navbar-nav .noti-desc {
+    font-size: 10px;
+    color: #6c757d;
+}
+
+.navbar-nav .noti-timing {
+    font-size: 10px;
+    text-align: right;
+    color: #6c757d;
+}
+/* .navbar-nav .dropdown-item p{
+    font-size: 10px;
+}
+.navbar-nav .dropdown-item h6{
+    font-size: 12px;
+} */

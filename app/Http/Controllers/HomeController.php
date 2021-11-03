@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MailLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -104,10 +105,5 @@ class HomeController extends Controller
         } else {
             return response()->json(['error' => true, 'message' => 'Something went wrong']);
         }
-    }
-
-    public function employeeList(Request $request)
-    {
-        # code...
     }
 }
