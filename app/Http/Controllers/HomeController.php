@@ -37,7 +37,8 @@ class HomeController extends Controller
     public function profileUpdate(Request $request)
     {
         $rules = [
-            'name' => 'required|min:1|max:200'
+            'name' => 'required|min:1|max:200',
+            'mobile' => 'nullable|numeric|min:1'
         ];
 
         $validate = validator()->make($request->all(), $rules);
@@ -45,8 +46,9 @@ class HomeController extends Controller
         if (!$validate->fails()) {
             $user = Auth::user();
 
-            if ($user->name != $request->name) {
+            if ($user->name != $request->name || $user->mobile != $request->mobile) {
                 $user->name = $request->name;
+                $user->mobile = $request->mobile;
                 $user->save();
 
                 return response()->json(['error' => false, 'message' => 'Profile updated', 'type' => 'success']);

@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\MailLog;
+use Illuminate\Support\Facades\Mail;
+
 function userTypeCheck($type)
 {
     switch ($type) {
@@ -47,7 +50,7 @@ function form3lements($name=null, $type, $value=null, $key_name=null)
             $response = '<input type="time" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
             break;
         case 'file':
-            $response = '<div class="custom-file w-50"><input type="file" class="custom-file-input" id="customFile"><label class="custom-file-label custom-file-label-sm" for="customFile">Browse '.$name.'</label></div>';
+            $response = '<div class="custom-file custom-file-sm w-50"><input type="file" class="custom-file-input" id="customFile"><label class="custom-file-label" for="customFile">Choose '.$name.'</label></div>';
             break;
         case 'select':
             $expValue = explode(', ', $value);
@@ -93,4 +96,22 @@ function generateKeyForForm($string)
         }
     }
     return $key;
+}
+
+function SendMail($data) {
+    // mail log
+    $newMail = new \App\Models\MailLog();
+    $newMail->from = env('MAIL_FROM_ADDRESS');
+    $newMail->to = $data['email'];
+    $newMail->subject = $data['subject'];
+    $newMail->blade_file = $data['blade_file'];
+    $newMail->payload = json_encode($data);
+    $newMail->save();
+
+    // send mail
+    Mail::send('mail/'.$data['blade_file'], $data, function ($message) use ($data) {
+        $message->to($data['email'], $data['name'])
+                ->subject($data['subject'])
+                ->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+    });
 }

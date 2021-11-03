@@ -75,8 +75,8 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="User role name" value="">
                             </div>
                         </div>
-                        <div class="form-group row"><label for="name" class="col-12 col-form-label">Color <span class="text-danger">*</span></label>
-                            <div class="col-12" style="overflow-x: scroll;">
+                        <div class="form-group row"><label for="color" class="col-12 col-form-label">Color <span class="text-danger">*</span></label>
+                            <div class="col-12" id="roles-holder">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-select-color btn-sm bg-indigo"><input type="radio" name="color" value="indigo" autocomplete="off"></label>
                                     <label class="btn btn-select-color btn-sm bg-primary"><input type="radio" name="color" value="primary" autocomplete="off"></label>

@@ -17,6 +17,9 @@
                                 <input type="file" name="upload_image" id="upload_image" class="d-none" accept="image/*">
                             </div>
                         </div>
+                        <div class="text-center my-3">
+                            @php echo '<span class="badge bg-'.auth()->user()->type->color.' rounded-0"><h6 class="mb-0 font-weight-bold">'.strtoupper(auth()->user()->type->name).'</h6></span>'; @endphp
+                        </div>
                         <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
                         <p class="text-muted text-center">{{ Auth::user()->email }}</p>
                     </div>
@@ -46,6 +49,12 @@
                                             <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="{{ Auth::user()->email }}" disabled>
 
                                             <p class="small text-muted mt-2 mb-0">Email id cannot be changed once registered</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputMobile" class="col-sm-2 col-form-label">Phone number</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputMobile" name="mobile" placeholder="Phone number" value="{{ old('mobile') ? old('mobile') : Auth::user()->mobile }}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -102,7 +111,7 @@
                 $.ajax({
                     url : $(this).attr('action'),
                     method : $(this).attr('method'),
-                    data : {'_token' : '{{csrf_token()}}', name : $('#inputName').val()},
+                    data : {'_token' : '{{csrf_token()}}', name : $('#inputName').val(), mobile : $('#inputMobile').val()},
                     success : function(result) {
                         if(result.error == true){
                             toastFire('danger', result.message);

@@ -33,7 +33,7 @@
                                 <tr id="tr_{{$item->id}}">
                                     <td>{{$index+1}}</td>
                                     <td>
-                                        <h6 class="font-weight-bold single-line">{{$item->name}} {!!($item->required == 1 ? '<span class="text-danger">*</span>' : '')!!}</h6>
+                                        <h6 class="font-weight-bold single-line">{{$item->name}} {!!($item->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '')!!}</h6>
                                     </td>
                                     <td>
                                         {!!form3lements($item->name, $item->inputType->name, $item->value, $item->key_name)!!}

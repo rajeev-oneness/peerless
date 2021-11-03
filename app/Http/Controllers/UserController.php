@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserType;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -41,6 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|min:1|max:255',
             'email' => 'required|string|email|unique:users',
@@ -51,22 +55,52 @@ class UserController extends Controller
             'password' => 'nullable',
         ]);
 
-        $password = generateUniqueAlphaNumeric(8);
-
         if (!empty($request->password)) {
             $password = $request->password;
+        } else {
+            $password = generateUniqueAlphaNumeric(8);
         }
 
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->mobile = $request->mobile;
-        $user->parent_id = $request->parent_id ? $request->parent_id : 0;
-        $user->user_type = $request->user_type;
-        $user->password = Hash::make($password);
-        $user->save();
+        DB::beginTransaction();
 
-        return redirect()->route('user.employee.list')->with('success', 'User created');
+        try {
+            $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->mobile = $request->mobile;
+            $user->parent_id = $request->parent_id ? $request->parent_id : 0;
+            $user->user_type = $request->user_type;
+            $user->password = Hash::make($password);
+            $user->save();
+
+            $email_data = [
+                'name' => $request->name,
+                'subject' => 'User registration mail',
+                'email' => $request->email,
+                'password' => $password,
+                'blade_file' => 'user-registration',
+            ];
+
+            SendMail($email_data);
+
+            DB::commit();
+            return redirect()->route('user.employee.list')->with('success', 'User created');
+        } catch(Exception $e) {
+            DB::rollback();
+            return redirect()->route('user.employee.list')->with('error', 'Something happened. Try again');
+        }
+
+        // Mail::send('mail/' . $templateName, $email_data, function ($message) use ($email_data, $to, $subject) {
+        //     $message->to($to, $email_data['name'])->subject($subject)
+        //             ->from('onenesstechsolution@gmail.com', 'Uniby');
+        // });
+
+        // send email with the template
+        // Mail::send('user-registration', $email_data, function ($message) use ($email_data) {
+        //     $message->to($email_data['email'], $email_data['name'])
+        //         ->subject('Welcome to MyNotePaper')
+        //         ->from('info@mynotepaper.com', 'MyNotePaper');
+        // });
     }
 
     /**
