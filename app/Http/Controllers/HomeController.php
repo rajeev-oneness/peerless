@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MailLog;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,5 +106,12 @@ class HomeController extends Controller
         } else {
             return response()->json(['error' => true, 'message' => 'Something went wrong']);
         }
+    }
+
+    public function notificationRead(Request $request)
+    {
+        $noti = Notification::findOrFail($request->id);
+        $noti->read_flag = 1;
+        $noti->save();
     }
 }

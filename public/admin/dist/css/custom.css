@@ -222,6 +222,10 @@
     background-color: #c0c0c0;
 }
 
+.navbar-nav .dropdown-item.unread:hover {
+    background-color: #d8d8d8;
+}
+
 .navbar-nav .noti-title {
     font-size: 14px;
     margin-bottom: 1px;
@@ -232,14 +236,12 @@
     color: #6c757d;
 }
 
+.navbar-nav .dropdown-item.unread .noti-desc {
+    color: #2f3336;
+}
+
 .navbar-nav .noti-timing {
     font-size: 10px;
     text-align: right;
     color: #6c757d;
 }
-/* .navbar-nav .dropdown-item p{
-    font-size: 10px;
-}
-.navbar-nav .dropdown-item h6{
-    font-size: 12px;
-} */

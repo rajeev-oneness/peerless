@@ -39,13 +39,13 @@
                         @endphp
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        @if ($notification->unreadCount > 0)
-                            <span class="dropdown-header">{{$notification->unreadCount}} Unread {{($notification->unreadCount == 1 ? 'Notification' : 'Notifications')}}</span>
+                        @if (count($notification) > 0)
+                            <span class="dropdown-header">{{$notification->unreadCount}} unread {{($notification->unreadCount == 1 ? 'notification' : 'notifications')}}</span>
                             <div class="dropdown-divider"></div>
                         @endif
 
                         @forelse ($notification as $index => $noti)
-                            <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}">
+                            <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
                                 <h6 class="noti-title">{{$noti->title}}</h6>
                                 <p class="noti-desc">{{$noti->message}}</p>
                                 <p class="noti-timing text-muted"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
@@ -57,7 +57,7 @@
                         </a>
                         @endforelse
 
-                        @if ($notification->unreadCount > 0)
+                        @if (count($notification) > 0)
                             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                         @endif
                     </div>
@@ -284,6 +284,20 @@
     $('#userDetails').on('hidden.bs.modal', function (event) {
         $('#userDetails .modal-content .modal-footer').remove();
     });
+
+    function readNotification(id, route) {
+        $.ajax({
+            url : '{{route("user.notification.read")}}',
+            method : 'POST',
+            data : {'_token' : '{{csrf_token()}}', id : id},
+            success : function(result) {
+                // console.log('{{url()->current()}}',route);
+                // if (route != '' && '{{url()->current()}}' != route) {
+                    window.location = route;
+                // }
+            }
+        });
+    }
 </script>
 
 @yield('script')

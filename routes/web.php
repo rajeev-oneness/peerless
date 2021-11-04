@@ -74,4 +74,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/', [LogController::class, 'logsIndex'])->name('user.logs');
         Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
     });
+
+    // notification read
+    Route::post('/read', [HomeController::class, 'notificationRead'])->name('user.notification.read');
 });
