@@ -253,10 +253,6 @@
             text: 'You want to '+type+' the record'+ext,
             icon: 'warning',
             showCancelButton: true,
-            // customClass: {
-            //     confirmButton: 'btn btn-success',
-            //     cancelButton: 'btn btn-danger'
-            // },
             confirmButtonColor: '#f44336',
             cancelButtonColor: '#8b8787',
             confirmButtonText: 'Yes, '+type+' it!'
@@ -293,6 +289,7 @@
         $('#userDetails .modal-content .modal-footer').remove();
     });
 
+    // click to read notification
     function readNotification(id, route) {
         $.ajax({
             url : '{{route("user.notification.read")}}',
@@ -303,6 +300,35 @@
                 // if (route != '' && '{{url()->current()}}' != route) {
                     window.location = route;
                 // }
+            }
+        });
+    }
+
+    // mark all notification as read
+    function markAllNotificationRead() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You want to mark all notifications as read. You might lose some data.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#f44336',
+            cancelButtonColor: '#8b8787',
+            confirmButtonText: 'Yes, mark all as read!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url : '{{route("user.notification.mark.readAll")}}',
+                    method : 'POST',
+                    data : {'_token' : '{{csrf_token()}}'},
+                    beforeSend : function() {
+                        $('#notifications-timeline .mark-all-read-btn').prop('disabled', true).html('<i class="fas fa-sync-alt"></i> Please wait');
+                    },
+                    success : function(result) {
+                        $('#notifications-timeline .notification-single .callout').removeClass('callout-dark');
+                        $('#notifications-timeline .unread-noti-count').text('');
+                        $('#notifications-timeline .mark-all-read-btn').removeClass('btn-outline-danger').addClass('btn-success').html('<i class="fas fa-check"></i> All notifications marked as read');
+                    }
+                });
             }
         });
     }

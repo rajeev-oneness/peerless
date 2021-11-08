@@ -51,21 +51,21 @@ class LoginController extends Controller
         $userVerified = false;
         $user = User::where('email',$req->email)->first();
         if($user){
-            if($user->block == 0){
+            if($user->block == 0) {
                 if(Hash::check($req->password,$user->password)) {
                     $userVerified = true;
                 } else {
                     $errors['password'] = 'Credentials does not match';
                 }
 
-                if($userVerified){
+                if($userVerified) {
                     auth()->login($user);
                     return redirect()->intended('/home');
                 }
-            }else{
+            } else {
                 $errors['email'] = 'This account is temporary blocked';
             }
-        }else{
+        } else {
             $errors['email'] = 'Credentials does not match';
         }
         return back()->withErrors($errors)->withInput($req->all());

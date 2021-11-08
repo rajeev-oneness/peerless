@@ -23,17 +23,28 @@
                             @endif
                         @endif
 
-                        @forelse ($data as $noti)
-                        <a href="javascript: void(0)" class="notification-single" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
-                            <div class="callout callout-sm {{($noti->read_flag == 0 ? 'callout-dark' : '')}}">
-                                <h6 class="heading">{{$noti->title}}</h6>
-                                <p class="description">{{$noti->message}}</p>
-                                <p class="timing">{{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
+                        <div class="row">
+                            @if (count($data) > 1)
+                                <div class="col-md-4 offset-md-8 mb-3">
+                                    <input id="search" name="search" placeholder="What are you looking for..." type="text" data-list=".data-list" class="form-control form-control-sm">
+                                </div>
+                            @endif
+                            <div class="col-md-12">
+                                <div class="data-list">
+                                    @forelse ($data as $noti)
+                                    <a href="javascript: void(0)" class="notification-single" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
+                                        <div class="callout callout-sm {{($noti->read_flag == 0 ? 'callout-dark' : '')}}">
+                                            <h6 class="heading">{{$noti->title}}</h6>
+                                            <p class="description">{{$noti->message}}</p>
+                                            <p class="timing">{{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
+                                        </div>
+                                    </a>
+                                    @empty
+                                    <p class="small text-muted text-center my-5">No notifications yet</p>
+                                    @endforelse
+                                </div>
                             </div>
-                        </a>
-                        @empty
-                        <p class="small text-muted text-center my-5">No notifications yet</p>
-                        @endforelse
+                        </div>
 
                         <div class="pagination-view">
                             {{$data->links();}}
@@ -48,21 +59,13 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('admin/plugins/jQuery-Text-Live-Search-Filter-Plugin-HideSeek/jquery.hideseek.min.js') }}"></script>
+
     <script>
-    function markAllNotificationRead() {
-        $.ajax({
-            url : '{{route("user.notification.mark.readAll")}}',
-            method : 'POST',
-            data : {'_token' : '{{csrf_token()}}'},
-            beforeSend : function() {
-                $('#notifications-timeline .mark-all-read-btn').prop('disabled', true).html('<i class="fas fa-sync-alt"></i> Please wait');
-            },
-            success : function(result) {
-                $('#notifications-timeline .notification-single .callout').removeClass('callout-dark');
-                $('#notifications-timeline .unread-noti-count').text('');
-                $('#notifications-timeline .mark-all-read-btn').removeClass('btn-outline-danger').addClass('btn-success').html('<i class="fas fa-check"></i> All notifications marked as read');
-            }
+        $(document).ready(function () {
+            $('#search').hideseek({
+                highlight: true
+            });
         });
-    }
     </script>
 @endsection
