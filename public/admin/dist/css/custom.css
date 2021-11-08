@@ -229,11 +229,17 @@
 .navbar-nav .noti-title {
     font-size: 14px;
     margin-bottom: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .navbar-nav .noti-desc {
     font-size: 10px;
     color: #6c757d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .navbar-nav .dropdown-item.unread .noti-desc {
@@ -243,5 +249,53 @@
 .navbar-nav .noti-timing {
     font-size: 10px;
     text-align: right;
+    color: #6c757d;
+}
+
+.navbar-nav .dropdown-item.unread:active, .navbar-nav .dropdown-item.read:active {
+    background-color: #007bff;
+}
+
+.navbar-nav .dropdown-item:active .noti-title {
+    color: #fff;
+}
+
+.navbar-nav .dropdown-item:active .noti-desc {
+    color: #fff;
+}
+
+.navbar-nav .dropdown-item:active .noti-timing {
+    color: #fff;
+}
+
+.callout.callout-sm {
+    padding: 0.25rem 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.notification-single:hover .callout {
+    border-left-width: 10px;
+}
+
+.callout.callout-dark {
+    border-left-color: #3f3b3b;
+    background-color: #bfd1d1;
+}
+
+.notification-single .heading {
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #272727;
+}
+
+.notification-single .description {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.notification-single .timing {
+    font-size: 12px;
     color: #6c757d;
 }

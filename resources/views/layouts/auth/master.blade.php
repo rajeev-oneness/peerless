@@ -48,17 +48,17 @@
                             <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
                                 <h6 class="noti-title">{{$noti->title}}</h6>
                                 <p class="noti-desc">{{$noti->message}}</p>
-                                <p class="noti-timing text-muted"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
+                                <p class="noti-timing"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
                             </a>
                             <div class="dropdown-divider"></div>
                         @empty
-                        <a href="#" class="dropdown-item py-4">
+                        <a href="javascript: void(0)" class="dropdown-item py-4">
                             <p class="small text-muted text-center">No notifications yet</p>
                         </a>
                         @endforelse
 
                         @if (count($notification) > 0)
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            <a href="{{route('user.notification.all')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
                         @endif
                     </div>
                 </li>
@@ -294,6 +294,27 @@
                 // console.log('{{url()->current()}}',route);
                 // if (route != '' && '{{url()->current()}}' != route) {
                     window.location = route;
+                // }
+            }
+        });
+    }
+
+    function markNotificationRead() {
+        $.ajax({
+            url : '{{route("user.notification.mark.readAll")}}',
+            method : 'POST',
+            data : {'_token' : '{{csrf_token()}}'},
+            beforeSend : function() {
+                $('#notifications-timeline .mark-all-read-btn').prop('disabled', true).html('<i class="fas fa-sync-alt"></i> Please wait');
+            },
+            success : function(result) {
+                $('#notifications-timeline .notification-single .callout').removeClass('callout-dark');
+                $('#notifications-timeline .unread-noti-count').text('');
+                $('#notifications-timeline .mark-all-read-btn').removeClass('btn-outline-danger').addClass('btn-success').html('<i class="fas fa-check"></i> All notifications marked as read');
+
+                // console.log('{{url()->current()}}',route);
+                // if (route != '' && '{{url()->current()}}' != route) {
+                    // window.location = '{{route("user.notification.all")}}';
                 // }
             }
         });

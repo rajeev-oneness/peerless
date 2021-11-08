@@ -30,9 +30,9 @@ class CreateInputTypesTable extends Migration
             ['name' => 'date', 'demo' => '<input type="date">'],
             ['name' => 'time', 'demo' => '<input type="time">'],
             ['name' => 'file', 'demo' => '<input type="file">'],
-            ['name' => 'select', 'demo' => '<select><option>something here</option><option>something here</option></select>'],
-            ['name' => 'checkbox', 'demo' => '<input type="checkbox"> something here'],
-            ['name' => 'radio', 'demo' => '<input type="radio"> something here'],
+            ['name' => 'select', 'demo' => '<select><option>value 1</option><option>value 2</option></select>'],
+            ['name' => 'checkbox', 'demo' => '<input type="checkbox"> Value'],
+            ['name' => 'radio', 'demo' => '<input type="radio"> Value'],
             ['name' => 'textarea', 'demo' => '<textarea></textarea>'],
         ];
 
