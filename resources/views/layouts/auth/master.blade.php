@@ -244,13 +244,21 @@
 
     // sweetalert delete alert
     function confirm4lert(path, id, type) {
+        var ext = '';
+        if (type == 'block') {
+            var ext = '. Blocked users cannot login';
+        }
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You want to '+type+' the record',
+            text: 'You want to '+type+' the record'+ext,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            // customClass: {
+            //     confirmButton: 'btn btn-success',
+            //     cancelButton: 'btn btn-danger'
+            // },
+            confirmButtonColor: '#f44336',
+            cancelButtonColor: '#8b8787',
             confirmButtonText: 'Yes, '+type+' it!'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -294,27 +302,6 @@
                 // console.log('{{url()->current()}}',route);
                 // if (route != '' && '{{url()->current()}}' != route) {
                     window.location = route;
-                // }
-            }
-        });
-    }
-
-    function markNotificationRead() {
-        $.ajax({
-            url : '{{route("user.notification.mark.readAll")}}',
-            method : 'POST',
-            data : {'_token' : '{{csrf_token()}}'},
-            beforeSend : function() {
-                $('#notifications-timeline .mark-all-read-btn').prop('disabled', true).html('<i class="fas fa-sync-alt"></i> Please wait');
-            },
-            success : function(result) {
-                $('#notifications-timeline .notification-single .callout').removeClass('callout-dark');
-                $('#notifications-timeline .unread-noti-count').text('');
-                $('#notifications-timeline .mark-all-read-btn').removeClass('btn-outline-danger').addClass('btn-success').html('<i class="fas fa-check"></i> All notifications marked as read');
-
-                // console.log('{{url()->current()}}',route);
-                // if (route != '' && '{{url()->current()}}' != route) {
-                    // window.location = '{{route("user.notification.all")}}';
                 // }
             }
         });

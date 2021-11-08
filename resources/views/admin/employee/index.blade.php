@@ -15,7 +15,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="{{route('user.employee.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Add</a>
+                            <a href="{{route('user.employee.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create</a>
                             <a href="{{route('user.role.list')}}" class="btn btn-sm btn-danger"> <i class="fas fa-shield-alt"></i> ROLE</a>
                         </div>
                     </div>
