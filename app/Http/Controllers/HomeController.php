@@ -115,16 +115,16 @@ class HomeController extends Controller
         $noti->save();
     }
 
-    public function notificationAllIndex(Request $request)
-    {
-        $user = Auth::user();
-        $data = Notification::where('receiver_id', $user->id)->latest()->paginate(25);
-        return view('admin.notification', compact('data'));
-    }
+    // public function notificationAllIndex(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     $data = Notification::where('receiver_id', $user->id)->latest()->paginate(25);
+    //     return view('admin.notification', compact('data'));
+    // }
 
-    public function notificationReadAll(Request $request)
-    {
-        $user = Auth::user();
-        $noti = Notification::where('receiver_id', '=', $user->id)->where('read_flag', '=', '0')->update(['read_flag' => 1]);
-    }
+    // public function notificationReadAll(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     $noti = Notification::where('receiver_id', '=', $user->id)->where('read_flag', '=', '0')->update(['read_flag' => 1]);
+    // }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\MailLog;
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class LogController extends Controller
 {
@@ -19,5 +21,18 @@ class LogController extends Controller
     {
         $data = MailLog::latest()->paginate(25);
         return view('admin.logs.mail', compact('data'));
+    }
+
+    public function logsNotification(Request $request)
+    {
+        $user = Auth::user();
+        $data = Notification::where('receiver_id', $user->id)->latest()->paginate(25);
+        return view('admin.notification', compact('data'));
+    }
+
+    public function notificationReadAll(Request $request)
+    {
+        $user = Auth::user();
+        $noti = Notification::where('receiver_id', '=', $user->id)->where('read_flag', '=', '0')->update(['read_flag' => 1]);
     }
 }

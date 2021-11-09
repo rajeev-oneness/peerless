@@ -38,13 +38,17 @@
                             }
                         @endphp
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="max-height: calc(100vh - 68px);overflow: hidden">
                         @if (count($notification) > 0)
                             <span class="dropdown-header">{{$notification->unreadCount}} unread {{($notification->unreadCount == 1 ? 'notification' : 'notifications')}}</span>
                             <div class="dropdown-divider"></div>
                         @endif
 
+                        <div class="dropdown-holder" style="overflow: hidden scroll;max-height: calc(100vh - 146px);">
                         @forelse ($notification as $index => $noti)
+                            @if ($index==15)
+                                @break;
+                            @endif
                             <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
                                 <h6 class="noti-title">{{$noti->title}}</h6>
                                 <p class="noti-desc">{{$noti->message}}</p>
@@ -56,9 +60,10 @@
                             <p class="small text-muted text-center">No notifications yet</p>
                         </a>
                         @endforelse
+                        </div>
 
                         @if (count($notification) > 0)
-                            <a href="{{route('user.notification.all')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            <a href="{{route('user.logs.notification')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
                         @endif
                     </div>
                 </li>
@@ -317,7 +322,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url : '{{route("user.notification.mark.readAll")}}',
+                    url : '{{route("user.logs.notification.readall")}}',
                     method : 'POST',
                     data : {'_token' : '{{csrf_token()}}'},
                     beforeSend : function() {

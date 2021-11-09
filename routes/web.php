@@ -73,10 +73,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'logs'], function () {
         Route::get('/', [LogController::class, 'logsIndex'])->name('user.logs');
         Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
+        Route::get('/notification', [LogController::class, 'logsNotification'])->name('user.logs.notification');
+        Route::post('/notification/readall', [LogController::class, 'notificationReadAll'])->name('user.logs.notification.readall');
     });
 
     // notification
     Route::post('/read', [HomeController::class, 'notificationRead'])->name('user.notification.read');
-    Route::get('/notifications', [HomeController::class, 'notificationAllIndex'])->name('user.notification.all');
-    Route::post('/notifications/read/all', [HomeController::class, 'notificationReadAll'])->name('user.notification.mark.readAll');
 });

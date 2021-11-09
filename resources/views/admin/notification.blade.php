@@ -23,12 +23,17 @@
                             @endif
                         @endif
 
-                        <div class="row">
-                            @if (count($data) > 1)
-                                <div class="col-md-4 offset-md-8 mb-3">
+                        @if (count($data) > 1)
+                            <div class="row mb-3">
+                                <div class="col-md-8">
+                                    <p class="small text-muted">Showing {{$data->firstItem()}}-{{$data->lastItem()}} out of {{$data->total()}} records</p>
+                                </div>
+                                <div class="col-md-4">
                                     <input id="search" name="search" placeholder="What are you looking for..." type="text" data-list=".data-list" class="form-control form-control-sm">
                                 </div>
-                            @endif
+                            </div>
+                        @endif
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="data-list">
                                     @forelse ($data as $noti)

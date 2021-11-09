@@ -3,8 +3,6 @@
 @section('title', 'Activity & logs')
 
 @section('content')
-<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -23,26 +21,26 @@
                 </div>
             </div>
 
-            {{-- <div class="col-lg-3 col-6">
-                <div class="small-box bg-success">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{$notification->unreadCount}}<sup style="font-size: 13px;font-weight: 400;margin-left: 6px;">unread</sup></h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Notifications</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{{route('user.logs.notification')}}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
+            {{-- <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>44<sup style="font-size: 20px">%</sup></h3>
 
                         <p>User Registrations</p>
                     </div>
