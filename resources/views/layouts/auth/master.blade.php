@@ -275,9 +275,9 @@
                             )
                         } else if (type == 'block' || type == 'activate') {
                             if (response.title == 'Blocked') {
-                                $('#tr_'+id+' .block-button').text('BLOCKED');
+                                $('#tr_'+id+' .block-button').removeClass('badge-dark').addClass('badge-danger').text('Blocked');
                             } else {
-                                $('#tr_'+id+' .block-button').text('Block');
+                                $('#tr_'+id+' .block-button').removeClass('badge-danger').addClass('badge-dark').text('Active');
                             }
                             Swal.fire(
                                 response.title+'!', response.message, 'success'

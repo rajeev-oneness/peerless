@@ -57,9 +57,9 @@
                                             <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.employee.show')}}', {{$item->id}})">View</a>
                                             @if ($item->user_type != 1)
                                                 @if ($item->block == 0)
-                                                    <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'block')">Block</a>
+                                                    <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'block')">Active</a>
                                                 @else
-                                                    <a href="javascript: void(0)" class="badge badge-dark action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'activate')">BLOCKED</a>
+                                                    <a href="javascript: void(0)" class="badge badge-danger action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'activate')">Blocked</a>
                                                 @endif
     
                                                 <a href="{{route('user.employee.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
