@@ -44,8 +44,10 @@
                                         <a href="{{route('user.agreement.fields', $item->id)}}" class="badge badge-dark action-button" title="Setup fields">Setup</a>
                                     </td>
                                     <td class="single-line">
-                                        <a href="{{route('user.loan.pdf.view')}}" class="badge badge-primary action-button" target="_blank"> <i class="fas fa-file-pdf"></i> View</a>
-                                        <a href="{{route('user.loan.pdf.download')}}" class="badge badge-primary action-button download-agreement"> <i class="fas fa-download"></i> Download</a>
+                                        @if($item->html != '' || $item->html != null)
+                                            <a href="{{route('user.agreement.pdf.view', $item->id)}}" class="badge badge-primary action-button" target="_blank"> <i class="fas fa-file-pdf"></i> View</a>
+                                            <a href="{{route('user.agreement.pdf.download', $item->id)}}" class="badge badge-primary action-button download-agreement"> <i class="fas fa-download"></i> Download</a>
+                                        @endif
                                     </td>
                                     <td class="text-right">
                                         <div class="single-line">
@@ -121,10 +123,10 @@
 
         $('.download-agreement').on('click', function () {
             $(this).addClass('badge-disabled');
-            toastFire('success', 'Download started...');
+            toastFire('info', 'Download started...');
             setTimeout(() => {
                 $(this).removeClass('badge-disabled');
-            }, 10000);
+            }, 7000);
         });
     </script>
 @endsection

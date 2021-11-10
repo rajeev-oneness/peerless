@@ -55,6 +55,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::post('/destroy', [AgreementController::class, 'destroy'])->name('user.agreement.destroy');
         Route::get('/{id}/fields', [AgreementController::class, 'fieldsIndex'])->name('user.agreement.fields');
         Route::post('/fields/store', [AgreementController::class, 'fieldsStore'])->name('user.agreement.fields.store');
+        // pdf
+        Route::get('/{id}/pdf/view', [PDFController::class, 'showPdf'])->name('user.agreement.pdf.view');
+        Route::get('/{id}/pdf/download', [PDFController::class, 'generatePdf'])->name('user.agreement.pdf.download');
     });
 
     // field
@@ -81,6 +84,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('/read', [HomeController::class, 'notificationRead'])->name('user.notification.read');
 
     // pdf
-    Route::get('/agreement/view', [PDFController::class, 'showPdf'])->name('user.loan.pdf.view');
-    Route::get('/pdf', [PDFController::class, 'generatePdf'])->name('user.loan.pdf.download');
+    // Route::get('/agreement/view', [PDFController::class, 'showPdf'])->name('user.loan.pdf.view');
+    // Route::get('/pdf', [PDFController::class, 'generatePdf'])->name('user.loan.pdf.download');
 });

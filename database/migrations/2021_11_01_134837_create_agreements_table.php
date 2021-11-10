@@ -21,6 +21,7 @@ class CreateAgreementsTable extends Migration
             $table->string('authorised_signatory')->default('');
             $table->string('borrower')->default('');
             $table->string('co_borrower')->default('');
+            $table->longText('html');
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

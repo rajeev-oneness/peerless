@@ -3,11 +3,6 @@
 <head>
     <title>{{ $title }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
-
-    {{-- <link rel="stylesheet" href="{{ public_path('admin/dist/css/adminlte.min.css') }}"> --}}
-
     <style>
         .page-break {
             page-break-after: always;
@@ -21,33 +16,13 @@
             margin: 0;
             padding: 0;
         }
-        /* .text-decoration-underline {
-            text-decoration: underline;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 0;
-            margin-bottom: 0;
-            }
-        p {
-            color: #1a202c;
-            font-size: 12px;
-        }
-        .text-center {
-            text-align: center
-        }
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        table td, table th {
-            border: 1px solid #464646;
-            text-align: left;
-            padding: 8px;
-        } */
     </style>
+</head>
 
 
+
+
+<BODY>
 
     <STYLE type="text/css">
         body {margin-top: 0px;margin-left: 0px;}
@@ -1059,574 +1034,522 @@
         .t34{width: 659px;font: 13px 'Arial';}
         .t35{width: 691px;margin-top: 939px;font: bold 13px 'Arial';}
         table { width: 90%; border-collapse: collapse; border: 1px solid #000;font-size: 14px;}
-        table td {padding: 10px; border: 1px solid #000;}
+        p {margin: 0;}
+        table td {padding: 5px; border: 1px solid #000;}
         table th {padding: 5px;text-align: left;}
+        .text-center {text-align: center}
     </STYLE>
 
-
-
-</head>
-
-
-
-
-
-<BODY>
     <DIV id="page_1">
-    <DIV id="id1_1">
+        <DIV id="id1_1">
 
-    <P class="p0 ft0">INSTRUCTIONS FOR FILLING AGREEMENT</P>
-    <P class="p1 ft1">General Instructions :</P>
-    <P class="p2 ft1">All applications to be filled in <SPAN class="ft2">English </SPAN>in CAPITAL LETTERS using Ballpoint pen only.</P>
-    <P class="p3 ft3">Any amendments / overwriting / erasures/cuttings / hand written information in the blank space on any page should be countersigned.</P>
-    <P class="p4 ft4">The signature of the Borrower / <NOBR>Co-Borrower /</NOBR> Guarantor should be the same on the Loan Agreement & Loan Application Form.</P>
-    <P class="p5 ft1">All photocopies provided, to be <NOBR>self-attested /</NOBR> authenticated.</P>
-    <P class="p6 ft4">All pages of Schedules, Loan Agreement and Annexures to be mandatorily signed by the Borrower / Co Borrower and Guarantor, as may be specifically mentioned.</P>
-    <P class="p7 ft3">Deeds / agreements, as per format of PFSL, to be additionally executed with the Borrower(s) / Guarantor(s) as may be required under the terms of the Sanction Letter and appended to the Personal Loan Facility Agreement</P>
+            <P class="p0 ft0">INSTRUCTIONS FOR FILLING AGREEMENT</P>
+            <P class="p1 ft1">General Instructions :</P>
+            <P class="p2 ft1">All applications to be filled in <SPAN class="ft2">English </SPAN>in CAPITAL LETTERS using
+                Ballpoint pen only.</P>
+            <P class="p3 ft3">Any amendments / overwriting / erasures/cuttings / hand written information in the blank
+                space on any page should be countersigned.</P>
+            <P class="p4 ft4">The signature of the Borrower / <NOBR>Co-Borrower /</NOBR> Guarantor should be the same on
+                the Loan Agreement & Loan Application Form.</P>
+            <P class="p5 ft1">All photocopies provided, to be <NOBR>self-attested /</NOBR> authenticated.</P>
+            <P class="p6 ft4">All pages of Schedules, Loan Agreement and Annexures to be mandatorily signed by the
+                Borrower / Co Borrower and Guarantor, as may be specifically mentioned.</P>
+            <P class="p7 ft3">Deeds / agreements, as per format of PFSL, to be additionally executed with the
+                Borrower(s) / Guarantor(s) as may be required under the terms of the Sanction Letter and appended to the
+                Personal Loan Facility Agreement</P>
 
-    <table style="margin-top: 20px;">
-        <tr>
-            <th colspan="2">For Office Use Only</th>
-        </tr>
-        <tr>
-            <td>Customer ID:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Name of the Borrower:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Name of the Co-Borrower:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Name of the Guarantor:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Loan Application Number:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Loan Account Number:</td>
-            <td></td>
-        </tr>
-    </table>
+            <table style="margin-top: 20px;">
+                <tr>
+                    <th colspan="2">For Office Use Only</th>
+                </tr>
+                <tr>
+                    <td>Customer ID:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Name of the Borrower:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Name of the Co-Borrower:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Name of the Guarantor:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Loan Application Number:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Loan Account Number:</td>
+                    <td></td>
+                </tr>
+            </table>
+        </DIV>
     </DIV>
-    </DIV>
-
 
     <div class="page-break"></div>
 
-
-
-
-
-
-
-
-
-
     <DIV id="page_2">
-    
-    
-    <DIV id="id2_1">
-    <P class="p14 ft8">INDEX OF LEGAL DOCUMENTS FOR PERSONAL LOAN</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t0">
-    <TR>
-        <TD class="tr0 td0"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr0 td1"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr0 td2"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr0 td3"><P class="p15 ft10">NAME OF DOCUMENT</P></TD>
-        <TD class="tr0 td4"><P class="p16 ft11">Page No.</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr1 td5"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD colspan=2 class="tr1 td6"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD class="tr1 td7"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD class="tr1 td8"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD class="tr1 td9"><P class="p15 ft12">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr2 td10"><P class="p17 ft1">1</P></TD>
-        <TD colspan=2 class="tr2 td11"><P class="p18 ft2">LOAN AGREEMENT</P></TD>
-        <TD class="tr2 td12"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr2 td13"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr2 td14"><P class="p19 ft1">3</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr3 td5"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD colspan=2 class="tr3 td6"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td7"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td8"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td9"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr4 td10"><P class="p17 ft1">2</P></TD>
-        <TD colspan=2 class="tr4 td11"><P class="p18 ft2">SCHEDULE OF AGREEMENT</P></TD>
-        <TD class="tr4 td12"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr4 td13"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr4 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr3 td5"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td15"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td16"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td7"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td8"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td9"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr5 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr5 td17"><P class="p18 ft1">(I)</P></TD>
-        <TD class="tr5 td18"><P class="p15 ft1">Schedule - I</P></TD>
-        <TD class="tr5 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr5 td13"><P class="p20 ft1">Details of Borrower(s), Guarantor with</P></TD>
-        <TD class="tr5 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr6 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr6 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr6 td18"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr6 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr6 td13"><P class="p20 ft1">date and place of execution</P></TD>
-        <TD class="tr6 td14"><P class="p19 ft1">17</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr3 td5"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td15"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td16"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td20"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td8"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td9"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr7 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr7 td17"><P class="p18 ft1">(ii)</P></TD>
-        <TD class="tr7 td18"><P class="p15 ft1">Schedule - II</P></TD>
-        <TD class="tr7 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr7 td13"><P class="p20 ft1">Key Facts of Loan Agreement</P></TD>
-        <TD class="tr7 td14"><P class="p19 ft1">18</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr8 td5"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td15"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td16"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td20"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td8"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td9"><P class="p15 ft14">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr9 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr9 td17"><P class="p18 ft1">(iii)</P></TD>
-        <TD class="tr9 td18"><P class="p15 ft1">Schedule - III</P></TD>
-        <TD class="tr9 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr9 td13"><P class="p20 ft1">Other Terms and Conditions of Sanction of Personal Loan</P></TD>
-        <TD class="tr9 td14"><P class="p21 ft1">20</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr3 td5"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td15"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td16"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td20"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td8"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td9"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr10 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr10 td17"><P class="p18 ft1">(iv)</P></TD>
-        <TD class="tr10 td18"><P class="p15 ft1">Schedule - IV</P></TD>
-        <TD class="tr10 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr10 td13"><P class="p20 ft1">Documents to be attached with Application for loan</P></TD>
-        <TD class="tr10 td14"><P class="p22 ft1">21</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr11 td5"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td15"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td16"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td20"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td8"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td9"><P class="p15 ft15">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr12 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr12 td17"><P class="p18 ft1">(v)</P></TD>
-        <TD class="tr12 td18"><P class="p15 ft1">Schedule <NOBR>–V</NOBR></P></TD>
-        <TD class="tr12 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr12 td13"><P class="p20 ft1">Facility Specific Documents to be attached with the</P></TD>
-        <TD class="tr12 td14"><P class="p22 ft1">22</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr13 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td18"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td13"><P class="p20 ft1">Loan Agreement</P></TD>
-        <TD class="tr13 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr14 td5"><P class="p15 ft16">&nbsp;</P></TD>
-        <TD colspan=3 class="tr14 td21"><P class="p15 ft16">&nbsp;</P></TD>
-        <TD class="tr14 td8"><P class="p15 ft16">&nbsp;</P></TD>
-        <TD class="tr14 td9"><P class="p15 ft16">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr15 td10"><P class="p17 ft1">3</P></TD>
-        <TD colspan=4 class="tr15 td22"><P class="p18 ft2">ANNEXURES OF OTHER LEGAL INSTRUMENTS EXECUTED BY BORROWER (S)</P></TD>
-        <TD class="tr15 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr6 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=4 class="tr6 td22"><P class="p18 ft2">IN CONNECTION WITH LOAN AGREEMENT</P></TD>
-        <TD class="tr6 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr16 td5"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td15"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td16"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td7"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td8"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td9"><P class="p15 ft17">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr2 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr2 td17"><P class="p18 ft1">(v)</P></TD>
-        <TD class="tr2 td18"><P class="p15 ft1">Annexure - I</P></TD>
-        <TD class="tr2 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr2 td13"><P class="p20 ft1">Demand Promissory Note</P></TD>
-        <TD class="tr2 td14"><P class="p19 ft1">23</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td5"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td15"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td16"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td20"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td8"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td9"><P class="p15 ft18">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr18 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td17"><P class="p18 ft1">(vi)</P></TD>
-        <TD class="tr18 td18"><P class="p15 ft1">Annexure - II</P></TD>
-        <TD class="tr18 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td13"><P class="p20 ft1">Letter of Continuity to secure recovery</P></TD>
-        <TD class="tr18 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr19 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td18"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td13"><P class="p20 ft1">of loan amount until completely paid off</P></TD>
-        <TD class="tr19 td14"><P class="p19 ft1">24</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr3 td5"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td15"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td16"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td20"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td8"><P class="p15 ft13">&nbsp;</P></TD>
-        <TD class="tr3 td9"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr20 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr20 td17"><P class="p18 ft1">(vii)</P></TD>
-        <TD class="tr20 td18"><P class="p15 ft1">Annexure - III</P></TD>
-        <TD class="tr20 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr20 td13"><P class="p20 ft1">Undertaking Cum Indemnity</P></TD>
-        <TD class="tr20 td14"><P class="p19 ft1">25</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr8 td5"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td15"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td16"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td20"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td8"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td9"><P class="p15 ft14">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr12 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr12 td17"><P class="p18 ft1">(viii)</P></TD>
-        <TD class="tr12 td18"><P class="p15 ft1">Annexure - IV</P></TD>
-        <TD class="tr12 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr12 td13"><P class="p20 ft1">Request for disbursement</P></TD>
-        <TD class="tr12 td14"><P class="p19 ft1">27</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr21 td5"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td15"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td16"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td20"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td8"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td9"><P class="p15 ft19">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr19 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td17"><P class="p18 ft1">(ix)</P></TD>
-        <TD class="tr19 td18"><P class="p15 ft1">Annexure – V</P></TD>
-        <TD class="tr19 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td13"><P class="p20 ft1">Borrower's request to employer for EMI deduction</P></TD>
-        <TD class="tr19 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr18 td5"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td15"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td16"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td20"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td8"><P class="p20 ft1">from salary</P></TD>
-        <TD class="tr18 td9"><P class="p19 ft1">28</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr13 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td17"><P class="p18 ft1">(x)</P></TD>
-        <TD class="tr13 td18"><P class="p15 ft1">Annexure - VI</P></TD>
-        <TD class="tr13 td19"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td13"><P class="p20 ft1">NACH Declaration</P></TD>
-        <TD class="tr13 td14"><P class="p19 ft1">30</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr16 td5"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD colspan=3 class="tr16 td21"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td8"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td9"><P class="p15 ft17">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr22 td10"><P class="p17 ft1">4</P></TD>
-        <TD colspan=4 class="tr22 td22"><P class="p18 ft2">VERNACULAR DECLARATION BY <NOBR>BORROWER-APPLICANT(S)</NOBR></P></TD>
-        <TD class="tr22 td14"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr23 td10"><P class="p15 ft20">&nbsp;</P></TD>
-        <TD colspan=4 class="tr23 td22"><P class="p18 ft21">VERNACULAR CERTIFICATE BY VERBAL TRANSLATOR AND</P></TD>
-        <TD class="tr23 td14"><P class="p15 ft20">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr24 td10"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr24 td11"><P class="p18 ft2">INTERPRETER(IN ENGLISH)</P></TD>
-        <TD class="tr24 td12"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr24 td13"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr24 td14"><P class="p19 ft1">31</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr8 td5"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD colspan=2 class="tr8 td6"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td7"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td8"><P class="p15 ft14">&nbsp;</P></TD>
-        <TD class="tr8 td9"><P class="p15 ft14">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr7 td10"><P class="p17 ft1">5</P></TD>
-        <TD colspan=2 class="tr7 td11"><P class="p23 ft2">MISCELLANEOUS DOCUMENTS</P></TD>
-        <TD class="tr7 td12"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr7 td13"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr7 td14"><P class="p19 ft1">32</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr25 td5"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td15"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td16"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td7"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td8"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td9"><P class="p15 ft22">&nbsp;</P></TD>
-    </TR>
-    </TABLE>
+
+        <h6 class="text-center" style="margin-bottom: 20px">INDEX OF LEGAL DOCUMENTS FOR PERSONAL LOAN</h6>
+
+        <table cellpadding=0 cellspacing=0>
+            <tr>
+                <td></td>
+                <th class="text-center" colspan="2">NAME OF DOCUMENT</th>
+                <td>Page No.</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td colspan="2">
+                    <p style="font-weight: bold;">LOAN AGREEMENT</p>
+                </td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="2">
+                    <p style="font-weight: bold;">SCHEDULE OF AGREEMENT</p>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(i) Schedule - I</td>
+                <td>Details of Borrower(s), Guarantor with date and place of execution</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(ii) Schedule - II</td>
+                <td>Key Facts of Loan Agreement</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(iii) Schedule - III</td>
+                <td>Other Terms and Conditions of Sanction of Personal Loan</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(iv) Schedule - IV</td>
+                <td>Documents to be attached with Application for loan</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(v) Schedule - V</td>
+                <td>Facility Specific Documents to be attached with the Loan Agreement</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td colspan="2">
+                    <p style="font-weight: bold;">ANNEXURES OF OTHER LEGAL INSTRUMENTS EXECUTED BY BORROWER (S)
+                        IN CONNECTION WITH LOAN AGREEMENT</p>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(v) Annexure - I</td>
+                <td>Demand Promissory Note</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(vi) Annexure - II</td>
+                <td>Letter of Continuity to secure recovery of loan amount until completely paid off</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(vii) Annexure - III</td>
+                <td>Undertaking Cum Indemnity</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(viii) Annexure - IV</td>
+                <td>Request for disbursement</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(ix) Annexure - V</td>
+                <td>Borrower's request to employer for EMI deduction from salary</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>(x) Annexure - I</td>
+                <td>NACH Declaration</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td colspan="2">
+                    <p style="font-weight: bold;">VERNACULAR DECLARATION BY BORROWER-APPLICANT(S)
+                        VERNACULAR CERTIFICATE BY VERBAL TRANSLATOR AND
+                        INTERPRETER(IN ENGLISH)</p>
+                </td>
+                <td>31</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td colspan="2">
+                    <p style="font-weight: bold;">MISCELLANEOUS DOCUMENTS</p>
+                </td>
+                <td>32</td>
+            </tr>
+        </table>
+
     </DIV>
-    <DIV id="id2_2">
-    <P class="p13 ft7">2</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_3">
-    <DIV id="p3dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArwAAAPSCAIAAAAWUZ6KAAAQFklEQVR4nO3ZQWrDUBAFQU/w/a88WWQTyKaxId9CVSd4CGlo0Dzgsnb39ASAG3k+XF6uaWZOTwC4l6/TAwCAaxANAEAiGgCARDQAAIloAAAS0QAAJKIBAEhEAwCQiAYAIBENAEAiGgCARDQAAIloAAAS0QAAJKIBAEhEAwCQiAYAIBENAEAiGgCAZE4PgNft7ukJADcyzi4AUPg9AQAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkogEASEQDAJCIBgAgEQ0AQCIaAIBENAAAiWgAABLRAAAkz9MDgA81M6cn/IfdPT2Bj3CTF/5N8/PBeFj85ZgC8Ns3E5EcnEIigGcAAAAASUVORK5CYII=" id="p3img1"></DIV>
-    
-    
-    <DIV class="dclr"></DIV>
-    <DIV id="id3_1">
-    <P class="p13 ft1">100/- Non Judicial Stamp to be affixed</P>
-    <P class="p24 ft23">PERSONAL LOAN FACILITY AGREEMENT</P>
-    <P class="p25 ft8">This Personal Loan Agreement is made and executed at the place and date stated in the</P>
-    <P class="p26 ft8"><NOBR>Schedule-I</NOBR> hereunder written</P>
-    <P class="p27 ft8">Between</P>
-    <P class="p28 ft1"><SPAN class="ft2">PEERLESS FINANCIAL SERVICES LTD</SPAN>., a Public Limited Company incorporated under Companies Act, 1956 (2013)</P>
-    <P class="p29 ft1">and having its Registered Office at Peerless Bhavan, 3 Esplanade East, Kolkata - 700069 (West Bengal). (CIN:</P>
-    <P class="p29 ft1">U65993WB1988PLC044077) here inafter referred to as <SPAN class="ft2">“PFSL” / “LENDER</SPAN>” (which expression shall unless the context</P>
-    <P class="p29 ft1">otherwise requires, include its successors and assigns) of the <SPAN class="ft2">FIRST PART</SPAN>.</P>
-    <P class="p30 ft2">And</P>
-    <P class="p31 ft1">The Borrower and <NOBR>Co-Borrower,</NOBR> Indian inhabitants, whose names and addresses are stated in the <NOBR><SPAN class="ft2">Schedule-I</SPAN></NOBR><SPAN class="ft2"> </SPAN>hereto and hereinafter referred to as “Borrower” and <NOBR>“Co-borrower”</NOBR> (which expression shall unless the context otherwise requires, include his/her/their heir(s), successor(s), executor(s), administrator(s) and permitted assigns of the <SPAN class="ft2">SECOND PART</SPAN>.</P>
-    <P class="p32 ft1">he Borrower(s), and the Lender shall hereinafter be referred to individually as<SPAN class="ft2">“Party” </SPAN>or collectively as <SPAN class="ft2">“Parties”</SPAN>.</P>
-    <P class="p30 ft1"><SPAN class="ft2">WHEREAS </SPAN>PFSL, being a <NOBR>Non-Banking</NOBR> Financial Company, registered with RBI, is engaged in the business of lending</P>
-    <P class="p33 ft1">in India.</P>
-    <P class="p34 ft1"><SPAN class="ft2">WHEREAS </SPAN>the Borrower(s) has/have approached the Lender to provide a loan as per terms specified in <SPAN class="ft2">Schedule II</SPAN>, where in the Guarantor agrees to extend his /her /their guarantee for the due performance and observance of the Terms and Conditions of the Agreement disclosed in <SPAN class="ft2">Schedule II & Schedule III </SPAN>here of by the Borrowers(s).The Borrower(s) has /have completed, signed and for warded to the Lender the Personal Application Formduly <NOBR>filled-in</NOBR> (which is the basis of this Agreement) attaching the documents mentioned in <NOBR><SPAN class="ft2">Schedule-IV</SPAN></NOBR><SPAN class="ft2"> </SPAN>of the Personal Loan Facility Agreement.</P>
-    <P class="p28 ft2">NOW THEREFORE THIS AGREEMENT WITNESSETH AND THE PARTIES HERETO AGREE AS FOLLOWS:-</P>
-    <P class="p35 ft24">1 Definitions and Interpretations</P>
-    <P class="p36 ft1">1.1 In this Agreement, the following capitalized words shall have the following meanings:</P>
-    <P class="p37 ft1"><SPAN class="ft2">“BORROWER” </SPAN>Borrower being an individual, includes his / her/their heirs, administrators, executors and legal</P>
-    <P class="p29 ft1">representative(s);</P>
-    <P class="p38 ft1"><SPAN class="ft2">“EQUATED MONTHLY INSTALLMENT”</SPAN>or“EMI”shall mean the amount payable every month on such date / s specified</P>
-    <P class="p29 ft1">in the <NOBR>Schedule-II</NOBR> for the term of the Loan by the Borrower(s) to PFSL to amortize the Loan comprising interest and</P>
-    <P class="p29 ft1">principal, or as the case maybe, only principal or interest;</P>
-    <P class="p38 ft1"><SPAN class="ft2">“GUARANTOR</SPAN>” means the individual or legal entity that provides guarantee on behalf of the Borrower(s) towards</P>
-    <P class="p29 ft1">repayment of Outstanding Amount under the facility;</P>
-    <P class="p35 ft1"><SPAN class="ft2">“INTEREST RATE” </SPAN>means the rate at which PFSL shall compute and apply interest on the Loan, as stated in the</P>
-    <P class="p39 ft1"><NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as maybe amended from time to time by PFSL in accordance with agreement;</P>
-    <P class="p40 ft1"><SPAN class="ft2">“DEFAULT INTEREST RATE” </SPAN>means the rate as stated in the <NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as maybe amended by PFSL from time</P>
-    <P class="p41 ft1">to time at which PFSL shall compute and apply interest on all amounts not paid when due for payment and /or</P>
-    <P class="p42 ft1">reimbursement by the Borrower(s) to PFSL.</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t1">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p43 ft2">For PFSL</P>
+        <DIV id="id3_1">
+            <div style=" "><P class="p13 ft1" style="border: 1px solid #000;margin-top: 20px;padding: 2px; display: inline-block;">100/- Non Judicial Stamp to be affixed</P></div>
+
+            <P class="p24 ft23">PERSONAL LOAN FACILITY AGREEMENT</P>
+            <P class="p25 ft8">This Personal Loan Agreement is made and executed at the place and date stated in the</P>
+            <P class="p26 ft8">
+                <NOBR>Schedule-I</NOBR> hereunder written
+            </P>
+            <P class="p27 ft8">Between</P>
+            <P class="p28 ft1"><SPAN class="ft2">PEERLESS FINANCIAL SERVICES LTD</SPAN>., a Public Limited Company
+                incorporated under Companies Act, 1956 (2013)</P>
+            <P class="p29 ft1">and having its Registered Office at Peerless Bhavan, 3 Esplanade East, Kolkata - 700069
+                (West Bengal). (CIN:</P>
+            <P class="p29 ft1">U65993WB1988PLC044077) here inafter referred to as <SPAN class="ft2">“PFSL” /
+                    “LENDER</SPAN>” (which expression shall unless the context</P>
+            <P class="p29 ft1">otherwise requires, include its successors and assigns) of the <SPAN class="ft2">FIRST
+                    PART</SPAN>.</P>
+            <P class="p30 ft2">And</P>
+            <P class="p31 ft1">The Borrower and <NOBR>Co-Borrower,</NOBR> Indian inhabitants, whose names and addresses
+                are stated in the <NOBR><SPAN class="ft2">Schedule-I</SPAN></NOBR><SPAN class="ft2"> </SPAN>hereto and
+                hereinafter referred to as “Borrower” and <NOBR>“Co-borrower”</NOBR> (which expression shall unless the
+                context otherwise requires, include his/her/their heir(s), successor(s), executor(s), administrator(s)
+                and permitted assigns of the <SPAN class="ft2">SECOND PART</SPAN>.</P>
+            <P class="p32 ft1">he Borrower(s), and the Lender shall hereinafter be referred to individually as<SPAN
+                    class="ft2">“Party” </SPAN>or collectively as <SPAN class="ft2">“Parties”</SPAN>.</P>
+            <P class="p30 ft1"><SPAN class="ft2">WHEREAS </SPAN>PFSL, being a <NOBR>Non-Banking</NOBR> Financial
+                Company, registered with RBI, is engaged in the business of lending</P>
+            <P class="p33 ft1">in India.</P>
+            <P class="p34 ft1"><SPAN class="ft2">WHEREAS </SPAN>the Borrower(s) has/have approached the Lender to
+                provide a loan as per terms specified in <SPAN class="ft2">Schedule II</SPAN>, where in the Guarantor
+                agrees to extend his /her /their guarantee for the due performance and observance of the Terms and
+                Conditions of the Agreement disclosed in <SPAN class="ft2">Schedule II & Schedule III </SPAN>here of by
+                the Borrowers(s).The Borrower(s) has /have completed, signed and for warded to the Lender the Personal
+                Application Formduly <NOBR>filled-in</NOBR> (which is the basis of this Agreement) attaching the
+                documents mentioned in <NOBR><SPAN class="ft2">Schedule-IV</SPAN></NOBR><SPAN class="ft2"> </SPAN>of the
+                Personal Loan Facility Agreement.</P>
+            <P class="p28 ft2">NOW THEREFORE THIS AGREEMENT WITNESSETH AND THE PARTIES HERETO AGREE AS FOLLOWS:-</P>
+            <P class="p35 ft24">1 Definitions and Interpretations</P>
+            <P class="p36 ft1">1.1 In this Agreement, the following capitalized words shall have the following meanings:
+            </P>
+            <P class="p37 ft1"><SPAN class="ft2">“BORROWER” </SPAN>Borrower being an individual, includes his /
+                her/their heirs, administrators, executors and legal</P>
+            <P class="p29 ft1">representative(s);</P>
+            <P class="p38 ft1"><SPAN class="ft2">“EQUATED MONTHLY INSTALLMENT”</SPAN>or“EMI”shall mean the amount
+                payable every month on such date / s specified</P>
+            <P class="p29 ft1">in the <NOBR>Schedule-II</NOBR> for the term of the Loan by the Borrower(s) to PFSL to
+                amortize the Loan comprising interest and</P>
+            <P class="p29 ft1">principal, or as the case maybe, only principal or interest;</P>
+            <P class="p38 ft1"><SPAN class="ft2">“GUARANTOR</SPAN>” means the individual or legal entity that provides
+                guarantee on behalf of the Borrower(s) towards</P>
+            <P class="p29 ft1">repayment of Outstanding Amount under the facility;</P>
+            <P class="p35 ft1"><SPAN class="ft2">“INTEREST RATE” </SPAN>means the rate at which PFSL shall compute and
+                apply interest on the Loan, as stated in the</P>
+            <P class="p39 ft1">
+                <NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as maybe amended from time
+                to time by PFSL in accordance with agreement;
+            </P>
+            <P class="p40 ft1"><SPAN class="ft2">“DEFAULT INTEREST RATE” </SPAN>means the rate as stated in the <NOBR>
+                    <SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as maybe amended by PFSL
+                from time</P>
+            <P class="p41 ft1">to time at which PFSL shall compute and apply interest on all amounts not paid when due
+                for payment and /or</P>
+            <P class="p42 ft1">reimbursement by the Borrower(s) to PFSL.</P>
+
+
+            <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+                <TR style="border: 0">
+                    <TD class="tr6 td23" style="border: 0">
+                        <div style="width: 190px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td24" style="border: 0">
+                        <div style="width: 55px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Borrower</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td25" style="border: 0">
+                        <div style="width: 75px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Co-Borrower</P>
+                    </TD>
+                </TR>
+            </TABLE>
+        </DIV>
     </DIV>
-    <DIV id="id3_2">
-    <P class="p13 ft7">3</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_4">
-    <DIV id="p4dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p4img1"></DIV>
-    
-    
-    <DIV id="id4_1">
-    <P class="p13 ft1"><SPAN class="ft2">“</SPAN><SPAN class="ft25">LOAN” </SPAN>means the principal amount of Loan sanctioned and disbursed by PFSL to the Borrower(s) (as specified in the</P>
-    <P class="p44 ft3"><NOBR><SPAN class="ft26">Schedule-II</SPAN></NOBR><SPAN class="ft26"> </SPAN>in terms of this Agreement and shall include dues outstanding thereunder including interests, costs, charges, expenses and all other amounts due in accordance with this Agreement if the context so requires.</P>
-    <P class="p45 ft3"><SPAN class="ft26">“PREPAYMENT” </SPAN>means premature repayment of the Loan in part or in full by the Borrower(s) ahead of the repayment tenor specified in the <NOBR><SPAN class="ft26">Schedule-II.</SPAN></NOBR></P>
-    <P class="p46 ft1"><SPAN class="ft2">“PREPAYMENT CHARGES” </SPAN>means charges levied by PFSL for prepayment as specified in the <NOBR><SPAN class="ft2">Schedule-II.</SPAN></NOBR></P>
-    <P class="p47 ft1"><SPAN class="ft2">“PURPOSE OF LOAN” </SPAN>means that the Loan has been availed by the Borrower(s) for the purpose as stated in the <NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>hereto.</P>
-    <P class="p45 ft3"><SPAN class="ft26">“REPAYMENT” </SPAN>means the repayment of the principal amount of loan, interest thereon and/or any charges, premiums, expenses, fees or other dues payable in terms of this Agreement.</P>
-    <P class="p48 ft3"><SPAN class="ft26">“SALARY” </SPAN>shall mean annual accumulated sum made by the present or future employer to the Borrower(s) and shall also include fee, commission, perquisite, advance, annual accretion credited to the balance, excluding bonus, gratuity, annuity, if any.</P>
-    <P class="p48 ft3"><SPAN class="ft26">“SECURITY” </SPAN>shall mean a pledge / mortgage created in favour of PFSL on such Secured Assets of the Borrower(s) (whether moveable or immoveable), from time to time, for securing the Borrower's Dues as per terms of Sanction Letter and / or as stipulated under Schedule II.</P>
-    <P class="p49 ft1"><SPAN class="ft2">“SCHEDULE” </SPAN>means the Schedules to this Agreement which is/are part and parcel of the agreement;</P>
-    <P class="p50 ft28"><SPAN class="ft27">“LOAN DOCUMENTS”/ “ LOAN AGREEMENTS” </SPAN>mean and include, but not restricted to,(i) Loan Application Form (ii) Facility Sanction Letter or the Letter Of Intent (LOI) issued by the Lender (iii) Personal Loan Facility Agreement together with its <SPAN class="ft27">Schedules I - V</SPAN>, (iv) Demand Promissory Note <SPAN class="ft27">(Annexure I) </SPAN>,(v) Continuing Security Letter <SPAN class="ft27">(Annexure II)</SPAN>, (vi) Undertaking regarding payment of differential stamp duty applicable on all documents <SPAN class="ft27">(Annexure III) </SPAN>, (vii) Request for Disbursement <SPAN class="ft27">( Annexure IV)</SPAN>, (viii) Borrower's request to employer for EMI deduction from salary <SPAN class="ft27">( Annexure V)</SPAN></P>
-    <P class="p51 ft30">NACH Declaration <SPAN class="ft29">( Annexure VI) </SPAN>(ix) Facility Specific Agreements together with its Schedules and Annexures as may be required under the Personal Loan Facility Agreement from the list Provided in <SPAN class="ft29">Schedule V </SPAN>and any other documents , correspondences , agreement including all correspondences by way of email or otherwise exchanged between the Parties.</P>
-    <P class="p52 ft33"><SPAN class="ft2">1</SPAN><SPAN class="ft31">"MARGIN SHORTFALL" </SPAN>means where the accumulated salary / professional income is inadequate to meet Margin Requirement as mentioned in <NOBR><SPAN class="ft32">Schedule-II</SPAN></NOBR><SPAN class="ft32"> </SPAN>and is computed as Margin Requirement less value of accumulated salary Margin.</P>
-    <P class="p53 ft3"><SPAN class="ft1">1.1</SPAN><SPAN class="ft34">In this Agreement, singular shall include plural and the masculine gender, shall include the feminine or neuter gender.</SPAN></P>
-    <P class="p54 ft3"><SPAN class="ft1">1.2</SPAN><SPAN class="ft34">Any expressions not defined herein,if defined within the General Clauses Act,1897,shall carry the same meaning as assigned to it under the said Act</SPAN></P>
-    <P class="p55 ft3"><SPAN class="ft1">1.3</SPAN><SPAN class="ft34">In this Agreement, headings are for convenience only and shall not affect interpretation except to the extent that the context otherwise requires.</SPAN></P>
-    <P class="p56 ft3"><SPAN class="ft1">1.4</SPAN><SPAN class="ft34">Any reference to Article, Clause or Schedule shall be deemed to be a reference to an Article, Clause or Schedule of this Agreement.</SPAN></P>
-    <P class="p55 ft3"><SPAN class="ft1">1.5</SPAN><SPAN class="ft34">Any reference to any enactment or statutory provision is a reference to it as it may have been, or may from time to time be amended, modified, consolidated or </SPAN><NOBR>re-enacted.</NOBR></P>
-    <P class="p57 ft1"><SPAN class="ft1">1.6</SPAN><SPAN class="ft35">The arrangement of Clauses in this Agreement shall have no bearing on their interpretation.</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t2">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p39 ft2">For PFSL</P>
+        <DIV id="id4_1">
+            <P class="p13 ft1"><SPAN class="ft2">“</SPAN><SPAN class="ft25">LOAN” </SPAN>means the principal amount of
+                Loan sanctioned and disbursed by PFSL to the Borrower(s) (as specified in the</P>
+            <P class="p44 ft3">
+                <NOBR><SPAN class="ft26">Schedule-II</SPAN></NOBR><SPAN class="ft26"> </SPAN>in terms of this Agreement
+                and shall include dues outstanding thereunder including interests, costs, charges, expenses and all
+                other amounts due in accordance with this Agreement if the context so requires.
+            </P>
+            <P class="p45 ft3"><SPAN class="ft26">“PREPAYMENT” </SPAN>means premature repayment of the Loan in part or
+                in full by the Borrower(s) ahead of the repayment tenor specified in the <NOBR><SPAN
+                        class="ft26">Schedule-II.</SPAN></NOBR>
+            </P>
+            <P class="p46 ft1"><SPAN class="ft2">“PREPAYMENT CHARGES” </SPAN>means charges levied by PFSL for prepayment
+                as specified in the <NOBR><SPAN class="ft2">Schedule-II.</SPAN></NOBR>
+            </P>
+            <P class="p47 ft1"><SPAN class="ft2">“PURPOSE OF LOAN” </SPAN>means that the Loan has been availed by the
+                Borrower(s) for the purpose as stated in the <NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN
+                    class="ft2"> </SPAN>hereto.</P>
+            <P class="p45 ft3"><SPAN class="ft26">“REPAYMENT” </SPAN>means the repayment of the principal amount of
+                loan, interest thereon and/or any charges, premiums, expenses, fees or other dues payable in terms of
+                this Agreement.</P>
+            <P class="p48 ft3"><SPAN class="ft26">“SALARY” </SPAN>shall mean annual accumulated sum made by the present
+                or future employer to the Borrower(s) and shall also include fee, commission, perquisite, advance,
+                annual accretion credited to the balance, excluding bonus, gratuity, annuity, if any.</P>
+            <P class="p48 ft3"><SPAN class="ft26">“SECURITY” </SPAN>shall mean a pledge / mortgage created in favour of
+                PFSL on such Secured Assets of the Borrower(s) (whether moveable or immoveable), from time to time, for
+                securing the Borrower's Dues as per terms of Sanction Letter and / or as stipulated under Schedule II.
+            </P>
+            <P class="p49 ft1"><SPAN class="ft2">“SCHEDULE” </SPAN>means the Schedules to this Agreement which is/are
+                part and parcel of the agreement;</P>
+            <P class="p50 ft28"><SPAN class="ft27">“LOAN DOCUMENTS”/ “ LOAN AGREEMENTS” </SPAN>mean and include, but not
+                restricted to,(i) Loan Application Form (ii) Facility Sanction Letter or the Letter Of Intent (LOI)
+                issued by the Lender (iii) Personal Loan Facility Agreement together with its <SPAN
+                    class="ft27">Schedules I - V</SPAN>, (iv) Demand Promissory Note <SPAN class="ft27">(Annexure I)
+                </SPAN>,(v) Continuing Security Letter <SPAN class="ft27">(Annexure II)</SPAN>, (vi) Undertaking
+                regarding payment of differential stamp duty applicable on all documents <SPAN class="ft27">(Annexure
+                    III) </SPAN>, (vii) Request for Disbursement <SPAN class="ft27">( Annexure IV)</SPAN>, (viii)
+                Borrower's request to employer for EMI deduction from salary <SPAN class="ft27">( Annexure V)</SPAN></P>
+            <P class="p51 ft30">NACH Declaration <SPAN class="ft29">( Annexure VI) </SPAN>(ix) Facility Specific
+                Agreements together with its Schedules and Annexures as may be required under the Personal Loan Facility
+                Agreement from the list Provided in <SPAN class="ft29">Schedule V </SPAN>and any other documents ,
+                correspondences , agreement including all correspondences by way of email or otherwise exchanged between
+                the Parties.</P>
+            <P class="p52 ft33"><SPAN class="ft2">1</SPAN><SPAN class="ft31">"MARGIN SHORTFALL" </SPAN>means where the
+                accumulated salary / professional income is inadequate to meet Margin Requirement as mentioned in <NOBR>
+                    <SPAN class="ft32">Schedule-II</SPAN></NOBR><SPAN class="ft32"> </SPAN>and is computed as Margin
+                Requirement less value of accumulated salary Margin.</P>
+            <P class="p53 ft3"><SPAN class="ft1">1.1</SPAN><SPAN class="ft34">In this Agreement, singular shall include
+                    plural and the masculine gender, shall include the feminine or neuter gender.</SPAN></P>
+            <P class="p54 ft3"><SPAN class="ft1">1.2</SPAN><SPAN class="ft34">Any expressions not defined herein,if
+                    defined within the General Clauses Act,1897,shall carry the same meaning as assigned to it under the
+                    said Act</SPAN></P>
+            <P class="p55 ft3"><SPAN class="ft1">1.3</SPAN><SPAN class="ft34">In this Agreement, headings are for
+                    convenience only and shall not affect interpretation except to the extent that the context otherwise
+                    requires.</SPAN></P>
+            <P class="p56 ft3"><SPAN class="ft1">1.4</SPAN><SPAN class="ft34">Any reference to Article, Clause or
+                    Schedule shall be deemed to be a reference to an Article, Clause or Schedule of this
+                    Agreement.</SPAN></P>
+            <P class="p55 ft3"><SPAN class="ft1">1.5</SPAN><SPAN class="ft34">Any reference to any enactment or
+                    statutory provision is a reference to it as it may have been, or may from time to time be amended,
+                    modified, consolidated or </SPAN>
+                <NOBR>re-enacted.</NOBR>
+            </P>
+            <P class="p57 ft1"><SPAN class="ft1">1.6</SPAN><SPAN class="ft35">The arrangement of Clauses in this
+                    Agreement shall have no bearing on their interpretation.</SPAN></P>
+
+
+            <br>
+            <br>
+            <br>
+            <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+                <TR style="border: 0;">
+                    <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+                    <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+                    <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+                </TR>
+            </TABLE>
+        </DIV>
     </DIV>
-    <DIV id="id4_2">
-    <P class="p13 ft7">4</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_5">
-    <DIV id="p5dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p5img1"></DIV>
-    
-    
-    <DIV id="id5_1">
-    <P class="p58 ft2">2 PFSL's Agreement to lend and Borrowers' Agreement to borrow</P>
-    <P class="p59 ft4"><SPAN class="ft1">2.1</SPAN><SPAN class="ft36">PFSL agrees, based on the Borrowers' request, representations, warranties, covenants, and undertakings as contained herein and in the application for Loan, to lend to the Borrower(s) and the Borrower(s) agree(s) to borrow from PFSL, the Loan on the terms and conditions as fully set out in this Agreement and Schedule here to.</SPAN></P>
-    <P class="p60 ft4"><SPAN class="ft1">2.2</SPAN><SPAN class="ft37">The relationship between PFSL and the Borrower(s) as lender and Borrower(s) shall commence from the Application Form received from the Borrower(s) for grant of loan and issuance of Sanction Letter/ Letter of Intent by PFSL and shall subsist until all monies due and payable by the Borrower(s) to PFSL under this Agreement, shall have been fully paid to and received by PFSL.</SPAN></P>
-    <P class="p61 ft2"><SPAN class="ft2">3</SPAN><SPAN class="ft38">Mode of Disbursement</SPAN></P>
-    <P class="p62 ft3"><SPAN class="ft1">3.1</SPAN><SPAN class="ft39">PFSL shall disburse the Loan in the manner given in </SPAN><SPAN class="ft26">Schedule II </SPAN>hereto. PFSL shall credit the Loan amount to the designated Bank Account, details provided in the <NOBR><SPAN class="ft26">Schedule-II</SPAN>,</NOBR> by the Borrower(s).</P>
-    <P class="p63 ft2">4 Interests, Fees and Costs</P>
-    <P class="p64 ft1"><SPAN class="ft1">4.1</SPAN><SPAN class="ft40">The Borrower (s) shall be jointly and severally liable to pay interest on the loan at the rate specified in </SPAN><SPAN class="ft2">Schedule- II.</SPAN></P>
-    <P class="p65 ft42"><SPAN class="ft1">4.2</SPAN><SPAN class="ft41">Interest, which is part of EMI, if not paid on due date, then interest shall be and added to the principal and shall be treated as an advance to the Borrower(s) and PFSL may be entitled to charge interest at the aforesaid rate on the account of the debit balance inclusive of interest not paid by the Borrower(s) and hence capitalized as aforesaid.</SPAN></P>
-    <P class="p63 ft1"><SPAN class="ft1">4.3</SPAN><SPAN class="ft40">PFSL shall be entitled to change the rate of interest and/ or rests and/ or penal interest, as per policy of PFSL,</SPAN></P>
-    <P class="p66 ft42"><SPAN class="ft1">4.4</SPAN><SPAN class="ft41">The interest on the Loan shall accrue from the date of the PFSL's disbursement of the Loan to the Borrower and shall be computed:</SPAN></P>
-    <P class="p67 ft1"><SPAN class="ft1">4.4.1</SPAN><SPAN class="ft43">Taking the basis of 365 days in a year/ 366 days for a leap year and calculated at monthly rests;</SPAN></P>
-    <P class="p68 ft1"><SPAN class="ft1">4.4.2</SPAN><SPAN class="ft44">At the Interest Rate as state din the </SPAN><NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as may be specified/ amended by PFSL from time to time.</P>
-    <P class="p69 ft42"><SPAN class="ft1">4.5</SPAN><SPAN class="ft41">The Borrower(s) agree(s) and acknowledge(s) that the Loan shall bear Documentation Charges, Processing Fees and other fees, charges including but not limited to Interest Tax, Stamp Duty, late payment charges, cheque return charges, administrative charges, Insurance costs and such other charges as mentioned in the </SPAN><NOBR><SPAN class="ft45">Schedule-II</SPAN>,</NOBR> which the Borrower(s) shall reimburse to PFSL in addition to the Loan and the interest accrued thereon.</P>
-    <P class="p70 ft4"><SPAN class="ft1">4.6</SPAN><SPAN class="ft46">The Borrower(s) shall also bear and reimburse separately to PFSL the costs and expenses involved or incurred by PFSL in the recovery of the Loan, if the Loan or any part thereof, when due is not paid by the Borrower(s).</SPAN></P>
-    <P class="p71 ft1"><SPAN class="ft1">4.7</SPAN><SPAN class="ft40">All amounts in default for payment (i.e. not paid by the Borrower(s) when due to PFSL) including arrears of EMI,</SPAN></P>
-    <P class="p72 ft1">interests, fees, charges, taxes and costs will attract Default Interest at the rate/ amount(s) specified in the</P>
-    <P class="p73 ft2">Schedule II.</P>
-    <P class="p74 ft42"><SPAN class="ft1">4.8</SPAN><SPAN class="ft47">The Borrower(s) is/are aware that the list of charges in Schedule II hereto is not exhaustive and can be changed and fresh/new charges can be added to, anytime and from time to time prospectively, at the sole and absolute discretion of PFSL and such charges shall be binding on the Borrower(s).</SPAN></P>
-    <P class="p75 ft2"><SPAN class="ft2">5</SPAN><SPAN class="ft48">Conditions Precedent to Disbursement of Loan</SPAN></P>
-    <P class="p76 ft42"><SPAN class="ft1">5.1</SPAN><SPAN class="ft41">PFSL shall not disburse any amount under the Loan unless the following conditions are complied with to the complete satisfaction of PFSL:</SPAN></P>
-    <P class="p63 ft1"><SPAN class="ft1">5.1.1</SPAN><SPAN class="ft49">The Loan Agreement is duly executed and delivered to PFSL by the Borrower(s);</SPAN></P>
-    <P class="p77 ft4"><SPAN class="ft1">5.1.2</SPAN><SPAN class="ft50">The Borrower(s) procure(s) in favour of PFSL, a irrevocable and unconditional Guarantee as maybe required by PFSL at its sole discretion, of such person as maybe approved by PFSL, for guaranteeing repayment of the Loan with interest and all other amounts payable in respect there of</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t3">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p32 ft2">For PFSL</P>
+        <DIV id="id5_1">
+            <P class="p58 ft2">2 PFSL's Agreement to lend and Borrowers' Agreement to borrow</P>
+            <P class="p59 ft4"><SPAN class="ft1">2.1</SPAN><SPAN class="ft36">PFSL agrees, based on the Borrowers'
+                    request, representations, warranties, covenants, and undertakings as contained herein and in the
+                    application for Loan, to lend to the Borrower(s) and the Borrower(s) agree(s) to borrow from PFSL,
+                    the Loan on the terms and conditions as fully set out in this Agreement and Schedule here to.</SPAN>
+            </P>
+            <P class="p60 ft4"><SPAN class="ft1">2.2</SPAN><SPAN class="ft37">The relationship between PFSL and the
+                    Borrower(s) as lender and Borrower(s) shall commence from the Application Form received from the
+                    Borrower(s) for grant of loan and issuance of Sanction Letter/ Letter of Intent by PFSL and shall
+                    subsist until all monies due and payable by the Borrower(s) to PFSL under this Agreement, shall have
+                    been fully paid to and received by PFSL.</SPAN></P>
+            <P class="p61 ft2"><SPAN class="ft2">3</SPAN><SPAN class="ft38">Mode of Disbursement</SPAN></P>
+            <P class="p62 ft3"><SPAN class="ft1">3.1</SPAN><SPAN class="ft39">PFSL shall disburse the Loan in the manner
+                    given in </SPAN><SPAN class="ft26">Schedule II </SPAN>hereto. PFSL shall credit the Loan amount to
+                the designated Bank Account, details provided in the <NOBR><SPAN class="ft26">Schedule-II</SPAN>,</NOBR>
+                by the Borrower(s).</P>
+            <P class="p63 ft2">4 Interests, Fees and Costs</P>
+            <P class="p64 ft1"><SPAN class="ft1">4.1</SPAN><SPAN class="ft40">The Borrower (s) shall be jointly and
+                    severally liable to pay interest on the loan at the rate specified in </SPAN><SPAN
+                    class="ft2">Schedule- II.</SPAN></P>
+            <P class="p65 ft42"><SPAN class="ft1">4.2</SPAN><SPAN class="ft41">Interest, which is part of EMI, if not
+                    paid on due date, then interest shall be and added to the principal and shall be treated as an
+                    advance to the Borrower(s) and PFSL may be entitled to charge interest at the aforesaid rate on the
+                    account of the debit balance inclusive of interest not paid by the Borrower(s) and hence capitalized
+                    as aforesaid.</SPAN></P>
+            <P class="p63 ft1"><SPAN class="ft1">4.3</SPAN><SPAN class="ft40">PFSL shall be entitled to change the rate
+                    of interest and/ or rests and/ or penal interest, as per policy of PFSL,</SPAN></P>
+            <P class="p66 ft42"><SPAN class="ft1">4.4</SPAN><SPAN class="ft41">The interest on the Loan shall accrue
+                    from the date of the PFSL's disbursement of the Loan to the Borrower and shall be computed:</SPAN>
+            </P>
+            <P class="p67 ft1"><SPAN class="ft1">4.4.1</SPAN><SPAN class="ft43">Taking the basis of 365 days in a year/
+                    366 days for a leap year and calculated at monthly rests;</SPAN></P>
+            <P class="p68 ft1"><SPAN class="ft1">4.4.2</SPAN><SPAN class="ft44">At the Interest Rate as state din the
+                </SPAN>
+                <NOBR><SPAN class="ft2">Schedule-II</SPAN></NOBR><SPAN class="ft2"> </SPAN>or as may be specified/
+                amended by PFSL from time to time.
+            </P>
+            <P class="p69 ft42"><SPAN class="ft1">4.5</SPAN><SPAN class="ft41">The Borrower(s) agree(s) and
+                    acknowledge(s) that the Loan shall bear Documentation Charges, Processing Fees and other fees,
+                    charges including but not limited to Interest Tax, Stamp Duty, late payment charges, cheque return
+                    charges, administrative charges, Insurance costs and such other charges as mentioned in the </SPAN>
+                <NOBR><SPAN class="ft45">Schedule-II</SPAN>,</NOBR> which the Borrower(s) shall reimburse to PFSL in
+                addition to the Loan and the interest accrued thereon.
+            </P>
+            <P class="p70 ft4"><SPAN class="ft1">4.6</SPAN><SPAN class="ft46">The Borrower(s) shall also bear and
+                    reimburse separately to PFSL the costs and expenses involved or incurred by PFSL in the recovery of
+                    the Loan, if the Loan or any part thereof, when due is not paid by the Borrower(s).</SPAN></P>
+            <P class="p71 ft1"><SPAN class="ft1">4.7</SPAN><SPAN class="ft40">All amounts in default for payment (i.e.
+                    not paid by the Borrower(s) when due to PFSL) including arrears of EMI,</SPAN></P>
+            <P class="p72 ft1">interests, fees, charges, taxes and costs will attract Default Interest at the rate/
+                amount(s) specified in the</P>
+            <P class="p73 ft2">Schedule II.</P>
+            <P class="p74 ft42"><SPAN class="ft1">4.8</SPAN><SPAN class="ft47">The Borrower(s) is/are aware that the
+                    list of charges in Schedule II hereto is not exhaustive and can be changed and fresh/new charges can
+                    be added to, anytime and from time to time prospectively, at the sole and absolute discretion of
+                    PFSL and such charges shall be binding on the Borrower(s).</SPAN></P>
+            <P class="p75 ft2"><SPAN class="ft2">5</SPAN><SPAN class="ft48">Conditions Precedent to Disbursement of
+                    Loan</SPAN></P>
+            <P class="p76 ft42"><SPAN class="ft1">5.1</SPAN><SPAN class="ft41">PFSL shall not disburse any amount under
+                    the Loan unless the following conditions are complied with to the complete satisfaction of
+                    PFSL:</SPAN></P>
+            <P class="p63 ft1"><SPAN class="ft1">5.1.1</SPAN><SPAN class="ft49">The Loan Agreement is duly executed and
+                    delivered to PFSL by the Borrower(s);</SPAN></P>
+            <P class="p77 ft4"><SPAN class="ft1">5.1.2</SPAN><SPAN class="ft50">The Borrower(s) procure(s) in favour of
+                    PFSL, a irrevocable and unconditional Guarantee as maybe required by PFSL at its sole discretion, of
+                    such person as maybe approved by PFSL, for guaranteeing repayment of the Loan with interest and all
+                    other amounts payable in respect there of</SPAN></P>
+
+                    <br>
+
+            <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+                <TR style="border: 0;">
+                    <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+                    <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+                    <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+                </TR>
+            </TABLE>
+        </DIV>
+        {{-- <DIV id="id5_2">
+            <P class="p13 ft7">5</P>
+        </DIV> --}}
     </DIV>
-    <DIV id="id5_2">
-    <P class="p13 ft7">5</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_6">
-    <DIV id="p6dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p6img1"></DIV>
-    
-    
-    <DIV id="id6_1">
-    <P class="p78 ft4"><SPAN class="ft1">5.1.3</SPAN><SPAN class="ft50">The Borrower(s) submit(s) to the satisfaction of PFSL, a certificate of employment from his/ her/ their employer and his/her/their Financial Statements, in the case of Borrower(s) being a salaried person;</SPAN></P>
-    <P class="p79 ft1"><SPAN class="ft1">5.1.4</SPAN><SPAN class="ft49">Any other document or undertaking as PFSL may require at its sole discretion.</SPAN></P>
-    <P class="p80 ft1"><SPAN class="ft1">5.1.5</SPAN><SPAN class="ft49">Paid Documentation Charges and Processing Fees for processing and sanction of Loan</SPAN></P>
-    <P class="p81 ft52"><SPAN class="ft1">5.2</SPAN><SPAN class="ft51">PFSL may not, having disbursed any amount, disburse any further amount under the Loan Agreement, unless the following conditions are complied with, in the sole discretion of PFSL, before such further</SPAN></P>
-    <P class="p82 ft1">disbursement:</P>
-    <P class="p83 ft1"><SPAN class="ft1">5.2.1</SPAN><SPAN class="ft49">No event of default as specified in </SPAN><SPAN class="ft2">Clause 9 </SPAN>hereinafter shall have occurred;</P>
-    <P class="p84 ft33"><SPAN class="ft1">5.2.2</SPAN><SPAN class="ft53">The Borrower(s) shall have produced evidence of the utilization of prior disbursements and also in respect of proposed disbursements;</SPAN></P>
-    <P class="p85 ft1"><SPAN class="ft1">5.2.3</SPAN><SPAN class="ft49">The Borrower(s) shall have produced his/her /their periodic financial statements; and</SPAN></P>
-    <P class="p86 ft1"><SPAN class="ft1">5.2.4</SPAN><SPAN class="ft49">The Borrower(s) shall have produced all other documents or writings as required by PFSL at its sole</SPAN></P>
-    <P class="p87 ft1">discretion.</P>
-    <P class="p83 ft2">6.i. Repayment / Prepayment in case of Salaried Individuals of Preferred Corporates.</P>
-    <P class="p88 ft33">6.i.1 In consideration of the Lender extending the“Loan”,the Borrower(s) and the Guarantor shall jointly and severally repay the Loan along with Interest in accordance with the Repayment Schedule set out in <SPAN class="ft32">Schedule II </SPAN>of this Agreement. The Borrowers' Employer(s) shall deduct the EMI amount from the Borrowers' salary and credit the EMI amount directly into the Lender's Bank Account specified in <SPAN class="ft32">Schedule II </SPAN>hereof (here in after referred to a “the Lender's Bank Account”) every month. In the event of cessation of the Borrowers' service with the Borrowers' employer(s) by way of resignation, voluntary retirement, termination of service or any other way whatsoever before the loan is repaid in full in terms of <SPAN class="ft32">Schedule II </SPAN>hereof, the Agreement will at the discretion of the Lender stand terminated and the Borrowers' employer(s) will, without any reference to or consent to the Borrower(s),deduct from the final settlement amount of the Borrower(s) the maximum possible amount towards recovery of the amount payable on the loan on the date of cessation of service including outstanding loan amount, interest, penal interest, costs, charges, expenses, tax, fees, levies, duties, cess etc. and credit the amount so deducted directly into the Lender's bank account towards repayment of the loan. No further notice, intimation or reminder shall be issued to the Borrower(s) or the Borrowers' employer(s) regarding its obligation to credit the EMI amount into the Lender's bank account. The Borrower(s) agree(s) and undertake(s) that it will be the responsibility and obligation of the Borrower(s) to pay EMI on the loan on due date and other amounts due and payable to the Lender, and any default of the Borrowers' employer(s) in paying EMI will be a default of the Borrower in performing his obligations hereunder;</P>
-    <P class="p89 ft33">6.i.2 Not with standing anything contrary or conflicting herein or in any other facility document the Lender shall have the right to review the loan account and revise the terms thereof anytime on its own or upon the request of the Borrower(s) in such manner as deemed fit by the Lender whereupon the repayment of the outstanding loan will be subject to the revised terms & conditions;</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t4">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p90 ft2">For PFSL</P>
+        <DIV id="id6_1">
+        <P class="p78 ft4"><SPAN class="ft1">5.1.3</SPAN><SPAN class="ft50">The Borrower(s) submit(s) to the satisfaction of PFSL, a certificate of employment from his/ her/ their employer and his/her/their Financial Statements, in the case of Borrower(s) being a salaried person;</SPAN></P>
+        <P class="p79 ft1"><SPAN class="ft1">5.1.4</SPAN><SPAN class="ft49">Any other document or undertaking as PFSL may require at its sole discretion.</SPAN></P>
+        <P class="p80 ft1"><SPAN class="ft1">5.1.5</SPAN><SPAN class="ft49">Paid Documentation Charges and Processing Fees for processing and sanction of Loan</SPAN></P>
+        <P class="p81 ft52"><SPAN class="ft1">5.2</SPAN><SPAN class="ft51">PFSL may not, having disbursed any amount, disburse any further amount under the Loan Agreement, unless the following conditions are complied with, in the sole discretion of PFSL, before such further</SPAN></P>
+        <P class="p82 ft1">disbursement:</P>
+        <P class="p83 ft1"><SPAN class="ft1">5.2.1</SPAN><SPAN class="ft49">No event of default as specified in </SPAN><SPAN class="ft2">Clause 9 </SPAN>hereinafter shall have occurred;</P>
+        <P class="p84 ft33"><SPAN class="ft1">5.2.2</SPAN><SPAN class="ft53">The Borrower(s) shall have produced evidence of the utilization of prior disbursements and also in respect of proposed disbursements;</SPAN></P>
+        <P class="p85 ft1"><SPAN class="ft1">5.2.3</SPAN><SPAN class="ft49">The Borrower(s) shall have produced his/her /their periodic financial statements; and</SPAN></P>
+        <P class="p86 ft1"><SPAN class="ft1">5.2.4</SPAN><SPAN class="ft49">The Borrower(s) shall have produced all other documents or writings as required by PFSL at its sole</SPAN></P>
+        <P class="p87 ft1">discretion.</P>
+        <P class="p83 ft2">6.i. Repayment / Prepayment in case of Salaried Individuals of Preferred Corporates.</P>
+        <P class="p88 ft33">6.i.1 In consideration of the Lender extending the“Loan”,the Borrower(s) and the Guarantor shall jointly and severally repay the Loan along with Interest in accordance with the Repayment Schedule set out in <SPAN class="ft32">Schedule II </SPAN>of this Agreement. The Borrowers' Employer(s) shall deduct the EMI amount from the Borrowers' salary and credit the EMI amount directly into the Lender's Bank Account specified in <SPAN class="ft32">Schedule II </SPAN>hereof (here in after referred to a “the Lender's Bank Account”) every month. In the event of cessation of the Borrowers' service with the Borrowers' employer(s) by way of resignation, voluntary retirement, termination of service or any other way whatsoever before the loan is repaid in full in terms of <SPAN class="ft32">Schedule II </SPAN>hereof, the Agreement will at the discretion of the Lender stand terminated and the Borrowers' employer(s) will, without any reference to or consent to the Borrower(s),deduct from the final settlement amount of the Borrower(s) the maximum possible amount towards recovery of the amount payable on the loan on the date of cessation of service including outstanding loan amount, interest, penal interest, costs, charges, expenses, tax, fees, levies, duties, cess etc. and credit the amount so deducted directly into the Lender's bank account towards repayment of the loan. No further notice, intimation or reminder shall be issued to the Borrower(s) or the Borrowers' employer(s) regarding its obligation to credit the EMI amount into the Lender's bank account. The Borrower(s) agree(s) and undertake(s) that it will be the responsibility and obligation of the Borrower(s) to pay EMI on the loan on due date and other amounts due and payable to the Lender, and any default of the Borrowers' employer(s) in paying EMI will be a default of the Borrower in performing his obligations hereunder;</P>
+        <P class="p89 ft33">6.i.2 Not with standing anything contrary or conflicting herein or in any other facility document the Lender shall have the right to review the loan account and revise the terms thereof anytime on its own or upon the request of the Borrower(s) in such manner as deemed fit by the Lender whereupon the repayment of the outstanding loan will be subject to the revised terms & conditions;</P>
+
+        <br>
+        <br>
+
+        <TABLE cellpadding=0 cellspacing=0 class="t4" style="border: 0">
+            <TR style="border: 0">
+                <TD class="tr6 td23" style="border: 0">
+                    <div style="width: 190px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td24" style="border: 0">
+                    <div style="width: 55px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Borrower</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td25" style="border: 0">
+                    <div style="width: 75px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Co-Borrower</P>
+                </TD>
+            </TR>
+        </TABLE>
+        
+        </DIV>
+        {{-- <DIV id="id6_2">
+        <P class="p13 ft7">6</P>
+        </DIV> --}}
     </DIV>
-    <DIV id="id6_2">
-    <P class="p13 ft7">6</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_7">
-    <DIV id="p7dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p7img1"></DIV>
     
     
-    <DIV id="id7_1">
-    <P class="p91 ft55">6.i.3 The Borrower(s) and/or Guarantor agree(s) and undertake(s) that in the event of the Borrowers' employer(s) committing default or delay in payment of EMI on the loan or payment of the outstanding amount in the event of cessation of service of the Borrower(s) with the Borrowers' employer(s) for any reason whatsoever, the Lender will be entitled to : (i) demand payment of the overdue EMI/EMI in default or the outstanding amount, as the case may be, from the Borrower(s) and the Borrower(s) will forthwith pay the EMI amount or such outstanding amount to the Lender; (ii) to charge Penal Interest / Delayed Payment Charge on the overdue EMI / EMI in default at the rate specified in <SPAN class="ft54">Schedule II </SPAN>herein below, or at a rate as may be determined by the Lender from time to time, for the period of delay or default, and the Borrower(s) will separately pay the penal interest to the Lender. The Penal Interest / Delayed Payment Charge shall be compounded on monthly basis. The payment of Penal interest / Delayed Payment Charges shall not absolve the Borrower(s) of any other obligation of the Borrower(s) hereunder or affect any other right & remedy of the Lender. Further, the Borrower(s) shall be liable for all costs, charges and expenses which the Lender may pay or incur in any way resulting from the above stated default or delay;</P>
-    <P class="p92 ft55">6.i.4 All payments to be made by the Borrower(s) to the Lender under the Agreement, shall be made free and clear of and without any deduction for or on account of any tax. If the Borrower(s) is/are required to make such deduction, then the sum payable to the Lender shall be increased so that, after making such deductions, the Lender receives and retains (without any liability for such deduction) a sum equal to the sum which it would have received had such deductions not been made.</P>
-    <P class="p93 ft56">6.i.5 The Borrower(s) agree(s), declare(s) and confirm(s) that notwithstanding any provisions of The Indian Contract Act1872 or any other Law or any terms & conditions hereof and /or of any other facility document, any payment</P>
-    <P class="p94 ft55"><SPAN class="ft1">(s)</SPAN><SPAN class="ft57">made by the Borrower(s) under the loan account shall be appropriated in the manner & order as may be decided by the Lender in its sole and absolute discretion.</SPAN></P>
-    <P class="p95 ft2"><SPAN class="ft2">6.</SPAN><SPAN class="ft58">ii- Repayment / Prepayment in case of Others:</SPAN></P>
-    <P class="p96 ft30">6.ii.1. The Borrower(s) shall pay promptly, in full, the Pre EMIs (if applicable), EMIs and all other amounts payable under this Agreement without any demur, protest or default and without claiming any <NOBR>set-off</NOBR> or counter claim, on the respective Due Dates on which the same are due.</P>
-    <P class="p97 ft55">6.ii.2. The Borrower(s) shall, prior to the first Date of Disbursement provide to PFSL, such of the following payment instruments as directed by PFSL (“Payment Instruments”):</P>
-    <P class="p98 ft30"><SPAN class="ft1">(a)</SPAN><SPAN class="ft59">PDCs and UDCs issued by the Borrower(s) (if required by PFSL), which may be deposited by PFSL with a view to receiving payments on the Due Dates, as provided for in the terms of Repayment in </SPAN><SPAN class="ft29">Schedule II</SPAN>;</P>
-    <P class="p99 ft55"><SPAN class="ft1">(b)</SPAN><SPAN class="ft60">A certified copy of the Standing Instructions issued by the Borrower(s), to PFSL / designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in </SPAN><SPAN class="ft54">Schedule II</SPAN>; A certified copy of the written ECS/ ACH mandate/other relevant mandate by the Borrower(s) to its designated bank requiring the designated bank to make payment to PFSL on the Due Dates as specified in the terms of Repayment in <SPAN class="ft54">Schedule II </SPAN>through the ECS scheme/any other platform or mechanism duly authorized in this regard including without limitation the National Electronic Clearing Service and duly acknowledged and accepted by the designated bank; or</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t5">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p43 ft2">For PFSL</P>
+        <DIV id="id7_1">
+        <P class="p91 ft55">6.i.3 The Borrower(s) and/or Guarantor agree(s) and undertake(s) that in the event of the Borrowers' employer(s) committing default or delay in payment of EMI on the loan or payment of the outstanding amount in the event of cessation of service of the Borrower(s) with the Borrowers' employer(s) for any reason whatsoever, the Lender will be entitled to : (i) demand payment of the overdue EMI/EMI in default or the outstanding amount, as the case may be, from the Borrower(s) and the Borrower(s) will forthwith pay the EMI amount or such outstanding amount to the Lender; (ii) to charge Penal Interest / Delayed Payment Charge on the overdue EMI / EMI in default at the rate specified in <SPAN class="ft54">Schedule II </SPAN>herein below, or at a rate as may be determined by the Lender from time to time, for the period of delay or default, and the Borrower(s) will separately pay the penal interest to the Lender. The Penal Interest / Delayed Payment Charge shall be compounded on monthly basis. The payment of Penal interest / Delayed Payment Charges shall not absolve the Borrower(s) of any other obligation of the Borrower(s) hereunder or affect any other right & remedy of the Lender. Further, the Borrower(s) shall be liable for all costs, charges and expenses which the Lender may pay or incur in any way resulting from the above stated default or delay;</P>
+        <P class="p92 ft55">6.i.4 All payments to be made by the Borrower(s) to the Lender under the Agreement, shall be made free and clear of and without any deduction for or on account of any tax. If the Borrower(s) is/are required to make such deduction, then the sum payable to the Lender shall be increased so that, after making such deductions, the Lender receives and retains (without any liability for such deduction) a sum equal to the sum which it would have received had such deductions not been made.</P>
+        <P class="p93 ft56">6.i.5 The Borrower(s) agree(s), declare(s) and confirm(s) that notwithstanding any provisions of The Indian Contract Act1872 or any other Law or any terms & conditions hereof and /or of any other facility document, any payment</P>
+        <P class="p94 ft55"><SPAN class="ft1">(s)</SPAN><SPAN class="ft57">made by the Borrower(s) under the loan account shall be appropriated in the manner & order as may be decided by the Lender in its sole and absolute discretion.</SPAN></P>
+        <P class="p95 ft2"><SPAN class="ft2">6.</SPAN><SPAN class="ft58">ii- Repayment / Prepayment in case of Others:</SPAN></P>
+        <P class="p96 ft30">6.ii.1. The Borrower(s) shall pay promptly, in full, the Pre EMIs (if applicable), EMIs and all other amounts payable under this Agreement without any demur, protest or default and without claiming any <NOBR>set-off</NOBR> or counter claim, on the respective Due Dates on which the same are due.</P>
+        <P class="p97 ft55">6.ii.2. The Borrower(s) shall, prior to the first Date of Disbursement provide to PFSL, such of the following payment instruments as directed by PFSL (“Payment Instruments”):</P>
+        <P class="p98 ft30"><SPAN class="ft1">(a)</SPAN><SPAN class="ft59">PDCs and UDCs issued by the Borrower(s) (if required by PFSL), which may be deposited by PFSL with a view to receiving payments on the Due Dates, as provided for in the terms of Repayment in </SPAN><SPAN class="ft29">Schedule II</SPAN>;</P>
+        <P class="p99 ft55"><SPAN class="ft1">(b)</SPAN><SPAN class="ft60">A certified copy of the Standing Instructions issued by the Borrower(s), to PFSL / designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in </SPAN><SPAN class="ft54">Schedule II</SPAN>; A certified copy of the written ECS/ ACH mandate/other relevant mandate by the Borrower(s) to its designated bank requiring the designated bank to make payment to PFSL on the Due Dates as specified in the terms of Repayment in <SPAN class="ft54">Schedule II </SPAN>through the ECS scheme/any other platform or mechanism duly authorized in this regard including without limitation the National Electronic Clearing Service and duly acknowledged and accepted by the designated bank; or</P>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
+        </TABLE>
+        
+        </DIV>
+    
     </DIV>
-    <DIV id="id7_2">
-    <P class="p13 ft7">7</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_8">
-    <DIV id="p8dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p8img1"></DIV>
     
     
     <DIV id="id8_1">
@@ -1638,22 +1561,30 @@
     <P class="p105 ft30">6.ii.6. The Borrower(s) hereby irrevocably and unconditionally nominate(s), constitute(s), appoint(s) and authorise(s) the Lender acting through any of its officers, agents as the Borrowers' true and lawful attorney to act on the Borrowers' behalf and at the Borrower(s)' cost and risk to do, execute and perform all or any of the following acts, deeds, matters and things that is to say:</P>
     <P class="p106 ft30"><SPAN class="ft1">(I)</SPAN><SPAN class="ft62">To fill up the dates (and/or the amounts of the cheque(s) and/or such other details as may be necessary in the cheques submitted to the Lender by the Borrower(s) from time to time, so as to pay the Outstanding Balance(s) from time to time to the Lender and to deposit the same towards repayment of the Borrowers' dues towards the said Loan, without notices to the Borrower(s) in this regard.</SPAN></P>
     <P class="p107 ft30"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft63">To appoint or engage any agent, courier agencies, correspondent banks for ensuring safe holding of PDCs/ inchoate cheques /UDCs and having the same picked up, processed and cleared at the Borrower's risks and costs.</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t6">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+    
+    <br>
+    <br>
+    <br>
+
+    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
     </TABLE>
-    <P class="p43 ft2">For PFSL</P>
+    
+
     </DIV>
     <DIV id="id8_2">
-    <P class="p13 ft7">8</P>
+    
     </DIV>
     </DIV>
+
+
+    <div class="page-break"></div>
+
     <DIV id="page_9">
-    <DIV id="p9dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p9img1"></DIV>
     
     
     <DIV id="id9_1">
@@ -1665,22 +1596,30 @@
     <P class="p113 ft1"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft65">the Borrower (s) hereby confirm(s) that such alteration is made to record the common intention</SPAN></P>
     <P class="p114 ft30">of the Lender and the Borrower(s), where common intention is to fill in the cheques / instruments with the amounts that may be due by the Borrower(s) to the Lender from time to time.</P>
     <P class="p115 ft52">6.ii.8. The Borrower(s) hereby confirm(s) that the Borrower(s) shall always ensure that sufficient funds are available in the account to which the cheques /other mandates relate, so that the cheques /other mandates when presented by PFSL are honoured by the Bank . The Borrower(s) is/are aware of the fact that the dishonour of any of the cheques / other mandates so issued by the Borrower(s) and presented by Lender for paymentwould constitute an offence under ( Section 138 of the Negotiable Instruments Act, 1881 , Section 25 of the Payments & Settlement Act, 2007), (Indian Penal Code) or any other relevant Act of the land and the Lender may take such action against the Borrower(s) as may be advised upon such dishonour including (without limitation) levy of such charges as may be specified by the Lender in this regard. All the provisions set out in this <SPAN class="ft66">Clause 6 </SPAN>shall apply mutatis mutandis to any form of cheques that may be issued by the Borrower(s) in favour of the Lender in discharge of debt owed by the Borrower(s) to the Lender. It is also further agreed and understood that <NOBR>non-presentation</NOBR> of the Cheque/ ACH mandate or any of them on part of the Lender for any reason whatsoever, shall not in any manner affect the liability of the Borrowers in respect of the loan.</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t7">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
     </TABLE>
-    <P class="p43 ft2">For PFSL</P>
+    
     </DIV>
-    <DIV id="id9_2">
-    <P class="p13 ft7">9</P>
+    
     </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_10">
-    <DIV id="p10dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p10img1"></DIV>
     
     
     <DIV id="id10_1">
@@ -1695,22 +1634,28 @@
     <P class="p120 ft1">The Lender being PFSL</P>
     <P class="p121 ft30"><SPAN class="ft1">7.1</SPAN><SPAN class="ft68">in the event it is unwilling to continue the Loan on account of regulatory or other reasons, have the sole right at anytime during the tenor of this Agreement to recall the entire or part of the Loan without assigning any reason there of and shall be payable in full by the Borrower to PFSL forthwith upon a demand in this regard by PFSL.</SPAN></P>
     <P class="p122 ft30"><SPAN class="ft1">7.2</SPAN><SPAN class="ft68">have the sole right to amend at any time and from time to time any of the terms & conditions of this Agreement including but not limited to revising/rescheduling the repayment terms / amount of EMI or any other amounts outstanding thereunder, revision of Interest Rate (including the Default Interest Rate), any other charges or fees, periodicity of compounding of interest, method of effecting credit of the repayments, without assigning any reason and notify such change/ revision/ amendment to the Borrower(s). The Borrower(s) will be bound by such change/ revision and the Borrower(s) agree(s) that such revision/ change/ amendment shall become applicable from date of such revision in the records of PFSL;</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t8">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
     </TABLE>
-    <P class="p90 ft2">For PFSL</P>
+  
     </DIV>
-    <DIV id="id10_2">
-    <P class="p13 ft7">10</P>
+  
     </DIV>
-    </DIV>
+     
+
+    <div class="page-break"></div>
+
     <DIV id="page_11">
-    <DIV id="p11dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p11img1"></DIV>
     
     
     <DIV id="id11_1">
@@ -1733,19 +1678,22 @@
     <P class="p130 ft55"><SPAN class="ft69">8.1.9</SPAN><SPAN class="ft76">the Borrower(s) shall not, during the tenure of this Agreement, avail of or obtain any further loan or facility for the same purpose without the prior written consent of PFSL;</SPAN></P>
     <P class="p132 ft30"><SPAN class="ft69">8.1.10</SPAN><SPAN class="ft77">the Borrower(s) shall ensure that none of the Payment Instrument, returned </SPAN><NOBR>dis-honoured</NOBR> for any reason whatsoever and is aware that in such an event cheque/ instrument <NOBR>dis-honour</NOBR> charges will be payable by him/ her/ them to PFSL as specified in <SPAN class="ft29">Schedule II</SPAN></P>
     <P class="p33 ft1"><SPAN class="ft69">8.1.11</SPAN><SPAN class="ft43">the Electronic Debit Instructions given to PFSL by the Borrower(s) pursuant to this Agreement:</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t9">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+
+    <br>
+    <br>
+    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
     </TABLE>
-    <P class="p133 ft2">For PFSL</P>
     </DIV>
-    <DIV id="id11_2">
-    <P class="p13 ft7">11</P>
+
     </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_12">
     
     
@@ -1821,8 +1769,6 @@
     </DIV>
     </DIV>
     <DIV id="page_15">
-    <DIV id="p15dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p15img1"></DIV>
     
     
     <DIV id="id15_1">
@@ -1835,18 +1781,16 @@
     <P class="p178 ft55"><SPAN class="ft1">15.13</SPAN><SPAN class="ft95">Borrower(s) and Guarantor expressly agree and authorize PFSL to communicate to him/ her/ them from time to time various features of products/ promotional offers, which offer significant benefits to its customer, and also transaction related alerts and may use the services of third party agencies for such communication.</SPAN></P>
     <P class="p179 ft3"><SPAN class="ft1">15.14</SPAN><SPAN class="ft109">The Borrower(s) and the Guarantor hereby declare that they are not tax resident in any other country other than India.</SPAN></P>
     <P class="p180 ft3"><SPAN class="ft1">15.15</SPAN><SPAN class="ft109">The Borrower(s) and the Guarantor have read the entire Agreement, constituting the above clauses including the Loan details and the terms of repayment, the fees and charges payable as clearly enumerated in the Schedule to this Agreement. The Borrower(s) and the Guarantor further confirm that the entire Agreement is filled in their presence and that the contents provided herein is explained in the language understood by the Borrower and the Guarantor(s). The Borrower and the Guarantor further confirm having executed the Agreement, received a copy of the same and agree to remit the dues in terms of the </SPAN><SPAN class="ft26">Schedule II </SPAN>hereunder.</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t10">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
+        <TR style="border: 0;">
+            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
+            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
+            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+        </TR>
     </TABLE>
-    <P class="p181 ft2">For PFSL</P>
+    
     </DIV>
-    <DIV id="id15_2">
-    <P class="p13 ft7">15</P>
-    </DIV>
+ 
     </DIV>
     <DIV id="page_16">
     <DIV id="p16dimg1">
@@ -2888,78 +2832,4 @@
     </DIV>
     </DIV>
 </BODY>
-
-
-
-
-{{-- <body>
-    <div class="container-fluid">
-        <section>
-            <h3 class="text-center text-decoration-underline mt-4 mb-5">INSTRUCTIONS FOR FILLING AGREEMENT</h3>
-            <br>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-12">
-                    <p>General Instructions :</p>
-
-                    <p>All applications to be filled in <strong>English</strong> in CAPITAL LETTERS using Ballpoint pen only.</p>
-                    <p>Any amendments / overwriting / erasures/cuttings / hand written information in the blank space on any page should be countersigned.</p>
-                    <p>The signature of the Borrower / Co-Borrower / Guarantor should be the same on the Loan Agreement & Loan
-                    Application Form.</p>
-                    <p>All photocopies provided, to be self-attested / authenticated.</p>
-                    <p>All pages of Schedules, Loan Agreement and Annexures to be mandatorily signed by the Borrower / Co Borrower and Guarantor, as may be specifically mentioned.</p>
-                    <p>Deeds / agreements, as per format of PFSL, to be additionally executed with the Borrower(s) / Guarantor(s) as
-                    may be required under the terms of the Sanction Letter and appended to the Personal Loan Facility Agreement</p>
-                </div>
-
-                <br>
-
-                <div class="col-12">
-                    <table class="table table-sm">
-                        <tr>
-                            <td colspan="2"><h5>For Office Use Only</h5></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Customer ID:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Name of the Borrower:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Name of the Co-Borrower:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Name of the Guarantor:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Loan Application Number:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p> <mark>Loan Account Number:</mark> </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
-</body> --}}
 </html>
