@@ -74,10 +74,9 @@ class UserController extends Controller
             $user->save();
 
             if (empty($request->password) || ($request->password == null)) {
-                // dd('here');
                 $email_data = [
                     'name' => $request->name,
-                    'subject' => 'User registration mail',
+                    'subject' => 'New registration notification',
                     'email' => $request->email,
                     'password' => $password,
                     'blade_file' => 'user-registration',

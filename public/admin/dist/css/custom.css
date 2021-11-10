@@ -309,3 +309,15 @@ mark {
     font-weight: 500;
     color: #424040;
 }
+
+.badge-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #6bb2ff;
+    box-shadow: none;
+}
+
+.box-shadow-danger {
+    box-shadow: 0 0 0 0.2rem #f4433640 !important;
+}
+

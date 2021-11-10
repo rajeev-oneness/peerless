@@ -26,6 +26,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Fields</th>
+                                    <th class="text-right">PDF</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,10 @@
                                     </td>
                                     <td>
                                         <a href="{{route('user.agreement.fields', $item->id)}}" class="badge badge-dark action-button" title="Setup fields">Setup</a>
+                                    </td>
+                                    <td class="single-line">
+                                        <a href="{{route('user.loan.pdf.view')}}" class="badge badge-primary action-button" target="_blank"> <i class="fas fa-file-pdf"></i> View</a>
+                                        <a href="{{route('user.loan.pdf.download')}}" class="badge badge-primary action-button download-agreement"> <i class="fas fa-download"></i> Download</a>
                                     </td>
                                     <td class="text-right">
                                         <div class="single-line">
@@ -113,5 +118,13 @@
                 }
             });
         }
+
+        $('.download-agreement').on('click', function () {
+            $(this).addClass('badge-disabled');
+            toastFire('success', 'Download started...');
+            setTimeout(() => {
+                $(this).removeClass('badge-disabled');
+            }, 10000);
+        });
     </script>
 @endsection

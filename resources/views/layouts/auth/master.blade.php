@@ -204,9 +204,7 @@
             </div>
         </footer>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
     </div>
 
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
@@ -252,6 +250,8 @@
         var ext = '';
         if (type == 'block') {
             var ext = '. Blocked users cannot login';
+        } else if (type == 'activate') {
+            var ext = '. User can login again';
         }
         Swal.fire({
             title: 'Are you sure?',
@@ -260,6 +260,9 @@
             showCancelButton: true,
             confirmButtonColor: '#f44336',
             cancelButtonColor: '#8b8787',
+            customClass: {
+                confirmButton: 'box-shadow-danger',
+            },
             confirmButtonText: 'Yes, '+type+' it!'
         }).then((result) => {
             if (result.isConfirmed) {

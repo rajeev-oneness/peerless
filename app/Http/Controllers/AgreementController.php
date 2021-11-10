@@ -171,7 +171,7 @@ class AgreementController extends Controller
 
             DB::commit();
 
-            return redirect()->route('user.agreement.fields', $request->agreement_id)->with('success', 'Fields added to agreement');
+            return redirect()->route('user.agreement.fields', $request->agreement_id)->with('success', 'Fields updated for agreement');
         } catch (Exception $e) {
             DB::rollback();
         }

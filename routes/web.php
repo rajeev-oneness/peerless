@@ -79,4 +79,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
     // notification
     Route::post('/read', [HomeController::class, 'notificationRead'])->name('user.notification.read');
+
+    // pdf
+    Route::get('/agreement/view', [PDFController::class, 'showPdf'])->name('user.loan.pdf.view');
+    Route::get('/pdf', [PDFController::class, 'generatePdf'])->name('user.loan.pdf.download');
 });
