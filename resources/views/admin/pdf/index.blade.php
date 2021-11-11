@@ -1038,11 +1038,22 @@
             width: 200px;
         }
         .table_18 td:first-child{
-            width: 300px;
+            width: 40%;
+        }
+        .table_18 td:last-child{
+            width: 60%;
+        }
+        .table_18 td{
+            padding: 20px 15px;
         }
         .table_17 td p{
             margin: 0 !important;
             font-size: 12px;
+        }
+        
+        .table_18 td p{
+            margin: 0 !important;
+            font-size: 12px !important;
         }
         
     </STYLE>
@@ -2331,6 +2342,9 @@
             <P class=" ft5">KEY FACTS OF THE LOAN</P>
         </DIV>
 
+        <br>
+        <br>
+
         <table class="border0 table_18">
             <tr>
                 <td>i. Nature of Load</td>
@@ -2338,128 +2352,281 @@
             </tr>
             <tr>
                 <td>
-                    <P class="p16 ft1">letter / Letter of intent reference</P>
+                    ii. Sanctioned Loan Amount Sanction
+                        letter / Letter of intent reference
                 </td>
-                <td></td>
+                <td>
+                    <p>
+                        Rs. _____________lakh (Rupees ____________lakh only)
+                        Reference no _____________ dated __________
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>iii. Purpose of loan</td>
+                <td>
+                    <p>
+                        &nbsp;
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>iv. Repayment tenure</td>
+                <td>
+                    <p>
+                        _________________________from the date of disbursement
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>v. Rate of Interest</td>
+                <td>
+                    <p>
+                        _________________________% per annum (fixed)
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>vi. Processing &
+                    Documentation charges</td>
+                <td>
+                    <p>
+                        &nbsp;
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>vii. (a) Security& Margin</td>
+                <td>
+                    <p>
+                        &nbsp;
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>(b) Guarantee</td>
+                <td>
+                    <p>
+                        &nbsp;
+                    </p>
+                </td>
             </tr>
             <tr>
-                <td>i. Nature of Load</td>
-                <td></td>
+                <td>viii. Repayment of principal and payment
+                    of interest</td>
+                <td>
+                    <p>
+                        Repayable in___________(_____________) Equated Monthly
+                        Instalments (EMIs) of Rs.____________________________/-
+                        (Rupees_____________________________________________
+                        ______________________________________________only)
+                        each, to be
+                    </p>
+                    <input type="checkbox">deducted from the Borrower's salary by the
+                    Borrower's employer on monthly basis and credited into the
+                    Lender's bank Account <br>
+                    <input type="checkbox">directly debited from the Borrower's bank a/c and credited into
+                    lender's bank a/c as detailed in item no ( IX) here in below
+                </td>
             </tr>
         </table>
+
+        <br><br>
+
+        <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+            <TR style="border: 0">
+                <TD class="tr6 td23" style="border: 0">
+                    <div style="width: 190px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td24" style="border: 0">
+                    <div style="width: 55px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Borrower</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td25" style="border: 0">
+                    <div style="width: 75px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Co-Borrower</P>
+                </TD>
+            </TR>
+        </TABLE>
     </div>
 
     {{-- <TABLE cellpadding=0 cellspacing=0 class="t14">
         <TR>
             <TD class="tr18 td33"><P class="p15 ft9">&nbsp;</P></TD>
             <TD class="tr18 td34"><P class="p16 ft1">letter / Letter of intent reference</P></TD>
-            <TD class="tr18 td35"><P class="p212 ft2">Reference no _<SPAN class="ft112">__________</SPAN>__ dated _<SPAN class="ft112">________</SPAN>_</P></TD>
+            <TD class="tr18 td35">
+                <P class="p212 ft2">Reference no _<SPAN class="ft112">__________</SPAN>__ dated _<SPAN class="ft112">________</SPAN>_</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr1 td36"><P class="p15 ft12">&nbsp;</P></TD>
-            <TD class="tr1 td37"><P class="p15 ft12">&nbsp;</P></TD>
-            <TD class="tr1 td38"><P class="p15 ft12">&nbsp;</P></TD>
+            <TD class="tr1 td36">
+                <P class="p15 ft12">&nbsp;</P>
+            </TD>
+            <TD class="tr1 td37">
+                <P class="p15 ft12">&nbsp;</P>
+            </TD>
+            <TD class="tr1 td38">
+                <P class="p15 ft12">&nbsp;</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr10 td33"><P class="p213 ft1">iii.</P></TD>
-            <TD class="tr10 td34"><P class="p214 ft6">Purpose of loan</P></TD>
-            <TD class="tr10 td35"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr10 td33">
+                <P class="p213 ft1">iii.</P>
+            </TD>
+            <TD class="tr10 td34">
+                <P class="p214 ft6">Purpose of loan</P>
+            </TD>
+            <TD class="tr10 td35">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr21 td36"><P class="p15 ft19">&nbsp;</P></TD>
-            <TD class="tr21 td37"><P class="p15 ft19">&nbsp;</P></TD>
-            <TD class="tr21 td38"><P class="p15 ft19">&nbsp;</P></TD>
+            <TD class="tr21 td36">
+                <P class="p15 ft19">&nbsp;</P>
+            </TD>
+            <TD class="tr21 td37">
+                <P class="p15 ft19">&nbsp;</P>
+            </TD>
+            <TD class="tr21 td38">
+                <P class="p15 ft19">&nbsp;</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr33 td33"><P class="p213 ft1">iv.</P></TD>
-            <TD class="tr33 td34"><P class="p16 ft1">Repayment tenure</P></TD>
-            <TD rowspan=2 class="tr34 td35"><P class="p212 ft1">___<SPAN class="ft6">__________________</SPAN>____from the date of disbursement</P></TD>
+            <TD class="tr33 td33">
+                <P class="p213 ft1">iv.</P>
+            </TD>
+            <TD class="tr33 td34">
+                <P class="p16 ft1">Repayment tenure</P>
+            </TD>
+            <TD rowspan=2 class="tr34 td35">
+                <P class="p212 ft1">___<SPAN class="ft6">__________________</SPAN>____from the date of disbursement</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr25 td33"><P class="p15 ft22">&nbsp;</P></TD>
-            <TD class="tr25 td34"><P class="p15 ft22">&nbsp;</P></TD>
+            <TD class="tr25 td33">
+                <P class="p15 ft22">&nbsp;</P>
+            </TD>
+            <TD class="tr25 td34">
+                <P class="p15 ft22">&nbsp;</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr35 td36"><P class="p15 ft117">&nbsp;</P></TD>
-            <TD class="tr35 td37"><P class="p15 ft117">&nbsp;</P></TD>
-            <TD class="tr35 td38"><P class="p15 ft117">&nbsp;</P></TD>
+            <TD class="tr35 td36">
+                <P class="p15 ft117">&nbsp;</P>
+            </TD>
+            <TD class="tr35 td37">
+                <P class="p15 ft117">&nbsp;</P>
+            </TD>
+            <TD class="tr35 td38">
+                <P class="p15 ft117">&nbsp;</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr36 td33"><P class="p213 ft1">v.</P></TD>
-            <TD class="tr36 td34"><P class="p15 ft1">Rate of Interest</P></TD>
-            <TD rowspan=2 class="tr37 td35"><P class="p212 ft112"><SPAN class="ft2">__</SPAN>__________________<SPAN class="ft2">_____% </SPAN><SPAN class="ft1">per annum (fixed)</SPAN></P></TD>
+            <TD class="tr36 td33">
+                <P class="p213 ft1">v.</P>
+            </TD>
+            <TD class="tr36 td34">
+                <P class="p15 ft1">Rate of Interest</P>
+            </TD>
+            <TD rowspan=2 class="tr37 td35">
+                <P class="p212 ft112"><SPAN class="ft2">__</SPAN>__________________<SPAN class="ft2">_____% </SPAN><SPAN class="ft1">per annum (fixed)</SPAN></P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr11 td33"><P class="p15 ft15">&nbsp;</P></TD>
-            <TD class="tr11 td34"><P class="p15 ft15">&nbsp;</P></TD>
+            <TD class="tr11 td33">
+                <P class="p15 ft15">&nbsp;</P>
+            </TD>
+            <TD class="tr11 td34">
+                <P class="p15 ft15">&nbsp;</P>
+            </TD>
         </TR>
         </TABLE>
+        
         <P class="p215 ft6"><SPAN class="ft1">vi.</SPAN><SPAN class="ft118">Processing & Documentation charges</SPAN></P>
+        
         <P class="p216 ft6"><SPAN class="ft1">vii.</SPAN><SPAN class="ft119">(a) </SPAN>Security& Margin</P>
+        
         <P class="p217 ft6"><SPAN class="ft1">(</SPAN>b) Guarantee</P>
         <TABLE cellpadding=0 cellspacing=0 class="t15">
         <TR>
-            <TD class="tr19 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr19 td40"><P class="p15 ft1">Repayable in_<SPAN class="ft120">__________</SPAN>(__<SPAN class="ft6">_________</SPAN>__) Equated Monthly</P></TD>
+            <TD class="tr19 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr19 td40">
+                <P class="p15 ft1">Repayable in_<SPAN class="ft120">__________</SPAN>(__<SPAN class="ft6">_________</SPAN>__) Equated Monthly</P>
+            </TD>
         </TR>
         <TR>
-            <TD rowspan=2 class="tr9 td39"><P class="p15 ft1">viii. Repayment of principal and payment</P></TD>
-            <TD class="tr23 td40"><P class="p15 ft122">Instalments (EMIs) of Rs.<SPAN class="ft121">___________</SPAN>_________________/-</P></TD>
+            <TD rowspan=2 class="tr9 td39">
+                <P class="p15 ft1">viii. Repayment of principal and payment</P>
+            </TD>
+            <TD class="tr23 td40">
+                <P class="p15 ft122">Instalments (EMIs) of Rs.<SPAN class="ft121">___________</SPAN>_________________/-</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr23 td40"><P class="p15 ft122">(Rupees____<SPAN class="ft121">_____________</SPAN>____________________________</P></TD>
+            <TD class="tr23 td40">
+                <P class="p15 ft122">(Rupees____<SPAN class="ft121">_____________</SPAN>____________________________</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr38 td39"><P class="p218 ft1">of interest</P></TD>
-            <TD class="tr38 td40"><P class="p15 ft1">______________________________________________only)</P></TD>
+            <TD class="tr38 td39">
+                <P class="p218 ft1">of interest</P>
+            </TD>
+            <TD class="tr38 td40">
+                <P class="p15 ft1">______________________________________________only)</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr29 td40"><P class="p15 ft1">each, to be</P></TD>
+            <TD class="tr29 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr29 td40">
+                <P class="p15 ft1">each, to be</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr28 td40"><P class="p219 ft6">deducted from the Borrower's salary by the</P></TD>
+            <TD class="tr28 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr28 td40">
+                <P class="p219 ft6">deducted from the Borrower's salary by the</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr17 td39"><P class="p15 ft18">&nbsp;</P></TD>
-            <TD class="tr17 td40"><P class="p15 ft110">Borrower's employer on monthly basis and credited into the</P></TD>
+            <TD class="tr17 td39">
+                <P class="p15 ft18">&nbsp;</P>
+            </TD>
+            <TD class="tr17 td40">
+                <P class="p15 ft110">Borrower's employer on monthly basis and credited into the</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr27 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr27 td40"><P class="p15 ft1">Lender's bank Account</P></TD>
+            <TD class="tr27 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr27 td40">
+                <P class="p15 ft1">Lender's bank Account</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr28 td40"><P class="p219 ft1"><SPAN class="ft6">directly debited from the</SPAN> Borrower's bank a/c and credited into</P></TD>
+            <TD class="tr28 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr28 td40">
+                <P class="p219 ft1"><SPAN class="ft6">directly debited from the</SPAN> Borrower's bank a/c and credited into</P>
+            </TD>
         </TR>
         <TR>
-            <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr29 td40"><P class="p15 ft1">lender's bank a/c as detailed in item no ( IX) here in below</P></TD>
+            <TD class="tr29 td39">
+                <P class="p15 ft9">&nbsp;</P>
+            </TD>
+            <TD class="tr29 td40">
+                <P class="p15 ft1">lender's bank a/c as detailed in item no ( IX) here in below</P>
+            </TD>
         </TR>
         </TABLE> --}}
 
