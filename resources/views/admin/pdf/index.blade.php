@@ -181,6 +181,7 @@
         
         #page_17 {position:relative; overflow: hidden;margin: 44px 0px 35px 48px;padding: 0px;border: none;width: 746px;}
         #page_17 #id17_1 {border:none;margin: 0px 0px 0px 153px;padding: 0px;border:none;width: 593px;overflow: hidden;}
+        
         #page_17 #id17_2 {border:none;margin: 0px 0px 0px 3px;padding: 0px;border:none;width: 729px;overflow: hidden;}
         #page_17 #id17_2 #id17_2_1 {float:left;border:none;margin: 43px 0px 0px 0px;padding: 0px;border:none;width: 715px;overflow: hidden;}
         #page_17 #id17_2 #id17_2_2 {float:left;border:none;margin: 0px 0px 0px 0px;padding: 0px;border:none;width: 14px;overflow: hidden;}
@@ -189,19 +190,9 @@
         #page_17 #p17dimg1 {position:absolute;top:79px;left:0px;z-index:-1;width:728px;height:903px;}
         #page_17 #p17dimg1 #p17img1 {width:728px;height:903px;}
         
-        
-        
-        
-        #page_18 {position:relative; overflow: hidden;margin: 0px 0px 37px 0px;padding: 0px;border: none;width: 794px;}
-        #page_18 #id18_1 {border:none;margin: 0px 0px 0px 0px;padding: 0px;border:none;width: 780px;overflow: hidden;}
-        #page_18 #id18_1 #id18_1_1 {float:left;border:none;margin: 43px 0px 0px 0px;padding: 0px;border:none;width: 766px;overflow: hidden;}
-        #page_18 #id18_1 #id18_1_2 {float:left;border:none;margin: 0px 0px 0px 0px;padding: 0px;border:none;width: 14px;overflow: hidden;}
-        #page_18 #id18_2 {border:none;margin: 109px 0px 0px 51px;padding: 0px;border:none;width: 743px;overflow: hidden;}
-        #page_18 #id18_3 {border:none;margin: 0px 0px 0px 395px;padding: 0px;border:none;width: 399px;overflow: hidden;}
-        
-        #page_18 #p18dimg1 {position:absolute;top:105px;left:49px;z-index:-1;width:727px;height:921px;}
-        #page_18 #p18dimg1 #p18img1 {width:727px;height:921px;}
-        
+        /* Page 18  */
+        #page_18 {position:relative; overflow: hidden;margin: 44px 0px 35px 48px;padding: 0px;border: none;width: 746px;}
+        #page_18 #id18_1 {text-align: center; border:none;padding: 0px;border:none;}
         
         
         
@@ -1038,6 +1029,22 @@
         table td {padding: 5px; border: 1px solid #000;}
         table th {padding: 5px;text-align: left;}
         .text-center {text-align: center}
+
+        /* frontend code */
+        .border0{
+            border: 0;
+        }
+        .table_17 td:first-child{
+            width: 200px;
+        }
+        .table_18 td:first-child{
+            width: 300px;
+        }
+        .table_17 td p{
+            margin: 0 !important;
+            font-size: 12px;
+        }
+        
     </STYLE>
 
     <DIV id="page_1">
@@ -1697,27 +1704,25 @@
     <DIV id="page_12">
     
     
-    <DIV id="id12_1">
-    <P class="p134 ft1"><SPAN class="ft1">8.1.11.1</SPAN><SPAN class="ft78">shall not be changed, modified or countermanded without prior written permission of PFSL;</SPAN></P>
-    <P class="p135 ft80"><SPAN class="ft1">8.1.11.2</SPAN><SPAN class="ft79">if not acted upon by PFSL in which the account is maintained for whatever reason, then without prejudice to the rights of PFSL to recall the entire amount outstanding under the Loan, the Borrower(s) shall issue such revised instructions as maybe necessary to ensure payment to PFSL in terms of this Agreement and/or to issue and deliver PDCs for the balance outstanding under the Loan as per Schedule.</SPAN></P>
-    <P class="p136 ft1"><SPAN class="ft1">8.1.12</SPAN><SPAN class="ft81">shall not stand surety or as guarantor for any third party liability or obligation till full repayment of the loan;</SPAN></P>
-    <P class="p137 ft52"><SPAN class="ft1">8.1.13</SPAN><SPAN class="ft82">shall not leave India for employment or business or long stay or permanently, without first fully repaying the Personal Loan then outstanding, with interest and other dues, including prepayment charges, if any and shall keep himself aware of all the rules of PFSL, as pertaining to the Loan, and in force from time to time;</SPAN></P>
-    <P class="p138 ft28"><SPAN class="ft1">8.1.14</SPAN><SPAN class="ft83">the Borrower(s) shall maintain, operate and fund the Loan Account, if any, till the whole of the Loan Amount, together with interest and charges thereon, is received in full by PFSL</SPAN></P>
-    <P class="p139 ft52"><SPAN class="ft1">8.1.15</SPAN><SPAN class="ft82">The Borrower(s) undertake(s) that, if there is a breach of any of the representations or warranties provided hereunder, then, the Borrower(s) shall indemnify PFSL in respect of any reasonable costs and expenses suffered or incurred by PFSL which arises from the event or circumstance giving rise to any claim for breach of representation or warranty or any representation given by the Borrower(s) to PFSL in the Application for the Loan.</SPAN></P>
-    <P class="p140 ft52"><SPAN class="ft1">8.1.16</SPAN><SPAN class="ft82">Repay the Loan and pay interest thereon, in the event of the Borrowers' employers committing delay or default in payment of EMI on the loan on due date or in payment of dues & outstanding amount on the loan in the event of cessation of the Borrower's service</SPAN><SPAN class="ft84">v</SPAN> for any reason whatsoever and directly pay to or reimburse the Lender with all other monies including penal interest, governmental charges, taxes, penalties, cess, duties, levies owing to the Lender according to the terms here of;</P>
-    <P class="p141 ft28"><SPAN class="ft1">8.2</SPAN><SPAN class="ft85">The Borrower(s) confirm(s) that as per terms of Sanction Letter and / or that of </SPAN><SPAN class="ft27">Schedule II, </SPAN>it tender(s), in favour of PFSL, an irrevocable and unconditional guarantee by a Guarantor for the payment and discharge by the Borrower(s) to PFSL, of the sums, interest, all costs, charges and expenses and other monies due and payable by the Borrower(s) to PFSL under or in respect of the Facilities through execution of <SPAN class="ft27">Deed Of Guarantee </SPAN>as detailed in <SPAN class="ft27">Schedule V </SPAN>and annexed herein and as such the said Guarantor acknowledges and agrees to the terms of this Personal Loan Facility Agreement executed between the Parties<SPAN class="ft86">.</SPAN></P>
-    <P class="p142 ft2"><SPAN class="ft2">9.</SPAN><SPAN class="ft87">Events of Default</SPAN></P>
-    <P class="p143 ft4"><SPAN class="ft1">9.1</SPAN><SPAN class="ft88">PFSL may, by a written notice to the Borrower(s) and/or Guarantor, declare the Loan to have become due and payable forthwith upon occurrence (in the sole decision of PFSL) of any one or more of the following events:</SPAN></P>
-    <P class="p144 ft4"><SPAN class="ft1">9.1.1</SPAN><SPAN class="ft89">The Borrower(s) and/ or Guarantor fail(s) to pay to PFSL any amount on or before due date and payable under this Agreement (including an EMI) or furnish the PDCs or any other document /agreement as may be required by PFSL from time to time.</SPAN></P>
-    <P class="p145 ft28"><SPAN class="ft1">9.1.2</SPAN><SPAN class="ft90">The Borrower(s) and/or Guarantor fails to pay to any person other than PFSL any amount on or before due date and payable or any person other than PFSL may demand repayment of the loan or dues or liability of the Borrower to such person ahead of its repayment terms as previously agreed between such person and the Borrower</SPAN></P>
+        <DIV id="id12_1">
+        <P class="p134 ft1"><SPAN class="ft1">8.1.11.1</SPAN><SPAN class="ft78">shall not be changed, modified or countermanded without prior written permission of PFSL;</SPAN></P>
+        <P class="p135 ft80"><SPAN class="ft1">8.1.11.2</SPAN><SPAN class="ft79">if not acted upon by PFSL in which the account is maintained for whatever reason, then without prejudice to the rights of PFSL to recall the entire amount outstanding under the Loan, the Borrower(s) shall issue such revised instructions as maybe necessary to ensure payment to PFSL in terms of this Agreement and/or to issue and deliver PDCs for the balance outstanding under the Loan as per Schedule.</SPAN></P>
+        <P class="p136 ft1"><SPAN class="ft1">8.1.12</SPAN><SPAN class="ft81">shall not stand surety or as guarantor for any third party liability or obligation till full repayment of the loan;</SPAN></P>
+        <P class="p137 ft52"><SPAN class="ft1">8.1.13</SPAN><SPAN class="ft82">shall not leave India for employment or business or long stay or permanently, without first fully repaying the Personal Loan then outstanding, with interest and other dues, including prepayment charges, if any and shall keep himself aware of all the rules of PFSL, as pertaining to the Loan, and in force from time to time;</SPAN></P>
+        <P class="p138 ft28"><SPAN class="ft1">8.1.14</SPAN><SPAN class="ft83">the Borrower(s) shall maintain, operate and fund the Loan Account, if any, till the whole of the Loan Amount, together with interest and charges thereon, is received in full by PFSL</SPAN></P>
+        <P class="p139 ft52"><SPAN class="ft1">8.1.15</SPAN><SPAN class="ft82">The Borrower(s) undertake(s) that, if there is a breach of any of the representations or warranties provided hereunder, then, the Borrower(s) shall indemnify PFSL in respect of any reasonable costs and expenses suffered or incurred by PFSL which arises from the event or circumstance giving rise to any claim for breach of representation or warranty or any representation given by the Borrower(s) to PFSL in the Application for the Loan.</SPAN></P>
+        <P class="p140 ft52"><SPAN class="ft1">8.1.16</SPAN><SPAN class="ft82">Repay the Loan and pay interest thereon, in the event of the Borrowers' employers committing delay or default in payment of EMI on the loan on due date or in payment of dues & outstanding amount on the loan in the event of cessation of the Borrower's service</SPAN><SPAN class="ft84">v</SPAN> for any reason whatsoever and directly pay to or reimburse the Lender with all other monies including penal interest, governmental charges, taxes, penalties, cess, duties, levies owing to the Lender according to the terms here of;</P>
+        <P class="p141 ft28"><SPAN class="ft1">8.2</SPAN><SPAN class="ft85">The Borrower(s) confirm(s) that as per terms of Sanction Letter and / or that of </SPAN><SPAN class="ft27">Schedule II, </SPAN>it tender(s), in favour of PFSL, an irrevocable and unconditional guarantee by a Guarantor for the payment and discharge by the Borrower(s) to PFSL, of the sums, interest, all costs, charges and expenses and other monies due and payable by the Borrower(s) to PFSL under or in respect of the Facilities through execution of <SPAN class="ft27">Deed Of Guarantee </SPAN>as detailed in <SPAN class="ft27">Schedule V </SPAN>and annexed herein and as such the said Guarantor acknowledges and agrees to the terms of this Personal Loan Facility Agreement executed between the Parties<SPAN class="ft86">.</SPAN></P>
+        <P class="p142 ft2"><SPAN class="ft2">9.</SPAN><SPAN class="ft87">Events of Default</SPAN></P>
+        <P class="p143 ft4"><SPAN class="ft1">9.1</SPAN><SPAN class="ft88">PFSL may, by a written notice to the Borrower(s) and/or Guarantor, declare the Loan to have become due and payable forthwith upon occurrence (in the sole decision of PFSL) of any one or more of the following events:</SPAN></P>
+        <P class="p144 ft4"><SPAN class="ft1">9.1.1</SPAN><SPAN class="ft89">The Borrower(s) and/ or Guarantor fail(s) to pay to PFSL any amount on or before due date and payable under this Agreement (including an EMI) or furnish the PDCs or any other document /agreement as may be required by PFSL from time to time.</SPAN></P>
+        <P class="p145 ft28"><SPAN class="ft1">9.1.2</SPAN><SPAN class="ft90">The Borrower(s) and/or Guarantor fails to pay to any person other than PFSL any amount on or before due date and payable or any person other than PFSL may demand repayment of the loan or dues or liability of the Borrower to such person ahead of its repayment terms as previously agreed between such person and the Borrower</SPAN></P>
+        </DIV>
     </DIV>
-    <DIV id="id12_2">
-    <P class="p13 ft7">12</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_13">
-    
-    
     <DIV id="id13_1">
     <P class="p146 ft55"><SPAN class="ft1">9.1.3</SPAN><SPAN class="ft91">The Borrower(s) and /or Guarantor defaults in performing any of his/ her obligations under this Agreement or breaches any of the terms and conditions of this Agreement;</SPAN></P>
     <P class="p147 ft30"><SPAN class="ft1">9.1.4</SPAN><SPAN class="ft92">The Borrower(s) resign(s), retire(s) or is/are discharged or removed from the employment he/she/them was/were engaged in on the date of this Agreement;</SPAN></P>
@@ -1738,10 +1743,10 @@
     <P class="p158 ft2"><SPAN class="ft2">11.</SPAN><SPAN class="ft100">Security</SPAN></P>
     <P class="p159 ft42">The Borrower(s) confirm(s) that as per terms of Sanction Letter and that of <SPAN class="ft45">Schedule II</SPAN>, Security is being tendered in favour of PFSL to secure due repayment, discharge and redemption of the Facility so advanced by PFSL to the Borrower , and necessary Facility Specific Documents as stipulated in <SPAN class="ft45">Schedule V </SPAN>are executed by the Borrower(s) and annexed herein.</P>
     </DIV>
-    <DIV id="id13_2">
-    <P class="p13 ft7">13</P>
     </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_14">
     
     
@@ -1764,10 +1769,10 @@
     <P class="p172 ft3"><SPAN class="ft1">15.5</SPAN><SPAN class="ft104">Any notice under this Agreement shall be in writing and sent to the address stated in the </SPAN><NOBR><SPAN class="ft26">Schedule-I</SPAN>.</NOBR> The Borrower(s) and Guarantor shall forthwith inform PFSL of any change in his/ her address.</P>
     <P class="p173 ft3"><SPAN class="ft1">15.6</SPAN><SPAN class="ft105">Arbitration and Jurisdiction: This Agreement shall be subject to Indian law and subject to the jurisdiction of courts having jurisdiction where the Registered Office of PFSL is situated.</SPAN></P>
     </DIV>
-    <DIV id="id14_2">
-    <P class="p13 ft7">14</P>
     </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_15">
     
     
@@ -1781,332 +1786,685 @@
     <P class="p178 ft55"><SPAN class="ft1">15.13</SPAN><SPAN class="ft95">Borrower(s) and Guarantor expressly agree and authorize PFSL to communicate to him/ her/ them from time to time various features of products/ promotional offers, which offer significant benefits to its customer, and also transaction related alerts and may use the services of third party agencies for such communication.</SPAN></P>
     <P class="p179 ft3"><SPAN class="ft1">15.14</SPAN><SPAN class="ft109">The Borrower(s) and the Guarantor hereby declare that they are not tax resident in any other country other than India.</SPAN></P>
     <P class="p180 ft3"><SPAN class="ft1">15.15</SPAN><SPAN class="ft109">The Borrower(s) and the Guarantor have read the entire Agreement, constituting the above clauses including the Loan details and the terms of repayment, the fees and charges payable as clearly enumerated in the Schedule to this Agreement. The Borrower(s) and the Guarantor further confirm that the entire Agreement is filled in their presence and that the contents provided herein is explained in the language understood by the Borrower and the Guarantor(s). The Borrower and the Guarantor further confirm having executed the Agreement, received a copy of the same and agree to remit the dues in terms of the </SPAN><SPAN class="ft26">Schedule II </SPAN>hereunder.</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t5" style="border: 0;">
-        <TR style="border: 0;">
-            <TD class="tr6 td23" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Authorised Signatories For PFSL</P></TD>
-            <TD class="tr6 td24" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2">Borrower</P></TD>
-            <TD class="tr6 td25" style="border: 0" ><P style="display: inline-block; border-top:1px solid #000;" class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+        <TR style="border: 0">
+            <TD class="tr6 td23" style="border: 0">
+                <div style="width: 190px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Authorised Signatories For PFSL</P>
+            </TD>
+            <td style="border: 0"></td>
+            <TD class="tr6 td24" style="border: 0">
+                <div style="width: 55px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Borrower</P>
+            </TD>
+            <td style="border: 0"></td>
+            <TD class="tr6 td25" style="border: 0">
+                <div style="width: 75px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Co-Borrower</P>
+            </TD>
         </TR>
     </TABLE>
-    
+
     </DIV>
  
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_16">
-    <DIV id="p16dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcUAAABaCAIAAABG5NrxAAABVklEQVR4nO3UwQnEQADEsFz673muiBgWFqkCv/w8AHy27bftdAbADd7TAQCX8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUDDTwEafgrQ8FOAhp8CNPwUoOGnAA0/BWj4KUBk2+kEgBv8AYlGCaeexa2/AAAAAElFTkSuQmCC" id="p16img1"></DIV>
-    
-    
-    <DIV id="id16_1">
-    <P class="p182 ft26">IN WITNESS WHEREOF the Parties hereto have executed / caused to be executed these presents the day and year first here in above written in the manner herein after appearing:</P>
-    <P class="p183 ft10">For Borrower(s)</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t11">
-    <TR>
-        <TD class="tr26 td26"><P class="p15 ft1">Signed and</P></TD>
-        <TD class="tr26 td27"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr26 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td26"><P class="p15 ft110">Delivered by the</P></TD>
-        <TD class="tr17 td27"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td28"><P class="p15 ft18">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td26"><P class="p15 ft110">Borrower(s)</P></TD>
-        <TD colspan=2 class="tr17 td29"><P class="p184 ft110">Mr./Ms.__<SPAN class="ft111">_____________</SPAN>_______________________ ______________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr27 td26"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td27"><P class="p185 ft1">(Name of the Borrower)</P></TD>
-        <TD class="tr27 td28"><P class="p186 ft1">(Signature)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr28 td26"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr28 td29"><P class="p184 ft1">Mr./Ms.___<SPAN class="ft6">_____________</SPAN>______________________ ______________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td26"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td27"><P class="p187 ft1">(Name of the <NOBR>Co-Borrower)</NOBR></P></TD>
-        <TD class="tr29 td28"><P class="p186 ft1">(Signature)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr28 td26"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr28 td29"><P class="p188 ft1">Mr./Ms.____<SPAN class="ft6">______________</SPAN>____________________ ______________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td26"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td27"><P class="p187 ft1">(Name of the <NOBR>Co-Borrower)</NOBR></P></TD>
-        <TD class="tr29 td28"><P class="p186 ft1">(Signature)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr30 td26"><P class="p15 ft10">For Lender</P></TD>
-        <TD class="tr30 td27"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr30 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr15 td26"><P class="p15 ft1">Signed and</P></TD>
-        <TD class="tr15 td27"><P class="p189 ft6"><SPAN class="ft1">________</SPAN>________________________<SPAN class="ft1">___________</SPAN></P></TD>
-        <TD class="tr15 td28"><P class="p190 ft1">_________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td26"><P class="p15 ft110">Delivered by</P></TD>
-        <TD class="tr17 td27"><P class="p191 ft110">(Name of the authorised signatory)</P></TD>
-        <TD class="tr17 td28"><P class="p192 ft110">(Stamp /Signature)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td26"><P class="p15 ft110">Peerless Financial</P></TD>
-        <TD class="tr17 td27"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td28"><P class="p15 ft18">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td26"><P class="p15 ft110">Services Ltd.</P></TD>
-        <TD class="tr17 td27"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td28"><P class="p15 ft18">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD colspan=2 class="tr29 td30"><P class="p15 ft1">by the hand of its Authorised signatory</P></TD>
-        <TD class="tr29 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr31 td26"><P class="p15 ft10">For Witness</P></TD>
-        <TD class="tr31 td27"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr31 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr2 td26"><P class="p193 ft1">Name</P></TD>
-        <TD colspan=2 class="tr2 td29"><P class="p194 ft1">: ____________________________________________________________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr32 td26"><P class="p193 ft1">Address</P></TD>
-        <TD colspan=2 class="tr32 td29"><P class="p195 ft1">: _____________________________________________________________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr32 td26"><P class="p193 ft1">City</P></TD>
-        <TD colspan=2 class="tr32 td29"><P class="p196 ft1">: ______________________ Pin Code ______________________ State ___________________</P></TD>
-    </TR>
-    <TR>
-        <TD colspan=2 class="tr30 td30"><P class="p197 ft1">Signed by Witness :____________________________________________</P></TD>
-        <TD class="tr30 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr12 td26"><P class="p198 ft10">For Witness</P></TD>
-        <TD class="tr12 td27"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr12 td28"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr7 td26"><P class="p193 ft1">Name</P></TD>
-        <TD colspan=2 class="tr7 td29"><P class="p194 ft1">: ____________________________________________________________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr32 td26"><P class="p193 ft1">Address</P></TD>
-        <TD colspan=2 class="tr32 td29"><P class="p195 ft1">: _____________________________________________________________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr32 td26"><P class="p193 ft1">City</P></TD>
-        <TD colspan=2 class="tr32 td29"><P class="p196 ft1">: ______________________ Pin Code ______________________ State ___________________</P></TD>
-    </TR>
-    </TABLE>
-    <P class="p199 ft1">Signed by Witness :____________________________________________</P>
-    <P class="p168 ft10">Read, understood & acknowledged by the Guarantor</P>
-    <P class="p200 ft1">Name : ___<SPAN class="ft6">_______________________</SPAN>__________________________________________________</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t12">
-    <TR>
-        <TD class="tr28 td31"><P class="p15 ft1">Address</P></TD>
-        <TD class="tr28 td32"><P class="p201 ft1">: ________<SPAN class="ft6">______________________</SPAN>_______________________________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr6 td31"><P class="p15 ft1">City</P></TD>
-        <TD class="tr6 td32"><P class="p201 ft1">: ____________<SPAN class="ft6">________</SPAN>__ Pin Code _____<SPAN class="ft6">____________</SPAN>_____ State _____<SPAN class="ft6">_________</SPAN>_____</P></TD>
-    </TR>
-    </TABLE>
+
+        <table class="border0" >
+            <tr class="border0">
+                <td class="border0" colspan="4">
+                    <p class="ft2 p28" style="padding-left:80px;">IN WITNESS WHEREOF the Parties hereto have executed / caused to be executed these presents
+                        the day and year first here in above written in the manner herein after appearing:</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border0" colspan="8">
+                    <p class="ft0" style="text-decoration: none; font-family:sans-serif;">For Borrower(s)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border0">
+                    <p>Signed and
+                        Delivered by the
+                        Borrower(s)</p>
+                </td>
+                <td class="border0" colspan="5" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
+                    
+                </td>
+                <td colspan="2" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+            <TR>
+                <TD class="tr27 td26 border0">
+                    <P class="p15 ft9">&nbsp;</P>
+                </TD>
+                <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;">
+                    <P class="p185 ft1">(Name of the Borrower)</P>
+                </TD>
+                <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;">
+                    <P class="p186 ft1">(Signature)</P>
+                </TD>
+            </TR>
+            <tr>
+                <td class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="5">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
+                    
+                </td>
+                <td colspan="2" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+            <TR>
+                <TD class="tr27 td26 border0">
+                    <P class="p15 ft9">&nbsp;</P>
+                    <P class="p15 ft9">&nbsp;</P>
+                    <P class="p15 ft9">&nbsp;</P>
+                </TD>
+                <TD class="tr27 td27 border0">
+                    <P class="p185 ft1">(Name of the Co-Borrower)</P>
+                </TD>
+                <TD class="tr27 td28 border0">
+                    <P class="p186 ft1">(Signature)</P>
+                </TD>
+            </TR>
+            <tr>
+                <td class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="5">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
+                    
+                </td>
+                <td colspan="2" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+            <TR>
+                <TD class="tr27 td26 border0">
+                    <P class="p15 ft9">&nbsp;</P>
+                    <P class="p15 ft9">&nbsp;</P>
+                    <P class="p15 ft9">&nbsp;</P>
+                </TD>
+                <TD class="tr27 td27 border0">
+                    <P class="p185 ft1">(Name of the Co-Borrower)</P>
+                </TD>
+                <TD class="tr27 td28 border0">
+                    <P class="p186 ft1">(Signature)</P>
+                </TD>
+            </TR>
+        </table>
+
+
+        <br><br>
+
+        <table class="border0">
+            <tr>
+                <td class="border0" colspan="8">
+                    <p class="ft0" style="text-decoration: none; font-family:sans-serif;">For Lender</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border0" colspan="2">
+                    <p>Signed and <br>
+                        Delivered by <br>
+                        Peerless Financial <br>
+                        Services Ltd. <br>
+                        by the hand of its Authorised signatory</p>
+                </td>
+                <td class="border0" colspan="5" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
+                    
+                </td>
+               
+            </tr>
+            <TR>
+                <TD class="tr27 td26 border0">
+                    <P class="p15 ft9">&nbsp;</P>
+                </TD>
+                <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;">
+                    <P class="p185 ft1">(Name of the authorised signatory)</P>
+                </TD>
+                <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;">
+                    <P class="p186 ft1">(Stamp/Signature)</P>
+                </TD>
+            </TR>
+        </table>
+
+        <br><br>
+
+        <table class="border0">
+            <tr>
+                <td class="border0" colspan="8">
+                    <p class="ft0" style="text-decoration: none; font-family:sans-serif;">For Witness</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Name : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Address : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">City : ___________________ <span>Pin code</span>_________________________ <span>State</span>___________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    
+                    <p class="ft1" style="text-align:left"> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Signed By Witness : __________________________________________ </p>
+                    
+                </td>
+            </tr>
+        </table>
+
+
+        <br><br>
+
+        <table class="border0">
+            <tr>
+                <td class="border0" colspan="8">
+                    <p class="ft0" style="text-decoration: none; font-family:sans-serif;">For Witness</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Name : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Address : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">City : ___________________ <span>Pin code</span>_________________________ <span>State</span>___________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    
+                    <p class="ft1" style="text-align:left"> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Signed By Witness : __________________________________________ </p>
+                    
+                </td>
+            </tr>
+        </table>
+
+
+        <br><br>
+
+        <table class="border0">
+            <tr>
+                <td class="border0" colspan="8">
+                    <p class="ft0" style="text-decoration: none; font-family:sans-serif;">Read, understood & acknowledged by the Guarantor</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Name : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">Address : ___________________________________________________________________________________</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" class="border0">
+                    <p>&nbsp;</p>
+                </td>
+                <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
+                    <p>&nbsp;</p>
+                    <p class="ft1" style="text-align: right">City : ___________________ <span>Pin code</span>_________________________ <span>State</span>___________________________</p>
+                    
+                </td>
+            </tr>
+           
+        </table>
+
+        
     </DIV>
-    <DIV id="id16_2">
-    <P class="p13 ft7">16</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_17">
-    <DIV id="p17dimg1">
-    <IMG src="data:image/png;base64,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" id="p17img1"></DIV>
-    
-    
-    <DIV id="id17_1">
-    <P class="p202 ft5">SCHEDULE I</P>
-    <P class="p13 ft5">DETAILS OF PARTIES TO THE AGREEMENT</P>
+        <DIV id="id17_1">
+            <P class="p202 ft5">SCHEDULE I</P>
+            <P class="p13 ft5">DETAILS OF PARTIES TO THE AGREEMENT</P>
+        </DIV>
+
+        <br>
+        <table class="table_17" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <P class="p203 ">Name of the Borrower</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Permanent Address</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">PAN</P>
+                </td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>
+                    <P class="p204">Officially Valid Documents</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Occupation</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Resident Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Date of birth</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Marital Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Highest Education</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Tel no / Email ID</P>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="table_17">
+            <tr>
+                <td>
+                    <P class="p203 ">Name of the Co Borrower</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Permanent Address</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">PAN</P>
+                </td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>
+                    <P class="p204">Officially Valid Documents</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Occupation</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Resident Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Date of birth</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Marital Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Highest Education</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Tel no / Email ID</P>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="table_17">
+            <tr>
+                <td>
+                    <P class="p203 ">Name of the Co Borrower</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Permanent Address</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">PAN</P>
+                </td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>
+                    <P class="p204">Officially Valid Documents</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Occupation</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Resident Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Date of birth</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Marital Status</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p205">Highest Education</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p204">Tel no / Email ID</P>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        
+        <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+            <TR style="border: 0">
+                <TD class="tr6 td23" style="border: 0">
+                    <div style="width: 190px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td24" style="border: 0">
+                    <div style="width: 55px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Borrower</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td25" style="border: 0">
+                    <div style="width: 75px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Co-Borrower</P>
+                </TD>
+            </TR>
+        </TABLE>
+        
     </DIV>
-    <DIV id="id17_2">
-    <DIV id="id17_2_1">
-    <P class="p203 ft112">Name of the Borrower</P>
-    <P class="p204 ft112">Permanent Address</P>
-    <P class="p205 ft112">PAN</P>
-    <P class="p204 ft112">Officially Valid Documents</P>
-    <P class="p204 ft112">Occupation</P>
-    <P class="p204 ft112">Resident Status</P>
-    <P class="p205 ft112">Date of birth</P>
-    <P class="p204 ft112">Marital Status</P>
-    <P class="p205 ft112">Highest Education</P>
-    <P class="p204 ft112">Tel no / Email ID</P>
-    <P class="p204 ft112">Name of the Co Borrower</P>
-    <P class="p205 ft112">Permanent Address</P>
-    <P class="p204 ft112">PAN</P>
-    <P class="p204 ft112">Officially Valid Documents</P>
-    <P class="p205 ft112">Occupation</P>
-    <P class="p204 ft112">Resident Status</P>
-    <P class="p204 ft112">Date of birth</P>
-    <P class="p205 ft112">Marital Status</P>
-    <P class="p204 ft112">Highest Education</P>
-    <P class="p204 ft112">Tel no / Email ID</P>
-    <P class="p205 ft112">Name of the Co Borrower</P>
-    <P class="p204 ft112">Permanent Address</P>
-    <P class="p204 ft112">PAN</P>
-    <P class="p205 ft112">Officially Valid Documents</P>
-    <P class="p204 ft112">Occupation Resident Status</P>
-    <P class="p205 ft112">Date of Birth</P>
-    <P class="p204 ft112">Marital Status</P>
-    <P class="p204 ft112">Highest Education</P>
-    <P class="p204 ft112">Tel no / Email ID</P>
-    <P class="p205 ft112">Place of agreement</P>
-    <P class="p204 ft112">Date of agreement</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t13">
-    <TR>
-        <TD class="tr20 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr20 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr20 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr13 td23"><P class="p15 ft2">For PFSL</P></TD>
-        <TD class="tr13 td24"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td25"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    </TABLE>
-    </DIV>
-    <DIV id="id17_2_2">
-    <!--[if lte IE 7]><P style="margin-left:0px;margin-top:0px;margin-right:-816px;margin-bottom:0px;" class="p206 ft113"><![endif]--><!--[if gte IE 8]><P style="margin-left:-816px;margin-top:0px;margin-right:0px;margin-bottom:816px;" class="p206 ft113"><![endif]--><![if ! IE]><P style="margin-left:-408px;margin-top:408px;margin-right:-408px;margin-bottom:408px;" class="p206 ft113"><![endif]>Borrower(s) to sign</P>
-    </DIV>
-    </DIV>
-    <DIV id="id17_3">
-    <P class="p13 ft7">17</P>
-    </DIV>
-    </DIV>
-    <DIV id="page_18">
-    <DIV id="p18dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtgAAAOZCAIAAACrwsAvAAASHUlEQVR4nO3dUW7bShJAUdVAO0r2vwJnTf0+PBgMnhPF6Q5zZeecT9MlEEgoX7EpctZaNwCAwr3eAQDgA5iZH206OakhRACAn/tRbTwIlPe4H84DAJ/edRdy3C99deDVzDjQgA/q0nMW/7nupQEAHhMiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+9ZaJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQBg38ycjAsRACAjRACAzP12fFIFeA8HGsBb99vxPdGAn5oZBxrwQV36OcrSDACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAwL7DR4sLEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAfTNzMi5EAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAy93oHAHgKh1/C/EwOn+LGLxEiANxu/voSsTQDAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAsO/wnrxCBADICBEAICNEAICMEAEAMkIEAMgIEQBg38ycjAsRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAIB9a62TcSECAGSECACQESIAQEaIAAAZIQIAZIQIALBvZk7GhQgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAwL611sm4EAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQA2DczJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQBg31rrZFyIAAAZIQIAZIQIAJARIgBARogAABkhAgDsm5mTcSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIALBvrXUyLkQAgIwQAQAyQgQAyAgRACAjRACAjBABAPbNzMm4EAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQA2LfWOhkXIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+2bmZFyIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgDsW2udjAsRACAjRACAjBABADJCBADICBEAICNEAIB9M3MyLkQAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABAPattU7GhQgAkBEiAEBGiAAAGSECAGSECACQESIAwL6ZORkXIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+9ZaJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQBg38ycjAsRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAIB9a62T8fld+wEAfFaHtfHA/dJXB17NjAMN+KBmLjxtYWkGAMgIEQAgI0QAgIwQAQD2HV5BIkQAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABAPattU7GhQgAkBEiAEBGiAAAGSECAGSECACQESIAwL6ZORkXIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+9ZaJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQBg38ycjAsRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyNxvx4+rAd7DgQbw1v12u6216t2AT25mHGjAB3Xp5yhLMwBARogAABkhAgBkhAgAsO/wAjghAgBkhAgAkBEiAEBGiAAAGSECAGSECACw7/C+q0IEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRAGDfWutkXIgAABkhAgBkhAgAkBEiAEBGiAAAGSECAOybmZNxIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAsG+tdTIuRACAjBABADJCBADICBEAICNEAICMEAEA9s3MybgQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADYt9Y6GRciAEBGiAAAGSECAGSECACQESIAQEaIAAD7ZuZkXIgAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAOxba52MCxEAICNEAICMEAEAMkIEAMgIEQAgI0QAgH0zczIuRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAy99vxzVmB93CgAbx1v91ua616N+CTmxkHGvBBXfo5ytIMAJARIgBARogAABkhAgBkhAgAkBEiAMC+w68EChEAICNEAICMEAEAMkIEAMgIEQAgI0QAgH2HT6IRIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+9ZaJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQBg38ycjAsRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAIB9a62TcSECAGSECACQESIAQEaIAAAZIQIAZIQIALBvZk7GhQgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAwL611sm4EAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQA2DczJ+NCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQBg31rrZFyIAAAZIQIAZIQIAJARIgBARogAABkhAgDsm5mTcSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIALBvrXUyLkQAgIwQAQAyQgQAyAgRACAjRACAjBABAPbNzMn4/fwlgPdwoAG85YwIAJC5345vRQL81Mw40IAP6tITus6IAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIALBvrXUyLkQAgIwQAQAyQgQAyAgRACAjRACAjBABAPbNzMm4EAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQA2LfWOhkXIgBARogAABkhAgBkhAgAkBEiAEBGiAAA+2bmZFyIAAAZIQIAZO71DgB8eIenpn+Lw5tKQUWIAJwSAbDN0gwAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkPH0XeCHnuHp9tfxyFz4LQ4PJSEC/JA/1cDVLM0AABkhAgBkhAgAkBEiAEBGiAAA+w6/XidEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQD2rbVOxoUIAJARIgBARogAABkhAgBkhAgAkBEiAMC+mTkZFyIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAcK0H9xoRIgDAtdZaP9okRACAC3379u3BViECAGSECABwuZn57pUiQgQAuNzLy8taa2b+tVJzr3YI+JdfeoLlgyu/AJ7Q169f11pv37uECDyRd+bF4UO3AZ6HpRkA4Cr/++D09oPW6yYhAgBc5cGJ3tdNQgQA2PcgNR7fQeSVEAEALvTly5fv/vx1aWZuLr+H683MTw+09/zOr/4mwLnt95zHg69bnREBADJCBADICBEA4BKPr2N93eqGZgDAvp9eQfL2F/7/J86IAAAXenl5ebDVt2bgT/CtGeDjes+XX7Zf3BkRACAjRACAjItV4Ym887G61mWAT0OIwLOQF8BfyNIMAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIA7Dt8TpYQAQAyQgQAyAgRACAjRACAjBABADJCBADYNzMn40IEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRAGDfWutkXIgAABkhAgBkhAgAkBEiAEBGiAAAGSECAOybmZNxIQIAZIQIAJC51zsA/Ncvnd48vIMQwJMQIvBE3pkXhyuyAM/D0gwAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkPPQOnoin2QF/GyECz+Kdj94FeCqH712WZgCAjBABADJCBADICBEAICNEAICMEAEA9h3ed0CIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgDsW2udjAsRACAz9Q4AAE/t8JzHY3PpqwMAn8bM989fnLSEEAEAMq4RAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAIHOvdwB4UjNT78KfsNaqd4HeX/K//dwVx8u8vqh/A/7FuzMAf8A/N+A59XdHDI0AAAAASUVORK5CYII=" id="p18img1"></DIV>
-    
-    
-    <DIV id="id18_1">
-    <DIV id="id18_1_1">
-    <P class="p207 ft5">SCHEDULE II</P>
-    <P class="p208 ft5">KEY FACTS THE LOAN</P>
-    <P class="p209 ft6"><SPAN class="ft1">I.</SPAN><SPAN class="ft114">Nature of Loan</SPAN></P>
-    <P class="p210 ft2">Rs. <SPAN class="ft112">____</SPAN><SPAN class="ft115">_________</SPAN><SPAN class="ft112">l</SPAN>akh (Rupees _<SPAN class="ft112">__________</SPAN>_lakh only)</P>
-    <P class="p211 ft1"><SPAN class="ft69">ii.</SPAN><SPAN class="ft116">Sanctioned Loan Amount Sanction</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t14">
-    <TR>
-        <TD class="tr18 td33"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr18 td34"><P class="p16 ft1">letter / Letter of intent reference</P></TD>
-        <TD class="tr18 td35"><P class="p212 ft2">Reference no _<SPAN class="ft112">__________</SPAN>__ dated _<SPAN class="ft112">________</SPAN>_</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr1 td36"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD class="tr1 td37"><P class="p15 ft12">&nbsp;</P></TD>
-        <TD class="tr1 td38"><P class="p15 ft12">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr10 td33"><P class="p213 ft1">iii.</P></TD>
-        <TD class="tr10 td34"><P class="p214 ft6">Purpose of loan</P></TD>
-        <TD class="tr10 td35"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr21 td36"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td37"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td38"><P class="p15 ft19">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr33 td33"><P class="p213 ft1">iv.</P></TD>
-        <TD class="tr33 td34"><P class="p16 ft1">Repayment tenure</P></TD>
-        <TD rowspan=2 class="tr34 td35"><P class="p212 ft1">___<SPAN class="ft6">__________________</SPAN>____from the date of disbursement</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr25 td33"><P class="p15 ft22">&nbsp;</P></TD>
-        <TD class="tr25 td34"><P class="p15 ft22">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr35 td36"><P class="p15 ft117">&nbsp;</P></TD>
-        <TD class="tr35 td37"><P class="p15 ft117">&nbsp;</P></TD>
-        <TD class="tr35 td38"><P class="p15 ft117">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr36 td33"><P class="p213 ft1">v.</P></TD>
-        <TD class="tr36 td34"><P class="p15 ft1">Rate of Interest</P></TD>
-        <TD rowspan=2 class="tr37 td35"><P class="p212 ft112"><SPAN class="ft2">__</SPAN>__________________<SPAN class="ft2">_____% </SPAN><SPAN class="ft1">per annum (fixed)</SPAN></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr11 td33"><P class="p15 ft15">&nbsp;</P></TD>
-        <TD class="tr11 td34"><P class="p15 ft15">&nbsp;</P></TD>
-    </TR>
-    </TABLE>
-    <P class="p215 ft6"><SPAN class="ft1">vi.</SPAN><SPAN class="ft118">Processing & Documentation charges</SPAN></P>
-    <P class="p216 ft6"><SPAN class="ft1">vii.</SPAN><SPAN class="ft119">(a) </SPAN>Security& Margin</P>
-    <P class="p217 ft6"><SPAN class="ft1">(</SPAN>b) Guarantee</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t15">
-    <TR>
-        <TD class="tr19 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td40"><P class="p15 ft1">Repayable in_<SPAN class="ft120">__________</SPAN>(__<SPAN class="ft6">_________</SPAN>__) Equated Monthly</P></TD>
-    </TR>
-    <TR>
-        <TD rowspan=2 class="tr9 td39"><P class="p15 ft1">viii. Repayment of principal and payment</P></TD>
-        <TD class="tr23 td40"><P class="p15 ft122">Instalments (EMIs) of Rs.<SPAN class="ft121">___________</SPAN>_________________/-</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr23 td40"><P class="p15 ft122">(Rupees____<SPAN class="ft121">_____________</SPAN>____________________________</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr38 td39"><P class="p218 ft1">of interest</P></TD>
-        <TD class="tr38 td40"><P class="p15 ft1">______________________________________________only)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td40"><P class="p15 ft1">each, to be</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr28 td40"><P class="p219 ft6">deducted from the Borrower's salary by the</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td39"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td40"><P class="p15 ft110">Borrower's employer on monthly basis and credited into the</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr27 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td40"><P class="p15 ft1">Lender's bank Account</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr28 td40"><P class="p219 ft1"><SPAN class="ft6">directly debited from the</SPAN> Borrower's bank a/c and credited into</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td40"><P class="p15 ft1">lender's bank a/c as detailed in item no ( IX) here in below</P></TD>
-    </TR>
-    </TABLE>
-    </DIV>
-    <DIV id="id18_1_2">
-    <!--[if lte IE 7]><P style="margin-left:0px;margin-top:0px;margin-right:-906px;margin-bottom:0px;" class="p220 ft113"><![endif]--><!--[if gte IE 8]><P style="margin-left:-906px;margin-top:0px;margin-right:0px;margin-bottom:906px;" class="p220 ft113"><![endif]--><![if ! IE]><P style="margin-left:-453px;margin-top:453px;margin-right:-453px;margin-bottom:453px;" class="p220 ft113"><![endif]>Borrower(s) to sign</P>
-    </DIV>
-    </DIV>
-    <DIV id="id18_2">
-    <TABLE cellpadding=0 cellspacing=0 class="t16">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p43 ft2">For PFSL</P>
-    </DIV>
-    <DIV id="id18_3">
-    <P class="p13 ft7">18</P>
-    </DIV>
-    </DIV>
+
+    <div class="page-break"></div>
+
+
+    <div id="page_18">
+        <DIV id="id18_1">
+            <P class=" ft5">SCHEDULE II</P>
+            <P class=" ft5">KEY FACTS OF THE LOAN</P>
+        </DIV>
+
+        <table class="border0 table_18">
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <P class="p16 ft1">letter / Letter of intent reference</P>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>i. Nature of Load</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    {{-- <TABLE cellpadding=0 cellspacing=0 class="t14">
+        <TR>
+            <TD class="tr18 td33"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr18 td34"><P class="p16 ft1">letter / Letter of intent reference</P></TD>
+            <TD class="tr18 td35"><P class="p212 ft2">Reference no _<SPAN class="ft112">__________</SPAN>__ dated _<SPAN class="ft112">________</SPAN>_</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr1 td36"><P class="p15 ft12">&nbsp;</P></TD>
+            <TD class="tr1 td37"><P class="p15 ft12">&nbsp;</P></TD>
+            <TD class="tr1 td38"><P class="p15 ft12">&nbsp;</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr10 td33"><P class="p213 ft1">iii.</P></TD>
+            <TD class="tr10 td34"><P class="p214 ft6">Purpose of loan</P></TD>
+            <TD class="tr10 td35"><P class="p15 ft9">&nbsp;</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr21 td36"><P class="p15 ft19">&nbsp;</P></TD>
+            <TD class="tr21 td37"><P class="p15 ft19">&nbsp;</P></TD>
+            <TD class="tr21 td38"><P class="p15 ft19">&nbsp;</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr33 td33"><P class="p213 ft1">iv.</P></TD>
+            <TD class="tr33 td34"><P class="p16 ft1">Repayment tenure</P></TD>
+            <TD rowspan=2 class="tr34 td35"><P class="p212 ft1">___<SPAN class="ft6">__________________</SPAN>____from the date of disbursement</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr25 td33"><P class="p15 ft22">&nbsp;</P></TD>
+            <TD class="tr25 td34"><P class="p15 ft22">&nbsp;</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr35 td36"><P class="p15 ft117">&nbsp;</P></TD>
+            <TD class="tr35 td37"><P class="p15 ft117">&nbsp;</P></TD>
+            <TD class="tr35 td38"><P class="p15 ft117">&nbsp;</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr36 td33"><P class="p213 ft1">v.</P></TD>
+            <TD class="tr36 td34"><P class="p15 ft1">Rate of Interest</P></TD>
+            <TD rowspan=2 class="tr37 td35"><P class="p212 ft112"><SPAN class="ft2">__</SPAN>__________________<SPAN class="ft2">_____% </SPAN><SPAN class="ft1">per annum (fixed)</SPAN></P></TD>
+        </TR>
+        <TR>
+            <TD class="tr11 td33"><P class="p15 ft15">&nbsp;</P></TD>
+            <TD class="tr11 td34"><P class="p15 ft15">&nbsp;</P></TD>
+        </TR>
+        </TABLE>
+        <P class="p215 ft6"><SPAN class="ft1">vi.</SPAN><SPAN class="ft118">Processing & Documentation charges</SPAN></P>
+        <P class="p216 ft6"><SPAN class="ft1">vii.</SPAN><SPAN class="ft119">(a) </SPAN>Security& Margin</P>
+        <P class="p217 ft6"><SPAN class="ft1">(</SPAN>b) Guarantee</P>
+        <TABLE cellpadding=0 cellspacing=0 class="t15">
+        <TR>
+            <TD class="tr19 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr19 td40"><P class="p15 ft1">Repayable in_<SPAN class="ft120">__________</SPAN>(__<SPAN class="ft6">_________</SPAN>__) Equated Monthly</P></TD>
+        </TR>
+        <TR>
+            <TD rowspan=2 class="tr9 td39"><P class="p15 ft1">viii. Repayment of principal and payment</P></TD>
+            <TD class="tr23 td40"><P class="p15 ft122">Instalments (EMIs) of Rs.<SPAN class="ft121">___________</SPAN>_________________/-</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr23 td40"><P class="p15 ft122">(Rupees____<SPAN class="ft121">_____________</SPAN>____________________________</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr38 td39"><P class="p218 ft1">of interest</P></TD>
+            <TD class="tr38 td40"><P class="p15 ft1">______________________________________________only)</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr29 td40"><P class="p15 ft1">each, to be</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr28 td40"><P class="p219 ft6">deducted from the Borrower's salary by the</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr17 td39"><P class="p15 ft18">&nbsp;</P></TD>
+            <TD class="tr17 td40"><P class="p15 ft110">Borrower's employer on monthly basis and credited into the</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr27 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr27 td40"><P class="p15 ft1">Lender's bank Account</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr28 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr28 td40"><P class="p219 ft1"><SPAN class="ft6">directly debited from the</SPAN> Borrower's bank a/c and credited into</P></TD>
+        </TR>
+        <TR>
+            <TD class="tr29 td39"><P class="p15 ft9">&nbsp;</P></TD>
+            <TD class="tr29 td40"><P class="p15 ft1">lender's bank a/c as detailed in item no ( IX) here in below</P></TD>
+        </TR>
+        </TABLE> --}}
+
+    <div class="page-break"></div>
+
     <DIV id="page_19">
     <DIV id="p19dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtYAAAOZCAIAAAC1C/CcAAARH0lEQVR4nO3dS27cCBJAwc6BbiTf/wY+U85CgOGx25pWtktPhiKWLmWBIE3igcXP7O5fAADv66leAADgDzAzv/rodjpDggAA/9+vOuOVNHnd03kSAPgkHnHZxtODvhf43szY0YA/1IPOVvznEV8KAPA6CQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHC3u7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcDczt0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwt7u3QQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHA3M7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcLe7t0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwNzO3QQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHC3u7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcDczt0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwt7u3QQkCAAQkCAAQkCAAQECCAAABCQIfyMw89O/5lTetSav9Hdgin8FTvQDA/3AwfX8v69ya/zhskT/LzNxuipEg8LG8aU92jP4tdvdNx1Cr/dFskU/CDzEAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQMCbcuFjedM7P28vyOYHb301vNX+aLbIJyFB4ANxJE1Y7R+NLfJJ+CEGAAhIEADg7nzWSoIAAAEJAgAEJAgAEJAgAEBAggAAAQkCANy96YGK35MgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAMBDzMwrDy57es9FAQA+j9195VNnQQCAh/j69esrn0oQACAgQQCAB5qZvz0dIkEAgMd6fn7++bpUCQIAPNy3S1O/tYgEAQAe6If7Ynb3pULclAsA/Gav3wvzEiXOggAAd3/78I8vX748Pz+/Pji/GgZ+o5mxowF/qMMR7J+MOAsCAAQkCAAQkCAAwLt6uSNGggAAAQkCANz9/NjTv1690+XblaoSBAB4iJ/r5Ps7ZSQIABCQIADAQ/z8c8z3/yJBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEALjb3dugBAEAAhIEAAhIEAAgIEEAgIAEAQACEgQAuJuZ26AEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAC4293boAQBAAISBAAISBAAICBBAICABAEAAhIEALibmdugBAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQAuNvd26AEAQACEgQACEgQACAgQQCAgAQBAAISBAC4m5nboAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEALjb3dugBAEAAhIEAAhIEAAgMPUCAAAf2svVHjO/bIbb5SBzvooEAODMDzEAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAIGnegGAD2pm6kV4D7tbLwK9T/K//d/7vfvLvHydtc8PHJcBeKj/ApEDx1DjEakLAAAAAElFTkSuQmCC" id="p19img1"></DIV>
@@ -2282,6 +2640,9 @@
     <P class="p39 ft2">For PFSL</P>
     <P class="p224 ft7">19</P>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_20">
     <DIV id="p20dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p20img1"></DIV>
@@ -2317,6 +2678,9 @@
     <P class="p13 ft7">20</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_21">
     <DIV id="p21dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p21img1"></DIV>
@@ -2353,6 +2717,9 @@
     <P class="p13 ft7">21</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_22">
     <DIV id="p22dimg1">
     <IMG src="data:image/png;base64,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" id="p22img1"></DIV>
@@ -2444,6 +2811,9 @@
     <P class="p13 ft7">22</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_23">
     <DIV id="p23dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtYAAAOTCAIAAAAUkNP6AAARBUlEQVR4nO3dXW4aSRSAUe6IHeH9r8CsqeaBiDj+YYim4cPmnIeEmFZ05UTiU1V3edZaOwCA+9rXAwAA38zMfPXW9UsbEgQA+DtfdcaFNPnon42GAQD4CxIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMCsteoZAICnYxUEAAhIEAAgIEEAgIAEAQACEgQACEgQAGAbM3P9xRIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEADgVi787FwJAgDcylrrq7ckCABwE8fj8cK7EgQACEgQAGAbn267zMynd4RIEADghl5fX9daHytEggAAN/Ty8rJ7s0BybhEJAgDc0LvdmfOKyD6aBwD4sS4/C3OKEqsgAMDGDofD4XC4fI0EAQC2cb7P47QK8lWFnC6TIABAQIIAAIG5cHg7AMD1Zn51xfnFhcusggAAAQkCAGzs0+NQT84LJBIEANjeWuvd6SCnHxbz+5hU94IAAJt4dwvIxztC3n7FKggAcBMflznefkWCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQe0AwABqyAAQECCAAABCQIABCQIABCQIABAQIIAANuYmesvliAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAYNZa9QwAwNOxCgIABCQIABCQIABAQIIAAAEJAgAEJAgAsI2Zuf5iCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEZq1VzwAAPB2rIABAQIIAAAEJAgAEJAgAEJAgAEBAggAA25iZ6y+WIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBg1lr1DADA07EKAgAEJAgAEJAgAEBAggAAAQkCAAQkCACwjZm5/mIJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQGBfDwAAfD9/dQTI53/DWmuTUQAArmcjBgAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMC+HgCARzEz9QgPYa1Vj/AUJAgAv/n01WF3YyMGAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMB+t9vNTD0Gf1hr1SMAwG3tdz7wAIC7sxEDAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQGBfDwDAA5mZeoTYWqse4VmM7zUAcH82YgCAgAQBAAISBAAISBAAIOCJGIBvw+MqP4nHQTwRAwAEbMQAAIGnXtOzAgQAFRsxAEDARgwAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAANubmcsXSBAA4FYuhIgEAQACEgQACEgQAOBW1lrH4/HTtyQIALC919fX04vD4TAzx+Px3X0h+2IqAOCJrLVOv87M6fXOKggAkJAgAMCWTtsuLy8vH986L4Hsdrt5+wcAgP/ptNvyds/lU1ZBAIDt/ecahwQBAAI2YgCAgFUQACAgQQCA+zkfUCZBAIA7OR6PjiYDAG7o3XHsp8NCDofD+SsOaAcAbu7jSSGeiAEAAjZiAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAI7OsBAHgUM1OP8BDWWvUIT0GCAPCbT18ddjc2YgCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAI7E+/zUw7B++steoRAOCGfiWIDzwA4J5sxAAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQ2NcDAPBAZqYeIbbWqkd4FuN7DQDcn40YACAgQQCAgAQBAAISBAAISBAAICBBAICAc0EAvgcndvwkTsTYvT0X5Mf/5/bvDQCP418RXuKrw0zPzAAAAABJRU5ErkJggg==" id="p23img1"></DIV>
@@ -2514,6 +2884,9 @@
     <P class="p13 ft7">23</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_24">
     <DIV id="p24dimg1">
     <IMG src="data:image/png;base64,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BgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoCkGAKApBgCgKQYAoL1cPQDwG8zM1SP8G3b36hG43k2+2n/db/9+8XnnA34uA/DG32IShElVQxYcAAAAAElFTkSuQmCC" id="p24img1"></DIV>
@@ -2560,6 +2933,9 @@
     <P class="p13 ft7">24</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_25">
     <DIV id="p25dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtsAAAD5CAIAAAB56W7rAAAFRklEQVR4nO3dMW7bQBBA0UzgG9n3P4F5pk0hwBBiWwkTUj+O3itciFssXBAfIy41a61vAACpp3oDAMBXNTM3ru6aeigSAOAP3WiO27Hy3ve/3gwAwN9SJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0Zq1V7wEAeHRmJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAx5uZXesVCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQE+RAAA9RQIA9BQJANCbtVa9BwDg0ZmRAAA9RQIA9BQJANBTJABAT5EAAD1FAgAcb2Z2rVckAEBPkQAAPUUCAPQUCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQG/WWvUeAIBHZ0YCAPQUCQDQUyQAQE+RAAA9RQIA9BQJAHC8mdm1XpEAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAvVlr1XsAAB6dGQkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAwPFmZtf6p5P28aG9m4O7cQz+ztwN4FRf8Z521yL5iv8g4AzuBsBPfGsDAPQUCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQG/WWvUeAIBHZ0YCAPQUCQDQUyQAQE+RAAA9RQIA9BQJAHC8mdm1XpEAAD1FAgD0FAkA0FMkAEBPkQAAPUUCAPQUCQDQUyQAQE+RAAA9RQIA9BQJANBTJABAT5EAAD1FAgD0FAkA0FMkAEBPkQAAPUUCABxvrfXTJzNzY70iAQDu4fX19cbVeZ8wAACHm5m11uXv+6tmJABAT5EAAHe1bdv7DxUJAHAPb8+RPD8/z8y2bdfPuj5FuwIA/mefPS9ycbl0vcCMBAC4n89OBSsSAOB0N15GcmkURQIAnGvbtl++bUSRAADnenl5+eUab0gDAI53/WTr7adcL8xIAICeIgEAznV7QOKsDQDwr1AkAMDpPjv9+3YMxztbAYDTffirv9efmJEAAI23X7r55vQvAHCG3znxe82MBADoKRIAoKdIAICeIgEAeooEAOg5awMA9MxIAICeIgEAeooEAOgpEgCgp0gAgJ4iAQCONzO71isSAKCnSACAniIBAHqKBADoKRIAoKdIAICeIgEAeooEAOgpEgCgp0gAgJ4iAQB6igQA6CkSAKCnSACAniIBAHqKBADoKRIAoDdrrXoPAMCjMyMBAHqKBADoKRIAoKdIAICeIgEAeooEADjezOxar0gAgJ4iAQB6igQA6CkSAKCnSACAniIBAHqKBADoKRIAoKdIAICeIgEAeooEAOgpEgCgp0gAgJ4iAQB6igQA6CkSAKCnSACA3qy16j0AAI/OjAQA6CkSAKCnSACAniIBAHqKBADoKRIA4Hgzs2u9IgEAeooEAOgpEgCgp0gAgJ4iAQB6igQA6CkSAKCnSACAniIBAHqKBADoKRIAoKdIAICeIgEAeooEAOgpEgCgp0gAgJ4iAQB6s9aq9wAAPDozEgCgp0gAgJ4iAQB6igQA6CkSAKCnSACA483MrvWKBADoKRIAoKdIAICeIgEAeooEAOgpEgCg91RvAAD4wvae8v3MD19cf9w4NJ52AAAAAElFTkSuQmCC" id="p25img1"></DIV>
@@ -2602,6 +2978,9 @@
     <P class="p13 ft7">25</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_26">
     <DIV id="p26dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApsAAAADCAIAAABTWlM0AAAANElEQVRYhe3YsQ0AIAwDQSyx/8phAfoocDfBF66cqloAwHC7OwDgI0m6E3iWbXHhuQEY5wDLagYEl8yLygAAAABJRU5ErkJggg==" id="p26img1"></DIV>
@@ -2621,6 +3000,9 @@
     <P class="p13 ft7">26</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_27">
     <DIV id="p27dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtgAAAJjCAIAAAC5vPHkAAALf0lEQVR4nO3dwWoiQRRAUd/g/3+Z/1SzEEQ0mvRge8l4zirEYniLDFyquq1Zax0AAAp/6gEAgP/WzDxfIEQAgIwQAQAyQgQA2NeTAxohAgDsa631qEWECACwl9PpdP3DzNwUyXh9FwDYycxtaZxD5PJLOyIAwPvcdIkQAQB28ei5kOsWESIAwOvdH8rcLzgIEQBgDz98CFWIAAB7+TZHvDUDAGTsiAAAGSECAOzi26t3D0IEAHi/S6MIEQBgF19eMeObVQGAN7l/J+Zy+8zZ8Y3DAACf6GZf5LpOvL4LAGQczQAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkDnWAwAAv8zMPPl0rfXzf0qIAADbPEmN541yz9EMAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkZq1VzwAAfCg7IgBARogAABkhAgBkhAgAkBEiAEBGiAAALzMzm9YLEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAza616BgDgQ9kRAQAyQgQAyAgRACAjRACAjBABADJCBAB4mZnZtF6IAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAAJlZa9UzAAAfyo4IAJARIgBARogAABkhAgBkhAgAkBEiAMDLzMym9UIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQB2NDNPPhUiAEBGiAAAL7PW2rReiAAAu3t0QCNEAIDdrbW+bBEhAgDs6HQ6Xf8wM9dFMlvPcgAAfm7mNjbOIXL+pR0RAOCtrrtEiAAAL3PzIMijZ1QvLSJEAIBd3B/K3C8QIgDALn7yHKoQAQB29DxHhAgA0FhrCREAICNEAIC9PL969yBEAIDEuVGECACwly+vmPHNqgDAm9y/NXO5feZwOBzfOwwA8Ilu9kUudSJEAIDdPfo2EUczAEBGiAAAGSECAGSECACQESIAQEaIAACZeX45LwDAfuyIAAAZIQIAZIQIAJARIgBARogAABkhAgC8zM0tu98SIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBm1lr1DADAh7IjAgBkhAgAkBEiAEBGiAAAGSECAGSECADwMjOzab0QAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAjBABADKz1qpnAAA+lB0RACAjRACAjBABADJCBADICBEAICNEAICXmZlN64UIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkJm1Vj0DAPCh7IgAABkhAgBkhAgAkBEiAEBGiAAAGSECALzMzGxaL0QAgIwQAQAyQgQAyAgRACAjRACAjBABADJCBADICBEAICNEAICMEAEAMkIEAMgIEQAgI0QAgIwQAQAyQgQAyAgRACAjRACAzKy16hkAgA9lRwQAyBzrAQCA32dmHn206bDF0QwAkHE0AwBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEBGiAAAGSECAGSECACQESIAQEaIAAAZIQIAZIQIAJARIgBARogAABkhAgBkhAgAkBEiAEDmWA8A8EFmph6B/9Zaqx7hX/gvwRd+6V8zAL/OXwStnRLttdtiAAAAAElFTkSuQmCC" id="p27img1"></DIV>
@@ -2697,6 +3079,9 @@
     <P class="p13 ft7">27</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_28">
     
     
@@ -2709,6 +3094,9 @@
     <P class="p13 ft7">28</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_29">
     
     
@@ -2721,6 +3109,9 @@
     <P class="p13 ft7">29</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_30">
     <DIV id="p30dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARsAAAAnCAIAAACwgHsUAAAAk0lEQVR4nO3VwQmAQBAEwV3zz/kMwgZFqiKYTzM7M+ecAR7b3bcnwL/s+CiI7O719gb4FUVBSVFQUhSUFAUlRUFJUVBSFJQUBSVFQUlRUFIUlBQFJUVBSVFQUhSUFAUlRUFJUVBSFJQUBSVFQUlRUFIUlBQFJUVBSVFQUhSUFAUlRUFJUVBSFJQUBSVFQUlRAHzVDcGBBkl+73EWAAAAAElFTkSuQmCC" id="p30img1"></DIV>
@@ -2759,6 +3150,9 @@
     <P class="p13 ft7">30</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_31">
     <DIV id="p31dimg1">
     <IMG src="data:image/png;base64,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AQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAADIBAQBkAgIAyAQEAJAJCAAgExAAQCYgAIBMQAAAmYAAALI5egC+sbtHj8CTZq74bvq7/2Kv+TvlvP7w+/FfpbxvnuFMsOcAAAAASUVORK5CYII=" id="p31img1"></DIV>
@@ -2811,6 +3205,9 @@
     <P class="p13 ft7">31</P>
     </DIV>
     </DIV>
+
+    <div class="page-break"></div>
+
     <DIV id="page_32">
     <DIV id="p32dimg1">
     <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p32img1"></DIV>
