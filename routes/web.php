@@ -35,6 +35,18 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::post('/block', [UserController::class, 'block'])->name('user.employee.block');
     });
 
+    // borrower
+    Route::group(['prefix' => 'borrower'], function () {
+        Route::get('/', [BorrowerController::class, 'index'])->name('user.borrower.list');
+        Route::get('/create', [BorrowerController::class, 'create'])->name('user.borrower.create');
+        Route::post('/store', [BorrowerController::class, 'store'])->name('user.borrower.store');
+        Route::post('/show', [BorrowerController::class, 'show'])->name('user.borrower.show');
+        Route::get('/{id}/view', [BorrowerController::class, 'details'])->name('user.borrower.details');
+        Route::get('/{id}/edit', [BorrowerController::class, 'edit'])->name('user.borrower.edit');
+        Route::post('/{id}/update', [BorrowerController::class, 'update'])->name('user.borrower.update');
+        Route::post('/destroy', [BorrowerController::class, 'destroy'])->name('user.borrower.destroy');
+    });
+
     // role
     Route::group(['prefix' => 'employee/role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('user.role.list');

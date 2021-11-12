@@ -105,6 +105,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('user.borrower.list') }}" class="nav-link {{ (request()->is('user/borrower*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>Borrowers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Users</p>
