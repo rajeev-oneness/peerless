@@ -55,6 +55,7 @@ class AgreementController extends Controller
         $agreement->authorised_signatory = $request->authorised_signatory ? $request->authorised_signatory : '';
         $agreement->borrower = $request->borrower ? $request->borrower : '';
         $agreement->co_borrower = $request->co_borrower ? $request->co_borrower : '';
+        $agreement->html = '';
         $agreement->save();
 
         return redirect()->route('user.agreement.list')->with('success', 'Agreement created');

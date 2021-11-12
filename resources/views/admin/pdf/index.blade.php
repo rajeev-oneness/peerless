@@ -1043,10 +1043,23 @@
         .table_18 td:last-child{
             width: 60%;
         }
+        .table_19 td:first-child{
+            width: 40%;
+        }
+        .table_19 td:last-child{
+            width: 60%;
+        }
         .table_18 td{
             padding: 20px 15px;
         }
-        .table_17 td p{
+        .table_19 td{
+            padding: 15px;
+        }
+        .table_17 td p, .table_17 td{
+            margin: 0 !important;
+            font-size: 12px;
+        }
+        .table_19 td p, .table_19 td{
             margin: 0 !important;
             font-size: 12px;
         }
@@ -2431,7 +2444,7 @@
             </tr>
         </table>
 
-        <br><br>
+        <br><br><br><br>
 
         <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
             <TR style="border: 0">
@@ -2453,450 +2466,260 @@
         </TABLE>
     </div>
 
-    {{-- <TABLE cellpadding=0 cellspacing=0 class="t14">
-        <TR>
-            <TD class="tr18 td33"><P class="p15 ft9">&nbsp;</P></TD>
-            <TD class="tr18 td34"><P class="p16 ft1">letter / Letter of intent reference</P></TD>
-            <TD class="tr18 td35">
-                <P class="p212 ft2">Reference no _<SPAN class="ft112">__________</SPAN>__ dated _<SPAN class="ft112">________</SPAN>_</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr1 td36">
-                <P class="p15 ft12">&nbsp;</P>
-            </TD>
-            <TD class="tr1 td37">
-                <P class="p15 ft12">&nbsp;</P>
-            </TD>
-            <TD class="tr1 td38">
-                <P class="p15 ft12">&nbsp;</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr10 td33">
-                <P class="p213 ft1">iii.</P>
-            </TD>
-            <TD class="tr10 td34">
-                <P class="p214 ft6">Purpose of loan</P>
-            </TD>
-            <TD class="tr10 td35">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr21 td36">
-                <P class="p15 ft19">&nbsp;</P>
-            </TD>
-            <TD class="tr21 td37">
-                <P class="p15 ft19">&nbsp;</P>
-            </TD>
-            <TD class="tr21 td38">
-                <P class="p15 ft19">&nbsp;</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr33 td33">
-                <P class="p213 ft1">iv.</P>
-            </TD>
-            <TD class="tr33 td34">
-                <P class="p16 ft1">Repayment tenure</P>
-            </TD>
-            <TD rowspan=2 class="tr34 td35">
-                <P class="p212 ft1">___<SPAN class="ft6">__________________</SPAN>____from the date of disbursement</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr25 td33">
-                <P class="p15 ft22">&nbsp;</P>
-            </TD>
-            <TD class="tr25 td34">
-                <P class="p15 ft22">&nbsp;</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr35 td36">
-                <P class="p15 ft117">&nbsp;</P>
-            </TD>
-            <TD class="tr35 td37">
-                <P class="p15 ft117">&nbsp;</P>
-            </TD>
-            <TD class="tr35 td38">
-                <P class="p15 ft117">&nbsp;</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr36 td33">
-                <P class="p213 ft1">v.</P>
-            </TD>
-            <TD class="tr36 td34">
-                <P class="p15 ft1">Rate of Interest</P>
-            </TD>
-            <TD rowspan=2 class="tr37 td35">
-                <P class="p212 ft112"><SPAN class="ft2">__</SPAN>__________________<SPAN class="ft2">_____% </SPAN><SPAN class="ft1">per annum (fixed)</SPAN></P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr11 td33">
-                <P class="p15 ft15">&nbsp;</P>
-            </TD>
-            <TD class="tr11 td34">
-                <P class="p15 ft15">&nbsp;</P>
-            </TD>
-        </TR>
-        </TABLE>
-        
-        <P class="p215 ft6"><SPAN class="ft1">vi.</SPAN><SPAN class="ft118">Processing & Documentation charges</SPAN></P>
-        
-        <P class="p216 ft6"><SPAN class="ft1">vii.</SPAN><SPAN class="ft119">(a) </SPAN>Security& Margin</P>
-        
-        <P class="p217 ft6"><SPAN class="ft1">(</SPAN>b) Guarantee</P>
-        <TABLE cellpadding=0 cellspacing=0 class="t15">
-        <TR>
-            <TD class="tr19 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr19 td40">
-                <P class="p15 ft1">Repayable in_<SPAN class="ft120">__________</SPAN>(__<SPAN class="ft6">_________</SPAN>__) Equated Monthly</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD rowspan=2 class="tr9 td39">
-                <P class="p15 ft1">viii. Repayment of principal and payment</P>
-            </TD>
-            <TD class="tr23 td40">
-                <P class="p15 ft122">Instalments (EMIs) of Rs.<SPAN class="ft121">___________</SPAN>_________________/-</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr23 td40">
-                <P class="p15 ft122">(Rupees____<SPAN class="ft121">_____________</SPAN>____________________________</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr38 td39">
-                <P class="p218 ft1">of interest</P>
-            </TD>
-            <TD class="tr38 td40">
-                <P class="p15 ft1">______________________________________________only)</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr29 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr29 td40">
-                <P class="p15 ft1">each, to be</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr28 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr28 td40">
-                <P class="p219 ft6">deducted from the Borrower's salary by the</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr17 td39">
-                <P class="p15 ft18">&nbsp;</P>
-            </TD>
-            <TD class="tr17 td40">
-                <P class="p15 ft110">Borrower's employer on monthly basis and credited into the</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr27 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr27 td40">
-                <P class="p15 ft1">Lender's bank Account</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr28 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr28 td40">
-                <P class="p219 ft1"><SPAN class="ft6">directly debited from the</SPAN> Borrower's bank a/c and credited into</P>
-            </TD>
-        </TR>
-        <TR>
-            <TD class="tr29 td39">
-                <P class="p15 ft9">&nbsp;</P>
-            </TD>
-            <TD class="tr29 td40">
-                <P class="p15 ft1">lender's bank a/c as detailed in item no ( IX) here in below</P>
-            </TD>
-        </TR>
-        </TABLE> --}}
+    
 
     <div class="page-break"></div>
 
     <DIV id="page_19">
-    <DIV id="p19dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtYAAAOZCAIAAAC1C/CcAAARH0lEQVR4nO3dS27cCBJAwc6BbiTf/wY+U85CgOGx25pWtktPhiKWLmWBIE3igcXP7O5fAADv66leAADgDzAzv/rodjpDggAA/9+vOuOVNHnd03kSAPgkHnHZxtODvhf43szY0YA/1IPOVvznEV8KAPA6CQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHC3u7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcDczt0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwt7u3QQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHA3M7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcLe7t0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwNzO3QQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIAHC3u7dBCQIABCQIABCQIABAQIIAAAEJAgAEJAgAcDczt0EJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCABwt7u3QQkCAAQkCAAQkCAAQECCAAABCQIfyMw89O/5lTetSav9Hdgin8FTvQDA/3AwfX8v69ya/zhskT/LzNxuipEg8LG8aU92jP4tdvdNx1Cr/dFskU/CDzEAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQMCbcuFjedM7P28vyOYHb301vNX+aLbIJyFB4ANxJE1Y7R+NLfJJ+CEGAAhIEADg7nzWSoIAAAEJAgAEJAgAEJAgAEBAggAAAQkCANy96YGK35MgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAHe7exuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAdzNzG5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3u3sblCAAQECCAAABCQIABCQIABCQIABAQIIAAHczcxuUIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAd7t7G5QgAEBAggAAAQkCAAQkCAAQkCAAQECCAAB3M3MblCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAMBDzMwrDy57es9FAQA+j9195VNnQQCAh/j69esrn0oQACAgQQCAB5qZvz0dIkEAgMd6fn7++bpUCQIAPNy3S1O/tYgEAQAe6If7Ynb3pULclAsA/Gav3wvzEiXOggAAd3/78I8vX748Pz+/Pji/GgZ+o5mxowF/qMMR7J+MOAsCAAQkCAAQkCAAwLt6uSNGggAAAQkCANz9/NjTv1690+XblaoSBAB4iJ/r5Ps7ZSQIABCQIADAQ/z8c8z3/yJBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEALjb3dugBAEAAhIEAAhIEAAgIEEAgIAEAQACEgQAuJuZ26AEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAC4293boAQBAAISBAAISBAAICBBAICABAEAAhIEALibmdugBAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQAuNvd26AEAQACEgQACEgQACAgQQCAgAQBAAISBAC4m5nboAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEALjb3dugBAEAAhIEAAhIEAAgMPUCAAAf2svVHjO/bIbb5SBzvooEAODMDzEAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAIGnegGAD2pm6kV4D7tbLwK9T/K//d/7vfvLvHydtc8PHJcBeKj/ApEDx1DjEakLAAAAAElFTkSuQmCC" id="p19img1"></DIV>
     
+
+        <table class="border0 table_19">
+            <tr>
+                <td>
+                    ix. 
+                    Details of Lender's bank
+                    account for credit of EMI
+                </td>
+                <td>
+                    <p>
+                        Current Account No: <b>00080350003328</b><br>
+                        Beneficiary: <b>Peerless Financial Services Limited</b><br>
+                        Name of bank & branch: <b> HDFC Bank, Stephen House Branch </b><br>
+                        IFSC Code: <b>HDFC0000008</b><br>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    x. 
+                    Date of credit of EMI into Lender’s
+                    Bank Account
+                </td>
+                <td>
+                    <p>
+                        <input type="checkbox"> 5<sup>th</sup> of every month
+                        <input type="checkbox"> 2<sup>nd</sup> of every month
+                        <input type="checkbox"> Others______
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    xi. Penal Interest/ Liquidation
+                    damages
+                </td>
+                <td>
+                    <p>
+                        Chargeable @.....................% per annum over and above the
+                        applicable interest rate. Penal interest will be charged for the
+                        period of default i.e. from the due date of Payment of EMI or
+                        interest or any amount due to the date of actual payment.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    xii. Mode of Disbursement
+                </td>
+                <td>
+                    <p>
+                        Online payment to bank account as detailed against item (xiii)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    xiii. Details of Borrower's bank account
+                    for loan disbursal
+                </td>
+                <td>
+                    <p>
+                        Savings / Current Account No :__________________________
+                        Beneficiary : ________________________________________
+                        Name of bank & Branch :______________________________
+                        IFS Code :________________________________________
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    xiv. Insurance
+                </td>
+                <td>
+                    <p>
+                        &nbsp;
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+            <TR style="border: 0">
+                <TD class="tr6 td23" style="border: 0">
+                    <div style="width: 190px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td24" style="border: 0">
+                    <div style="width: 55px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Borrower</P>
+                </TD>
+                <td style="border: 0"></td>
+                <TD class="tr6 td25" style="border: 0">
+                    <div style="width: 75px;height: 1px;background: #000"></div>
+                    <P class="p15 ft2">Co-Borrower</P>
+                </TD>
+            </TR>
+        </TABLE>
     
-    <DIV class="dclr"></DIV>
-    <TABLE cellpadding=0 cellspacing=0 class="t17">
-    <TR>
-        <TD class="tr18 td41"></TD>
-        <TD class="tr18 td17"><P class="p18 ft1">ix.</P></TD>
-        <TD class="tr18 td42"><P class="p15 ft1">Details of Lender's bank</P></TD>
-        <TD colspan=2 class="tr18 td43"><P class="p15 ft1">Current Account No: <SPAN class="ft2">00080350003328</SPAN></P></TD>
-        <TD class="tr18 td44"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr38 td41"></TD>
-        <TD class="tr38 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr38 td42"><P class="p15 ft1">account for credit of EMI</P></TD>
-        <TD colspan=3 class="tr38 td45"><P class="p15 ft2"><SPAN class="ft1">Beneficiary: </SPAN>Peerless Financial Services Limited</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr17 td41"></TD>
-        <TD class="tr17 td17"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD class="tr17 td42"><P class="p15 ft18">&nbsp;</P></TD>
-        <TD colspan=3 class="tr17 td45"><P class="p15 ft123"><SPAN class="ft110">Name of bank & branch: </SPAN>HDFC Bank, Stephen House</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td41"></TD>
-        <TD class="tr29 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td42"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr29 td43"><P class="p15 ft2">Branch <SPAN class="ft1">IFSC Code</SPAN>: HDFC0000008</P></TD>
-        <TD class="tr29 td44"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr39 td41"></TD>
-        <TD class="tr39 td15"><P class="p15 ft124">&nbsp;</P></TD>
-        <TD class="tr39 td46"><P class="p15 ft124">&nbsp;</P></TD>
-        <TD class="tr39 td47"><P class="p15 ft124">&nbsp;</P></TD>
-        <TD class="tr39 td48"><P class="p15 ft124">&nbsp;</P></TD>
-        <TD class="tr39 td49"><P class="p15 ft124">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr0 td41"></TD>
-        <TD class="tr0 td17"><P class="p18 ft1">x.</P></TD>
-        <TD class="tr0 td42"><P class="p15 ft1">Date of credit of EMI into Lender’s</P></TD>
-        <TD class="tr0 td50"><P class="p221 ft6">5<SPAN class="ft125">th</SPAN>of every month</P></TD>
-        <TD class="tr0 td51"><P class="p15 ft6">2<SPAN class="ft125">nd </SPAN>of every month</P></TD>
-        <TD class="tr0 td44"><P class="p222 ft6"><NOBR>Others------------</NOBR></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr27 td41"></TD>
-        <TD class="tr27 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td42"><P class="p15 ft1">Bank Account</P></TD>
-        <TD class="tr27 td50"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td51"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td44"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr35 td41"></TD>
-        <TD class="tr35 td15"><P class="p15 ft117">&nbsp;</P></TD>
-        <TD class="tr35 td46"><P class="p15 ft117">&nbsp;</P></TD>
-        <TD colspan=3 class="tr35 td52"><P class="p15 ft117">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr40 td41"></TD>
-        <TD class="tr40 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr40 td42"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=3 class="tr40 td45"><P class="p15 ft1">Chargeable @..<SPAN class="ft6">...................%</SPAN> per annum over and above the</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td41"></TD>
-        <TD class="tr29 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td42"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=2 class="tr29 td43"><P class="p15 ft1">applicable interest rate. Penal interest will be</P></TD>
-        <TD class="tr29 td44"><P class="p15 ft1">charged for the</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr24 td41"></TD>
-        <TD class="tr24 td17"><P class="p18 ft1">xi.</P></TD>
-        <TD class="tr24 td42"><P class="p15 ft1">Penal Interest/ Liquidation</P></TD>
-        <TD colspan=3 class="tr24 td45"><P class="p15 ft1">period of default i.e. from the due date of Payment of EMI or</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr27 td41"></TD>
-        <TD class="tr27 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr27 td42"><P class="p15 ft1">damages</P></TD>
-        <TD colspan=3 class="tr27 td45"><P class="p15 ft1">interest or any amount due to the date of actual payment.</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr41 td41"></TD>
-        <TD class="tr41 td15"><P class="p15 ft126">&nbsp;</P></TD>
-        <TD class="tr41 td46"><P class="p15 ft126">&nbsp;</P></TD>
-        <TD class="tr41 td47"><P class="p15 ft126">&nbsp;</P></TD>
-        <TD class="tr41 td48"><P class="p15 ft126">&nbsp;</P></TD>
-        <TD class="tr41 td49"><P class="p15 ft126">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr19 td41"></TD>
-        <TD class="tr19 td17"><P class="p18 ft1">xii.</P></TD>
-        <TD class="tr19 td42"><P class="p15 ft1">Mode of Disbursement</P></TD>
-        <TD class="tr19 td50"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td51"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr19 td44"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr24 td41"></TD>
-        <TD class="tr24 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr24 td42"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=3 class="tr24 td45"><P class="p15 ft1">Online payment to bank account as detailed against item (xiii)</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr21 td41"></TD>
-        <TD class="tr21 td15"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD class="tr21 td46"><P class="p15 ft19">&nbsp;</P></TD>
-        <TD colspan=3 class="tr21 td52"><P class="p15 ft19">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr40 td41"></TD>
-        <TD rowspan=2 class="tr15 td17"><P class="p18 ft1">xiii.</P></TD>
-        <TD rowspan=2 class="tr15 td42"><P class="p15 ft1">Details of Borrower's bank account</P></TD>
-        <TD colspan=3 class="tr40 td45"><P class="p15 ft1">Savings / Current Account No <SPAN class="ft6">:__________________________</SPAN></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr42 td41"></TD>
-        <TD colspan=3 rowspan=2 class="tr27 td45"><P class="p15 ft6">Beneficiary : <SPAN class="ft120">________________________________________</SPAN></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr16 td41"></TD>
-        <TD class="tr16 td17"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD rowspan=2 class="tr29 td42"><P class="p15 ft1">for loan disbursal</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr41 td41"></TD>
-        <TD class="tr41 td17"><P class="p15 ft126">&nbsp;</P></TD>
-        <TD colspan=3 rowspan=2 class="tr29 td45"><P class="p15 ft6">Name of bank & Branch :<SPAN class="ft120">______________________________</SPAN></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr16 td41"></TD>
-        <TD class="tr16 td17"><P class="p15 ft17">&nbsp;</P></TD>
-        <TD class="tr16 td42"><P class="p15 ft17">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr29 td41"></TD>
-        <TD class="tr29 td17"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr29 td42"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD colspan=3 class="tr29 td45"><P class="p15 ft6">IFS Code <SPAN class="ft112">:</SPAN><SPAN class="ft120">________________________________________</SPAN></P></TD>
-    </TR>
-    <TR>
-        <TD class="tr42 td41"></TD>
-        <TD class="tr42 td15"><P class="p15 ft127">&nbsp;</P></TD>
-        <TD class="tr42 td46"><P class="p15 ft127">&nbsp;</P></TD>
-        <TD class="tr42 td47"><P class="p15 ft127">&nbsp;</P></TD>
-        <TD class="tr42 td48"><P class="p15 ft127">&nbsp;</P></TD>
-        <TD class="tr42 td49"><P class="p15 ft127">&nbsp;</P></TD>
-    </TR>
-    <TR>
-        <TD class="tr13 td41"></TD>
-        <TD class="tr13 td17"><P class="p18 ft1">xiv.</P></TD>
-        <TD class="tr13 td42"><P class="p214 ft6">Insurance</P></TD>
-        <TD class="tr13 td50"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td51"><P class="p15 ft9">&nbsp;</P></TD>
-        <TD class="tr13 td44"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
-    </TABLE>
-    <!--[if lte IE 7]><P style="margin-left:711px;margin-top:0px;margin-right:-795px;margin-bottom:0px;" class="p223 ft113"><![endif]--><!--[if gte IE 8]><P style="margin-left:627px;margin-top:0px;margin-right:-711px;margin-bottom:84px;" class="p223 ft113"><![endif]--><![if ! IE]><P style="margin-left:669px;margin-top:42px;margin-right:-753px;margin-bottom:42px;" class="p223 ft113"><![endif]>Borrower(s) to sign</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t18">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p39 ft2">For PFSL</P>
-    <P class="p224 ft7">19</P>
     </DIV>
 
     <div class="page-break"></div>
 
     <DIV id="page_20">
-    <DIV id="p20dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p20img1"></DIV>
     
-    
-    <DIV id="id20_1">
-    <P class="p225 ft128">SCHEDULE III</P>
-    <P class="p226 ft5">OTHER TERMS AND CONDITIONS</P>
-    <P class="p2 ft1"><SPAN class="ft1">I.</SPAN><SPAN class="ft65">Borrower(s) and the Guarantor shall jointly and severally repay the Loan along with Interest as set out in </SPAN><NOBR><SPAN class="ft2">Schedule-II;</SPAN></NOBR></P>
-    <P class="p227 ft52"><SPAN class="ft1">II.</SPAN><SPAN class="ft129">In the event of cessation of the Borrowers' service with the Borrowers' employer(s) before the loan is repaid in full it will be the responsibility and obligation of the Borrower(s) to pay and in the event of the Borrowers' employer(s) committing default or delay in payment of EMI on the loan or payment of the outstanding amount in the event of</SPAN></P>
-    <P class="p228 ft52">cessation of service of the Borrower (s) with the Borrowers' employer(s) for any reason whatsoever, the Lender will be entitled to demand payment of the overdue EMI/EMI in default or the outstanding amount, as the case may be, from the Borrower(s) and the Borrower(s) will forthwith pay the EMI amount or such outstanding amount to the Lender.</P>
-    <P class="p229 ft131"><SPAN class="ft1">III.</SPAN><SPAN class="ft130">Lender shall have the right to review the loan account and revise the terms thereof anytime on its own or upon the request of the Borrower(s) and the repayment of the outstanding loan will be subject to the revised terms & conditions;</SPAN></P>
-    <P class="p230 ft52">IV. Any amount to the Lender under the Agreement by the borrower(s), shall be made free and clear of and with out any deduction for or on account of any tax.;</P>
-    <P class="p231 ft52"><SPAN class="ft69">V.</SPAN><SPAN class="ft129">Any </SPAN><NOBR>post-dated</NOBR> cheques (PDC) and undated chequez s (UDC) issued by the Borrower (s) (if required by PFSL), which as being authorised to fill up with date may be deposited by PFSL with a view to receiving payments on the Due Dates, as provided for in the terms of Repayment in Schedule II;</P>
-    <P class="p232 ft28">VI. Borrower(s) shall always ensure that sufficient funds are available in the account to which the said PDCs/ UDCs/ ECS/ ACH relate to enable the Lender to present the same for encashment. In the event of any dishonour of a Payment</P>
-    <P class="p233 ft1">Instrument, without prejudice to the other rights of PFSL, the Borrower(s) shall be liable to pay to the Lender additional Interest/charges;</P>
-    <P class="p234 ft28">VII. In the event the Lender is unwilling to continue the Loan on account of regulatory or other reasons and/ or if any event of default occurs, the Lender shall have the sole right during tenor of this Agreement to recall the entire or part of the</P>
-    <P class="p235 ft1">loan without assigning any reason Whatsoever;</P>
-    <P class="p236 ft52">VIII. The Borrower(s) shall not leave India for employment or business or long stay or Permanently, without first fully repaying the personal loan then outstanding with interest and other dues including any other charges as pertaining to the Loan;</P>
-    <P class="p46 ft1">IX. Liability of the Guarantor shall be <NOBR>co-terminus</NOBR> with that of the Borrower(s) and Acknowledgement of Liability by the</P>
-    <P class="p237 ft1">Borrower is binding on the Guarantor till such time the liability is discharged to the full satisfaction of the Lender;</P>
-    <P class="p238 ft28"><SPAN class="ft1">X.</SPAN><SPAN class="ft132">Any other obligations, warranties, guarantee expressed by Borrower(s) or Guarantor in any clauses and/orSchedules of the Personal Loan Facility Agreement;</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t19">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p39 ft2">For PFSL</P>
-    </DIV>
-    <DIV id="id20_2">
-    <P class="p13 ft7">20</P>
-    </DIV>
+        <DIV id="id20_1">
+            <P class="p225 ft128">SCHEDULE III</P>
+            <P class="p226 ft5">OTHER TERMS AND CONDITIONS</P>
+            <P class="p2 ft1"><SPAN class="ft1">I.</SPAN><SPAN class="ft65">Borrower(s) and the Guarantor shall jointly and severally repay the Loan along with Interest as set out in </SPAN><NOBR><SPAN class="ft2">Schedule-II;</SPAN></NOBR></P>
+            <P class="p227 ft52"><SPAN class="ft1">II.</SPAN><SPAN class="ft129">In the event of cessation of the Borrowers' service with the Borrowers' employer(s) before the loan is repaid in full it will be the responsibility and obligation of the Borrower(s) to pay and in the event of the Borrowers' employer(s) committing default or delay in payment of EMI on the loan or payment of the outstanding amount in the event of</SPAN></P>
+            <P class="p228 ft52">cessation of service of the Borrower (s) with the Borrowers' employer(s) for any reason whatsoever, the Lender will be entitled to demand payment of the overdue EMI/EMI in default or the outstanding amount, as the case may be, from the Borrower(s) and the Borrower(s) will forthwith pay the EMI amount or such outstanding amount to the Lender.</P>
+            <P class="p229 ft131"><SPAN class="ft1">III.</SPAN><SPAN class="ft130">Lender shall have the right to review the loan account and revise the terms thereof anytime on its own or upon the request of the Borrower(s) and the repayment of the outstanding loan will be subject to the revised terms & conditions;</SPAN></P>
+            <P class="p230 ft52">IV. Any amount to the Lender under the Agreement by the borrower(s), shall be made free and clear of and with out any deduction for or on account of any tax.;</P>
+            <P class="p231 ft52"><SPAN class="ft69">V.</SPAN><SPAN class="ft129">Any </SPAN><NOBR>post-dated</NOBR> cheques (PDC) and undated chequez s (UDC) issued by the Borrower (s) (if required by PFSL), which as being authorised to fill up with date may be deposited by PFSL with a view to receiving payments on the Due Dates, as provided for in the terms of Repayment in Schedule II;</P>
+            <P class="p232 ft28">VI. Borrower(s) shall always ensure that sufficient funds are available in the account to which the said PDCs/ UDCs/ ECS/ ACH relate to enable the Lender to present the same for encashment. In the event of any dishonour of a Payment</P>
+            <P class="p233 ft1">Instrument, without prejudice to the other rights of PFSL, the Borrower(s) shall be liable to pay to the Lender additional Interest/charges;</P>
+            <P class="p234 ft28">VII. In the event the Lender is unwilling to continue the Loan on account of regulatory or other reasons and/ or if any event of default occurs, the Lender shall have the sole right during tenor of this Agreement to recall the entire or part of the</P>
+            <P class="p235 ft1">loan without assigning any reason Whatsoever;</P>
+            <P class="p236 ft52">VIII. The Borrower(s) shall not leave India for employment or business or long stay or Permanently, without first fully repaying the personal loan then outstanding with interest and other dues including any other charges as pertaining to the Loan;</P>
+            <P class="p46 ft1">IX. Liability of the Guarantor shall be <NOBR>co-terminus</NOBR> with that of the Borrower(s) and Acknowledgement of Liability by the</P>
+            <P class="p237 ft1">Borrower is binding on the Guarantor till such time the liability is discharged to the full satisfaction of the Lender;</P>
+            <P class="p238 ft28"><SPAN class="ft1">X.</SPAN><SPAN class="ft132">Any other obligations, warranties, guarantee expressed by Borrower(s) or Guarantor in any clauses and/orSchedules of the Personal Loan Facility Agreement;</SPAN></P>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            
+            <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+                <TR style="border: 0">
+                    <TD class="tr6 td23" style="border: 0">
+                        <div style="width: 190px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td24" style="border: 0">
+                        <div style="width: 55px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Borrower</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td25" style="border: 0">
+                        <div style="width: 75px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Co-Borrower</P>
+                    </TD>
+                </TR>
+            </TABLE>
+        </DIV>
+  
     </DIV>
 
     <div class="page-break"></div>
 
     <DIV id="page_21">
-    <DIV id="p21dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAroAAAACCAIAAAA4meh/AAAANElEQVRYhe3UsQkAIBADQLP/0G9h84WdoIV3E4QQkqoaAE2S1xFu8H4snwz+kI7YcKMAdBN9LgkAqUwevwAAAABJRU5ErkJggg==" id="p21img1"></DIV>
     
-    
-    <DIV id="id21_1">
-    <P class="p239 ft5">SCHEDULE IV</P>
-    <P class="p240 ft5">DOCUMENTS TO BE ATTACHED WITH APPLICATION FOR LOAN</P>
-    <P class="p241 ft8">Please ( ) Tick Whichever Applicable</P>
-    <P class="p242 ft1"><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from current Employer;</SPAN></P>
-    <P class="p242 ft1"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft134">Proof of identity;</SPAN></P>
-    <P class="p243 ft1"><SPAN class="ft1">(iii)</SPAN><SPAN class="ft135">Proof of current residential & official address;</SPAN></P>
-    <P class="p244 ft1"><SPAN class="ft1">(iv)</SPAN><SPAN class="ft136">Latest three months' Bank Statement (where salary / income is credited or accumulated);</SPAN></P>
-    <P class="p243 ft1"><SPAN class="ft1">(v)</SPAN><SPAN class="ft99">Salary slips for last three months preceding application date;</SPAN></P>
-    <P class="p243 ft1"><SPAN class="ft1">(vi)</SPAN><SPAN class="ft136">Two passport size photographs ;</SPAN></P>
-    <P class="p245 ft131"><SPAN class="ft69">(vii)</SPAN><SPAN class="ft137">Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in Schedule II;</SPAN></P>
-    <P class="p246 ft1"><SPAN class="ft1">(viii)</SPAN><SPAN class="ft116">Copies of last 2 years' ITR ;</SPAN></P>
-    <P class="p247 ft1"><SPAN class="ft1">(ix)</SPAN><SPAN class="ft138">Signature Verification by banker (as per PFSL format)</SPAN></P>
-    <P class="p247 ft1"><SPAN class="ft1">(x)</SPAN><SPAN class="ft139">Proof of other income</SPAN></P>
-    <P class="p248 ft1"><SPAN class="ft1">(xi)</SPAN><SPAN class="ft138">Proof of assets (copy of registered deed of house property / statement of accounts of</SPAN></P>
-    <P class="p249 ft1">mutual fund / insurance policy / statement of demat account)</P>
-    <P class="p250 ft1"><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth certificate (as per PFSL format)</SPAN></P>
-    <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify)_________________________________________________________</SPAN></P>
-    <TABLE cellpadding=0 cellspacing=0 class="t20">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
-    </TABLE>
-    <P class="p43 ft2">For PFSL</P>
-    </DIV>
-    <DIV id="id21_2">
-    <P class="p13 ft7">21</P>
-    </DIV>
+        <DIV id="id21_1">
+            <P class="p239 ft5">SCHEDULE IV</P>
+            <P class="p240 ft5">DOCUMENTS TO BE ATTACHED WITH APPLICATION FOR LOAN</P>
+            <P class="p241 ft8">Please ( ) Tick Whichever Applicable</P>
+            <P class="p242 ft1"><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from current Employer;</SPAN></P>
+            <P class="p242 ft1"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft134">Proof of identity;</SPAN></P>
+            <P class="p243 ft1"><SPAN class="ft1">(iii)</SPAN><SPAN class="ft135">Proof of current residential & official address;</SPAN></P>
+            <P class="p244 ft1"><SPAN class="ft1">(iv)</SPAN><SPAN class="ft136">Latest three months' Bank Statement (where salary / income is credited or accumulated);</SPAN></P>
+            <P class="p243 ft1"><SPAN class="ft1">(v)</SPAN><SPAN class="ft99">Salary slips for last three months preceding application date;</SPAN></P>
+            <P class="p243 ft1"><SPAN class="ft1">(vi)</SPAN><SPAN class="ft136">Two passport size photographs ;</SPAN></P>
+            <P class="p245 ft131"><SPAN class="ft69">(vii)</SPAN><SPAN class="ft137">Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in Schedule II;</SPAN></P>
+            <P class="p246 ft1"><SPAN class="ft1">(viii)</SPAN><SPAN class="ft116">Copies of last 2 years' ITR ;</SPAN></P>
+            <P class="p247 ft1"><SPAN class="ft1">(ix)</SPAN><SPAN class="ft138">Signature Verification by banker (as per PFSL format)</SPAN></P>
+            <P class="p247 ft1"><SPAN class="ft1">(x)</SPAN><SPAN class="ft139">Proof of other income</SPAN></P>
+            <P class="p248 ft1"><SPAN class="ft1">(xi)</SPAN><SPAN class="ft138">Proof of assets (copy of registered deed of house property / statement of accounts of</SPAN></P>
+            <P class="p249 ft1">mutual fund / insurance policy / statement of demat account)</P>
+            <P class="p250 ft1"><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth certificate (as per PFSL format)</SPAN></P>
+            <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify)_________________________________________________________</SPAN></P>
+            
+
+            <br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
+
+
+
+            <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+                <TR style="border: 0">
+                    <TD class="tr6 td23" style="border: 0">
+                        <div style="width: 190px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Authorised Signatories For PFSL</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td24" style="border: 0">
+                        <div style="width: 55px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Borrower</P>
+                    </TD>
+                    <td style="border: 0"></td>
+                    <TD class="tr6 td25" style="border: 0">
+                        <div style="width: 75px;height: 1px;background: #000"></div>
+                        <P class="p15 ft2">Co-Borrower</P>
+                    </TD>
+                </TR>
+            </TABLE>
+            
+
+        </DIV>
+            
     </DIV>
 
     <div class="page-break"></div>
 
     <DIV id="page_22">
-    <DIV id="p22dimg1">
-    <IMG src="data:image/png;base64,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" id="p22img1"></DIV>
+    
     
     
     <DIV id="id22_1">
     <P class="p252 ft5">SCHEDULE V</P>
     <P class="p253 ft140">FACILITY SPECIFIC DOCUMENTS EXECUTED BY BORROWER(S) / GUARANTOR (S) TO BE CONSIDERED PART & PARCEL OF THE</P>
     <P class="p254 ft10">PERSONAL LOAN FACILITY AGREEMENT DATED___<SPAN class="ft141">_______</SPAN>___________________</P>
-    <P class="p255 ft141">Please ( tick<SPAN class="ft10"> )</SPAN></P>
+    <P class="p255">Please ( tick<SPAN class="ft10"> )</SPAN></P>
     <TABLE cellpadding=0 cellspacing=0 class="t21">
     <TR>
         <TD class="tr7 td53"><P class="p21 ft142">Sr no</P></TD>
@@ -2906,28 +2729,28 @@
     <TR>
         <TD class="tr20 td56"><P class="p21 ft142">1.</P></TD>
         <TD class="tr20 td57"><P class="p15 ft142">Deed of Personal Guarantee</P></TD>
-        <TD class="tr20 td58"><P class="p15 ft9">&nbsp;</P></TD>
+        
     </TR>
-    <TR>
+    {{-- <TR>
         <TD class="tr3 td53"><P class="p15 ft13">&nbsp;</P></TD>
         <TD class="tr3 td54"><P class="p15 ft13">&nbsp;</P></TD>
         <TD class="tr3 td55"><P class="p15 ft13">&nbsp;</P></TD>
-    </TR>
+    </TR> --}}
     <TR>
         <TD class="tr9 td56"><P class="p21 ft142">2.</P></TD>
         <TD class="tr9 td57"><P class="p15 ft142">Deed of Pledge of Moveable Properties</P></TD>
-        <TD class="tr9 td58"><P class="p15 ft9">&nbsp;</P></TD>
+        {{-- <TD class="tr9 td58"><P class="p15 ft9">&nbsp;</P></TD> --}}
     </TR>
     <TR>
         <TD class="tr19 td56"><P class="p15 ft9">&nbsp;</P></TD>
         <TD class="tr19 td57"><P class="p15 ft142">(Shares , Bonds , Debentures , Mutual Funds)</P></TD>
         <TD class="tr19 td58"><P class="p15 ft9">&nbsp;</P></TD>
-    </TR>
+    {{-- </TR>
     <TR>
         <TD class="tr41 td53"><P class="p15 ft126">&nbsp;</P></TD>
         <TD class="tr41 td54"><P class="p15 ft126">&nbsp;</P></TD>
         <TD class="tr41 td55"><P class="p15 ft126">&nbsp;</P></TD>
-    </TR>
+    </TR> --}}
     <TR>
         <TD class="tr6 td56"><P class="p21 ft142">3.</P></TD>
         <TD class="tr6 td57"><P class="p15 ft142">Deed of Mortgage of Inmoveable Properties</P></TD>
@@ -2965,25 +2788,36 @@
     </TR>
     </TABLE>
     <!--[if lte IE 7]><P style="margin-left:705px;margin-top:0px;margin-right:-1072px;margin-bottom:0px;" class="p256 ft113"><![endif]--><!--[if gte IE 8]><P style="margin-left:338px;margin-top:0px;margin-right:-705px;margin-bottom:367px;" class="p256 ft113"><![endif]--><![if ! IE]><P style="margin-left:521px;margin-top:184px;margin-right:-888px;margin-bottom:183px;" class="p256 ft113"><![endif]>Borrower(s) to sign</P>
-    <TABLE cellpadding=0 cellspacing=0 class="t22">
-    <TR>
-        <TD class="tr6 td23"><P class="p15 ft2">Authorised Signatories</P></TD>
-        <TD class="tr6 td24"><P class="p15 ft2">Borrower</P></TD>
-        <TD class="tr6 td25"><P class="p15 ft2"><NOBR>Co-Borrower</NOBR></P></TD>
-    </TR>
+    
+
+
+
+    <TABLE cellpadding=0 cellspacing=0 class="t1" style="border: 0">
+        <TR style="border: 0">
+            <TD class="tr6 td23" style="border: 0">
+                <div style="width: 190px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Authorised Signatories For PFSL</P>
+            </TD>
+            <td style="border: 0"></td>
+            <TD class="tr6 td24" style="border: 0">
+                <div style="width: 55px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Borrower</P>
+            </TD>
+            <td style="border: 0"></td>
+            <TD class="tr6 td25" style="border: 0">
+                <div style="width: 75px;height: 1px;background: #000"></div>
+                <P class="p15 ft2">Co-Borrower</P>
+            </TD>
+        </TR>
     </TABLE>
-    <P class="p43 ft2">For PFSL</P>
-    </DIV>
-    <DIV id="id22_2">
-    <P class="p13 ft7">22</P>
-    </DIV>
+
+
     </DIV>
 
     <div class="page-break"></div>
 
     <DIV id="page_23">
-    <DIV id="p23dimg1">
-    <IMG src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtYAAAOTCAIAAAAUkNP6AAARBUlEQVR4nO3dXW4aSRSAUe6IHeH9r8CsqeaBiDj+YYim4cPmnIeEmFZ05UTiU1V3edZaOwCA+9rXAwAA38zMfPXW9UsbEgQA+DtfdcaFNPnon42GAQD4CxIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMCsteoZAICnYxUEAAhIEAAgIEEAgIAEAQACEgQACEgQAGAbM3P9xRIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEADgVi787FwJAgDcylrrq7ckCABwE8fj8cK7EgQACEgQAGAbn267zMynd4RIEADghl5fX9daHytEggAAN/Ty8rJ7s0BybhEJAgDc0LvdmfOKyD6aBwD4sS4/C3OKEqsgAMDGDofD4XC4fI0EAQC2cb7P47QK8lWFnC6TIABAQIIAAIG5cHg7AMD1Zn51xfnFhcusggAAAQkCAGzs0+NQT84LJBIEANjeWuvd6SCnHxbz+5hU94IAAJt4dwvIxztC3n7FKggAcBMflznefkWCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQe0AwABqyAAQECCAAABCQIABCQIABCQIABAQIIAANuYmesvliAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAYNZa9QwAwNOxCgIABCQIABCQIABAQIIAAAEJAgAEJAgAsI2Zuf5iCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEZq1VzwAAPB2rIABAQIIAAAEJAgAEJAgAEJAgAEBAggAA25iZ6y+WIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBg1lr1DADA07EKAgAEJAgAEJAgAEBAggAAAQkCAAQkCACwjZm5/mIJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQGBfDwAAfD9/dQTI53/DWmuTUQAArmcjBgAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMC+HgCARzEz9QgPYa1Vj/AUJAgAv/n01WF3YyMGAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgMB+t9vNTD0Gf1hr1SMAwG3tdz7wAIC7sxEDAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQGBfDwDAA5mZeoTYWqse4VmM7zUAcH82YgCAgAQBAAISBAAISBAAIOCJGIBvw+MqP4nHQTwRAwAEbMQAAIGnXtOzAgQAFRsxAEDARgwAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAANubmcsXSBAA4FYuhIgEAQACEgQACEgQAOBW1lrH4/HTtyQIALC919fX04vD4TAzx+Px3X0h+2IqAOCJrLVOv87M6fXOKggAkJAgAMCWTtsuLy8vH986L4Hsdrt5+wcAgP/ptNvyds/lU1ZBAIDt/ecahwQBAAI2YgCAgFUQACAgQQCA+zkfUCZBAIA7OR6PjiYDAG7o3XHsp8NCDofD+SsOaAcAbu7jSSGeiAEAAjZiAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAI7OsBAHgUM1OP8BDWWvUIT0GCAPCbT18ddjc2YgCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAISBAAICBBAICABAEAAhIEAAhIEAAgIEEAgIAEAQACEgQACEgQACAgQQCAgAQBAAISBAAI7E+/zUw7B++steoRAOCGfiWIDzwA4J5sxAAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQkCAAQECCAAABCQIABCQIABCQIABAQIIAAAEJAgAEJAgAEJAgAEBAggAAAQkCAAQkCAAQ2NcDAPBAZqYeIbbWqkd4FuN7DQDcn40YACAgQQCAgAQBAAISBAAISBAAICBBAICAc0EAvgcndvwkTsTYvT0X5Mf/5/bvDQCP418RXuKrw0zPzAAAAABJRU5ErkJggg==" id="p23img1"></DIV>
+    
     
     
     <DIV id="id23_1">
