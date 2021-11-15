@@ -120,13 +120,5 @@
                 }
             });
         }
-
-        $('.download-agreement').on('click', function () {
-            $(this).addClass('badge-disabled');
-            toastFire('info', 'Download started...');
-            setTimeout(() => {
-                $(this).removeClass('badge-disabled');
-            }, 7000);
-        });
     </script>
 @endsection

@@ -324,3 +324,15 @@ mark {
 .user-panel img {
     border: 2px solid #5a5a5a;
 }
+
+.fields_col-1 {
+    width: 200px;
+    max-width: 200px;
+    overflow: hidden;
+}
+
+.fields_col-2 {
+    width: 700px;
+    max-width: 700px;
+    overflow: hidden;
+}

@@ -998,27 +998,39 @@
                 </tr>
                 <tr>
                     <td>Customer ID:</td>
-                    <td></td>
+                    <td>
+                        {{$customerid}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Name of the Borrower:</td>
-                    <td></td>
+                    <td>
+                        {{$nameoftheborrower}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Name of the Co-Borrower:</td>
-                    <td></td>
+                    <td>
+                        {{$nameofthecoborrower}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Name of the Guarantor:</td>
-                    <td></td>
+                    <td>
+                        {{$nameoftheguarantor}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Loan Application Number:</td>
-                    <td></td>
+                    <td>
+                        {{$loanapplicationnumber}}
+                    </td>
                 </tr>
                 <tr>
                     <td>Loan Account Number:</td>
-                    <td></td>
+                    <td>
+                        {{$loanaccountnumber}}
+                    </td>
                 </tr>
             </table>
         </DIV>

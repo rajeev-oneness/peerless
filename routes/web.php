@@ -45,6 +45,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/{id}/edit', [BorrowerController::class, 'edit'])->name('user.borrower.edit');
         Route::post('/{id}/update', [BorrowerController::class, 'update'])->name('user.borrower.update');
         Route::post('/destroy', [BorrowerController::class, 'destroy'])->name('user.borrower.destroy');
+        // agreement
+        Route::get('/{id}/agreement', [BorrowerController::class, 'agreementFields'])->name('user.borrower.agreement');
+        Route::post('/agreement/store', [BorrowerController::class, 'agreementStore'])->name('user.borrower.agreement.store');// pdf
+        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/download', [PDFController::class, 'generateDynamicPdf'])->name('user.borrower.agreement.pdf.download');
     });
 
     // role

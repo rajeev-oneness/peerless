@@ -112,6 +112,7 @@ class FieldController extends Controller
         $agreement->type = $request->type;
         $agreement->value = $request->value ? $request->value : '';
         $agreement->required = $request->required ? $request->required : 0;
+        $agreement->key_name = generateKeyForForm($request->name);
         $agreement->save();
 
         return redirect()->route('user.field.list')->with('success', 'Field updated');

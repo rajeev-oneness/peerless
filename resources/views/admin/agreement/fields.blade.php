@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
-                                <h6 class="font-weight-bold">{{$data->agreement->name}}</h6>
+                                <h5 class="font-weight-bold">{{$data->agreement->name}}</h5>
                             </div>
                             <div class="col-md-4 text-right">
                                 <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.agreement.show')}}', {{$data->agreement->id}})">Quick view</a>
@@ -36,7 +36,7 @@
                                 <form action="{{route('user.agreement.fields.store')}}" method="POST" class="w-100">
                                 @csrf
                                     <div class="form-group">
-                                        <label class="text-muted font-weight-light">Setup fields <i class="fas fa-chevron-down"></i></label>
+                                        <label class="text-muted font-weight-light">Setup fields</label>
                                         <select name="field_id[]" id="field_id" class="duallistbox" multiple="multiple">
                                             @foreach($data->fields as $key => $field)
                                                 <option value="{{$field->id}}" @if(in_array($field->id, $data->agreementFields)){{('selected')}} @endif>{{$field->name}}</option>

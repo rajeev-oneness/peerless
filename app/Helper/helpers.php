@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\MailLog;
+use Hamcrest\Arrays\IsArray;
 use Illuminate\Support\Facades\Mail;
 
 function userTypeCheck($type)
@@ -31,53 +32,88 @@ function words($string, $words = 100)
 	return \Illuminate\Support\Str::limit($string, $words);
 }
 
-function form3lements($name=null, $type, $value=null, $key_name=null)
+function randomGenerator()
+{
+    return uniqid().''.date('ymdhis').''.uniqid();
+}
+
+function emptyCheck($string,$date=false)
+{
+    if($date){
+        return !empty($string) ? date('Y-m-d',strtotime($string)) : '0000-00-00';
+    }
+    return !empty($string) ? $string : '';
+}
+
+function fileUpload($file,$folder='image')
+{
+    $random = randomGenerator();
+    $file->move('upload/'.$folder.'/',$random.'.'.$file->getClientOriginalExtension());
+    $fileurl = 'upload/'.$folder.'/'.$random.'.'.$file->getClientOriginalExtension();
+    return $fileurl;
+}
+
+function checkStringFileAray($data)
+{
+    if($data != '') {
+        if(is_array($data)) {
+            return ($data ? implode(',',$data) : '');
+        } elseif(is_string($data)) {
+            return $data;
+        } else {
+            return fileUpload($data,'agreementUploads');
+        }
+    }
+    return '';
+}
+
+function form3lements($field_id, $name=null, $type, $value=null, $key_name=null, $width=100, $required='')
 {
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
+            $response = '<input type="text" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'email':
-            $response = '<input type="email" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
+            $response = '<input type="email" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'number':
-            $response = '<input type="number" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
+            $response = '<input type="number" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'date':
-            $response = '<input type="date" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
+            $response = '<input type="date" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'time':
-            $response = '<input type="time" placeholder="'.$name.'" class="form-control form-control-sm w-50">';
+            $response = '<input type="time" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'file':
-            $response = '<div class="custom-file custom-file-sm w-50"><input type="file" class="custom-file-input" id="customFile"><label class="custom-file-label" for="customFile">Choose '.$name.'</label></div>';
+            $response = '<div class="custom-file custom-file-sm w-'.$width.'"><input type="file" class="custom-file-input" id="customFile" name="field_name['.$key_name.']" '.$required.'><label class="custom-file-label" for="customFile">Choose '.$name.'</label></div><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'select':
             $expValue = explode(', ', $value);
-            $option = '<option>Select '.$name.'</option>';
+            $option = '<option value="" selected hidden>Select '.$name.'</option>';
             foreach($expValue as $index => $val) {
                 $option .= '<option value="'.$val.'">'.$val.'</option>';
             }
-            $response = '<select class="form-control form-control-sm w-50">'.$option.'</select>';
+            $response = '<select class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'>'.$option.'</select><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'checkbox':
             $expValue = explode(', ', $value);
             $option = '';
             foreach($expValue as $index => $val) {
-                $option .= '<input class="form-check-input" type="checkbox" name="'.$key_name.'" id="'.$key_name.'-'.$index.'"> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label>';
+                $option .= '<input class="form-check-input" type="checkbox" name="field_name['.$key_name.'][]" id="'.$key_name.'-'.$index.'" value="'.$val.'" '.$required.'> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label>';
             }
-            $response = '<div class="form-check form-check-inline">'.$option.'</div>';
+            $response = '<div class="form-check form-check-inline">'.$option.'</div><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'radio':
             $expValue = explode(', ', $value);
             $option = '';
             foreach($expValue as $index => $val) {
-                $option .= '<input class="form-check-input" type="radio" name="'.$key_name.'" id="'.$key_name.'-'.$index.'"> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label>';
+                $option .= '<input class="form-check-input" type="radio" name="field_name['.$key_name.']" id="'.$key_name.'-'.$index.'" value="'.$val.'" '.$required.'> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             }
             $response = '<div class="form-check form-check-inline">'.$option.'</div>';
             break;
         case 'textarea':
-            $response = '<textarea placeholder="'.$name.'" class="form-control form-control-sm w-50" style="min-height:50px;max-height:100px"></textarea>';
+            $response = '<textarea placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" style="min-height:50px;max-height:100px" name="field_name['.$key_name.']" '.$required.'></textarea><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         default:
             $response = '<input type="text">';

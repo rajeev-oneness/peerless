@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Borrower extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function agreementDetails() {
+        return $this->belongsTo('App\Models\Agreement', 'agreement_id', 'id');
+    }
 }

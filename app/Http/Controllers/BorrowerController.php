@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agreement;
+use App\Models\AgreementData;
+use App\Models\AgreementField;
+use App\Models\AgreementRfq;
 use App\Models\Borrower;
 use App\Models\UserType;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +34,9 @@ class BorrowerController extends Controller
      */
     public function create()
     {
-        return view('admin.borrower.create');
+        $data = (object)[];
+        $data->agreement = Agreement::orderBy('name')->get();
+        return view('admin.borrower.create', compact('data'));
     }
 
     /**
@@ -53,6 +60,7 @@ class BorrowerController extends Controller
             'city' => 'required|string|min:1|max:200',
             'pincode' => 'required|string|min:1|max:200',
             'state' => 'required|string|min:1|max:200',
+            'agreement_id' => 'nullable|numeric|min:1'
         ]);
 
         DB::beginTransaction();
@@ -71,6 +79,7 @@ class BorrowerController extends Controller
             $user->city = $request->city;
             $user->pincode = $request->pincode;
             $user->state = $request->state;
+            $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
             $user->save();
 
             DB::commit();
@@ -126,6 +135,7 @@ class BorrowerController extends Controller
     {
         $data = (object)[];
         $data->user = Borrower::findOrFail($id);
+        $data->agreement = Agreement::orderBy('name')->get();
         return view('admin.borrower.edit', compact('data'));
     }
 
@@ -151,6 +161,7 @@ class BorrowerController extends Controller
             'city' => 'required|string|min:1|max:200',
             'pincode' => 'required|string|min:1|max:200',
             'state' => 'required|string|min:1|max:200',
+            'agreement_id' => 'nullable|numeric|min:1'
         ]);
 
         $user = Borrower::findOrFail($id);
@@ -166,6 +177,7 @@ class BorrowerController extends Controller
         $user->city = $request->city;
         $user->pincode = $request->pincode;
         $user->state = $request->state;
+        $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
         $user->save();
 
         return redirect()->route('user.borrower.list')->with('success', 'Borrower updated');
@@ -182,5 +194,66 @@ class BorrowerController extends Controller
         // $request->validate(['id' => 'required|numeric|min:1']);
         Borrower::where('id', $request->id)->delete();
         return response()->json(['error' => false, 'title' => 'Deleted', 'message' => 'Record deleted', 'type' => 'success']);
+    }
+
+    public function agreementFields(Request $request, $id)
+    {
+        $data = (object)[];
+        $data->agreement = Borrower::select('name_prefix', 'full_name', 'agreement_id')->where('id', $id)->get();
+        foreach($data->agreement as $agreement) {
+            $data->name_prefix = $agreement->name_prefix;
+            $data->full_name = $agreement->full_name;
+            $data->agreement_id = $agreement->agreement_id;
+            $data->agreement_name = $agreement->agreementDetails->name;
+            break;
+        }
+
+        $data->fields = AgreementField::where('agreement_id', $data->agreement_id)->get();
+
+        return view('admin.borrower.fields', compact('data', 'id'));
+    }
+
+    public function agreementStore(Request $request)
+    {
+        //dd($request->all());
+        $rules = [
+            'borrower_id' => 'required|numeric|min:1',
+            'agreement_id' => 'required|numeric|min:1',
+            'field_name' => 'required'
+        ];
+
+        $validate = validator()->make($request->all(), $rules);
+
+        if (!$validate->fails()) {
+            DB::beginTransaction();
+
+            try {
+                $rfq = new AgreementRfq();
+                $rfq->borrower_id = $request->borrower_id;
+                $rfq->agreement_id = $request->agreement_id;
+                $rfq->data_filled_by = auth()->user()->id;
+                $rfq->save();
+
+                foreach ($request->field_name as $index => $field) {
+                    $agreement = new AgreementData();
+                    $agreement->rfq_id = $rfq->id;
+                    // $agreement->borrower_id = $request->borrower_id;
+                    // $agreement->agreement_id = $request->agreement_id;
+                    $agreement->field_id = 0;
+                    $agreement->field_name = $index;
+                    $agreement->field_value = checkStringFileAray($field);
+                    // $agreement->data_filled_by = auth()->user()->id;
+                    $agreement->save();
+                }
+
+                DB::commit();
+
+                return redirect()->route('user.borrower.agreement', $request->borrower_id)->with('success', 'Fields added');
+            } catch(Exception $e) {
+                DB::rollback();
+            }
+        } else {
+            return response()->json(['error' => true, 'message' => $validate->errors()->first()]);
+        }
     }
 }

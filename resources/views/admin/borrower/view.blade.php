@@ -21,8 +21,13 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="font-weight-bold mb-1">{{ucwords($data->name_prefix)}} {{$data->full_name}}</h6>
-                        <h6 class="font-weight-bold mb-3 text-muted">{{ucwords($data->gender)}}</h6>
+                        <h6 class="font-weight-bold mb-1">
+                            <span>{{ucwords($data->name_prefix)}}</span> 
+                            <span title="Name">{{$data->full_name}}</span>, 
+                            <span title="Age" class="text-muted">{{date('Y') - date('Y', strtotime($data->date_of_birth))}}</span>
+                            <span title="Gender" class="text-muted">({{ucwords($data->gender)}})</span>
+                        </h6>
+                        {{-- <h6 class="font-weight-bold mb-3 text-muted">{{ucwords($data->gender)}}</h6> --}}
 
                         <p class="text-muted small mb-0">Email</p>
                         <p class="text-dark small">{{$data->email}}</p>
@@ -40,12 +45,12 @@
 
                         <hr>
 
-                        <p class="text-muted small mb-0">Street address</p>
+                        <p class="text-muted small mb-0">Street address2</p>
                         <p class="text-dark small">{{$data->street_address}}</p>
                         <p class="text-muted small mb-0">City</p>
                         <p class="text-dark small">{{$data->city}}</p>
                         <p class="text-muted small mb-0">Pincode</p>
-                        <p class="text-dark small mb-0">{{$data->pincode}}</p>
+                        <p class="text-dark small">{{$data->pincode}}</p>
                         <p class="text-muted small mb-0">State</p>
                         <p class="text-dark small mb-0">{{$data->state}}</p>
                     </div>

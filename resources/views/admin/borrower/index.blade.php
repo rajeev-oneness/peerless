@@ -61,6 +61,8 @@
                                         <div class="single-line">
                                             @if ($item->agreement_id == 0)
                                                 <p class="small text-muted"> <em>No agreement yet</em> </p>
+                                            @else
+                                                <a href="{{route('user.borrower.agreement', $item->id)}}" class="badge badge-primary action-button" title="Setup loan application form">{{$item->agreementDetails->name}}</a>
                                             @endif
                                         </div>
                                     </td>

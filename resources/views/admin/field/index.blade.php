@@ -32,17 +32,17 @@
                                 @forelse ($data as $index => $item)
                                 <tr id="tr_{{$item->id}}">
                                     <td>{{$index+1}}</td>
-                                    <td>
-                                        <h6 class="font-weight-bold single-line">{{$item->name}} {!!($item->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '')!!}</h6>
+                                    <td class="fields_col-1">
+                                        <h6 class="font-weight-bold">{!!$item->name!!} {!!($item->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '')!!}</h6>
                                     </td>
-                                    <td>
-                                        {!!form3lements($item->name, $item->inputType->name, $item->value, $item->key_name)!!}
+                                    <td class="fields_col-2">
+                                        {!!form3lements($item->id, $item->name, $item->inputType->name, $item->value, $item->key_name, 50)!!}
                                     </td>
                                     <td class="text-right">
                                         <div class="single-line">
-                                            <a href="{{route('user.field.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
-    
-                                            <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.field.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
+                                            {{-- <a href="{{route('user.field.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a> --}}
+
+                                            {{-- <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.field.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
                                         </div>
                                     </td>
                                 </tr>
