@@ -24,6 +24,41 @@
             /* width: 100%; */
             
         }
+
+        .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        /* transition: color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out; */
+        }
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: .875rem;
+            line-height: 1.5;
+            border-radius: 0.2rem;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            box-shadow: none;
+        }
     </style>
 
     
@@ -983,7 +1018,9 @@
         
     </STYLE>
 
-    <input type='button' id='btn' value='Print' onclick='printDiv();'>
+    <div align="center" style="padding: 10px 0">
+        <button id='print-btn' onclick='printDiv();' class="btn btn-sm btn-primary">Print</button>
+    </div>
 
     <div id="outer_content">
         <div id="DivIdToPrint">
@@ -1780,16 +1817,16 @@
             <div class="page-break"></div>
         
             <DIV id="page_16">
-        
-                <table class="border0" >
+                <table class="border0">
                     <tr class="border0">
                         <td class="border0" colspan="4">
-                            <p class="ft2 p28" style="padding-left:80px;">IN WITNESS WHEREOF the Parties hereto have executed / caused to be executed these presents
+                            <p class="ft2 p28" style="padding-left:80px;">IN WITNESS WHEREOF the Parties hereto have
+                                executed / caused to be executed these presents
                                 the day and year first here in above written in the manner herein after appearing:</p>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0" colspan="8">
+                        <td class="border0" colspan="4">
                             <p class="ft0" style="text-decoration: none; font-family:sans-serif;">For Borrower(s)</p>
                         </td>
                     </tr>
@@ -1799,63 +1836,78 @@
                                 Delivered by the
                                 Borrower(s)</p>
                         </td>
-                        <td class="border0" colspan="5" style="margin: 0; padding:0; line-height:0;">
+                        <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Mr./Ms. {{$data->nameoftheborrower}}______________________________</p>
-                            
+                            <p class="ft1" style="text-align: center ">Mr./Ms. <span> {{$data->nameoftheborrower}}
+                                </span></p>
+
                         </td>
                         <td colspan="2" class="border0">
-                            <p>&nbsp;</p>
+                            <p style="text-align: center;"> </p>
                         </td>
                     </tr>
                     <TR>
                         <TD class="tr27 td26 border0">
                             <P class="p15 ft9">&nbsp;</P>
                         </TD>
-                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;">
-                            <P class="p185 ft1">(Name of the Borrower)</P>
+                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000; ">(Name of the Borrower)</P>
+
                         </TD>
-                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;">
-                            <P class="p186 ft1">(Signature)</P>
+                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000; display:inline-block;">(Signature)</P>
+
+                        </TD>
+
+                    </TR>
+
+                    <tr>
+                        <td class="border0">
+                            <p>&nbsp;</p>
+                        </td>
+                        <td class="border0">
+                            <p>&nbsp;</p>
+                            <p class="ft1" style="text-align: center">Mr./Ms. <span> {{$data->nameofthecoborrower}}
+                                </span> </p>
+
+                        </td>
+                        <td colspan="2" class="border0">
+                            <p style="text-align:center;"> </p>
+                        </td>
+                    </tr>
+                    <TR>
+                        <TD class="tr27 td26 border0">
+                            <P class="p15 ft9">&nbsp;</P>
+                            <P class="p15 ft9">&nbsp;</P>
+                            <P class="p15 ft9">&nbsp;</P>
+                        </TD>
+                        <!-- <TD class="tr27 td27 border0">
+                <P class="ft1" style="text-align:center;">(Name of the Co-Borrower)</P>
+                </TD>
+                <TD class="tr27 td28 border0">
+                <P class=" ft1" style="text-align:center;">(Signature)</P>
+                </TD> -->
+                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000;  margin-top:20px;">(Name of the CO
+                                Borrower)</P>
+
+                        </TD>
+                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000; display:inline-block;">(Signature)</P>
+
                         </TD>
                     </TR>
                     <tr>
                         <td class="border0">
                             <p>&nbsp;</p>
                         </td>
-                        <td class="border0" colspan="5">
-                            <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Mr./Ms. {{$data->nameofthecoborrower}}_________________________</p>
-                            
-                        </td>
-                        <td colspan="2" class="border0">
-                            <p>&nbsp;</p>
-                        </td>
-                    </tr>
-                    <TR>
-                        <TD class="tr27 td26 border0">
-                            <P class="p15 ft9">&nbsp;</P>
-                            <P class="p15 ft9">&nbsp;</P>
-                            <P class="p15 ft9">&nbsp;</P>
-                        </TD>
-                        <TD class="tr27 td27 border0">
-                            <P class="p185 ft1">(Name of the Co-Borrower)</P>
-                        </TD>
-                        <TD class="tr27 td28 border0">
-                            <P class="p186 ft1">(Signature)</P>
-                        </TD>
-                    </TR>
-                    <tr>
                         <td class="border0">
                             <p>&nbsp;</p>
-                        </td>
-                        <td class="border0" colspan="5">
-                            <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
-                            
+                            <p class="ft1" style="text-align: center">Mr./Ms. <span>  </span> </p>
+
                         </td>
                         <td colspan="2" class="border0">
-                            <p>&nbsp;</p>
+                            <p style="text-align:center;"> </p>
                         </td>
                     </tr>
                     <TR>
@@ -1864,18 +1916,25 @@
                             <P class="p15 ft9">&nbsp;</P>
                             <P class="p15 ft9">&nbsp;</P>
                         </TD>
-                        <TD class="tr27 td27 border0">
-                            <P class="p185 ft1">(Name of the Co-Borrower)</P>
+                        <!-- <TD class="tr27 td27 border0">
+                <P class="ft1" style="text-align:center;">(Name of the Co-Borrower)</P>
+                </TD>
+                <TD class="tr27 td28 border0">
+                <P class="ft1" style="text-align:center;">(Signature)</P>
+                </TD> -->
+
+                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000;  margin-top:20px;">(Name of the CO
+                                Borrower)</P>
+
                         </TD>
-                        <TD class="tr27 td28 border0">
-                            <P class="p186 ft1">(Signature)</P>
+                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;text-align:center;">
+                            <P class=" ft1" style="border-top:1px solid #000; display:inline-block;">(Signature)</P>
+
                         </TD>
                     </TR>
                 </table>
-        
-        
                 <br><br>
-        
                 <table class="border0">
                     <tr>
                         <td class="border0" colspan="8">
@@ -1890,30 +1949,30 @@
                                 Services Ltd. <br>
                                 by the hand of its Authorised signatory</p>
                         </td>
-                        <td class="border0" colspan="5" style="margin: 0; padding:0; line-height:0;">
+                        <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Mr./Ms._________________________________________________________________________</p>
-                            
+                            <p class="ft1" style="text-align: right">Mr./Ms. <span>  </span> </p>
+
                         </td>
-                    
+
                     </tr>
                     <TR>
                         <TD class="tr27 td26 border0">
                             <P class="p15 ft9">&nbsp;</P>
                         </TD>
-                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;">
-
-                            {{$data->nameoftheauthorisedsignatory}}
-                            <P class="p185 ft1">(Name of the authorised signatory)</P>
+                        <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0; text-align:center;">
+                            <P class="p185 ft1"
+                                style="border-top:1px solid #000; display:inline-block; margin-top:20px;">(Name of the
+                                authorised signatory)</P>
                         </TD>
-                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;">
-                            <P class="p186 ft1">(Stamp/Signature)</P>
+                        <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0; text-align:center;">
+                            <P class="p186 ft1"
+                                style="border-top:1px solid #000; display:inline-block; margin-top:20px;">
+                                (Stamp/Signature)</P>
                         </TD>
                     </TR>
                 </table>
-        
                 <br><br>
-        
                 {{-- witness 1 --}}
                 <table class="border0">
                     <tr>
@@ -1945,8 +2004,9 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">City : {{$data->witness1city}} <span>Pin code</span>{{$data->witness1pincode}} <span>State</span>{{$data->witness1state}}</p>
-                            
+                            <p class="ft1" style="text-align: right">City : {{$data->witness1city}} <span>Pin
+                                    code</span>{{$data->witness1pincode}} <span>State</span>{{$data->witness1state}}</p>
+
                         </td>
                     </tr>
                     <tr>
@@ -1955,15 +2015,15 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            
-                            <p class="ft1" style="text-align:left"> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Signed By Witness : __________________________________________ </p>
-                            
+
+                            <p class="ft1" style="text-align:left">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                Signed By Witness : __________________________________________ </p>
+
                         </td>
                     </tr>
                 </table>
-
                 <br><br>
-
                 {{-- witness 2 --}}
                 <table class="border0">
                     <tr>
@@ -1995,8 +2055,9 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">City : {{$data->witness2city}} <span>Pin code</span>{{$data->witness2pincode}} <span>State</span>{{$data->witness2state}}</p>
-                            
+                            <p class="ft1" style="text-align: right">City : {{$data->witness2city}} <span>Pin
+                                    code</span>{{$data->witness2pincode}} <span>State</span>{{$data->witness2state}}</p>
+
                         </td>
                     </tr>
                     <tr>
@@ -2005,19 +2066,20 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            
-                            <p class="ft1" style="text-align:left"> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Signed By Witness : __________________________________________ </p>
-                            
+
+                            <p class="ft1" style="text-align:left">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                Signed By Witness : __________________________________________ </p>
+
                         </td>
                     </tr>
                 </table>
-
                 <br><br>
-
                 <table class="border0">
                     <tr>
                         <td class="border0" colspan="8">
-                            <p class="ft0" style="text-decoration: none; font-family:sans-serif;">Read, understood & acknowledged by the Guarantor</p>
+                            <p class="ft0" style="text-decoration: none; font-family:sans-serif;">Read, understood &
+                                acknowledged by the Guarantor</p>
                         </td>
                     </tr>
                     <tr>
@@ -2044,11 +2106,12 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">City : {{$data->guarantorcity}} <span>Pin code</span>{{$data->guarantorpincode}} <span>State</span>{{$data->guarantorstate}}</p>
+                            <p class="ft1" style="text-align: right">City : {{$data->guarantorcity}} <span>Pin
+                                    code</span>{{$data->guarantorpincode}} <span>State</span>{{$data->guarantorstate}}
+                            </p>
                         </td>
                     </tr>
                 </table>
-
             </DIV>
 
             <div class="page-break"></div>
