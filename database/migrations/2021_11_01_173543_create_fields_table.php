@@ -41,8 +41,8 @@ class CreateFieldsTable extends Migration
             // ['name' => 'Phone number', 'type' => '3', 'value' => '', 'key_name' => 'phonenumber'],
 
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
-            ['name' => 'Stamp of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'stampoftheauthorisedsignatory'],
-            ['name' => 'Signature of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheauthorisedsignatory'],
+            // ['name' => 'Stamp of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'stampoftheauthorisedsignatory'],
+            // ['name' => 'Signature of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheauthorisedsignatory'],
 
             // borrower details
             ['name' => 'Customer ID', 'type' => 1, 'value' => '', 'key_name' => 'customerid'],
@@ -58,7 +58,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Highest education of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
             ['name' => 'Mobile number of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
             ['name' => 'Email ID of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'emailidoftheborrower'],
-            ['name' => 'Signature of the Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheborrower'],
+            // ['name' => 'Signature of the Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheborrower'],
 
             // co borrower details
             ['name' => 'Prefix of the Co-Borrower', 'type' => 7, 'value' => 'Mr., Ms., Mrs.', 'key_name' => 'prefixofthecoborrower'],
@@ -73,10 +73,10 @@ class CreateFieldsTable extends Migration
             ['name' => 'Highest education of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
             ['name' => 'Mobile number of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
             ['name' => 'Email ID of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
-            ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
+            // ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
 
             // guarantor details
-            ['name' => 'Name of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheguarantor'],
+            // ['name' => 'Name of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheguarantor'],
             ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
             ['name' => 'Loan Account Number', 'type' => 1, 'value' => '', 'key_name' => 'loanaccountnumber'],
 
@@ -86,7 +86,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Witness 1 City', 'type' => 1, 'value' => '', 'key_name' => 'witness1city'],
             ['name' => 'Witness 1 Pincode', 'type' => 1, 'value' => '', 'key_name' => 'witness1pincode'],
             ['name' => 'Witness 1 State', 'type' => 1, 'value' => '', 'key_name' => 'witness1state'],
-            ['name' => 'Witness 1 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness1signature'],
+            // ['name' => 'Witness 1 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness1signature'],
 
             // witness 2 details
             ['name' => 'Witness 2 Full name', 'type' => 1, 'value' => '', 'key_name' => 'witness2fullname'],
@@ -94,7 +94,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Witness 2 City', 'type' => 1, 'value' => '', 'key_name' => 'witness2city'],
             ['name' => 'Witness 2 Pincode', 'type' => 1, 'value' => '', 'key_name' => 'witness2pincode'],
             ['name' => 'Witness 2 State', 'type' => 1, 'value' => '', 'key_name' => 'witness2state'],
-            ['name' => 'Witness 2 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness2signature'],
+            // ['name' => 'Witness 2 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness2signature'],
 
             // guarantor details
             ['name' => 'Guarantor Full name', 'type' => 1, 'value' => '', 'key_name' => 'guarantorfullname'],
@@ -102,7 +102,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Guarantor City', 'type' => 1, 'value' => '', 'key_name' => 'guarantorcity'],
             ['name' => 'Guarantor Pincode', 'type' => 1, 'value' => '', 'key_name' => 'guarantorpincode'],
             ['name' => 'Guarantor State', 'type' => 1, 'value' => '', 'key_name' => 'guarantorstate'],
-            ['name' => 'Guarantor Signature', 'type' => 6, 'value' => '', 'key_name' => 'guarantorsignature'],
+            // ['name' => 'Guarantor Signature', 'type' => 6, 'value' => '', 'key_name' => 'guarantorsignature'],
 
             // agreement details
             ['name' => 'Place of agreement', 'type' => 1, 'value' => '', 'key_name' => 'placeofagreement'],
@@ -148,21 +148,21 @@ class CreateFieldsTable extends Migration
             ['name' => 'Demand Promissory Note Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteamount'],
 
             // file uploads
-            ['name' => 'Borrower&apos;s request to employer for EMI deduction from salary', 'type' => 6, 'value' => '', 'key_name' => 'borrowersrequesttoemployerforemideductionfromsalary'],
+            // ['name' => 'Borrower&apos;s request to employer for EMI deduction from salary', 'type' => 6, 'value' => '', 'key_name' => 'borrowersrequesttoemployerforemideductionfromsalary'],
 
             // NACH declaration
             ['name' => 'NACH Declaration for and on be half of', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationforandonbehalfof'],
             ['name' => 'NACH Declaration Name 1', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname1'],
-            ['name' => 'NACH Declaration Signature 1', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature1'],
+            // ['name' => 'NACH Declaration Signature 1', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature1'],
             ['name' => 'NACH Declaration Name 2', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname2'],
-            ['name' => 'NACH Declaration Signature 2', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature2'],
+            // ['name' => 'NACH Declaration Signature 2', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature2'],
             ['name' => 'NACH Declaration Name 3', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname3'],
-            ['name' => 'NACH Declaration Signature 3', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature3'],
+            // ['name' => 'NACH Declaration Signature 3', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature3'],
             ['name' => 'NACH Declaration Name 4', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname4'],
-            ['name' => 'NACH Declaration Signature 4', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature4'],
+            // ['name' => 'NACH Declaration Signature 4', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature4'],
 
             // MISCELLANEOUS DOCUMENTS upload
-            ['name' => 'Miscellaneous documents upload', 'type' => 6, 'value' => '', 'key_name' => 'miscellaneousdocumentsupload'],
+            // ['name' => 'Miscellaneous documents upload', 'type' => 6, 'value' => '', 'key_name' => 'miscellaneousdocumentsupload'],
             // ['name' => 'CustomerID', 'type' => 1, 'value' => '', 'key_name' => 'customerid'],
         ];
 

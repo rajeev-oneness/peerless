@@ -71,9 +71,10 @@ class PDFController extends Controller
         $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
         $data->loanapplicationnumber = $this->getData($agreement, 'loanapplicationnumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
-        $data->signatureoftheauthorisedsignatory = $this->getData($agreement, 'signatureoftheauthorisedsignatory');
-        $data->signatureoftheborrower = $this->getData($agreement, 'signatureoftheborrower');
-        $data->signatureofthecoborrower = $this->getData($agreement, 'signatureofthecoborrower');
+
+        // $data->signatureoftheauthorisedsignatory = $this->getData($agreement, 'signatureoftheauthorisedsignatory');
+        // $data->signatureoftheborrower = $this->getData($agreement, 'signatureoftheborrower');
+        // $data->signatureofthecoborrower = $this->getData($agreement, 'signatureofthecoborrower');
 
         // witness 1
         $data->witness1fullname = $this->getData($agreement, 'witness1fullname');
@@ -95,6 +96,41 @@ class PDFController extends Controller
         $data->guarantorcity = $this->getData($agreement, 'guarantorcity');
         $data->guarantorpincode = $this->getData($agreement, 'guarantorpincode');
         $data->guarantorstate = $this->getData($agreement, 'guarantorstate');
+
+        // borrower
+        $data->streetaddressoftheborrower = $this->getData($agreement, 'streetaddressoftheborrower');
+        $data->pancardnumberoftheborrower = $this->getData($agreement, 'pancardnumberoftheborrower');
+        $data->officiallyvaliddocumentsoftheborrower = $this->getData($agreement, 'officiallyvaliddocumentsoftheborrower');
+        $data->occupationoftheborrower = $this->getData($agreement, 'occupationoftheborrower');
+        $data->residentstatusoftheborrower = $this->getData($agreement, 'residentstatusoftheborrower');
+        $data->dateofbirthoftheborrower = $this->getData($agreement, 'dateofbirthoftheborrower');
+        $data->maritalstatusoftheborrower = $this->getData($agreement, 'maritalstatusoftheborrower');
+        $data->highesteducationoftheborrower = $this->getData($agreement, 'highesteducationoftheborrower');
+        $data->mobilenumberoftheborrower = $this->getData($agreement, 'mobilenumberoftheborrower');
+        $data->emailidoftheborrower = $this->getData($agreement, 'emailidoftheborrower');
+
+        // co-borrower
+        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        $data->streetaddressofthecoborrower = $this->getData($agreement, 'streetaddressofthecoborrower');
+        $data->pancardnumberofthecoborrower = $this->getData($agreement, 'pancardnumberofthecoborrower');
+        $data->officiallyvaliddocumentsofthecoborrower = $this->getData($agreement, 'officiallyvaliddocumentsofthecoborrower');
+        $data->occupationofthecoborrower = $this->getData($agreement, 'occupationofthecoborrower');
+        $data->residentstatusofthecoborrower = $this->getData($agreement, 'residentstatusofthecoborrower');
+        $data->dateofbirthofthecoborrower = $this->getData($agreement, 'dateofbirthofthecoborrower');
+        $data->maritalstatusofthecoborrower = $this->getData($agreement, 'maritalstatusofthecoborrower');
+        $data->highesteducationofthecoborrower = $this->getData($agreement, 'highesteducationofthecoborrower');
+        $data->mobilenumberofthecoborrower = $this->getData($agreement, 'mobilenumberofthecoborrower');
+        $data->emailidofthecoborrower = $this->getData($agreement, 'emailidofthecoborrower');
+
+        // agreement place & date
+        $data->placeofagreement = $this->getData($agreement, 'placeofagreement');
+        $data->dateofagreement = $this->getData($agreement, 'dateofagreement');
+
+
+
+
+
+        
 
         // $data = [
         //     'fileName' => 'personal_loan_pdf',

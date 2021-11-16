@@ -1327,8 +1327,7 @@
                             modified, consolidated or </SPAN>
                         <NOBR>re-enacted.</NOBR>
                     </P>
-                    <P class="p57 ft1"><SPAN class="ft1">1.6</SPAN><SPAN class="ft35">The arrangement of Clauses in this
-                            Agreement shall have no bearing on their interpretation.</SPAN></P>
+                    <P class="p57 ft1"><SPAN class="ft1">1.6</SPAN><SPAN class="ft35">The arrangement of Clauses in this Agreement shall have no bearing on their interpretation.</SPAN></P>
 
                     {{-- <br>
                     <br> --}}
@@ -2064,63 +2063,81 @@
                             <P class="p203 ">Name of the Borrower</P>
                         </td>
                         <td>
-                            {{}}
+                            {{$data->nameoftheborrower}}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Permanent Address</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->streetaddressoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">PAN</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->pancardnumberoftheborrower}}
+                        </td>
                     </tr>
                 
                     <tr>
                         <td>
                             <P class="p204">Officially Valid Documents</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->officiallyvaliddocumentsoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Occupation</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->occupationoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Resident Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->residentstatusoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Date of birth</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->dateofbirthoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Marital Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->maritalstatusoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Highest Education</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->highesteducationoftheborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Tel no / Email ID</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->mobilenumberoftheborrower}} / {{$data->emailidoftheborrower}}
+                        </td>
                     </tr>
                 </table>
                 <table class="table_17">
@@ -2128,62 +2145,82 @@
                         <td>
                             <P class="p203 ">Name of the Co Borrower</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->nameofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Permanent Address</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->streetaddressofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">PAN</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->pancardnumberofthecoborrower}}
+                        </td>
                     </tr>
                 
                     <tr>
                         <td>
                             <P class="p204">Officially Valid Documents</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->officiallyvaliddocumentsofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Occupation</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->occupationofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Resident Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->residentstatusofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Date of birth</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->dateofbirthofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Marital Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->maritalstatusofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Highest Education</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->highesteducationofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Tel no / Email ID</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->mobilenumberofthecoborrower}} / {{$data->emailidofthecoborrower}}
+                        </td>
                     </tr>
                 </table>
                 <table class="table_17">
@@ -2191,62 +2228,100 @@
                         <td>
                             <P class="p203 ">Name of the Co Borrower</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->nameofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Permanent Address</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->streetaddressofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">PAN</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->pancardnumberofthecoborrower}}
+                        </td>
                     </tr>
                 
                     <tr>
                         <td>
                             <P class="p204">Officially Valid Documents</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->officiallyvaliddocumentsofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Occupation</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->occupationofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Resident Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->residentstatusofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Date of birth</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->dateofbirthofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Marital Status</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->maritalstatusofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p205">Highest Education</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->highesteducationofthecoborrower}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <P class="p204">Tel no / Email ID</P>
                         </td>
-                        <td></td>
+                        <td>
+                            {{$data->mobilenumberofthecoborrower}} / {{$data->emailidofthecoborrower}}
+                        </td>
+                    </tr>
+                </table>
+                <table class="table_17">
+                    <tr>
+                        <td>
+                            <P class="p203 ">Place of agreement</P>
+                        </td>
+                        <td>
+                            {{$data->placeofagreement}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <P class="p204">Date of agreement</P>
+                        </td>
+                        <td>
+                            {{$data->dateofagreement}}
+                        </td>
                     </tr>
                 </table>
                 

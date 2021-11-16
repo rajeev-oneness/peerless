@@ -56,7 +56,7 @@
                                                     <h6 class="font-weight-bold">{!!$item->fieldDetails->name!!} {!!($item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '')!!}</h6>
                                                 </td>
                                                 <td class="fields_col-2">
-                                                    {!!form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required')!!}
+                                                    {!!form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100)!!}
                                                 </td>
                                             </tr>
                                             @endforeach
