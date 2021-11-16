@@ -72,9 +72,9 @@ class PDFController extends Controller
         $data->loanapplicationnumber = $this->getData($agreement, 'loanapplicationnumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
 
-        // $data->signatureoftheauthorisedsignatory = $this->getData($agreement, 'signatureoftheauthorisedsignatory');
-        // $data->signatureoftheborrower = $this->getData($agreement, 'signatureoftheborrower');
-        // $data->signatureofthecoborrower = $this->getData($agreement, 'signatureofthecoborrower');
+        // $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+        // $data->loanamountindigits = $this->getData($agreement, 'loanamountindigits');
+        // $data->loanamountindigitsinwords = $this->getData($agreement, 'loanamountindigitsinwords');
 
         // witness 1
         $data->witness1fullname = $this->getData($agreement, 'witness1fullname');
@@ -126,6 +126,66 @@ class PDFController extends Controller
         $data->placeofagreement = $this->getData($agreement, 'placeofagreement');
         $data->dateofagreement = $this->getData($agreement, 'dateofagreement');
 
+        // page 18
+        $data->natureofloan = $this->getData($agreement, 'natureofloan');
+        $data->loanamountindigits = $this->getData($agreement, 'loanamountindigits');
+        $data->loanamountindigitsinwords = $this->getData($agreement, 'loanamountindigitsinwords');
+        $data->loanamountinlakh = $this->getData($agreement, 'loanamountinlakh');
+        $data->loanamountinlakhinwords = $this->getData($agreement, 'loanamountinlakhinwords');
+        $data->loanreferencenumber = $this->getData($agreement, 'loanreferencenumber');
+        $data->purposeofloan = $this->getData($agreement, 'purposeofloan');
+        $data->repaymenttenure = $this->getData($agreement, 'repaymenttenure');
+        $data->rateofinterest = $this->getData($agreement, 'rateofinterest');
+        $data->processingdocumentationcharges = $this->getData($agreement, 'processingdocumentationcharges');
+        $data->securitymargin = $this->getData($agreement, 'securitymargin');
+        $data->guarantee = $this->getData($agreement, 'guarantee');
+        $data->monthlyinstalmentsnumber = $this->getData($agreement, 'monthlyinstalmentsnumber');
+        $data->monthlyemiindigits = $this->getData($agreement, 'monthlyemiindigits');
+        $data->monthlyemiinwords = $this->getData($agreement, 'monthlyemiinwords');
+        $data->paymentdeductionfrom = $this->getData($agreement, 'paymentdeductionfrom');
+
+        // page 19
+        $data->dateofcreditofemiintolendersbankaccount = $this->getData($agreement, 'dateofcreditofemiintolendersbankaccount');
+        $data->otherdateofemicredit = $this->getData($agreement, 'otherdateofemicredit');
+        $data->penalinterestpercentage = $this->getData($agreement, 'penalinterestpercentage');
+        $data->savingscurrentaccountnumberofborrower = $this->getData($agreement, 'savingscurrentaccountnumberofborrower');
+        $data->savingsaccountnumberofborrower = $this->getData($agreement, 'savingsaccountnumberofborrower');
+        $data->bankaddressofborrower = $this->getData($agreement, 'bankaddressofborrower');
+        $data->beneficiarynameofborrower = $this->getData($agreement, 'beneficiarynameofborrower');
+        $data->banknameofborrower = $this->getData($agreement, 'banknameofborrower');
+        $data->branchnameofborrower = $this->getData($agreement, 'branchnameofborrower');
+        $data->ifsccodeofborrower = $this->getData($agreement, 'ifsccodeofborrower');
+        $data->insuranceofborrower = $this->getData($agreement, 'insuranceofborrower');
+
+        // page 21
+        $data->documentstobeattachedwithapplicationforloan = $this->getData($agreement, 'documentstobeattachedwithapplicationforloan');
+        $data->otherdocumentstobeattachedwithapplicationforloan = $this->getData($agreement, 'otherdocumentstobeattachedwithapplicationforloan');
+
+        // page 22
+        $data->personalloanfacilityagreementdated = $this->getData($agreement, 'personalloanfacilityagreementdated');
+        $data->deedofpersonalguaranteedate = $this->getData($agreement, 'deedofpersonalguaranteedate');
+        $data->deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate = $this->getData($agreement, 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate');
+        $data->deedofmortgageofinmoveablepropertieslandhousewarehousedate = $this->getData($agreement, 'deedofmortgageofinmoveablepropertieslandhousewarehousedate');
+        $data->powerofattorneydate = $this->getData($agreement, 'powerofattorneydate');
+        $data->deedofassignmentinsurancepolicyfixeddepositdate = $this->getData($agreement, 'deedofassignmentinsurancepolicyfixeddepositdate');
+
+        // page 23
+        $data->demandpromissorynoteplace = $this->getData($agreement, 'demandpromissorynoteplace');
+        $data->demandpromissorynotedate = $this->getData($agreement, 'demandpromissorynotedate');
+        $data->demandpromissorynoteamount = $this->getData($agreement, 'demandpromissorynoteamount');
+
+        // page 24
+        $data->demandpromissorynoteplace = $this->getData($agreement, 'demandpromissorynoteplace');
+
+        // page 25
+        $data->demandpromissorynoteplace = $this->getData($agreement, 'demandpromissorynoteplace');
+
+        // page 30
+        $data->nachdeclarationforandonbehalfof = $this->getData($agreement, 'nachdeclarationforandonbehalfof');
+        $data->nachdeclarationname1 = $this->getData($agreement, 'nachdeclarationname1');
+        $data->nachdeclarationname2 = $this->getData($agreement, 'nachdeclarationname2');
+        $data->nachdeclarationname3 = $this->getData($agreement, 'nachdeclarationname3');
+        $data->nachdeclarationname4 = $this->getData($agreement, 'nachdeclarationname4');
 
 
 

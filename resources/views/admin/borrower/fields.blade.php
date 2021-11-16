@@ -32,9 +32,7 @@
                                 @if ($data->agreementRfq > 0)
                                     <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
-                                    <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger download-agreement"><i class="fas fa-download"></i> Download PDF</a>
-
-                                    {{-- <a href="{{route('user.borrower.agreement.pdf.download', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger download-agreement"><i class="fas fa-download"></i> Download PDF</a> --}}
+                                    <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download'])}}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i> Download PDF</a>
                                 @endif
                             </div>
 
@@ -56,7 +54,14 @@
                                                     <h6 class="font-weight-bold">{!!$item->fieldDetails->name!!} {!!($item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '')!!}</h6>
                                                 </td>
                                                 <td class="fields_col-2">
-                                                    {!!form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100)!!}
+                                                    @php
+                                                        if ($data->agreementRfq > 0) {
+                                                            $fieldValue = '';
+                                                        } else {
+                                                            $fieldValue = '';
+                                                        }
+                                                    @endphp
+                                                    {!!form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, $fieldValue)!!}
                                                 </td>
                                             </tr>
                                             @endforeach

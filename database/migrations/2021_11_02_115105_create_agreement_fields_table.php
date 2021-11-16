@@ -23,7 +23,7 @@ class CreateAgreementFieldsTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        for ($i=1; $i < (98 - (1 + 13)); $i++) {
+        for ($i=1; $i < 89; $i++) {
             // $data = ['agreement_id' => 1, 'field_id' => $i];
             DB::table('agreement_fields')->insert(['agreement_id' => 1, 'field_id' => $i]);
         }

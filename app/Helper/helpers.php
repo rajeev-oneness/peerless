@@ -67,11 +67,11 @@ function checkStringFileAray($data)
     return '';
 }
 
-function form3lements($field_id, $name=null, $type, $value=null, $key_name=null, $width=100, $required='')
+function form3lements($field_id, $name=null, $type, $value=null, $key_name=null, $width=100, $required='', $fieldValue='')
 {
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
+            $response = '<input type="text" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.' value="'.$fieldValue.'"><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'email':
             $response = '<input type="email" placeholder="'.$name.'" class="form-control form-control-sm w-'.$width.'" name="field_name['.$key_name.']" '.$required.'><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
@@ -100,9 +100,9 @@ function form3lements($field_id, $name=null, $type, $value=null, $key_name=null,
             $expValue = explode(', ', $value);
             $option = '';
             foreach($expValue as $index => $val) {
-                $option .= '<input class="form-check-input" type="checkbox" name="field_name['.$key_name.'][]" id="'.$key_name.'-'.$index.'" value="'.$val.'" '.$required.'> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label>';
+                $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name['.$key_name.'][]" id="'.$key_name.'-'.$index.'" value="'.$val.'" '.$required.'> <label for="'.$key_name.'-'.$index.'" class="form-check-label mr-1">'.$val.'</label></div>';
             }
-            $response = '<div class="form-check form-check-inline">'.$option.'</div><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
+            $response = '<div class="form-check">'.$option.'</div><input type="hidden" value="'.$field_id.'" name="field_id['.$field_id.']">';
             break;
         case 'radio':
             $expValue = explode(', ', $value);

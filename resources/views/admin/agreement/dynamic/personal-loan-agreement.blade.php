@@ -2360,8 +2360,10 @@
         
                 <table class="border0 table_18">
                     <tr>
-                        <td>i. Nature of Load</td>
-                        <td></td>
+                        <td>i. Nature of Loan</td>
+                        <td>
+                            {{$data->natureofloan}}
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -2370,8 +2372,8 @@
                         </td>
                         <td>
                             <p>
-                                Rs. _____________lakh (Rupees ____________lakh only)
-                                Reference no _____________ dated __________
+                                Rs. {{$data->loanamountinlakh}} lakh (Rupees {{$data->loanamountinlakhinwords}} lakh only)
+                                Reference no {{$data->loanreferencenumber}} dated {{date('Y-m-d')}}
                             </p>
                         </td>
                     </tr>
@@ -2379,7 +2381,7 @@
                         <td>iii. Purpose of loan</td>
                         <td>
                             <p>
-                                &nbsp;
+                                {{$data->purposeofloan}}
                             </p>
                         </td>
                     </tr>
@@ -2387,7 +2389,7 @@
                         <td>iv. Repayment tenure</td>
                         <td>
                             <p>
-                                _________________________from the date of disbursement
+                                {{$data->repaymenttenure}} from the date of disbursement
                             </p>
                         </td>
                     </tr>
@@ -2395,7 +2397,7 @@
                         <td>v. Rate of Interest</td>
                         <td>
                             <p>
-                                _________________________% per annum (fixed)
+                                {{$data->rateofinterest}} % per annum (fixed)
                             </p>
                         </td>
                     </tr>
@@ -2404,7 +2406,7 @@
                             Documentation charges</td>
                         <td>
                             <p>
-                                &nbsp;
+                                {{$data->processingdocumentationcharges}}
                             </p>
                         </td>
                     </tr>
@@ -2412,7 +2414,7 @@
                         <td>vii. (a) Security& Margin</td>
                         <td>
                             <p>
-                                &nbsp;
+                                {{$data->securitymargin}}
                             </p>
                         </td>
                     </tr>
@@ -2420,7 +2422,7 @@
                         <td>(b) Guarantee</td>
                         <td>
                             <p>
-                                &nbsp;
+                                {{$data->guarantee}}
                             </p>
                         </td>
                     </tr>
@@ -2429,17 +2431,14 @@
                             of interest</td>
                         <td>
                             <p>
-                                Repayable in___________(_____________) Equated Monthly
-                                Instalments (EMIs) of Rs.____________________________/-
-                                (Rupees_____________________________________________
-                                ______________________________________________only)
+                                Repayable in___________({{$data->monthlyinstalmentsnumber}}) Equated Monthly
+                                Instalments (EMIs) of Rs.{{$data->monthlyemiindigits}}/-
+                                (Rupees {{$data->monthlyemiinwords}} only)
                                 each, to be
                             </p>
-                            <input type="checkbox">deducted from the Borrower's salary by the
-                            Borrower's employer on monthly basis and credited into the
-                            Lender's bank Account <br>
-                            <input type="checkbox">directly debited from the Borrower's bank a/c and credited into
-                            lender's bank a/c as detailed in item no ( IX) here in below
+                            {{$data->paymentdeductionfrom}}
+                            {{-- <input type="checkbox">deducted from the Borrower's salary by the Borrower's employer on monthly basis and credited into the Lender's bank Account <br>
+                            <input type="checkbox">directly debited from the Borrower's bank a/c and credited into lender's bank a/c as detailed in item no ( IX) here in below --}}
                         </td>
                     </tr>
                 </table>
@@ -2465,14 +2464,10 @@
                     </TR>
                 </TABLE>
             </div>
-        
-            
-        
+
             <div class="page-break"></div>
-        
+
             <DIV id="page_19">
-            
-        
                 <table class="border0 table_19">
                     <tr>
                         <td>
@@ -2497,20 +2492,21 @@
                         </td>
                         <td>
                             <p>
-                                <input type="checkbox"> 5<sup>th</sup> of every month
+                                {{$data->dateofcreditofemiintolendersbankaccount}}
+                                {{$data->otherdateofemicredit ? 'Other '.$data->otherdateofemicredit : ''}}
+                                {{-- <input type="checkbox"> 5<sup>th</sup> of every month
                                 <input type="checkbox"> 2<sup>nd</sup> of every month
-                                <input type="checkbox"> Others______
+                                <input type="checkbox"> Others______ --}}
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            xi. Penal Interest/ Liquidation
-                            damages
+                            xi. Penal Interest/ Liquidation damages
                         </td>
                         <td>
                             <p>
-                                Chargeable @.....................% per annum over and above the
+                                Chargeable @ {{$data->penalinterestpercentage}} % per annum over and above the
                                 applicable interest rate. Penal interest will be charged for the
                                 period of default i.e. from the due date of Payment of EMI or
                                 interest or any amount due to the date of actual payment.
@@ -2534,10 +2530,10 @@
                         </td>
                         <td>
                             <p>
-                                Savings / Current Account No :__________________________ <br>
-                                Beneficiary : ________________________________________ <br>
-                                Name of bank & Branch :______________________________ <br>
-                                IFSC Code :________________________________________ <br>
+                                Savings / Current Account No : {{$data->savingscurrentaccountnumberofborrower}} <br>
+                                Beneficiary : {{$data->beneficiarynameofborrower}} <br>
+                                Name of bank & Branch : {{$data->banknameofborrower}} / {{$data->branchnameofborrower}} <br>
+                                IFSC Code : {{$data->ifsccodeofborrower}} <br>
                             </p>
                         </td>
                     </tr>
@@ -2547,7 +2543,7 @@
                         </td>
                         <td>
                             <p>
-                                &nbsp;
+                                {{$data->insuranceofborrower}}
                             </p>
                         </td>
                     </tr>
@@ -2598,11 +2594,11 @@
                 </TABLE>
             
             </DIV>
-        
+
             <div class="page-break"></div>
-        
+
             <DIV id="page_20">
-            
+
                 <DIV id="id20_1">
                     <P class="p225 ft128">SCHEDULE III</P>
                     <P class="p226 ft5">OTHER TERMS AND CONDITIONS</P>
@@ -2662,7 +2658,10 @@
                     <P class="p239 ft5">SCHEDULE IV</P>
                     <P class="p240 ft5">DOCUMENTS TO BE ATTACHED WITH APPLICATION FOR LOAN</P>
                     <P class="p241 ft8">Please ( ) Tick Whichever Applicable</P>
-                    <P class="p242 ft1"><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from current Employer;</SPAN></P>
+
+                    {{$data->documentstobeattachedwithapplicationforloan}}
+
+                    {{-- <P class="p242 ft1"><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from current Employer;</SPAN></P>
                     <P class="p242 ft1"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft134">Proof of identity;</SPAN></P>
                     <P class="p243 ft1"><SPAN class="ft1">(iii)</SPAN><SPAN class="ft135">Proof of current residential & official address;</SPAN></P>
                     <P class="p244 ft1"><SPAN class="ft1">(iv)</SPAN><SPAN class="ft136">Latest three months' Bank Statement (where salary / income is credited or accumulated);</SPAN></P>
@@ -2674,8 +2673,8 @@
                     <P class="p247 ft1"><SPAN class="ft1">(x)</SPAN><SPAN class="ft139">Proof of other income</SPAN></P>
                     <P class="p248 ft1"><SPAN class="ft1">(xi)</SPAN><SPAN class="ft138">Proof of assets (copy of registered deed of house property / statement of accounts of</SPAN></P>
                     <P class="p249 ft1">mutual fund / insurance policy / statement of demat account)</P>
-                    <P class="p250 ft1"><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth certificate (as per PFSL format)</SPAN></P>
-                    <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify)_________________________________________________________</SPAN></P>
+                    <P class="p250 ft1"><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth certificate (as per PFSL format)</SPAN></P> --}}
+                    <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify) {{$data->otherdocumentstobeattachedwithapplicationforloan}} </SPAN></P>
                     
         
                     <br><br><br><br>
@@ -2704,7 +2703,6 @@
                         </TR>
                     </TABLE>
                     
-        
                 </DIV>
                     
             </DIV>
@@ -2713,12 +2711,10 @@
         
             <DIV id="page_22">
             
-            
-            
             <DIV id="id22_1">
                 <P class="p252 ft5">SCHEDULE V</P>
                 <P class="p253 ft140">FACILITY SPECIFIC DOCUMENTS EXECUTED BY BORROWER(S) / GUARANTOR (S) TO BE CONSIDERED PART & PARCEL OF THE</P>
-                <P class="p254 ft10">PERSONAL LOAN FACILITY AGREEMENT DATED___<SPAN class="ft141">_______</SPAN>___________________</P>
+                <P class="p254 ft10">PERSONAL LOAN FACILITY AGREEMENT DATED {{$data->personalloanfacilityagreementdated}} </P>
                 <P class="p255">Please ( tick )</P>
             </div>
         
@@ -2738,7 +2734,9 @@
                     <td class="table-22-td2">
                         Deed of Personal Guarantee
                     </td>
-                    <td class="table-22-td3"></td>
+                    <td class="table-22-td3">
+                        {{$data->deedofpersonalguaranteedate}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-22-td1"> 2. </td>
@@ -2746,7 +2744,9 @@
                         Deed of Pledge of Moveable Properties <br>
                         (Shares , Bonds , Debentures , Mutual Funds)
                     </td>
-                    <td class="table-22-td3"></td>
+                    <td class="table-22-td3">
+                        {{$data->deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-22-td1"> 3. </td>
@@ -2754,14 +2754,18 @@
                         Deed of Mortgage of Inmoveable Properties <br>
                         (Land , House , Warehouse)
                     </td>
-                    <td class="table-22-td3"></td>
+                    <td class="table-22-td3">
+                        {{$data->deedofmortgageofinmoveablepropertieslandhousewarehousedate}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-22-td1"> 4. </td>
                     <td class="table-22-td2">
                         Power of Attorney
                     </td>
-                    <td class="table-22-td3"></td>
+                    <td class="table-22-td3">
+                        {{$data->powerofattorneydate}}
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-22-td1"> 5. </td>
@@ -2769,45 +2773,47 @@
                         Deed of Assignment <br>
                         (Insurance Policy , Fixed Deposit)
                     </td>
-                    <td class="table-22-td3"></td>
+                    <td class="table-22-td3">
+                        {{$data->deedofassignmentinsurancepolicyfixeddepositdate}}
+                    </td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 6. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
                     <td class="table-22-td3"></td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 7. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
                     <td class="table-22-td3"></td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 8. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
                     <td class="table-22-td3"></td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 9. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
                     <td class="table-22-td3"></td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 10. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
                     <td class="table-22-td3"></td>
                 </tr>
                 <tr>
-                    <td class="table-22-td1"> 11. </td>
+                    <td class="table-22-td1"></td>
                     <td class="table-22-td2">
         
                     </td>
@@ -2845,7 +2851,7 @@
             <div class="page-break"></div>
         
             <DIV id="page_23">
-        
+
                 <DIV id="id22_1" style="text-align:center;">
                     <P class="ft5">ANNEXURE I</P>
                     <P class="ft5">DEMAND PROMISSORY NOTE</P>
@@ -2856,20 +2862,19 @@
                 <table class="table_23 border0" style="width:80%; margin:0 auto;">
                     <tr>
                         <td style="text-align:right;" class="border0" colspan="2">
-                            <p class="ft131">Place : ____________________</p>
-                            <p class="ft131">Dated : ____________________</p>
-                            <p class="ft131">Rs.______________________/-</p>
+                            <p class="ft131">Place : {{$data->demandpromissorynoteplace}}</p>
+                            <p class="ft131">Dated : {{$data->demandpromissorynotedate}}</p>
+                            <p class="ft131">Rs. {{$data->demandpromissorynoteamount}}/-</p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border0" colspan="2">
-        
                         <p class="ft131">
-                            ON DEMAND, I / We_______________________________________, unconditionally and irrevocably promise to pay
+                            ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay
                             Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East,
-                            Kolkata – 700 069, or order for value received the sum of Rs. (Rupees ) _________________________________________________________only with 
-                            interest there on at the rate of DEMAND PROMISSORY NOTE_______________________%
-                            Per annum_____________ with rests along with all costs, charges, expenses, taxes,
+                            Kolkata – 700 069, or order for value received the sum of Rs. {{$data->loanamountinlakh}} (Rupees) {{$data->loanamountinlakhinwords}} only with 
+                            interest there on at the rate of DEMAND PROMISSORY NOTE {{$data->rateofinterest}} %
+                            Per annum _____________ with rests along with all costs, charges, expenses, taxes,
                             cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to
                             time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypo the cated to
                             any one as required by PFSL, the lender, without notice tome / us.
@@ -2929,11 +2934,7 @@
                         <td class="border0" colspan="2">
         
                         <p class="ft131">
-                            ON DE MAND, I / We,_ ________________unconditionally and irrevocably promise to pay Peerless Financial Services
-                            Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East,
-                            Kolkata – 700 069, or order for value received the sum of Rs_____________________________________________
-                            (Rupees )_________________________________________________________only with interest there on at the rate of
-                            _________________% Perannum with ___________rests along with all costs, charges, expenses, taxes, cess, levies,
+                            ON DE MAND, I / We, {{$data->nameoftheborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata – 700 069, or order for value received the sum of Rs {{$data->loanamountinlakh}} (Rupees) {{$data->loanamountinlakhinwords}} only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with ___________rests along with all costs, charges, expenses, taxes, cess, levies,
                             duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be
                             Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypo the cated to any one
                             as required by PFSL, the lender, without notice tome / us.
@@ -3018,12 +3019,12 @@
                     <tr>
                         <td class="border0">
                             <p>
-                                I / We ________________________________________________, enclose Demand Promissory Note
-                                dated____________for Rs._ _______________/- (Rupees_ _______________________________) Only payable
-                                and dated___________
-                                for Rs.________________/- (Rupees ___________________________) Only on
+                                I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note
+                                dated {{$data->dateofagreement}} for Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}}) Only payable
+                                and dated {{$data->dateofagreement}}
+                                for Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
                                 demand, which is given by me / us as Security for repayment of the loan Granted to me/ us by PFSL, the Lender, by
-                                execution of Personal Loan Agreement dated_ ______________, together with interest and other amounts due there
+                                execution of Personal Loan Agreement dated {{$data->dateofagreement}}, together with interest and other amounts due there
                                 under and which may here after become due and payable by me / us to PFSL.
                                 Not with standing the fact that the out standing loan amount may be reduced from time to time or extinguished, the
                                 Promise to pay shall be a continuing Promise till the payment of the entire outstanding amount by me / us to the
@@ -3097,12 +3098,9 @@
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                <span class="ft2"> Re: Loan Account No</span> ____________________ <span class="ft2">Personal Loan Rs.</span> ___________________________ <br>
-                                <span class="ft2"> ( Rupees ______________________________________) Only</span>
-                                I/ We ,______________________________( <span class="ft2">'the Borrower'</span> ) and_______________________________________
-                                _______________________( <span class="ft2">“the Co borrower”</span> ) refer to the Personal Loan Facility Agreement dated___________ 
-                                executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of
-                                <span class="ft2">Rs._________________________/- (Rupees ___________________)</span> Only by PFSL vide Letter of Intent No.
+                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <br>
+                                <span class="ft2"> ( Rupees {{$data->loanamountindigitsinwords}}) Only</span>
+                                I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
                                 _______________________dated___________.
                                 In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan Facility Agreement, I/we do
                                 here by irrevocably and unconditionally agree and undertake as follows :
@@ -3239,8 +3237,8 @@
                         <td class="border0">
                             <p class="ft1">
         
-                                Re: Loan Account No _______________________________________________ Request for disbursement of
-                                sanctioned loan of Rs. ________________________/- <br>
+                                Re: Loan Account No {{$data->loanaccountnumber}} Request for disbursement of
+                                sanctioned loan of Rs. {{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) only<br>
                                 This is with reference to your Letter Of Intent No.________________________dated_______ conveying sanction of the
                                 subject facility. I / We have since completed all the formalities regarding documentation of the facility in terms of the
                                 Personal Loan Facility Agreement dated ________________ executed between you and me/ us . I / us now request you to
@@ -3257,35 +3255,35 @@
                     <tr>
                         <td class="border0">
                             <p>
-                                Bank Account Name : _________________________________________
+                                Bank Account Name : {{$data->beneficiarynameofborrower}}
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border0">
                             <p>
-                                Account Number: ________________________________________ (Saving Bank Account)
+                                Account Number: {{$data->savingsaccountnumberofborrower}} (Saving Bank Account)
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border0">
                             <p>
-                                Bank Name /Branch : _________________________________________
+                                Bank Name /Branch : {{$data->banknameofborrower}} / {{$data->branchnameofborrower}}
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border0">
                             <p>
-                                Address :_________________________________________
+                                Address : {{$data->bankaddressofborrower}}
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border0">
                             <p>
-                                IFS Code : ________________________________________
+                                IFS Code : {{$data->ifsccodeofborrower}}
                             </p>
                         </td>
                     </tr>
@@ -3356,15 +3354,15 @@
                 </div>
             
                 <P class="p323 ft61">I /We hereby authorise Peerless Financial Services Limited to debit my / our bank account, based on the instructions as agreed and signed by me / us . I/ we also authorize Peerless Financial Services Limited to recover the deferred instalments/ EMIs / interests / charges etc. in future through NACH in as many EMIs / instalments as may be required, in case of restructuring / deferment / reschedulement / moratorium etc. of the credit facility granted to me/ us. I /we have understood that transaction charges may change due to changes in applicable transaction charges / statutory levies and I/we am/are authorized to cancel/ amend the mandate by appropriately communicating the cancellation / amendment request to Peerless Financial Services Limited or the bank where I / we have authorized the debit.</P>
-                <P class="p324 ft1">For and on be half of __________________________________________</P>
+                <P class="p324 ft1">For and on be half of {{$data->nachdeclarationforandonbehalfof}}</P>
                 <TABLE cellpadding=0 cellspacing=0 class="t31 table_30 border0">
                     <TR class="border0">
                         <TD class="tr28 td45"><P class="p15 ft1">Signature</P></TD>
                         <TD class="tr28 td75"><P class="p214 ft1">Signature</P></TD>
                     </TR>
                     <TR class="border0">
-                        <TD class="tr45 td45"><P class="p15 ft1">Name _______________________</P></TD>
-                        <TD class="tr45 td75"><P class="p15 ft1">Name _______________________</P></TD>
+                        <TD class="tr45 td45"><P class="p15 ft1">Name {{$data->nachdeclarationname1}}</P></TD>
+                        <TD class="tr45 td75"><P class="p15 ft1">Name {{$data->nachdeclarationname2}}</P></TD>
                     </TR>
                     <tr>
                         <td>
@@ -3378,8 +3376,8 @@
                         <TD class="tr28 td75"><P class="p15 ft1">Signature</P></TD>
                     </TR>
                     <TR class="border0">
-                        <TD class="tr45 td76"><P class="p15 ft1">Name _______________________</P></TD>
-                        <TD class="tr45 td75"><P class="p15 ft1">Name _______________________</P></TD>
+                        <TD class="tr45 td76"><P class="p15 ft1">Name {{$data->nachdeclarationname3}}</P></TD>
+                        <TD class="tr45 td75"><P class="p15 ft1">Name {{$data->nachdeclarationname4}}</P></TD>
                     </TR>
                 </TABLE>
         

@@ -55,9 +55,9 @@ class CreateFieldsTable extends Migration
             ['name' => 'Resident status of the Borrower', 'type' => 8, 'value' => 'Permanent address, Temporary address', 'key_name' => 'residentstatusoftheborrower'],
             ['name' => 'Date of birth of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheborrower'],
             ['name' => 'Marital status of the Borrower', 'type' => 7, 'value' => 'Married, Unmarried, Divorced, Widowed', 'key_name' => 'maritalstatusoftheborrower'],
-            ['name' => 'Highest education of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
-            ['name' => 'Mobile number of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
-            ['name' => 'Email ID of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'emailidoftheborrower'],
+            ['name' => 'Highest education of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
+            ['name' => 'Mobile number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
+            ['name' => 'Email ID of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheborrower'],
             // ['name' => 'Signature of the Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheborrower'],
 
             // co borrower details
@@ -70,9 +70,9 @@ class CreateFieldsTable extends Migration
             ['name' => 'Resident status of the Co-Borrower', 'type' => 8, 'value' => 'Permanent address, Temporary address', 'key_name' => 'residentstatusofthecoborrower'],
             ['name' => 'Date of birth of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower'],
             ['name' => 'Marital status of the Co-Borrower', 'type' => 7, 'value' => 'Married, Unmarried, Divorced, Widowed', 'key_name' => 'maritalstatusofthecoborrower'],
-            ['name' => 'Highest education of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
-            ['name' => 'Mobile number of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
-            ['name' => 'Email ID of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
+            ['name' => 'Highest education of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
+            ['name' => 'Mobile number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
+            ['name' => 'Email ID of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
             // ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
 
             // guarantor details
@@ -109,9 +109,12 @@ class CreateFieldsTable extends Migration
             ['name' => 'Date of agreement', 'type' => 4, 'value' => '', 'key_name' => 'dateofagreement'],
 
             // key facts of the loan
-            ['name' => 'Nature of Loan', 'type' => 1, 'value' => '', 'key_name' => $natureOfLoan],
+            ['name' => 'Nature of Loan', 'type' => 1, 'value' => $natureOfLoan, 'key_name' => 'natureofloan'],
             ['name' => 'Loan amount in digits', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigits'],
-            ['name' => 'Loan amount in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinwords'],
+            ['name' => 'Loan amount in digits in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigitsinwords'],
+            ['name' => 'Loan amount in lakh', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakh'],
+            ['name' => 'Loan amount in lakh in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakhinwords'],
+            ['name' => 'Loan reference number', 'type' => 1, 'value' => '', 'key_name' => 'loanreferencenumber'],
             ['name' => 'Purpose of Loan', 'type' => 1, 'value' => '', 'key_name' => 'purposeofloan'],
             ['name' => 'Repayment tenure', 'type' => 1, 'value' => '', 'key_name' => 'repaymenttenure'],
             ['name' => 'Rate of Interest', 'type' => 1, 'value' => '', 'key_name' => 'rateofinterest'],
@@ -126,6 +129,8 @@ class CreateFieldsTable extends Migration
             ['name' => 'Other date of EMI credit', 'type' => 1, 'value' => '', 'key_name' => 'otherdateofemicredit'],
             ['name' => 'Penal Interest percentage', 'type' => 1, 'value' => '', 'key_name' => 'penalinterestpercentage'],
             ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
+            ['name' => 'Savings account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingsaccountnumberofborrower'],
+            ['name' => 'Bank address of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaddressofborrower'],
             ['name' => 'Beneficiary Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrower'],
             ['name' => 'Bank Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameofborrower'],
             ['name' => 'Branch Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'branchnameofborrower'],
@@ -140,7 +145,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Deed of Pledge of Moveable Properties (Shares, Bonds, Debentures, Mutual Funds) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate'],
             ['name' => 'Deed of Mortgage of Inmoveable Properties (Land, House, Warehouse) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofmortgageofinmoveablepropertieslandhousewarehousedate'],
             ['name' => 'Power of Attorney date', 'type' => 4, 'value' => '', 'key_name' => 'powerofattorneydate'],
-            ['name' => 'Deed of Assignment (Insurance Policy, Fixed Deposit) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofassignmentinsurance policyfixeddepositdate'],
+            ['name' => 'Deed of Assignment (Insurance Policy, Fixed Deposit) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofassignmentinsurancepolicyfixeddepositdate'],
 
             // DEMAND PROMISSORY NOTE
             ['name' => 'Demand Promissory Note Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteplace'],

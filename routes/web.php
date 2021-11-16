@@ -52,7 +52,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
         // pdf
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
-        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/download', [PDFController::class, 'generateDynamicPdf'])->name('user.borrower.agreement.pdf.download');
+        // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'generateDynamicPdf'])->name('user.borrower.agreement.pdf.download');
     });
 
     // role
