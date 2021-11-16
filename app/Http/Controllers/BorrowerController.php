@@ -102,7 +102,7 @@ class BorrowerController extends Controller
         $data = Borrower::findOrFail($request->id);
 
         $userid = $data->id;
-        $username_prefix = $data->name_prefix;
+        $username_prefix = ucwords($data->name_prefix);
         $userfull_name = $data->full_name;
         $usergender = $data->gender;
         $userdate_of_birth = $data->date_of_birth;

@@ -1030,7 +1030,7 @@
                         <tr>
                             <td>Name of the Guarantor:</td>
                             <td>
-                                {{$data->nameoftheguarantor}}
+                                {{$data->guarantorfullname}}
                             </td>
                         </tr>
                         <tr>
@@ -1902,6 +1902,8 @@
                             <P class="p15 ft9">&nbsp;</P>
                         </TD>
                         <TD class="tr27 td27 border0" style="margin: 0; padding:0; line-height:0;">
+
+                            {{$data->nameoftheauthorisedsignatory}}
                             <P class="p185 ft1">(Name of the authorised signatory)</P>
                         </TD>
                         <TD class="tr27 td28 border0" style="margin: 0; padding:0; line-height:0;">

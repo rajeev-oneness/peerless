@@ -68,7 +68,8 @@ class PDFController extends Controller
         $data->customerid = $this->getData($agreement, 'customerid');
         $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
         $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
-        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        // $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
         $data->loanapplicationnumber = $this->getData($agreement, 'loanapplicationnumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
 
@@ -125,6 +126,9 @@ class PDFController extends Controller
         // agreement place & date
         $data->placeofagreement = $this->getData($agreement, 'placeofagreement');
         $data->dateofagreement = $this->getData($agreement, 'dateofagreement');
+
+        // page 16
+        $data->nameoftheauthorisedsignatory = $this->getData($agreement, 'nameoftheauthorisedsignatory');
 
         // page 18
         $data->natureofloan = $this->getData($agreement, 'natureofloan');
