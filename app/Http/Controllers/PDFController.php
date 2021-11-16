@@ -130,8 +130,6 @@ class PDFController extends Controller
 
 
 
-
-
         // $data = [
         //     'fileName' => 'personal_loan_pdf',
         //     'title' => 'personal loan pdf',
