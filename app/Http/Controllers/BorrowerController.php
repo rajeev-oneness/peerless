@@ -198,8 +198,9 @@ class BorrowerController extends Controller
 
     public function agreementFields(Request $request, $id)
     {
+        $borrower_id = $id;
         $data = (object)[];
-        $data->agreement = Borrower::select('name_prefix', 'full_name', 'agreement_id')->where('id', $id)->get();
+        $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->where('id', $borrower_id)->get();
         foreach($data->agreement as $agreement) {
             $data->name_prefix = $agreement->name_prefix;
             $data->full_name = $agreement->full_name;
@@ -209,6 +210,7 @@ class BorrowerController extends Controller
         }
 
         $data->fields = AgreementField::where('agreement_id', $data->agreement_id)->get();
+        $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
 
         return view('admin.borrower.fields', compact('data', 'id'));
     }

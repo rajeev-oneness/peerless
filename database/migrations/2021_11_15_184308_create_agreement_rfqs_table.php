@@ -19,6 +19,7 @@ class CreateAgreementRfqsTable extends Migration
             $table->bigInteger('borrower_id');
             $table->bigInteger('agreement_id');
             $table->bigInteger('data_filled_by');
+            $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

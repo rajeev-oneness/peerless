@@ -29,8 +29,13 @@
                                 </h5>
                             </div>
                             <div class="col-md-4 text-right">
-                                <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
-                                <a href="{{route('user.borrower.agreement.pdf.download', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger download-agreement"><i class="fas fa-download"></i> Download PDF</a>
+                                @if ($data->agreementRfq > 0)
+                                    <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+
+                                    <a href="{{route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger download-agreement"><i class="fas fa-download"></i> Download PDF</a>
+
+                                    {{-- <a href="{{route('user.borrower.agreement.pdf.download', [$id, $data->agreement_id])}}" class="btn btn-sm btn-danger download-agreement"><i class="fas fa-download"></i> Download PDF</a> --}}
+                                @endif
                             </div>
 
                             <div class="col-md-12 mt-3">
