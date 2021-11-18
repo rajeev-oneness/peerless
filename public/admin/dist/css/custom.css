@@ -336,3 +336,20 @@ mark {
     max-width: 700px;
     overflow: hidden;
 }
+
+/* animation */
+.pulse-grow-animation {
+    animation: pulse-grow 1s infinite;
+}
+
+@keyframes pulse-grow {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}

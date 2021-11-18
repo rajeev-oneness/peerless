@@ -3,6 +3,9 @@
 @section('title', 'Borrower list')
 
 @section('content')
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -19,67 +22,17 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-sm table-bordered table-hover">
+                        <table class="table table-sm table-bordered table-hover" id="borrowers-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Contact</th>
-                                    <th>Address</th>
-                                    <th>Loan details</th>
+                                    <th>Gender</th>
+                                    <th>Mobile</th>
+                                    <th>Occupation</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @forelse ($data as $index => $item)
-                                <tr id="tr_{{$item->id}}">
-                                    <td>{{$index+1}}</td>
-                                    <td>
-                                        <div class="user-profile-holder">
-                                            <div class="flex-shrink-0">
-                                                <img src="{{asset($item->image_path)}}" alt="user-image-{{ $item->id }}">
-                                            </div>
-                                            <div class="flex-grow-1 ms-3">
-                                                <p class="name">{{ucwords($item->name_prefix)}} {{$item->full_name}}</p>
-                                                <p class="small text-muted">{{$item->occupation}}</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> {{$item->email}}</p>
-                                        <p class="small text-dark mb-0">@php if(!empty($item->mobile)) { echo '<i class="fas fa-phone fa-rotate-90 mr-2"></i> '.$item->mobile; } else { echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>'; } @endphp</p>
-                                    </td>
-                                    <td>
-                                        <p class="small text-muted mb-0" title="Street address">{{$item->street_address}}</p>
-                                        <p class="small text-muted">
-                                            <span title="City">{{$item->city}}</span>, 
-                                            <span title="Pincode">{{$item->pincode}}</span>, 
-                                            <span title="State">{{$item->state}}</span>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <div class="single-line">
-                                            @if ($item->agreement_id == 0)
-                                                <p class="small text-muted"> <em>No agreement yet</em> </p>
-                                            @else
-                                                <a href="{{route('user.borrower.agreement', $item->id)}}" class="badge badge-primary action-button" title="Setup loan application form">{{$item->agreementDetails->name}}</a>
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="single-line">
-                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.borrower.show')}}', {{$item->id}})">View</a>
-
-                                            <a href="{{route('user.borrower.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
-
-                                            <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.borrower.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @empty
-                                    <tr><td class="text-center" colspan="100%"><em>No records found</em></td></tr>
-                                @endforelse
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -90,7 +43,25 @@
 @endsection
 
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
+        $('#borrowers-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('user.borrower.list') }}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'full_name', name: 'full_name' },
+                { data: 'gender', name: 'gender' },
+                { data: 'mobile', name: 'mobile' },
+                { data: 'occupation', name: 'occupation' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+
         function viewDeta1ls(route, id) {
             $.ajax({
                 url : route,
@@ -118,7 +89,7 @@
                         content += '<p class="text-muted small mb-1">No data found. Try again</p>';
                     }
                     $('#appendContent').html(content);
-                    $('#userDetailsModalLabel').text('User details');
+                    $('#userDetailsModalLabel').text('Borrower details');
                     $('#userDetails').modal('show');
                 }
             });

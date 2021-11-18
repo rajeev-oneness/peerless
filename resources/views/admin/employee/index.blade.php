@@ -61,9 +61,9 @@
                                                 @else
                                                     <a href="javascript: void(0)" class="badge badge-danger action-button block-button" title="Block" onclick="confirm4lert('{{route('user.employee.block')}}', {{$item->id}}, 'activate')">Blocked</a>
                                                 @endif
-    
+
                                                 <a href="{{route('user.employee.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
-    
+
                                                 <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.employee.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
                                             @endif
                                         </div>

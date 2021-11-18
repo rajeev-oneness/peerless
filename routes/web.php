@@ -38,6 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     // borrower
     Route::group(['prefix' => 'borrower'], function () {
         Route::get('/', [BorrowerController::class, 'index'])->name('user.borrower.list');
+        Route::get('/old', [BorrowerController::class, 'indexOld'])->name('user.borrower.oldlist');
         Route::get('/create', [BorrowerController::class, 'create'])->name('user.borrower.create');
         Route::post('/store', [BorrowerController::class, 'store'])->name('user.borrower.store');
         Route::post('/show', [BorrowerController::class, 'show'])->name('user.borrower.show');
@@ -98,6 +99,18 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
         Route::get('/notification', [LogController::class, 'logsNotification'])->name('user.logs.notification');
         Route::post('/notification/readall', [LogController::class, 'notificationReadAll'])->name('user.logs.notification.readall');
+    });
+
+    // office management
+    Route::group(['prefix' => 'office'], function () {
+        Route::get('/', [OfficeController::class, 'index'])->name('user.office.list');
+        // Route::get('/create', [OfficeController::class, 'create'])->name('user.office.create');
+        Route::post('/store', [OfficeController::class, 'store'])->name('user.office.store');
+        Route::post('/show', [OfficeController::class, 'show'])->name('user.office.show');
+        // Route::get('/{id}/view', [OfficeController::class, 'details'])->name('user.office.details');
+        // Route::get('/{id}/edit', [OfficeController::class, 'edit'])->name('user.office.edit');
+        Route::post('/{id}/update', [OfficeController::class, 'update'])->name('user.office.update');
+        Route::post('/destroy', [OfficeController::class, 'destroy'])->name('user.office.destroy');
     });
 
     // notification

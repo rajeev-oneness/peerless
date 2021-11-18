@@ -131,6 +131,12 @@
                         </li>
                         <li class="nav-header">SETTINGS</li>
                         <li class="nav-item">
+                            <a href="{{route('user.office.list')}}" class="nav-link {{ (request()->is('user/office*') ? 'active' : '') }}">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>Office management</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
                                 <p>Profile</p>

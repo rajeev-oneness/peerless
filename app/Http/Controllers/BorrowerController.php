@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Facades\DataTables;
 
 class BorrowerController extends Controller
 {
@@ -21,10 +22,33 @@ class BorrowerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Borrower::latest()->get();
-        return view('admin.borrower.index', compact('data'));
+        $borrowers = Borrower::select(['id', 'full_name', 'gender', 'mobile', 'occupation']);
+
+        return Datatables::of($borrowers)
+            ->addColumn('action', function ($borrower) {
+                return '<a href="#edit-'. $borrower->id.'" class="btn btn-xs btn-primary"> Edit</a>';
+            })
+            ->editColumn('id', '{{$id}}')
+            ->removeColumn('updated_at')
+            ->setRowId('id')
+            ->setRowClass(function ($user) {
+                return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
+            })
+            ->setRowData([
+                'id' => 'test',
+            ])
+            ->setRowAttr([
+                'color' => 'red',
+            ])
+            ->make(true);
+    }
+
+    public function indexOld(Request $request)
+    {
+        $data = Borrower::latest()->paginate(20);
+        return view('admin.borrower.index-old', compact('data'));
     }
 
     /**
