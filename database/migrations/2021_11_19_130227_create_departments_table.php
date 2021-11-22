@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateUserTypesTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,18 +14,22 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('color', 50);
-            $table->softDeletes();
+            $table->string('name');
+            $table->string('code');
+            $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        $data = [['name' => 'Admin', 'color' => 'danger'], ['name' => 'Operations team', 'color' => 'indigo'], ['name' => 'Credit team', 'color' => 'success'], ['name' => 'Authorised signatory', 'color' => 'warning']];
+        $data = [
+            ['name' => 'Accounting and Finance', 'code' => 'ACC101'],
+            ['name' => 'Human Resource Management', 'code' => 'HR101'],
+            ['name' => 'Information Technology', 'code' => 'IT101'],
+        ];
 
-        DB::table('user_types')->insert($data);
+        DB::table('departments')->insert($data);
     }
 
     /**
@@ -35,6 +39,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('departments');
     }
 }

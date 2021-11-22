@@ -1,21 +1,24 @@
 <?php
 
 use App\Models\MailLog;
+use App\Models\Activity;
 use Hamcrest\Arrays\IsArray;
 use Illuminate\Support\Facades\Mail;
 
-function userTypeCheck($type)
-{
-    switch ($type) {
-        case 'admin':
-            return '<span class="badge badge-danger">ADMIN</span>';
-            break;
-        default:
-            return '<span class="badge badge-success">USER</span>';
-            break;
-    }
-}
+// check user type
+// function userTypeCheck($type)
+// {
+//     switch ($type) {
+//         case 'admin':
+//             return '<span class="badge badge-danger">ADMIN</span>';
+//             break;
+//         default:
+//             return '<span class="badge badge-success">USER</span>';
+//             break;
+//     }
+// }
 
+// generate alpha numeric for usage
 function generateUniqueAlphaNumeric($length = 8)
 {
 	$random_string = '';
@@ -27,11 +30,13 @@ function generateUniqueAlphaNumeric($length = 8)
 	return $random_string;
 }
 
+// limit words
 function words($string, $words = 100)
 {
 	return \Illuminate\Support\Str::limit($string, $words);
 }
 
+// random number generate
 function randomGenerator()
 {
     return uniqid().''.date('ymdhis').''.uniqid();
@@ -175,4 +180,11 @@ function createNotification($sender, $receiver, $type)
 	$notification->message = $message;
 	$notification->route = $route;
 	$notification->save();
+}
+
+// activity log
+function activityLog($type) {
+    $activity = new Activity;
+    $activity->title = $type;
+    $activity->save();
 }

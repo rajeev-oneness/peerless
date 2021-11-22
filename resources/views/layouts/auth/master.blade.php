@@ -110,12 +110,6 @@
                                 <p>Borrowers</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
                         <li class="nav-header">MANAGEMENT</li>
                         <li class="nav-item">
                             <a href="{{ route('user.agreement.list') }}" class="nav-link {{ (request()->is('user/agreement*')) ? 'active' : '' }}">
@@ -130,6 +124,12 @@
                             </a>
                         </li>
                         <li class="nav-header">SETTINGS</li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Employee management</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{route('user.office.list')}}" class="nav-link {{ (request()->is('user/office*') ? 'active' : '') }}">
                                 <i class="nav-icon fas fa-building"></i>

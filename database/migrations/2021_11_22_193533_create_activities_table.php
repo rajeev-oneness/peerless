@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateUserTypesTable extends Migration
+class CreateActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,18 +14,19 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('color', 50);
-            $table->softDeletes();
+            $table->bigInteger('user_id');
+            $table->text('user_device');
+            $table->string('ip_address');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('title');
+            $table->string('description');
+            $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
-
-        $data = [['name' => 'Admin', 'color' => 'danger'], ['name' => 'Operations team', 'color' => 'indigo'], ['name' => 'Credit team', 'color' => 'success'], ['name' => 'Authorised signatory', 'color' => 'warning']];
-
-        DB::table('user_types')->insert($data);
     }
 
     /**
@@ -35,6 +36,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('activities');
     }
 }

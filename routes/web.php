@@ -104,13 +104,28 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     // office management
     Route::group(['prefix' => 'office'], function () {
         Route::get('/', [OfficeController::class, 'index'])->name('user.office.list');
-        // Route::get('/create', [OfficeController::class, 'create'])->name('user.office.create');
         Route::post('/store', [OfficeController::class, 'store'])->name('user.office.store');
         Route::post('/show', [OfficeController::class, 'show'])->name('user.office.show');
-        // Route::get('/{id}/view', [OfficeController::class, 'details'])->name('user.office.details');
-        // Route::get('/{id}/edit', [OfficeController::class, 'edit'])->name('user.office.edit');
-        Route::post('/{id}/update', [OfficeController::class, 'update'])->name('user.office.update');
+        Route::post('/update', [OfficeController::class, 'update'])->name('user.office.update');
         Route::post('/destroy', [OfficeController::class, 'destroy'])->name('user.office.destroy');
+    });
+
+    // department management
+    Route::group(['prefix' => 'employee/department'], function () {
+        Route::get('/', [DepartmentController::class, 'index'])->name('user.department.list');
+        Route::post('/store', [DepartmentController::class, 'store'])->name('user.department.store');
+        Route::post('/show', [DepartmentController::class, 'show'])->name('user.department.show');
+        Route::patch('/update', [DepartmentController::class, 'update'])->name('user.department.update');
+        Route::post('/destroy', [DepartmentController::class, 'destroy'])->name('user.department.destroy');
+    });
+
+    // designation management
+    Route::group(['prefix' => 'employee/designation'], function () {
+        Route::get('/', [DesignationController::class, 'index'])->name('user.designation.list');
+        Route::post('/store', [DesignationController::class, 'store'])->name('user.designation.store');
+        Route::post('/show', [DesignationController::class, 'show'])->name('user.designation.show');
+        Route::patch('/update', [DesignationController::class, 'update'])->name('user.designation.update');
+        Route::post('/destroy', [DesignationController::class, 'destroy'])->name('user.designation.destroy');
     });
 
     // notification

@@ -42,10 +42,8 @@ class OfficeController extends Controller
             'code' => 'required|string|min:2|max:255',
             'email' => 'required|email|min:2|max:255|unique:offices',
             'mobile' => 'required|numeric|min:1|digits:10',
-            // 'mobile' => 'required|numeric|min:1',
             'streetAddress' => 'required|string|min:2|max:255',
-            'pincode' => 'required|numeric|min:1|digits:7',
-            // 'pincode' => 'required',
+            'pincode' => 'required|numeric|min:1|digits:6',
             'city' => 'required|string|min:2|max:255',
             'state' => 'required|string|min:2|max:255',
             'comment' => 'nullable|string|min:2',
@@ -83,6 +81,7 @@ class OfficeController extends Controller
     public function show(Request $request)
     {
         $data = Office::findOrFail($request->id);
+        $office_id = $data->id;
         $office_name = $data->name;
         $office_code = $data->code;
         $office_mobile = $data->mobile;
@@ -94,7 +93,7 @@ class OfficeController extends Controller
         $office_comment = $data->comment;
         $office_created_at = $data->created_at;
 
-        return response()->json(['error' => false, 'data' => ['name' => $office_name, 'code' => $office_code, 'mobile' => $office_mobile, 'email' => $office_email, 'street_address' => $office_street_address, 'pincode' => $office_pincode, 'city' => $office_city, 'state' => $office_state, 'comment' => $office_comment, 'created_at' => $office_created_at]]);
+        return response()->json(['error' => false, 'data' => ['id' => $office_id, 'name' => $office_name, 'code' => $office_code, 'mobile' => $office_mobile, 'email' => $office_email, 'street_address' => $office_street_address, 'pincode' => $office_pincode, 'city' => $office_city, 'state' => $office_state, 'comment' => $office_comment, 'created_at' => $office_created_at]]);
     }
 
     /**
@@ -117,7 +116,42 @@ class OfficeController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        // dd($request->all());
+
+        $rules = [
+            'id' => 'required|numeric|min:1',
+            'name' => 'required|string|min:2|max:255',
+            'code' => 'required|string|min:2|max:255',
+            'email' => 'required|email|min:2|max:255',
+            'mobile' => 'required|numeric|min:1|digits:10',
+            'streetAddress' => 'required|string|min:2|max:255',
+            'pincode' => 'required|numeric|min:1|digits:6',
+            'city' => 'required|string|min:2|max:255',
+            'state' => 'required|string|min:2|max:255',
+            'comment' => 'nullable|string|min:2',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            $office = Office::findOrFail($request->id);
+            $office->name = $request->name;
+            $office->code = $request->code;
+            $office->email = $request->email;
+            $office->mobile = $request->mobile;
+            $office->street_address = $request->streetAddress;
+            $office->pincode = $request->pincode;
+            $office->city = $request->city;
+            $office->state = $request->state;
+            $office->comment = $request->comment ?? '';
+            $office->save();
+
+            $route = "'".route('user.office.show')."'";
+
+            return response()->json(['status' => 200, 'title' => 'success', 'message' => 'Office updated', 'id' => $office->id, 'viewRoute' => $route]);
+        } else {
+            return response()->json(['status' => 400, 'title' => 'failure', 'message' => $validator->errors()->first()]);
+        }
     }
 
     /**

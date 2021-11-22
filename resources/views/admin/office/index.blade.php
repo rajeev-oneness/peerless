@@ -131,7 +131,7 @@
 
                         newData += '<td>'+$('#cityCreate').val()+', '+$('#pincodeCreate').val()+'</td>';
 
-                        newData += '<td class="text-right"><a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('+result.viewRoute+', '+result.id+', '+viewVar+')">View</a></td>';
+                        newData += '<td class="text-right"><a href="javascript: void(0)" class="badge badge-success action-button" title="View" onclick="viewDeta1ls('+result.viewRoute+', '+result.id+', '+viewVar+')">Just added</a></td>';
 
                         $('#showOfficeTable').prepend('<tr>'+newData+'</tr>');
                         $('#newOfficeAlert').addClass('alert-success').html(result.message).show();
@@ -146,7 +146,7 @@
             });
         }
 
-        // view details
+        // view & edit details
         function viewDeta1ls(route, id, type) {
             $.ajax({
                 url: route,
@@ -181,7 +181,7 @@
 
                             $('#userDetailsModalLabel').text('Office details');
                         } else {
-                            content += '<div class="alert rounded-0 px-2 py-1 small" id="newOfficeAlert" style="display:none"></div>';
+                            content += '<div class="alert rounded-0 px-2 py-1 small" id="updateOfficeAlert" style="display:none"></div>';
                             content += '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameEdit" placeholder="Office name" value="'+result.data.name+'">';
                             content += '<p class="text-dark small mb-1">Code <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="code" id="codeEdit" placeholder="Office code" value="'+result.data.code+'">';
                             content += '<p class="text-dark small mb-1">Email <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="email" id="emailEdit" placeholder="Office email" value="'+result.data.email+'">';
@@ -191,6 +191,7 @@
                             content += '<input type="text" class="form-control form-control-sm mb-2" name="city" id="cityEdit" placeholder="City" value="'+result.data.city+'">';
                             content += '<input type="text" class="form-control form-control-sm mb-2" name="state" id="stateEdit" placeholder="State" value="'+result.data.state+'">';
                             content += '<p class="text-dark small mb-1">Comment</p><textarea class="form-control form-control-sm mb-2" name="street_address" id="commentEdit" placeholder="Comment" style="min-height:90px;max-height:200px">'+result.data.comment+'</textarea>';
+                            content += '<input type="hidden" id="editId" value="'+result.data.id+'">';
 
                             $('#userDetails .modal-content').append('<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="updateOffice()">Update changes <i class="fas fa-upload"></i> </a></div>'
                             );
@@ -202,6 +203,45 @@
                     }
                     $('#appendContent').html(content);
                     $('#userDetails').modal('show');
+                }
+            });
+        }
+
+        // update
+        function updateOffice() {
+            $('#updateOfficeAlert').removeClass('alert-danger alert-success').html('').hide();
+            $.ajax({
+                url: '{{ route('user.office.update') }}',
+                method: 'post',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    id: $('#editId').val(),
+                    name: $('#nameEdit').val(),
+                    code: $('#codeEdit').val(),
+                    email: $('#emailEdit').val(),
+                    mobile: $('#mobileEdit').val(),
+                    streetAddress: $('#street_addressEdit').val(),
+                    pincode: $('#pincodeEdit').val(),
+                    city: $('#cityEdit').val(),
+                    state: $('#stateEdit').val(),
+                    comment: $('#commentEdit').val(),
+                },
+                success: function(result) {
+                    $("#userDetails .modal-body").animate({scrollTop: $("#userDetails .modal-body").offset().top - 60});
+                    if (result.status == 200) {
+                        // updating new data
+                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(1).html($('#nameEdit').val());
+                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(2).html($('#codeEdit').val());
+                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(3).html('<p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> '+$('#emailEdit').val()+'</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> '+$('#mobileEdit').val()+'</p>');
+                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(4).html($('#cityEdit').val()+', '+$('#pincodeEdit').val());
+                        $('#updateOfficeAlert').addClass('alert-success').html(result.message).show();
+
+                        setTimeout(() => {
+                            $('#userDetails').modal('hide');
+                        }, 3500);
+                    } else {
+                        $('#updateOfficeAlert').addClass('alert-danger').html(result.message).show();
+                    }
                 }
             });
         }

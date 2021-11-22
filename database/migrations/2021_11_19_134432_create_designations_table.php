@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
-class CreateUserTypesTable extends Migration
+class CreateDesignationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,18 +14,22 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('designations', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('color', 50);
-            $table->softDeletes();
+            $table->string('name');
+            $table->float('salary', 10,2);
+            $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        $data = [['name' => 'Admin', 'color' => 'danger'], ['name' => 'Operations team', 'color' => 'indigo'], ['name' => 'Credit team', 'color' => 'success'], ['name' => 'Authorised signatory', 'color' => 'warning']];
+        $data = [
+            ['name' => 'Manager', 'salary' => '24000000'],
+            ['name' => 'Analyst', 'salary' => '32000'],
+            ['name' => 'Clerk', 'salary' => '16000'],
+        ];
 
-        DB::table('user_types')->insert($data);
+        DB::table('designations')->insert($data);
     }
 
     /**
@@ -35,6 +39,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('designations');
     }
 }

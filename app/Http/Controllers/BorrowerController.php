@@ -47,7 +47,7 @@ class BorrowerController extends Controller
 
     public function indexOld(Request $request)
     {
-        $data = Borrower::latest()->paginate(20);
+        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
         return view('admin.borrower.index-old', compact('data'));
     }
 
