@@ -183,8 +183,15 @@ function createNotification($sender, $receiver, $type)
 }
 
 // activity log
-function activityLog($type) {
+function activityLog($data) {
     $activity = new Activity;
-    $activity->title = $type;
+    $activity->user_id = auth()->user()->id;
+    $activity->user_device = '';
+    $activity->ip_address = '';
+    $activity->latitude = '';
+    $activity->longitude = '';
+    $activity->type = $data['type'];
+    $activity->title = $data['title'];
+    $activity->description = $data['desc'];
     $activity->save();
 }

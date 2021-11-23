@@ -109,7 +109,12 @@ class UserController extends Controller
                 createNotification(1, $user->id, 'user_registration');
 
                 // activity log
-                activityLog('new_borrower');
+                $logData = [
+                    'type' => 'new_employee',
+                    'title' => 'New employee created',
+                    'desc' => 'New employee, '.$request->name.' ('.$request->employee_id.') created by '.auth()->user()->emp_id
+                ];
+                activityLog($logData);
 
                 DB::commit();
                 return redirect()->route('user.employee.list')->with('success', 'User created');

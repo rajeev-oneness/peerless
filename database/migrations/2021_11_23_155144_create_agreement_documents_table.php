@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
-class CreateActivitiesTable extends Migration
+class CreateAgreementDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +14,8 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('agreement_documents', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->text('user_device');
-            $table->string('ip_address');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('type', 100);
-            $table->string('title');
-            $table->string('description');
             $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
@@ -37,6 +29,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('agreement_documents');
     }
 }
