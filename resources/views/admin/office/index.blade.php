@@ -9,8 +9,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"></h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
@@ -37,14 +35,15 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->code }}</td>
                                             <td>
-                                                <p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> {{ $item->email }}</p>
+                                                <p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i>
+                                                    {{ $item->email }}</p>
                                                 <p class="small text-dark mb-0">
                                                     @php
-                                                    if (!empty($item->mobile)) {
-                                                        echo '<i class="fas fa-phone fa-rotate-90 mr-2"></i> ' . $item->mobile;
-                                                    } else {
-                                                        echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>';
-                                                    }
+                                                        if (!empty($item->mobile)) {
+                                                            echo '<i class="fas fa-phone fa-rotate-90 mr-2"></i> ' . $item->mobile;
+                                                        } else {
+                                                            echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>';
+                                                        }
                                                     @endphp
                                                 </p>
                                             </td>
@@ -52,13 +51,19 @@
                                                 {{ $item->city }}, {{ $item->pincode }}
                                             </td>
                                             <td class="text-right">
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'view')">View</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="View"
+                                                    onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'view')">View</a>
 
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="Edit" onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'edit')">Edit</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="Edit"
+                                                    onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'edit')">Edit</a>
 
                                                 {{-- <a href="{{ route('user.office.edit', $item->id) }}" class="badge badge-dark action-button" title="Edit">Edit</a> --}}
 
-                                                <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{ route('user.office.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="Delete"
+                                                    onclick="confirm4lert('{{ route('user.office.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -68,7 +73,6 @@
                                     @endforelse
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -83,16 +87,26 @@
         function openSidebarModal() {
             let content = '';
             content += '<div class="alert rounded-0 px-2 py-1 small" id="newOfficeAlert" style="display:none"></div>';
-            content += '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameCreate" placeholder="Office name">';
-            content += '<p class="text-dark small mb-1">Code <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="code" id="codeCreate" placeholder="Office code">';
-            content += '<p class="text-dark small mb-1">Email <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="email" id="emailCreate" placeholder="Office email">';
-            content += '<p class="text-dark small mb-1">Phone number <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="mobile" id="mobileCreate" placeholder="Office phone number">';
-            content += '<p class="text-dark small mb-1">Address <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="street_address" id="street_addressCreate" placeholder="Street address">';
-            content += '<input type="text" class="form-control form-control-sm mb-2" name="pincode" id="pincodeCreate" placeholder="Pincode">';
-            content += '<input type="text" class="form-control form-control-sm mb-2" name="city" id="cityCreate" placeholder="City">';
-            content += '<input type="text" class="form-control form-control-sm mb-2" name="state" id="stateCreate" placeholder="State">';
-            content += '<p class="text-dark small mb-1">Comment</p><textarea class="form-control form-control-sm mb-2" name="street_address" id="commentCreate" placeholder="Comment" style="min-height:70px;max-height:200px"></textarea>';
-            $('#userDetails .modal-content').append('<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="storeOffice()">Save changes <i class="fas fa-upload"></i> </a></div>'
+            content +=
+                '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameCreate" placeholder="Office name">';
+            content +=
+                '<p class="text-dark small mb-1">Code <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="code" id="codeCreate" placeholder="Office code">';
+            content +=
+                '<p class="text-dark small mb-1">Email <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="email" id="emailCreate" placeholder="Office email">';
+            content +=
+                '<p class="text-dark small mb-1">Phone number <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="mobile" id="mobileCreate" placeholder="Office phone number">';
+            content +=
+                '<p class="text-dark small mb-1">Address <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="street_address" id="street_addressCreate" placeholder="Street address">';
+            content +=
+                '<input type="text" class="form-control form-control-sm mb-2" name="pincode" id="pincodeCreate" placeholder="Pincode">';
+            content +=
+                '<input type="text" class="form-control form-control-sm mb-2" name="city" id="cityCreate" placeholder="City">';
+            content +=
+                '<input type="text" class="form-control form-control-sm mb-2" name="state" id="stateCreate" placeholder="State">';
+            content +=
+                '<p class="text-dark small mb-1">Comment</p><textarea class="form-control form-control-sm mb-2" name="street_address" id="commentCreate" placeholder="Comment" style="min-height:70px;max-height:200px"></textarea>';
+            $('#userDetails .modal-content').append(
+                '<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="storeOffice()">Save changes <i class="fas fa-upload"></i> </a></div>'
             );
             $('#appendContent').html(content);
             $('#userDetailsModalLabel').text('Create new office');
@@ -118,22 +132,29 @@
                     comment: $('#commentCreate').val(),
                 },
                 success: function(result) {
-                    $("#userDetails .modal-body").animate({scrollTop: $("#userDetails .modal-body").offset().top - 60});
+                    $("#userDetails .modal-body").animate({
+                        scrollTop: $("#userDetails .modal-body").offset().top - 60
+                    });
                     if (result.status == 200) {
                         // prepending new data
                         let viewVar = "'view'";
                         let newData = '';
                         newData += '<td>1</td>';
-                        newData += '<td>'+$('#nameCreate').val()+'</td>';
-                        newData += '<td>'+$('#codeCreate').val()+'</td>';
+                        newData += '<td>' + $('#nameCreate').val() + '</td>';
+                        newData += '<td>' + $('#codeCreate').val() + '</td>';
 
-                        newData += '<td><p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> '+$('#emailCreate').val()+'</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> '+$('#mobileCreate').val()+'</p></td>';
+                        newData += '<td><p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> ' +
+                            $('#emailCreate').val() +
+                            '</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> ' +
+                            $('#mobileCreate').val() + '</p></td>';
 
-                        newData += '<td>'+$('#cityCreate').val()+', '+$('#pincodeCreate').val()+'</td>';
+                        newData += '<td>' + $('#cityCreate').val() + ', ' + $('#pincodeCreate').val() + '</td>';
 
-                        newData += '<td class="text-right"><a href="javascript: void(0)" class="badge badge-success action-button" title="View" onclick="viewDeta1ls('+result.viewRoute+', '+result.id+', '+viewVar+')">Just added</a></td>';
+                        newData +=
+                            '<td class="text-right"><a href="javascript: void(0)" class="badge badge-success action-button" title="View" onclick="viewDeta1ls(' +
+                            result.viewRoute + ', ' + result.id + ', ' + viewVar + ')">Just added</a></td>';
 
-                        $('#showOfficeTable').prepend('<tr>'+newData+'</tr>');
+                        $('#showOfficeTable').prepend('<tr>' + newData + '</tr>');
                         $('#newOfficeAlert').addClass('alert-success').html(result.message).show();
 
                         setTimeout(() => {
@@ -181,19 +202,39 @@
 
                             $('#userDetailsModalLabel').text('Office details');
                         } else {
-                            content += '<div class="alert rounded-0 px-2 py-1 small" id="updateOfficeAlert" style="display:none"></div>';
-                            content += '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameEdit" placeholder="Office name" value="'+result.data.name+'">';
-                            content += '<p class="text-dark small mb-1">Code <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="code" id="codeEdit" placeholder="Office code" value="'+result.data.code+'">';
-                            content += '<p class="text-dark small mb-1">Email <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="email" id="emailEdit" placeholder="Office email" value="'+result.data.email+'">';
-                            content += '<p class="text-dark small mb-1">Phone number <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="mobile" id="mobileEdit" placeholder="Office phone number" value="'+result.data.mobile+'">';
-                            content += '<p class="text-dark small mb-1">Address <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="street_address" id="street_addressEdit" placeholder="Street address" value="'+result.data.street_address+'">';
-                            content += '<input type="text" class="form-control form-control-sm mb-2" name="pincode" id="pincodeEdit" placeholder="Pincode" value="'+result.data.pincode+'">';
-                            content += '<input type="text" class="form-control form-control-sm mb-2" name="city" id="cityEdit" placeholder="City" value="'+result.data.city+'">';
-                            content += '<input type="text" class="form-control form-control-sm mb-2" name="state" id="stateEdit" placeholder="State" value="'+result.data.state+'">';
-                            content += '<p class="text-dark small mb-1">Comment</p><textarea class="form-control form-control-sm mb-2" name="street_address" id="commentEdit" placeholder="Comment" style="min-height:90px;max-height:200px">'+result.data.comment+'</textarea>';
-                            content += '<input type="hidden" id="editId" value="'+result.data.id+'">';
+                            content +=
+                                '<div class="alert rounded-0 px-2 py-1 small" id="updateOfficeAlert" style="display:none"></div>';
+                            content +=
+                                '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameEdit" placeholder="Office name" value="' +
+                                result.data.name + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Code <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="code" id="codeEdit" placeholder="Office code" value="' +
+                                result.data.code + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Email <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="email" id="emailEdit" placeholder="Office email" value="' +
+                                result.data.email + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Phone number <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="mobile" id="mobileEdit" placeholder="Office phone number" value="' +
+                                result.data.mobile + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Address <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="street_address" id="street_addressEdit" placeholder="Street address" value="' +
+                                result.data.street_address + '">';
+                            content +=
+                                '<input type="text" class="form-control form-control-sm mb-2" name="pincode" id="pincodeEdit" placeholder="Pincode" value="' +
+                                result.data.pincode + '">';
+                            content +=
+                                '<input type="text" class="form-control form-control-sm mb-2" name="city" id="cityEdit" placeholder="City" value="' +
+                                result.data.city + '">';
+                            content +=
+                                '<input type="text" class="form-control form-control-sm mb-2" name="state" id="stateEdit" placeholder="State" value="' +
+                                result.data.state + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Comment</p><textarea class="form-control form-control-sm mb-2" name="street_address" id="commentEdit" placeholder="Comment" style="min-height:90px;max-height:200px">' +
+                                result.data.comment + '</textarea>';
+                            content += '<input type="hidden" id="editId" value="' + result.data.id + '">';
 
-                            $('#userDetails .modal-content').append('<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="updateOffice()">Update changes <i class="fas fa-upload"></i> </a></div>'
+                            $('#userDetails .modal-content').append(
+                                '<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="updateOffice()">Update changes <i class="fas fa-upload"></i> </a></div>'
                             );
 
                             $('#userDetailsModalLabel').text('Edit office');
@@ -227,13 +268,22 @@
                     comment: $('#commentEdit').val(),
                 },
                 success: function(result) {
-                    $("#userDetails .modal-body").animate({scrollTop: $("#userDetails .modal-body").offset().top - 60});
+                    $("#userDetails .modal-body").animate({
+                        scrollTop: $("#userDetails .modal-body").offset().top - 60
+                    });
                     if (result.status == 200) {
                         // updating new data
-                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(1).html($('#nameEdit').val());
-                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(2).html($('#codeEdit').val());
-                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(3).html('<p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> '+$('#emailEdit').val()+'</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> '+$('#mobileEdit').val()+'</p>');
-                        $('#showOfficeTable #tr_'+$('#editId').val()+' td').eq(4).html($('#cityEdit').val()+', '+$('#pincodeEdit').val());
+                        $('#showOfficeTable #tr_' + $('#editId').val() + ' td').eq(1).html($('#nameEdit')
+                    .val());
+                        $('#showOfficeTable #tr_' + $('#editId').val() + ' td').eq(2).html($('#codeEdit')
+                    .val());
+                        $('#showOfficeTable #tr_' + $('#editId').val() + ' td').eq(3).html(
+                            '<p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> ' + $(
+                                '#emailEdit').val() +
+                            '</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> ' +
+                            $('#mobileEdit').val() + '</p>');
+                        $('#showOfficeTable #tr_' + $('#editId').val() + ' td').eq(4).html($('#cityEdit')
+                        .val() + ', ' + $('#pincodeEdit').val());
                         $('#updateOfficeAlert').addClass('alert-success').html(result.message).show();
 
                         setTimeout(() => {

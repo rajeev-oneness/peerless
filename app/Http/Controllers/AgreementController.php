@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agreement;
+use App\Models\AgreementDocument;
 use App\Models\AgreementField;
 use App\Models\Field;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AgreementController extends Controller
 {
@@ -176,5 +178,55 @@ class AgreementController extends Controller
         } catch (Exception $e) {
             DB::rollback();
         }
+    }
+
+    // documents setup
+    public function documentsIndex(Request $request, $id)
+    {
+        $data = (object)[];
+        $data->agreement = Agreement::select('name')->findOrFail($id);
+        $data->documents = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $id)->where('parent_id', null)->latest()->get();
+        return view('admin.agreement.document', compact('data'));
+    }
+
+    public function documentsStore(Request $request)
+    {
+        $rules = [
+            'agreement_id' => 'required|integer|min:1',
+            'name' => 'required|string|min:2|max:255',
+            'parent' => 'nullable|integer|min:1',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            $agreementDocument = new AgreementDocument();
+            $agreementDocument->agreement_id = $request->agreement_id;
+            $agreementDocument->name = $request->name;
+            $agreementDocument->parent_id = $request->parent;
+            $agreementDocument->save();
+
+            return response()->json(['status' => 200, 'title' => 'success', 'message' => 'New document added', 'id' => $agreementDocument->id]);
+        } else {
+            return response()->json(['status' => 400, 'title' => 'failure', 'message' => $validator->errors()->first()]);
+        }
+    }
+
+    public function documentsShow(Request $request)
+    {
+        $data = AgreementDocument::findOrFail($request->id);
+        $children = $data->siblingsDocuments;
+
+        return response()->json(['error' => false, 'data' => ['id' => $data->id, 'name' => $data->name, 'children' => $children, 'created_at' => $data->created_at]]);
+    }
+
+    public function documentsDestroy(Request $request)
+    {
+        $request->validate([
+            'id' => ['required', 'integer', 'min:1']
+        ]);
+        AgreementDocument::where('id', $request->id)->delete();
+        // AgreementDocument::where('parent_id', $request->id)->delete();
+        return response()->json(['error' => false, 'title' => 'Deleted', 'message' => 'Record deleted', 'type' => 'success']);
     }
 }

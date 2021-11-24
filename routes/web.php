@@ -79,6 +79,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         // pdf
         Route::get('/{id}/pdf/view', [PDFController::class, 'showPdf'])->name('user.agreement.pdf.view');
         Route::get('/{id}/pdf/download', [PDFController::class, 'generatePdf'])->name('user.agreement.pdf.download');
+        // documents
+        Route::get('/{id}/documents', [AgreementController::class, 'documentsIndex'])->name('user.agreement.documents.list');
+        Route::post('/documents/store', [AgreementController::class, 'documentsStore'])->name('user.agreement.documents.store');
+        Route::post('/documents/show', [AgreementController::class, 'documentsShow'])->name('user.agreement.documents.show');
+        Route::post('/documents/destroy', [AgreementController::class, 'documentsDestroy'])->name('user.agreement.documents.destroy');
     });
 
     // field

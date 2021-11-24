@@ -76,7 +76,7 @@
 
                                             <a href="{{route('user.borrower.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
 
-                                            <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.borrower.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
+                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.borrower.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

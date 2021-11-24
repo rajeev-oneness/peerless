@@ -258,7 +258,7 @@
     @endif
 
     // sweetalert delete alert
-    function confirm4lert(path, id, type) {
+    function confirm4lert(path, id, type, sub = null) {
         var ext = '';
         if (type == 'block') {
             var ext = '. Blocked users cannot login';
@@ -285,6 +285,11 @@
                     success : function (response) {
                         if (type == 'delete') {
                             $('#tr_'+id).remove();
+
+                            if (sub == 'sub') {
+                                $('#tr_sub_'+id+'').remove();
+                            }
+
                             Swal.fire(
                                 response.title, response.message, 'success'
                             )
@@ -294,6 +299,7 @@
                             } else {
                                 $('#tr_'+id+' .block-button').removeClass('badge-danger').addClass('badge-dark').text('Active');
                             }
+
                             Swal.fire(
                                 response.title+'!', response.message, 'success'
                             )

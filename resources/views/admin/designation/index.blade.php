@@ -15,8 +15,10 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="javascript: void(0)" class="btn btn-sm btn-primary" onclick="openSidebarModal()"><i class="fas fa-plus"></i> Create</a>
-                                <a href="{{ route('user.employee.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back to users</a>
+                                <a href="javascript: void(0)" class="btn btn-sm btn-primary" onclick="openSidebarModal()"><i
+                                        class="fas fa-plus"></i> Create</a>
+                                <a href="{{ route('user.employee.list') }}" class="btn btn-sm btn-primary"> <i
+                                        class="fas fa-chevron-left"></i> Back to users</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -36,11 +38,17 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->salary }}</td>
                                             <td class="text-right">
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{ route('user.designation.show') }}', {{ $item->id }}, 'view')">View</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="View"
+                                                    onclick="viewDeta1ls('{{ route('user.designation.show') }}', {{ $item->id }}, 'view')">View</a>
 
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="Edit" onclick="viewDeta1ls('{{ route('user.designation.show') }}', {{ $item->id }}, 'edit')">Edit</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="Edit"
+                                                    onclick="viewDeta1ls('{{ route('user.designation.show') }}', {{ $item->id }}, 'edit')">Edit</a>
 
-                                                <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{ route('user.designation.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
+                                                    title="Delete"
+                                                    onclick="confirm4lert('{{ route('user.designation.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -65,10 +73,13 @@
         function openSidebarModal() {
             let content = '';
             content += '<div class="alert rounded-0 px-2 py-1 small" id="newDeptAlert" style="display:none"></div>';
-            content += '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameCreate" placeholder="Designation name">';
-            content += '<p class="text-dark small mb-1">Salary/ month <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="salary" id="salaryCreate" placeholder="Salary">';
+            content +=
+                '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameCreate" placeholder="Designation name">';
+            content +=
+                '<p class="text-dark small mb-1">Salary/ month <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="salary" id="salaryCreate" placeholder="Salary">';
 
-            $('#userDetails .modal-content').append('<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="storeDept()">Save changes <i class="fas fa-upload"></i> </a></div>'
+            $('#userDetails .modal-content').append(
+                '<div class="modal-footer text-right"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="storeDept()">Save changes <i class="fas fa-upload"></i> </a></div>'
             );
             $('#appendContent').html(content);
             $('#userDetailsModalLabel').text('Create new designation');
@@ -98,7 +109,9 @@
                         newData += '<td>' + $('#nameCreate').val() + '</td>';
                         newData += '<td>' + $('#salaryCreate').val() + '</td>';
 
-                        newData += '<td class="text-right"><a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls(' +result.viewRoute + ', ' + result.id + ', ' + viewVar + ')">View</a></td>';
+                        newData +=
+                            '<td class="text-right"><a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls(' +
+                            result.viewRoute + ', ' + result.id + ', ' + viewVar + ')">View</a></td>';
 
                         $('#showDesignationTable').prepend('<tr>' + newData + '</tr>');
                         $('#newDeptAlert').addClass('alert-success').html(result.message).show();
@@ -131,13 +144,20 @@
                                 mobileShow = result.data.mobile;
                             }
 
-                            content += '<p class="text-muted small mb-1">Name</p><h6>' + result.data.name + '</h6>';
-                            content += '<p class="text-muted small mb-1">Salary</p><h6>' + result.data.salary + '</h6>';
+                            content += '<p class="text-muted small mb-1">Name</p><h6>' + result.data.name +
+                                '</h6>';
+                            content += '<p class="text-muted small mb-1">Salary</p><h6>' + result.data.salary +
+                                '</h6>';
                             $('#userDetailsModalLabel').text('Designation details');
                         } else {
-                            content += '<div class="alert rounded-0 px-2 py-1 small" id="updateDeptAlert" style="display:none"></div>';
-                            content += '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameEdit" placeholder="Designation name" value="' + result.data.name + '">';
-                            content += '<p class="text-dark small mb-1">Salary <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="salary" id="salaryEdit" placeholder="Salary" value="' + result.data.salary + '">';
+                            content +=
+                                '<div class="alert rounded-0 px-2 py-1 small" id="updateDeptAlert" style="display:none"></div>';
+                            content +=
+                                '<p class="text-dark small mb-1">Name <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="name" id="nameEdit" placeholder="Designation name" value="' +
+                                result.data.name + '">';
+                            content +=
+                                '<p class="text-dark small mb-1">Salary <span class="text-danger">*</span></p><input type="text" class="form-control form-control-sm mb-2" name="salary" id="salaryEdit" placeholder="Salary" value="' +
+                                result.data.salary + '">';
                             content += '<input type="hidden" id="editId" value="' + result.data.id + '">';
 
                             $('#userDetails .modal-content').append(
@@ -169,11 +189,15 @@
                     salary: $('#salaryEdit').val(),
                 },
                 success: function(result) {
-                    $("#userDetails .modal-body").animate({scrollTop: $("#userDetails .modal-body").offset().top - 60});
+                    $("#userDetails .modal-body").animate({
+                        scrollTop: $("#userDetails .modal-body").offset().top - 60
+                    });
                     if (result.status == 200) {
                         // updating new data
-                        $('#showDesignationTable #tr_'+$('#editId').val()+' td').eq(1).html($('#nameEdit').val());
-                        $('#showDesignationTable #tr_'+$('#editId').val()+' td').eq(2).html($('#salaryEdit').val());
+                        $('#showDesignationTable #tr_' + $('#editId').val() + ' td').eq(1).html($('#nameEdit')
+                            .val());
+                        $('#showDesignationTable #tr_' + $('#editId').val() + ' td').eq(2).html($('#salaryEdit')
+                            .val());
                         $('#updateDeptAlert').addClass('alert-success').html(result.message).show();
 
                         setTimeout(() => {

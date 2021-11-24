@@ -16,10 +16,43 @@ class CreateAgreementDocumentsTable extends Migration
     {
         Schema::create('agreement_documents', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('agreement_id');
+            $table->string('name');
+            $table->integer('parent_id')->nullable();
             $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
+
+        $data = [
+            [
+                'agreement_id' => 1,
+                'name' => 'Personal document',
+                'parent_id' => null,
+            ],
+            [
+                'agreement_id' => 1,
+                'name' => 'PAN card',
+                'parent_id' => 1,
+            ],
+            [
+                'agreement_id' => 1,
+                'name' => 'Aadhar card',
+                'parent_id' => 1,
+            ],
+            [
+                'agreement_id' => 1,
+                'name' => 'Deed',
+                'parent_id' => null,
+            ],
+            [
+                'agreement_id' => 1,
+                'name' => 'Form 17A',
+                'parent_id' => 4,
+            ],
+        ];
+
+        DB::table('agreement_documents')->insert($data);
     }
 
     /**

@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AgreementDocument extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function siblingsDocuments()
+    {
+        return $this->hasMany('App\Models\AgreementDocument', 'parent_id', 'id');
+    }
 }
