@@ -32,12 +32,17 @@ class CreateAgreementDocumentsTable extends Migration
             ],
             [
                 'agreement_id' => 1,
-                'name' => 'PAN card',
+                'name' => 'PAN card front',
                 'parent_id' => 1,
             ],
             [
                 'agreement_id' => 1,
-                'name' => 'Aadhar card',
+                'name' => 'Aadhar card front',
+                'parent_id' => 1,
+            ],
+            [
+                'agreement_id' => 1,
+                'name' => 'Aadhar card back',
                 'parent_id' => 1,
             ],
             [
@@ -48,7 +53,7 @@ class CreateAgreementDocumentsTable extends Migration
             [
                 'agreement_id' => 1,
                 'name' => 'Form 17A',
-                'parent_id' => 4,
+                'parent_id' => 5,
             ],
         ];
 
