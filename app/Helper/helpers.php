@@ -4,6 +4,7 @@ use App\Models\MailLog;
 use App\Models\Activity;
 use Hamcrest\Arrays\IsArray;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 // check user type
 // function userTypeCheck($type)
@@ -189,7 +190,7 @@ function activityLog($data)
     $activity = new Activity;
     $activity->user_id = auth()->user()->id;
     $activity->user_device = '';
-    $activity->ip_address = '';
+    $activity->ip_address = Request::ip();
     $activity->latitude = '';
     $activity->longitude = '';
     $activity->type = $data['type'];

@@ -14,7 +14,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // user common routes
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], function () {
     // profile
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [HomeController::class, 'profile'])->name('user.profile');
@@ -107,6 +107,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
         Route::get('/notification', [LogController::class, 'logsNotification'])->name('user.logs.notification');
         Route::post('/notification/readall', [LogController::class, 'notificationReadAll'])->name('user.logs.notification.readall');
+        Route::get('/activity', [LogController::class, 'activityIndex'])->name('user.logs.activity');
     });
 
     // office management

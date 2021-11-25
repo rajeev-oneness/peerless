@@ -109,6 +109,14 @@ class BorrowerController extends Controller
             $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
             $user->save();
 
+            // activity log
+            $logData = [
+                'type' => 'new_borrower',
+                'title' => 'New borrower created',
+                'desc' => 'New borrower, '.$request->full_name.' created by '.auth()->user()->emp_id
+            ];
+            activityLog($logData);
+
             DB::commit();
             return redirect()->route('user.borrower.list')->with('success', 'Borrower created');
         } catch(Exception $e) {

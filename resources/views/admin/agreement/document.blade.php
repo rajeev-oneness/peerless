@@ -103,6 +103,17 @@
                     $("#userDetails .modal-body").animate({scrollTop: $("#userDetails .modal-body").offset().top - 60});
                     if (result.status == 200) {
                         $('#newOfficeAlert').addClass('alert-success').html(result.message).show();
+
+                        if ($('#parentCreate').val().length == 0) {
+                            let viewVar = "'view'";
+                            let newData = '';
+                            newData += '<td>1</td>';
+                            newData += '<td>' + $('#nameCreate').val() + '</td><td></td>';
+
+                            newData +='<td class="text-right"><a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls(' + result.viewRoute + ', ' + result.id + ', ' + viewVar + ')">View</a></td>';
+
+                            $('#showOfficeTable').prepend('<tr>' + newData + '</tr>');
+                        }
                         setTimeout(() => {
                             window.location = "{{route('user.agreement.documents.list', request()->id)}}";
                         }, 2000);

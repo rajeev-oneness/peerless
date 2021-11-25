@@ -48,6 +48,7 @@
                                                     </div>
                                                     <div class="flex-grow-1 ms-3">
                                                         @php echo '<span class="badge bg-'.$item->type->color.' rounded-0">'.strtoupper($item->type->name).'</span>'; @endphp
+                                                        
                                                         <p class="name">{{ $item->name }}</p>
                                                     </div>
                                                 </div>
@@ -122,8 +123,7 @@
                 success: function(result) {
                     let content = '';
                     if (result.error == false) {
-                        let mobileShow = parentShow = departmentShow = designationShow = officeShow =
-                            '<em class="text-muted">No data</em>';
+                        let mobileShow = parentShow = departmentShow = designationShow = officeShow = '<em class="text-muted">No data</em>';
                         if (result.data.mobile != null) {
                             mobileShow = result.data.mobile;
                         }
@@ -144,22 +144,15 @@
                             officeShow = result.data.office;
                         }
 
-                        content += '<div class="w-100 mb-3 text-uppercase"><div class="badge badge-' + result
-                            .data.user_type_color + ' rounded-0">' + result.data.user_type + '</div></div>';
-                        content += '<div class="w-100 user-profile-holder mb-3"><img src="' + result.data
-                            .image_path + '"></div>';
+                        content += '<div class="w-100 mb-3 text-uppercase"><div class="badge badge-' + result.data.user_type_color + ' rounded-0">' + result.data.user_type + '</div></div>';
+                        content += '<div class="w-100 user-profile-holder mb-3"><img src="' + result.data.image_path + '"></div>';
                         content += '<p class="text-muted small mb-1">Name</p><h6>' + result.data.name + '</h6>';
-                        content += '<p class="text-muted small mb-1">Employee ID</p><h6>' + result.data.emp_id +
-                            '</h6>';
-                        content += '<p class="text-muted small mb-1">Email</p><h6>' + result.data.email +
-                            '</h6>';
-                        content += '<p class="text-muted small mb-1">Phone number</p><h6>' + mobileShow +
-                            '</h6>';
+                        content += '<p class="text-muted small mb-1">Employee ID</p><h6>' + result.data.emp_id +'</h6>';
+                        content += '<p class="text-muted small mb-1">Email</p><h6>' + result.data.email +'</h6>';
+                        content += '<p class="text-muted small mb-1">Phone number</p><h6>' + mobileShow +'</h6>';
                         content += '<p class="text-muted small mb-1">Parent</p><h6>' + parentShow + '</h6>';
-                        content += '<p class="text-muted small mb-1">Department</p><h6>' + departmentShow +
-                            '</h6>';
-                        content += '<p class="text-muted small mb-1">Designation</p><h6>' + designationShow +
-                            '</h6>';
+                        content += '<p class="text-muted small mb-1">Department</p><h6>' + departmentShow +'</h6>';
+                        content += '<p class="text-muted small mb-1">Designation</p><h6>' + designationShow +'</h6>';
                         content += '<p class="text-muted small mb-1">Office</p><h6>' + officeShow + '</h6>';
                     } else {
                         content += '<p class="text-muted small mb-1">No data found. Try again</p>';

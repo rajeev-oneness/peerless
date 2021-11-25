@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
 
         $data = [
             [
-                // 'emp_id' => $APP_data->EMP_ID_PREFIX.'EMP001',
+                'emp_id' => 'PFSL0001',
                 'name' => 'Alexander Pierce',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('secret'),

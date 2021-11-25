@@ -117,25 +117,31 @@
                                 <p>Agreement</p>
                             </a>
                         </li>
+                        @if (auth()->user()->user_type != 3)
                         <li class="nav-item">
                             <a href="{{ route('user.field.list') }}" class="nav-link {{ (request()->is('user/field*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>Field</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-header">SETTINGS</li>
+                        @if (auth()->user()->user_type == 1)
                         <li class="nav-item">
                             <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Employee management</p>
                             </a>
                         </li>
+                        @endif
+                        @if (auth()->user()->user_type == 1)
                         <li class="nav-item">
                             <a href="{{route('user.office.list')}}" class="nav-link {{ (request()->is('user/office*') ? 'active' : '') }}">
                                 <i class="nav-icon fas fa-building"></i>
                                 <p>Office management</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
