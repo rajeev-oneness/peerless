@@ -15,8 +15,7 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-chevron-left"></i> Back</a>
+                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -50,19 +49,18 @@
 
                                     <div class="bs-stepper">
                                         <div class="bs-stepper-header" role="tablist">
-                                            <div class="step" data-target="#logins-part">
+                                            <div class="step" data-target="#information-part">
                                                 <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="logins-part" id="logins-part-trigger">
+                                                    aria-controls="information-part" id="information-part-trigger">
                                                     <span class="bs-stepper-circle"><i class="fas fa-user"></i></span>
                                                     <span class="bs-stepper-label">Borrower's information</span>
                                                 </button>
                                             </div>
                                             <div class="line"></div>
-                                            <div class="step" data-target="#information-part">
+                                            <div class="step" data-target="#document-part">
                                                 <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle"><i
-                                                            class="fas fa-file-import"></i></span>
+                                                    aria-controls="document-part" id="document-part-trigger">
+                                                    <span class="bs-stepper-circle"><i class="fas fa-file-import"></i></span>
                                                     <span class="bs-stepper-label">Documents</span>
                                                 </button>
                                             </div>
@@ -76,48 +74,38 @@
                                             </div>
                                         </div>
                                         <div class="bs-stepper-content">
-                                            <div id="logins-part" class="content" role="tabpanel"
-                                                aria-labelledby="logins-part-trigger">
+                                            <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                                 @if (count($data->fields) > 0)
-                                                    <form action="{{ route('user.borrower.agreement.store') }}"
-                                                        method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('user.borrower.agreement.store') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <table class="table table-sm table-bordered table-hover">
                                                             @foreach ($data->fields as $index => $item)
-                                                                <tr>
-                                                                    <td class="fields_col-1">
-                                                                        <h6 class="font-weight-bold">{!! $item->fieldDetails->name !!}
-                                                                            {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</h6>
-                                                                    </td>
-                                                                    <td class="fields_col-2">
-                                                                        @php
-                                                                            if ($data->agreementRfq > 0) {
-                                                                                $fieldValue = '';
-                                                                            } else {
-                                                                                $fieldValue = '';
-                                                                            }
-                                                                        @endphp
-                                                                        {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, $fieldValue) !!}
-                                                                    </td>
-                                                                </tr>
+                                                            <tr>
+                                                                <td style="width: 50px">{{$index + 1}}</td>
+                                                                <td class="fields_col-1">
+                                                                    <h6 class="font-weight-bold">{!! $item->fieldDetails->name !!}
+                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</h6>
+                                                                </td>
+                                                                <td class="fields_col-2">
+
+                                                                    @if ($data->agreementRfq > 0)
+                                                                        {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required', $borrowerId = $id) !!}
+                                                                    @else
+                                                                        {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required') !!} 
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
                                                             @endforeach
                                                             <tr>
-                                                                <td colspan="2"
-                                                                    style="position: sticky;bottom: 0;z-index: 99;background-color: #fff;">
+                                                                <td colspan="3" style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;">
                                                                     <div class="w-100 text-right">
-                                                                        <input type="hidden" name="borrower_id"
-                                                                            value="{{ $id }}">
-                                                                        <input type="hidden" name="agreement_id"
-                                                                            value="{{ $data->agreement_id }}">
+                                                                        <input type="hidden" name="borrower_id" value="{{ $id }}">
+                                                                        <input type="hidden" name="agreement_id" value="{{ $data->agreement_id }}">
 
-                                                                        <button type="submit"
-                                                                            class="btn btn-sm btn-primary">Submit
-                                                                            changes</button>
                                                                         @if ($data->agreementRfq > 0)
-                                                                            <button type="button"
-                                                                                class="btn btn-sm btn-primary"
-                                                                                onclick="stepper.next()">Next <i
-                                                                                    class="fas fa-chevron-right"></i></button>
+                                                                        <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button>
+                                                                        @else
+                                                                        <button type="submit" class="btn btn-sm btn-primary">Submit changes <i class="fas fa-upload"></i></button>
                                                                         @endif
                                                                     </div>
                                                                 </td>
@@ -133,8 +121,7 @@
                                                 @endif
                                             </div>
 
-                                            <div id="information-part" class="content" role="tabpanel"
-                                                aria-labelledby="information-part-trigger">
+                                            <div id="document-part" class="content" role="tabpanel" aria-labelledby="document-part-trigger">
                                                 <div class="card border shadow-none rounded-0">
                                                     <div class="card-body">
                                                         <div class="row">
@@ -205,21 +192,22 @@
                                                                 @endforeach
                                                             @empty
                                                                 <div class="col-sm-12 text-center">
-                                                                    <p class="text-muted"><em>No documents to
-                                                                            upload</em></p>
+                                                                    <p class="text-muted"><em>No documents to upload</em></p>
                                                                 </div>
                                                             @endforelse
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="text-right">
-                                                    <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Previous</button>
-                                                    <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Next <i class="fas fa-chevron-right"></i></button>
+                                                    <div class="card-footer" style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;padding: 0.3rem;">
+                                                        <div class="text-right">
+                                                            <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Back to borrower's form</button>
+                                                            <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Submit <i class="fas fa-chevron-right"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div id="submit-part" class="content" role="tabpanel" aria-labelledby="submit-part-trigger">
-                                                <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Previous</button>
+                                                <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Back to Documents</button>
                                                 {{-- <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></button> --}}
                                                 <a href="{{route('user.borrower.list')}}" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
                                             </div>

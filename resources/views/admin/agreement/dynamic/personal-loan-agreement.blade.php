@@ -71,7 +71,7 @@
     <STYLE type="text/css">
         body {margin-top: 0px;margin-left: 0px;}
         
-        #page_1 {position:relative; overflow: hidden;margin: 96px 0px 60px 47px;padding: 0px;border: none;width: 747px;}
+        #page_1 {position:relative; overflow: hidden;margin: 0 0px 60px 47px;padding: 0px;border: none;width: 747px;}
         #page_1 #id1_1 {border:none;margin: 0px 0px 0px 2px;padding: 0px;border:none;width: 745px;overflow: hidden;}
         #page_1 #id1_2 {border:none;margin: 202px 0px 0px 348px;padding: 0px;border:none;width: 399px;overflow: hidden;}
         #page_1 #p1dimg1 {position:absolute;top:427px;left:0px;z-index:-1;width:692px;height:345px;}
@@ -1026,8 +1026,8 @@
         <div id="DivIdToPrint">
             <DIV id="page_1">
                 <DIV id="id1_1">
-
-                    <P class="p0 ft0">INSTRUCTIONS FOR FILLING AGREEMENT</P>
+                    <img src="{{asset('admin/stamp.jpg')}}" alt="" style="width: 700px;">
+                    <P class="p0 ft0" style="text-align: center;padding-left: 0;">AGREEMENT</P>
                     <P class="p1 ft1">General Instructions :</P>
                     <P class="p2 ft1">All applications to be filled in <SPAN class="ft2">English </SPAN>in CAPITAL LETTERS using
                         Ballpoint pen only.</P>

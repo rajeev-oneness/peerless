@@ -2,6 +2,8 @@
 
 use App\Models\MailLog;
 use App\Models\Activity;
+use App\Models\AgreementData;
+use App\Models\AgreementRfq;
 use Hamcrest\Arrays\IsArray;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
@@ -70,14 +72,29 @@ function checkStringFileAray($data)
             return fileUpload($data, 'agreementUploads');
         }
     }
+
     return '';
 }
 
-function form3lements($field_id, $name = null, $type, $value = null, $key_name = null, $width = 100, $required = '', $fieldValue = '')
+function form3lements($field_id, $name = null, $type, $value = null, $key_name = null, $width = 100, $required = '', $borrowerId = '')
 {
+    $respValue = '';
+    if (!empty($borrowerId)) {
+        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+
+        if ($rfq) {
+            $agreementData = AgreementData::where('rfq_id', $rfq->id)->where('field_name', $key_name)->first();
+            if ($agreementData) {
+                $respValue = $agreementData->field_value;
+            }
+        }
+
+        // $respValue = $borrowerId;
+    }
+
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $fieldValue . '"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'email':
             $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
@@ -106,7 +123,7 @@ function form3lements($field_id, $name = null, $type, $value = null, $key_name =
             $expValue = explode(', ', $value);
             $option = '';
             foreach ($expValue as $index => $val) {
-                $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '" ' . $required . '> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val . '</label></div>';
+                $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '"> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val . '</label></div>';
             }
             $response = '<div class="form-check">' . $option . '</div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
@@ -159,7 +176,7 @@ function SendMail($data)
     });
 }
 
-function createNotification($sender, $receiver, $type, $message=null)
+function createNotification($sender, $receiver, $type, $message = null)
 {
     switch ($type) {
         case 'user_registration':
@@ -207,18 +224,18 @@ function activityLog($data)
 function documentSrc($agreement_document_id, $borrower_id, $type)
 {
     $image = asset('admin/uploads/blank.png');
-    $detailsShow = '<label for="file_'.$agreement_document_id.'" class="btn btn-xs btn-primary" id="image__preview_label'.$agreement_document_id.'">Browse <i class="fas fa-camera"></i></label>';
+    $detailsShow = '<label for="file_' . $agreement_document_id . '" class="btn btn-xs btn-primary" id="image__preview_label' . $agreement_document_id . '">Browse <i class="fas fa-camera"></i></label>';
 
     $document = \App\Models\AgreementDocumentUpload::where('agreement_document_id', $agreement_document_id)->where('borrower_id', $borrower_id)->where('status', 1)->latest()->first();
     if ($document) {
         $image = asset($document->file_path);
 
-        $verifyShow = '<a href="javascript: void(0)" class="btn btn-xs btn-success mb-2" title="Document verified" onclick="viewUploadedDocument('.$document->id.')" id="verifyDocToggle'.$document->id.'"> <i class="fas fa-clipboard-check"></i> </a>';
+        $verifyShow = '<a href="javascript: void(0)" class="btn btn-xs btn-success mb-2" title="Document verified" onclick="viewUploadedDocument(' . $document->id . ')" id="verifyDocToggle' . $document->id . '"> <i class="fas fa-clipboard-check"></i> </a>';
         if ($document->verify == 0) {
-            $verifyShow = '<a href="javascript: void(0)" class="btn btn-xs btn-danger mb-2" title="Document unverified" onclick="viewUploadedDocument('.$document->id.')" id="verifyDocToggle'.$document->id.'"> <i class="fas fa-question-circle"></i> </a>';
+            $verifyShow = '<a href="javascript: void(0)" class="btn btn-xs btn-danger mb-2" title="Document unverified" onclick="viewUploadedDocument(' . $document->id . ')" id="verifyDocToggle' . $document->id . '"> <i class="fas fa-question-circle"></i> </a>';
         }
 
-        $detailsShow = '<a href="javascript: void(0)" class="btn btn-xs btn-primary mb-2" onclick="viewUploadedDocument('.$document->id.')"><i class="fas fa-eye"></i></a> <label for="file_'.$agreement_document_id.'" class="btn btn-xs btn-dark" id="image__preview_label'.$agreement_document_id.'">Browse <i class="fas fa-camera"></i></label> '.$verifyShow;
+        $detailsShow = '<a href="javascript: void(0)" class="btn btn-xs btn-primary mb-2" onclick="viewUploadedDocument(' . $document->id . ')"><i class="fas fa-eye"></i></a> <label for="file_' . $agreement_document_id . '" class="btn btn-xs btn-dark" id="image__preview_label' . $agreement_document_id . '">Browse <i class="fas fa-camera"></i></label> ' . $verifyShow;
     }
 
     if ($type == 'image') {

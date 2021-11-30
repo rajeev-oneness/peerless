@@ -28,7 +28,7 @@ class BorrowerController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()) {
-            $borrowers = Borrower::select('*')->with('agreementDetails')->latest('id');
+            $borrowers = Borrower::select('*')->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('id');
 
             return Datatables::of($borrowers)->make(true);
         }
@@ -269,12 +269,9 @@ class BorrowerController extends Controller
                 foreach ($request->field_name as $index => $field) {
                     $agreement = new AgreementData();
                     $agreement->rfq_id = $rfq->id;
-                    // $agreement->borrower_id = $request->borrower_id;
-                    // $agreement->agreement_id = $request->agreement_id;
                     $agreement->field_id = 0;
                     $agreement->field_name = $index;
                     $agreement->field_value = checkStringFileAray($field);
-                    // $agreement->data_filled_by = auth()->user()->id;
                     $agreement->save();
                 }
 

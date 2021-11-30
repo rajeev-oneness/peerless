@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.bootstrap4.min.css">
+{{-- responsiveness --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
 
 <section class="content">
     <div class="container-fluid">
@@ -27,11 +30,11 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-sm table-bordered display display table-hover" id="borrowers-table" width="100%">
+                        <table class="table table-sm table-bordered table-hover display responsive" id="borrowers-table" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th data-priority="1">#</th>
-                                    <th data-priority="2">Name</th>
+                                    <th>#</th>
+                                    <th>Name</th>
                                     <th>Contact</th>
                                     <th>Address</th>
                                     <th>Loan details</th>
@@ -48,10 +51,9 @@
 @endsection
 
 @section('script')
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script> --}}
+    {{-- datatable --}}
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    {{-- <script src="https://cdn.datatables.net/plug-ins/1.11.3/features/searchHighlight/dataTables.searchHighlight.min.js"></script> --}}
     {{-- buttons --}}
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap4.min.js"></script>
@@ -61,13 +63,33 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.colVis.min.js"></script>
+    {{-- responsiveness --}}
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 
     <script>
         $borrowersTable = $('#borrowers-table').DataTable({
             processing: true,
             serverSide: true,
             fixedHeader: true,
-            responsive: true,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal( {
+                        header: function ( row ) {
+                            var data = row.data();
+                            return 'Details for '+data[0]+' '+data[1];
+                        }
+                    } ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                    } )
+                }
+            },
+            // columnDefs: [
+            //     { responsivePriority: 1, targets: 0 },
+            //     { responsivePriority: 10001, targets: 4 },
+            //     { responsivePriority: 2, targets: -2 }
+            // ],
             dom: 'Blfrtip',
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
@@ -120,6 +142,17 @@
                     titleAttr: 'Print'
                 },
             ],
+            // responsive: {
+            //     details: {
+            //         type: 'column',
+            //         target: -1
+            //     }
+            // },
+            // columnDefs: [ {
+            //     className: 'dtr-control',
+            //     orderable: false,
+            //     targets:   -1
+            // } ],
             lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
             ajax: '{{ route('user.borrower.list') }}',
             columns: [
@@ -145,13 +178,18 @@
                 {
                     data: 'id', name: 'id',
                     render: function(data, type, full, meta) {
+                        // console.log(full);
                         if (full.agreement_id == 0) {
                             return '<div class="single-line"><p class="small text-muted"> <em>No agreement yet</em> </p></div>';
                         } else {
                             let route = '{{route("user.borrower.agreement", 'id')}}';
                             route = route.replace('id', full.id);
 
-                            return '<div class="single-line"><a href="'+route+'" class="badge badge-primary action-button" title="Setup loan application form"> '+full.agreement_details.name+'</a></div>';
+                            if (full.borrower_agreement_rfq == null || full.borrower_agreement_rfq.lebgth < 1) {
+                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-danger action-button" title="Setup loan application form"> Incomplete loan agreement </a></div>';
+                            } else {
+                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-success action-button" title="Setup loan application form"> complete loan agreement</a></div>';
+                            }
                         }
                     }
                 },

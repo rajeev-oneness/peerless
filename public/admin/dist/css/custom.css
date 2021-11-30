@@ -386,3 +386,25 @@ mark {
 .bg-tomato {
     background-color: tomato;
 }
+
+
+/* datatable style */
+.dt-buttons,.dataTables_info{
+    float: left;
+}
+.borrowers-table_filter{
+    float: right;
+}
+.dataTables_length{
+    float: left;
+    margin-left: 20px;
+}
+.dataTables_paginate{
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 640px) {
+    .dt-buttons,.dataTables_info{
+        float: none;
+    }
+}
