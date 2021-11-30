@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ $data->title }}</title>
+    <title>{{ $data->fileName }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         .page-break {
