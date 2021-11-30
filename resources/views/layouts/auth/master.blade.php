@@ -296,6 +296,10 @@
                                 $('#tr_sub_'+id+'').remove();
                             }
 
+                            if (sub == 'yajraDelete') {
+                                $borrowersTable.ajax.reload();
+                            }
+
                             Swal.fire(
                                 response.title, response.message, 'success'
                             )

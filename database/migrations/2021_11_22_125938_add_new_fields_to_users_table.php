@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AddNewFieldsToUsersTable extends Migration
@@ -20,6 +21,8 @@ class AddNewFieldsToUsersTable extends Migration
             $table->date('joining_date')->after('block')->default(date('Y-m-d'));
             $table->bigInteger('office_id')->after('joining_date');
         });
+
+        DB::statement("UPDATE users SET emp_id = 'PFSL0001' WHERE email = 'admin@admin.com'");
     }
 
     /**

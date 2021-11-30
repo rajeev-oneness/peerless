@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agreement;
+use App\Models\Borrower;
+use App\Models\User;
 use App\Models\MailLog;
 use App\Models\Notification;
+use App\Models\Office;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +31,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $data = (object)[];
+        $data->borrower = Borrower::count();
+        $data->agreement = Agreement::count();
+        $data->employee = User::count();
+        $data->office = Office::count();
+
+        $data->recentBorrowers = Borrower::latest()->limit(5)->get();
+        return view('admin.dashboard', compact('data'));
         // return view('home');
     }
 

@@ -15,7 +15,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="{{route('user.agreement.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create</a>
+                            {{-- <a href="{{route('user.agreement.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create</a> --}}
                         </div>
                     </div>
                     <div class="card-body">
@@ -59,7 +59,7 @@
 
                                             <a href="{{route('user.agreement.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
     
-                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
+                                            {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
                                         </div>
                                     </td>
                                 </tr>

@@ -159,13 +159,18 @@ function SendMail($data)
     });
 }
 
-function createNotification($sender, $receiver, $type)
+function createNotification($sender, $receiver, $type, $message=null)
 {
     switch ($type) {
         case 'user_registration':
             $title = 'Registration successfull';
             $message = 'Please check & update your profile as needed';
             $route = 'user.profile';
+            break;
+        case 'new_borrower':
+            $title = 'New borrower created';
+            $message = $message;
+            $route = 'user.borrower.list';
             break;
         default:
             $title = '';

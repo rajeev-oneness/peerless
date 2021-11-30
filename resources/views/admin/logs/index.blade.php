@@ -26,7 +26,7 @@
                     <div class="inner">
                         <h3>{{$notification->unreadCount}}<sup style="font-size: 13px;font-weight: 400;margin-left: 6px;">unread</sup></h3>
 
-                        <p>Notifications</p>
+                        <p>{{$notification->unreadCount > 1 ? 'Notifications' : 'Notification'}}</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-bullhorn {{($notification->unreadCount > 0 ? 'pulse-grow-animation' : '')}}"></i>

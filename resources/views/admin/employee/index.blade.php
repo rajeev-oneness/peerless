@@ -15,14 +15,10 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="{{ route('user.employee.create') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-plus"></i> Create</a>
-                                <a href="{{ route('user.department.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-cog"></i> Department</a>
-                                <a href="{{ route('user.designation.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-cog"></i> Designation</a>
-                                <a href="{{ route('user.role.list') }}" class="btn btn-sm btn-danger"> <i
-                                        class="fas fa-shield-alt"></i> ROLE</a>
+                                <a href="{{ route('user.employee.create') }}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create new employee</a>
+                                <a href="{{ route('user.department.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-cog"></i> Department</a>
+                                <a href="{{ route('user.designation.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-cog"></i> Designation</a>
+                                <a href="{{ route('user.role.list') }}" class="btn btn-sm btn-danger"> <i class="fas fa-shield-alt"></i> ROLE</a>
                             </div>
                         </div>
                         <div class="card-body">

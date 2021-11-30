@@ -27,31 +27,18 @@ class BorrowerController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
-        return view('admin.borrower.index-old', compact('data'));
+        if($request->ajax()) {
+            $borrowers = Borrower::select('*')->with('agreementDetails')->latest('id');
+
+            return Datatables::of($borrowers)->make(true);
+        }
+        return view('admin.borrower.index');
     }
 
     public function indexOld(Request $request)
     {
-        $borrowers = Borrower::select(['id', 'full_name', 'gender', 'mobile', 'occupation']);
-
-        return Datatables::of($borrowers)
-            ->addColumn('action', function ($borrower) {
-                return '<a href="#edit-'. $borrower->id.'" class="btn btn-xs btn-primary"> Edit</a>';
-            })
-            ->editColumn('id', '{{$id}}')
-            ->removeColumn('updated_at')
-            ->setRowId('id')
-            ->setRowClass(function ($user) {
-                return $user->id % 2 == 0 ? 'alert-success' : 'alert-warning';
-            })
-            ->setRowData([
-                'id' => 'test',
-            ])
-            ->setRowAttr([
-                'color' => 'red',
-            ])
-            ->make(true);
+        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
+        return view('admin.borrower.index-old', compact('data'));
     }
 
     /**
@@ -80,7 +67,7 @@ class BorrowerController extends Controller
             'gender' => 'required|string|min:1|max:30',
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
-            'mobile' => 'required|numeric|min:1',
+            'mobile' => 'required|integer|digits:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
@@ -107,7 +94,11 @@ class BorrowerController extends Controller
             $user->pincode = $request->pincode;
             $user->state = $request->state;
             $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
+            $user->uploaded_by = auth()->user()->id;
             $user->save();
+
+            // notification fire
+            createNotification(auth()->user()->id, 1, 'new_borrower', 'New borrower, '.$request->name_prefix.' '.$request->full_name.' added by '.auth()->user()->emp_id);
 
             // activity log
             $logData = [
