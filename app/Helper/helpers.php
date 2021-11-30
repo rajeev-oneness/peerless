@@ -94,19 +94,19 @@ function form3lements($field_id, $name = null, $type, $value = null, $key_name =
 
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="'.$respValue.'"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'email':
-            $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="'.$respValue.'"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'number':
-            $response = '<input type="number" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="number" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="'.$respValue.'"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'date':
-            $response = '<input type="date" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="date" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="'.$respValue.'"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'time':
-            $response = '<input type="time" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="time" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="'.$respValue.'"><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'file':
             $response = '<div class="custom-file custom-file-sm w-' . $width . '"><input type="file" class="custom-file-input" id="customFile" name="field_name[' . $key_name . ']" ' . $required . '><label class="custom-file-label" for="customFile">Choose ' . $name . '</label></div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
@@ -115,7 +115,12 @@ function form3lements($field_id, $name = null, $type, $value = null, $key_name =
             $expValue = explode(', ', $value);
             $option = '<option value="" selected hidden>Select ' . $name . '</option>';
             foreach ($expValue as $index => $val) {
-                $option .= '<option value="' . $val . '">' . $val . '</option>';
+                if ($respValue == $val)
+                    $sel = 'selected';
+                else
+                    $sel = '';
+                
+                $option .= '<option value="' . $val . '" '.$sel.'>' . $val . '</option>';
             }
             $response = '<select class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . '>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
@@ -123,7 +128,12 @@ function form3lements($field_id, $name = null, $type, $value = null, $key_name =
             $expValue = explode(', ', $value);
             $option = '';
             foreach ($expValue as $index => $val) {
-                $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '"> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val . '</label></div>';
+                if ($respValue == $val)
+                    $sel = 'checked';
+                else
+                    $sel = '';
+
+                $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '" '.$sel.'> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val . '</label></div>';
             }
             $response = '<div class="form-check">' . $option . '</div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
@@ -136,7 +146,7 @@ function form3lements($field_id, $name = null, $type, $value = null, $key_name =
             $response = '<div class="form-check form-check-inline">' . $option . '</div>';
             break;
         case 'textarea':
-            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" style="min-height:50px;max-height:100px" name="field_name[' . $key_name . ']" ' . $required . '></textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" style="min-height:50px;max-height:100px" name="field_name[' . $key_name . ']" ' . $required . '>'.$respValue.'</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         default:
             $response = '<input type="text">';
