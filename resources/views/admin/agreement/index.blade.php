@@ -15,7 +15,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="{{route('user.agreement.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create</a>
+                            {{-- <a href="{{route('user.agreement.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create</a> --}}
                         </div>
                     </div>
                     <div class="card-body">
@@ -26,7 +26,8 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Fields</th>
-                                    <th class="text-right">PDF</th>
+                                    {{-- <th class="text-right">PDF</th> --}}
+                                    <th>Documents</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -43,11 +44,14 @@
                                     <td>
                                         <a href="{{route('user.agreement.fields', $item->id)}}" class="badge badge-dark action-button" title="Setup fields">Setup</a>
                                     </td>
-                                    <td class="single-line">
+                                    {{-- <td class="single-line">
                                         @if($item->html != '' || $item->html != null)
                                             <a href="{{route('user.agreement.pdf.view', $item->id)}}" class="badge badge-primary action-button" target="_blank"> <i class="fas fa-file-pdf"></i> View</a>
                                             <a href="{{route('user.agreement.pdf.download', $item->id)}}" class="badge badge-primary action-button download-agreement"> <i class="fas fa-download"></i> Download</a>
                                         @endif
+                                    </td> --}}
+                                    <td class="text-right">
+                                        <a href="{{route('user.agreement.documents.list', $item->id)}}" class="badge badge-dark action-button" title="Setup documents">Setup</a>
                                     </td>
                                     <td class="text-right">
                                         <div class="single-line">
@@ -55,7 +59,7 @@
 
                                             <a href="{{route('user.agreement.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
     
-                                            <a href="javascript: viod(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a>
+                                            {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
                                         </div>
                                     </td>
                                 </tr>

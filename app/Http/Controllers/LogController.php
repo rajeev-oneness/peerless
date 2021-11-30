@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 use App\Models\MailLog;
@@ -34,5 +35,16 @@ class LogController extends Controller
     {
         $user = Auth::user();
         $noti = Notification::where('receiver_id', '=', $user->id)->where('read_flag', '=', '0')->update(['read_flag' => 1]);
+    }
+
+    public function activityIndex(Request $request)
+    {
+        if (auth()->user()->id == 1) {
+            $data = Activity::latest()->paginate(25);
+        } else {
+            $data = Activity::where('user_id', auth()->user()->id)->latest()->paginate(25);
+        }
+
+        return view('admin.logs.activity', compact('data'));
     }
 }

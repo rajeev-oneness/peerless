@@ -17,7 +17,7 @@
 
                             <a href="{{route('user.borrower.edit', $data->id)}}" class="btn btn-sm btn-success" title="Edit borrower"><i class="fas fa-edit"></i> Edit</a>
 
-                            <a href="javascript: viod(0)" class="btn btn-sm btn-danger" title="Delete borrower" onclick="confirm4lert('{{route('user.borrower.destroy')}}', {{$data->id}}, 'delete')"><i class="fas fa-trash"></i> Delete</a>
+                            <a href="javascript: void(0)" class="btn btn-sm btn-danger" title="Delete borrower" onclick="confirm4lert('{{route('user.borrower.destroy')}}', {{$data->id}}, 'delete')"><i class="fas fa-trash"></i> Delete</a>
                         </div>
                     </div>
                     <div class="card-body">

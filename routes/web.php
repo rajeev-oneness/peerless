@@ -14,7 +14,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // user common routes
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], function () {
     // profile
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [HomeController::class, 'profile'])->name('user.profile');
@@ -38,6 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     // borrower
     Route::group(['prefix' => 'borrower'], function () {
         Route::get('/', [BorrowerController::class, 'index'])->name('user.borrower.list');
+        // Route::get('/old', [BorrowerController::class, 'indexOld'])->name('user.borrower.oldlist');
         Route::get('/create', [BorrowerController::class, 'create'])->name('user.borrower.create');
         Route::post('/store', [BorrowerController::class, 'store'])->name('user.borrower.store');
         Route::post('/show', [BorrowerController::class, 'show'])->name('user.borrower.show');
@@ -49,6 +50,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         // agreement
         Route::get('/{id}/agreement', [BorrowerController::class, 'agreementFields'])->name('user.borrower.agreement');
         Route::post('/agreement/store', [BorrowerController::class, 'agreementStore'])->name('user.borrower.agreement.store');
+        Route::post('/agreement/document/upload', [BorrowerController::class, 'uploadToServer'])->name('user.borrower.agreement.document.upload');
+        Route::post('/agreement/document/show', [BorrowerController::class, 'showDocument'])->name('user.borrower.agreement.document.show');
+        Route::post('/agreement/document/verify', [BorrowerController::class, 'verifyDocument'])->name('user.borrower.agreement.document.verify');
 
         // pdf
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
@@ -78,6 +82,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         // pdf
         Route::get('/{id}/pdf/view', [PDFController::class, 'showPdf'])->name('user.agreement.pdf.view');
         Route::get('/{id}/pdf/download', [PDFController::class, 'generatePdf'])->name('user.agreement.pdf.download');
+        // documents
+        Route::get('/{id}/documents', [AgreementController::class, 'documentsIndex'])->name('user.agreement.documents.list');
+        Route::post('/documents/store', [AgreementController::class, 'documentsStore'])->name('user.agreement.documents.store');
+        Route::post('/documents/show', [AgreementController::class, 'documentsShow'])->name('user.agreement.documents.show');
+        Route::post('/documents/destroy', [AgreementController::class, 'documentsDestroy'])->name('user.agreement.documents.destroy');
     });
 
     // field
@@ -98,6 +107,34 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/mail', [LogController::class, 'logsMail'])->name('user.logs.mail');
         Route::get('/notification', [LogController::class, 'logsNotification'])->name('user.logs.notification');
         Route::post('/notification/readall', [LogController::class, 'notificationReadAll'])->name('user.logs.notification.readall');
+        Route::get('/activity', [LogController::class, 'activityIndex'])->name('user.logs.activity');
+    });
+
+    // office management
+    Route::group(['prefix' => 'office'], function () {
+        Route::get('/', [OfficeController::class, 'index'])->name('user.office.list');
+        Route::post('/store', [OfficeController::class, 'store'])->name('user.office.store');
+        Route::post('/show', [OfficeController::class, 'show'])->name('user.office.show');
+        Route::post('/update', [OfficeController::class, 'update'])->name('user.office.update');
+        Route::post('/destroy', [OfficeController::class, 'destroy'])->name('user.office.destroy');
+    });
+
+    // department management
+    Route::group(['prefix' => 'employee/department'], function () {
+        Route::get('/', [DepartmentController::class, 'index'])->name('user.department.list');
+        Route::post('/store', [DepartmentController::class, 'store'])->name('user.department.store');
+        Route::post('/show', [DepartmentController::class, 'show'])->name('user.department.show');
+        Route::patch('/update', [DepartmentController::class, 'update'])->name('user.department.update');
+        Route::post('/destroy', [DepartmentController::class, 'destroy'])->name('user.department.destroy');
+    });
+
+    // designation management
+    Route::group(['prefix' => 'employee/designation'], function () {
+        Route::get('/', [DesignationController::class, 'index'])->name('user.designation.list');
+        Route::post('/store', [DesignationController::class, 'store'])->name('user.designation.store');
+        Route::post('/show', [DesignationController::class, 'show'])->name('user.designation.show');
+        Route::patch('/update', [DesignationController::class, 'update'])->name('user.designation.update');
+        Route::post('/destroy', [DesignationController::class, 'destroy'])->name('user.designation.destroy');
     });
 
     // notification

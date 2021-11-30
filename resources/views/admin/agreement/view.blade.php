@@ -17,7 +17,7 @@
 
                             <a href="{{route('user.agreement.edit', $data->id)}}" class="btn btn-sm btn-success" title="Edit agreement"><i class="fas fa-edit"></i> Edit</a>
     
-                            <a href="javascript: viod(0)" class="btn btn-sm btn-danger" title="Delete agreement" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$data->id}}, 'delete')"><i class="fas fa-trash"></i> Delete</a>
+                            <a href="javascript: void(0)" class="btn btn-sm btn-danger" title="Delete agreement" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$data->id}}, 'delete')"><i class="fas fa-trash"></i> Delete</a>
                         </div>
                     </div>
                     <div class="card-body">

@@ -5,53 +5,51 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                    <a href="{{route('user.borrower.list')}}" class="d-flex"><span class="info-box-icon bg-info elevation-1"><i class="fas fa-users-cog"></i></span></a>
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
+                        <span class="info-box-text">Total borrower listing</span>
                         <span class="info-box-number">
-                            10
-                            <small>%</small>
+                            {{$data->borrower}}
+                            {{-- <small>%</small> --}}
                         </span>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                    <a href="{{route('user.agreement.list')}}" class="d-flex"><span class="info-box-icon bg-danger elevation-1"><i class="fas fa-edit"></i></span></a>
                     <div class="info-box-content">
-                        <span class="info-box-text">Likes</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-text">Total agreements</span>
+                        <span class="info-box-number">{{$data->agreement}}</span>
                     </div>
                 </div>
             </div>
             <div class="clearfix hidden-md-up"></div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                    <a href="{{route('user.employee.list')}}" class="d-flex"><span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span></a>
                     <div class="info-box-content">
-                        <span class="info-box-text">Sales</span>
-                        <span class="info-box-number">760</span>
+                        <span class="info-box-text">Employee</span>
+                        <span class="info-box-number">{{$data->employee}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
+                    <a href="{{route('user.office.list')}}" class="d-flex"><span class="info-box-icon bg-warning elevation-1"><i class="fas fa-building"></i></span></a>
                     <div class="info-box-content">
-                        <span class="info-box-text">New Members</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-text">Office</span>
+                        <span class="info-box-number">{{$data->office}}</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Latest Members</h3>
@@ -114,12 +112,12 @@
                         <a href="javascript:">View All Users</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header border-transparent">
-                        <h3 class="card-title">Latest Orders</h3>
+                        <h3 class="card-title">Recent borrowers</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -130,159 +128,75 @@
                             </button>
                         </div>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table m-0">
+                            <table class="table table-sm m-0">
                                 <thead>
                                     <tr>
-                                        <th>Order ID</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Popularity</th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Contact</th>
+                                        <th class="text-right">Loan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($data->recentBorrowers as $recentBorrower)
                                     <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>Call of Duty IV</td>
-                                        <td><span class="badge badge-success">Shipped</span></td>
                                         <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63</div>
+                                            <p class="small text-muted">{{$recentBorrower->id}}</p>
+                                        </td>
+                                        <td>
+                                            <p class="small text-muted">{{$recentBorrower->name_prefix.' '.$recentBorrower->full_name}}</p>
+                                        </td>
+                                        <td>
+                                            <p class="small text-muted">{{$recentBorrower->mobile}}</p>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="single-line">
+                                                @if ($recentBorrower->agreement_id == 0)
+                                                    <p class="small text-muted"> <em>No agreement yet</em> </p>
+                                                @else
+                                                    <a href="{{route('user.borrower.agreement', $recentBorrower->id)}}" class="badge badge-primary action-button" title="Setup loan application form">{{$recentBorrower->agreementDetails->name}}</a>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="badge badge-warning">Pending</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="badge badge-danger">Delivered</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="badge badge-info">Processing</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                90,80,-90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="badge badge-warning">Pending</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                90,80,-90,70,61,-83,68</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="badge badge-danger">Delivered</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                90,-80,90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                        <td>Call of Duty IV</td>
-                                        <td><span class="badge badge-success">Shipped</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                90,80,90,-70,61,-83,63</div>
-                                        </td>
-                                    </tr>
+                                    @empty
+                                        <tr><td class="text-center text-muted" colspan="100%"><em>No data found</em></td></tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
                     </div>
-                    <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                        <a href="{{route('user.borrower.create')}}" class="btn btn-sm btn-info float-left">Create new borrower</a>
+                        <a href="{{route('user.borrower.list')}}" class="btn btn-sm btn-secondary float-right">View Borrowers' list</a>
                     </div>
-                    <!-- /.card-footer -->
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header {{($notification->unreadCount > 0) ? 'bg-tomato' : ''}}">
+                        <h5 class="m-0 {{($notification->unreadCount > 0) ? 'text-light' : ''}}">{{($notification->unreadCount > 0) ? ($notification->unreadCount > 1) ? $notification->unreadCount.' unread notifications' : $notification->unreadCount.' unread notification' : 'No new notification'}}</h5>
+                    </div>
+                    <div class="card-body">
+                        @forelse ($notification as $index => $noti)
+                            @if ($noti->read_flag == 0)
+                            <a href="javascript: void(0)" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
+                                <h6 class="small text-dark mb-0">{{$noti->title}}</h6>
+                                <p class="small text-muted">{{$noti->message}}</p>
+                            </a>
+                            @endif
+                        @empty
+                            <p class="small text-muted"><em>Everything looks good</em></p>
+                        @endforelse
+                        <a href="{{route('user.logs.notification')}}" class="btn btn-sm btn-primary">View all notifications</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the
-                            card's
-                            content.
-                        </p>
-
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-
-                <div class="card card-primary card-outline">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the
-                            card's
-                            content.
-                        </p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div><!-- /.card -->
-            </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional
-                            content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional
-                            content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
 </div>
 @endsection

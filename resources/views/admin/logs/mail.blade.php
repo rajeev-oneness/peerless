@@ -52,7 +52,7 @@
                                     </td>
                                 </tr>
                                 @empty
-                                    <tr><td colspan="100%"><em>No records found</em></td></tr>
+                                    <tr><td class="text-center text-muted" colspan="100%"><em>No records found</em></td></tr>
                                 @endforelse
                             </tbody>
                         </table>

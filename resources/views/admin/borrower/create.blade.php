@@ -117,10 +117,10 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="agreement_id" class="col-sm-2 col-form-label">Agreement</label>
+                                <label for="agreement_id" class="col-sm-2 col-form-label">Type of loan</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" id="agreement_id" name="agreement_id">
-                                        <option value="" hidden selected>Select Agreement</option>
+                                        <option value="" hidden selected>Select Type of loan</option>
                                         @foreach ($data->agreement as $item)
                                             <option value="{{$item->id}}" {{old('agreement_id') ? (old('agreement_id') == $item->id ? 'selected' : '' ) : ''}}>{{$item->name}}</option>
                                         @endforeach

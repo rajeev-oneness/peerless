@@ -23,9 +23,7 @@ class CreateUserTypesTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        $data = [
-            ['name' => 'admin', 'color' => 'danger'], ['name' => 'user', 'color' => 'info']
-        ];
+        $data = [['name' => 'Authorised signatory', 'color' => 'danger'], ['name' => 'Credit team', 'color' => 'success'], ['name' => 'Operations team', 'color' => 'indigo']];
 
         DB::table('user_types')->insert($data);
     }

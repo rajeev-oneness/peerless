@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Agreement;
 use App\Models\AgreementData;
+use App\Models\AgreementDocument;
+use App\Models\AgreementDocumentUpload;
 use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
@@ -13,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class BorrowerController extends Controller
 {
@@ -21,10 +25,20 @@ class BorrowerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Borrower::latest()->get();
-        return view('admin.borrower.index', compact('data'));
+        if($request->ajax()) {
+            $borrowers = Borrower::select('*')->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('id');
+
+            return Datatables::of($borrowers)->make(true);
+        }
+        return view('admin.borrower.index');
+    }
+
+    public function indexOld(Request $request)
+    {
+        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
+        return view('admin.borrower.index-old', compact('data'));
     }
 
     /**
@@ -53,7 +67,7 @@ class BorrowerController extends Controller
             'gender' => 'required|string|min:1|max:30',
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
-            'mobile' => 'required|numeric|min:1',
+            'mobile' => 'required|integer|digits:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
@@ -80,7 +94,19 @@ class BorrowerController extends Controller
             $user->pincode = $request->pincode;
             $user->state = $request->state;
             $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
+            $user->uploaded_by = auth()->user()->id;
             $user->save();
+
+            // notification fire
+            createNotification(auth()->user()->id, 1, 'new_borrower', 'New borrower, '.$request->name_prefix.' '.$request->full_name.' added by '.auth()->user()->emp_id);
+
+            // activity log
+            $logData = [
+                'type' => 'new_borrower',
+                'title' => 'New borrower created',
+                'desc' => 'New borrower, '.$request->full_name.' created by '.auth()->user()->emp_id
+            ];
+            activityLog($logData);
 
             DB::commit();
             return redirect()->route('user.borrower.list')->with('success', 'Borrower created');
@@ -212,6 +238,10 @@ class BorrowerController extends Controller
         $data->fields = AgreementField::where('agreement_id', $data->agreement_id)->get();
         $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
 
+        $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
+
+        $data->uploadedDocuments = AgreementDocumentUpload::where('borrower_id', $borrower_id)->get();
+
         return view('admin.borrower.fields', compact('data', 'id'));
     }
 
@@ -239,12 +269,9 @@ class BorrowerController extends Controller
                 foreach ($request->field_name as $index => $field) {
                     $agreement = new AgreementData();
                     $agreement->rfq_id = $rfq->id;
-                    // $agreement->borrower_id = $request->borrower_id;
-                    // $agreement->agreement_id = $request->agreement_id;
                     $agreement->field_id = 0;
                     $agreement->field_name = $index;
                     $agreement->field_value = checkStringFileAray($field);
-                    // $agreement->data_filled_by = auth()->user()->id;
                     $agreement->save();
                 }
 
@@ -256,6 +283,79 @@ class BorrowerController extends Controller
             }
         } else {
             return response()->json(['error' => true, 'message' => $validate->errors()->first()]);
+        }
+    }
+
+    public function uploadToServer(Request $request)
+    {
+        // dd($request->all());
+
+        $rules = [
+            'borrower_id' => 'required|integer|min:1',
+            'agreement_document_id' => 'required|integer|min:1',
+            'document' => 'required|max:500000|mimes:jpg, jpeg, png, pdf',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            $filePath = fileUpload($request->document, 'borrower-documents');
+            AgreementDocumentUpload::where('borrower_id',$request->borrower_id)->where('agreement_document_id',$request->agreement_document_id)->update(['status' => 0]);
+            $file = new AgreementDocumentUpload();
+            $file->borrower_id = $request->borrower_id;
+            $file->agreement_document_id = $request->agreement_document_id;
+            $file->file_path = $filePath;
+            $file->file_type = request()->document->getClientOriginalExtension();
+            $file->uploaded_by = auth()->user()->id;
+            $file->save();
+
+            return response()->json(['response_code' => 200, 'title' => 'success', 'message' => 'Successfully uploaded.']);
+        } else {
+            return response()->json(['response_code' => 400, 'title' => 'failure', 'message' => $validator->errors()->first()]);
+        }
+    }
+
+    public function showDocument(Request $request)
+    {
+        $rules = [
+            'id' => 'required|integer|min:1'
+        ];
+
+        $validator = validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            $data = (object)[];
+            $data->agreement_document_upload = AgreementDocumentUpload::with(['documentDetails', 'borrowerDetails'])->findOrFail($request->id);
+
+            $data->image = asset($data->agreement_document_upload->file_path);
+
+            return response()->json(['response_code' => 200, 'tile' => 'success', 'message' => $data, 'file' => $data->image]);
+        } else {
+            return response()->json(['response_code' => 400, 'tile' => 'failure', 'message' => $validator->errors()->first()]);
+        }
+    }
+
+    public function verifyDocument(Request $request)
+    {
+        $rules = [
+            'id' => 'required|integer|min:1',
+            'type' => 'required|integer',
+        ];
+
+        $validator = validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            if ($request->type == 0) {
+                $updateType = 1;
+            } else {
+                $updateType = 0;
+            }
+
+            AgreementDocumentUpload::where('id', $request->id)->update(['verify' => $updateType, 'verified_by' => auth()->user()->id]);
+
+            return response()->json(['response_code' => 200, 'tile' => 'success', 'message' => 'Document updated', 'updateStatusCode' => $updateType]);
+        } else {
+            return response()->json(['response_code' => 400, 'tile' => 'failure', 'message' => $validator->errors()->first()]);
         }
     }
 }

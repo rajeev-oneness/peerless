@@ -110,12 +110,6 @@
                                 <p>Borrowers</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
                         <li class="nav-header">MANAGEMENT</li>
                         <li class="nav-item">
                             <a href="{{ route('user.agreement.list') }}" class="nav-link {{ (request()->is('user/agreement*')) ? 'active' : '' }}">
@@ -123,13 +117,31 @@
                                 <p>Agreement</p>
                             </a>
                         </li>
+                        @if (auth()->user()->user_type != 3)
                         <li class="nav-item">
                             <a href="{{ route('user.field.list') }}" class="nav-link {{ (request()->is('user/field*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>Field</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-header">SETTINGS</li>
+                        @if (auth()->user()->user_type == 1)
+                        <li class="nav-item">
+                            <a href="{{ route('user.employee.list') }}" class="nav-link {{ (request()->is('user/employee*')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Employee management</p>
+                            </a>
+                        </li>
+                        @endif
+                        @if (auth()->user()->user_type == 1)
+                        <li class="nav-item">
+                            <a href="{{route('user.office.list')}}" class="nav-link {{ (request()->is('user/office*') ? 'active' : '') }}">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>Office management</p>
+                            </a>
+                        </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('user/profile*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-circle"></i>
@@ -252,7 +264,7 @@
     @endif
 
     // sweetalert delete alert
-    function confirm4lert(path, id, type) {
+    function confirm4lert(path, id, type, sub = null) {
         var ext = '';
         if (type == 'block') {
             var ext = '. Blocked users cannot login';
@@ -279,6 +291,15 @@
                     success : function (response) {
                         if (type == 'delete') {
                             $('#tr_'+id).remove();
+
+                            if (sub == 'sub') {
+                                $('#tr_sub_'+id+'').remove();
+                            }
+
+                            if (sub == 'yajraDelete') {
+                                $borrowersTable.ajax.reload();
+                            }
+
                             Swal.fire(
                                 response.title, response.message, 'success'
                             )
@@ -288,6 +309,7 @@
                             } else {
                                 $('#tr_'+id+' .block-button').removeClass('badge-danger').addClass('badge-dark').text('Active');
                             }
+
                             Swal.fire(
                                 response.title+'!', response.message, 'success'
                             )

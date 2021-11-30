@@ -60,6 +60,14 @@ class LoginController extends Controller
 
                 if($userVerified) {
                     auth()->login($user);
+                    // activity log
+                    $logData = [
+                        'type' => 'login',
+                        'title' => 'Login',
+                        'desc' => 'New login captured'
+                    ];
+                    activityLog($logData);
+
                     return redirect()->intended('/home');
                 }
             } else {

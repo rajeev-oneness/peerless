@@ -26,7 +26,7 @@
 
 .user-profile-holder img {
     height: 50px;
-    margin-right: 20px;
+    margin-right: 10px;
     padding: 1px;
     border: 3px solid #b7b7b7;
     border-radius: 50%;
@@ -219,11 +219,13 @@
 }
 
 .navbar-nav .dropdown-item.unread {
-    background-color: #c0c0c0;
+    background-color: #343a40;
+    color: #fff;
+    transition: all 0.2 ease;
 }
 
 .navbar-nav .dropdown-item.unread:hover {
-    background-color: #d8d8d8;
+    background-color: #454d55;
 }
 
 .navbar-nav .noti-title {
@@ -243,7 +245,11 @@
 }
 
 .navbar-nav .dropdown-item.unread .noti-desc {
-    color: #2f3336;
+    color: #fff;
+}
+
+.navbar-nav .dropdown-item.unread .noti-timing {
+    color: #fff;
 }
 
 .navbar-nav .noti-timing {
@@ -252,8 +258,12 @@
     color: #6c757d;
 }
 
-.navbar-nav .dropdown-item.unread:active, .navbar-nav .dropdown-item.read:active {
+/* .navbar-nav .dropdown-item.unread:active, .navbar-nav .dropdown-item.read:active {
     background-color: #007bff;
+} */
+
+.navbar-nav .dropdown-item.read:active {
+    background-color: #707070;
 }
 
 .navbar-nav .dropdown-item:active .noti-title {
@@ -335,4 +345,66 @@ mark {
     width: 700px;
     max-width: 700px;
     overflow: hidden;
+}
+
+.image__preview {
+    height: 100px;
+    text-align: center;
+}
+
+.image__preview img {
+    width: 100%;
+    max-width: unset;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.remove_selected_file {
+    position: absolute;
+    top: -117px;
+    right: 6px;
+    cursor: pointer;
+}
+
+/* animation */
+.pulse-grow-animation {
+    animation: pulse-grow 1s infinite;
+}
+
+@keyframes pulse-grow {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.bg-tomato {
+    background-color: tomato;
+}
+
+
+/* datatable style */
+.dt-buttons,.dataTables_info{
+    float: left;
+}
+.borrowers-table_filter{
+    float: right;
+}
+.dataTables_length{
+    float: left;
+    margin-left: 20px;
+}
+.dataTables_paginate{
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 640px) {
+    .dt-buttons,.dataTables_info{
+        float: none;
+    }
 }
