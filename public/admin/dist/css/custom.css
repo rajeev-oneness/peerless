@@ -415,6 +415,6 @@ mark {
 }
 
 .side-gradient{
-    background: rgb(52,106,160);
-    background: linear-gradient(180deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%);
+    background: rgb(52,106,160) !important;
+    background: linear-gradient(180deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%) !important;
 }
