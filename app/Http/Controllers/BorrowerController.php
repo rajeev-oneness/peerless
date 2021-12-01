@@ -285,7 +285,7 @@ class BorrowerController extends Controller
 
                 // notification(sender, receiver, type, message(optional), route(optional))
                 $notificationMessage = ucwords($rfq->borrowerDetails->name_prefix).' '.$rfq->borrowerDetails->full_name.', '.$rfq->agreementDetails->name.' data added by '.auth()->user()->emp_id;
-                $notificationRoute = 'user.borrower.agreement, '.$request->borrower_id;
+                $notificationRoute = 'user.borrower.list';
                 createNotification(auth()->user()->id, 1, 'agreement_data_upload', $notificationMessage, $notificationRoute);
 
                 DB::commit();

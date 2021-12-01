@@ -266,11 +266,8 @@
     // sweetalert delete alert
     function confirm4lert(path, id, type, sub = null) {
         var ext = '';
-        if (type == 'block') {
-            var ext = '. Blocked users cannot login';
-        } else if (type == 'activate') {
-            var ext = '. User can login again';
-        }
+        if (type == 'block') {var ext = '. Blocked users cannot login';}
+        else if (type == 'activate') {var ext = '. User can login again';}
         Swal.fire({
             title: 'Are you sure?',
             text: 'You want to '+type+' the record'+ext,
@@ -278,9 +275,7 @@
             showCancelButton: true,
             confirmButtonColor: '#f44336',
             cancelButtonColor: '#8b8787',
-            customClass: {
-                confirmButton: 'box-shadow-danger',
-            },
+            customClass: {confirmButton: 'box-shadow-danger',},
             confirmButtonText: 'Yes, '+type+' it!'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -292,17 +287,10 @@
                         if (type == 'delete') {
                             $('#tr_'+id).remove();
 
-                            if (sub == 'sub') {
-                                $('#tr_sub_'+id+'').remove();
-                            }
+                            if (sub == 'sub') {$('#tr_sub_'+id+'').remove();}
+                            if (sub == 'yajraDelete') {$borrowersTable.ajax.reload();}
 
-                            if (sub == 'yajraDelete') {
-                                $borrowersTable.ajax.reload();
-                            }
-
-                            Swal.fire(
-                                response.title, response.message, 'success'
-                            )
+                            Swal.fire(response.title, response.message, 'success')
                         } else if (type == 'block' || type == 'activate') {
                             if (response.title == 'Blocked') {
                                 $('#tr_'+id+' .block-button').removeClass('badge-dark').addClass('badge-danger').text('Blocked');
@@ -310,9 +298,7 @@
                                 $('#tr_'+id+' .block-button').removeClass('badge-danger').addClass('badge-dark').text('Active');
                             }
 
-                            Swal.fire(
-                                response.title+'!', response.message, 'success'
-                            )
+                            Swal.fire(response.title+'!', response.message, 'success')
                         }
                     }
                 });
