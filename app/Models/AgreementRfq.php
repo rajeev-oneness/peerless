@@ -9,4 +9,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AgreementRfq extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function borrowerDetails() {
+        return $this->belongsTo('App\Models\Borrower', 'borrower_id', 'id');
+    }
+
+    public function agreementDetails() {
+        return $this->belongsTo('App\Models\Agreement', 'agreement_id', 'id');
+    }
+
+    public function userDetails() {
+        return $this->belongsTo('App\Models\User', 'data_filled_by', 'id');
+    }
 }

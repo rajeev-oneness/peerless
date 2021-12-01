@@ -46,15 +46,15 @@
 
                         <div class="dropdown-holder" style="overflow: hidden scroll;max-height: calc(100vh - 146px);">
                         @forelse ($notification as $index => $noti)
-                            @if ($index==15)
-                                @break;
-                            @endif
                             <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
                                 <h6 class="noti-title">{{$noti->title}}</h6>
                                 <p class="noti-desc">{{$noti->message}}</p>
                                 <p class="noti-timing"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
                             </a>
                             <div class="dropdown-divider"></div>
+                            @if ($index==15)
+                                @break;
+                            @endif
                         @empty
                         <a href="javascript: void(0)" class="dropdown-item py-4">
                             <p class="small text-muted text-center">No notifications yet</p>
@@ -368,15 +368,6 @@
             }
         });
     }
-
-    // download notification
-    $('.download-agreement').on('click', function () {
-        $(this).addClass('badge-disabled');
-        toastFire('info', 'Download started...');
-        setTimeout(() => {
-            $(this).removeClass('badge-disabled');
-        }, 7000);
-    });
 </script>
 
 @yield('script')

@@ -71,30 +71,21 @@
         $borrowersTable = $('#borrowers-table').DataTable({
             processing: true,
             serverSide: true,
-            fixedHeader: true,
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            var data = row.data();
-                            return 'Details for '+data[0]+' '+data[1];
-                        }
-                    } ),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                        tableClass: 'table'
-                    } )
-                }
-            },
-            // columnDefs: [
-            //     { responsivePriority: 1, targets: 0 },
-            //     { responsivePriority: 10001, targets: 4 },
-            //     { responsivePriority: 2, targets: -2 }
-            // ],
+            // fixedHeader: true,
+            // responsive: {
+            //     details: {
+            //         display: $.fn.dataTable.Responsive.display.modal( {
+            //             header: function ( row ) {
+            //                 var data = row.data();
+            //                 return 'Details for '+data[0]+' '+data[1];
+            //             }
+            //         } ),
+            //         renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+            //             tableClass: 'table'
+            //         } )
+            //     }
+            // },
             dom: 'Blfrtip',
-            // buttons: [
-            //     'copy', 'csv', 'excel', 'pdf', 'print'
-            // ],
-            // lengthChange: false,
             buttons: [
                 {
                     extend: 'copyHtml5',
@@ -142,17 +133,6 @@
                     titleAttr: 'Print'
                 },
             ],
-            // responsive: {
-            //     details: {
-            //         type: 'column',
-            //         target: -1
-            //     }
-            // },
-            // columnDefs: [ {
-            //     className: 'dtr-control',
-            //     orderable: false,
-            //     targets:   -1
-            // } ],
             lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
             ajax: '{{ route('user.borrower.list') }}',
             columns: [
@@ -160,7 +140,7 @@
                 {
                     data: 'full_name', name: 'full_name',
                     render: function(data, type, full, meta) {
-                        return '<div class="user-profile-holder"><div class="flex-shrink-0"><img src="{!! asset("'+full.image_path+'") !!}" alt="user-image-'+full.id+'"></div><div class="flex-grow-1 ms-3"><p class="name"> <span class="text-capitalize">'+full.name_prefix+'</span> '+full.full_name+'</p><p class="small text-muted">'+full.occupation+'</p></div></div>';
+                        return '<div class="user-profile-holder"><div class="flex-shrink-0"><img src="{!! asset("'+full.image_path+'") !!}" alt="user-image-'+full.id+'"></div><div class="flex-grow-1 ms-3"><p class="name"> <span class="text-capitalize">'+full.name_prefix+'</span> '+full.full_name+'</p><p class="small text-muted mb-0">'+full.occupation+'</p></div></div>';
                     }
                 },
                 {
@@ -172,7 +152,7 @@
                 {
                     data: 'mobile', name: 'mobile',
                     render: function(data, type, full, meta) {
-                        return '<p class="small text-muted mb-0" title="Street address">'+full.street_address+'</p><p class="small text-muted"><span title="City">'+full.city+'</span>, <span title="Pincode">'+full.pincode+'</span>, <span title="State">'+full.state+'</span></p>';
+                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.street_address+'</p><p class="small text-muted mb-0"><span title="City">'+full.city+'</span>, <span title="Pincode">'+full.pincode+'</span>, <span title="State">'+full.state+'</span></p></div>';
                     }
                 },
                 {
