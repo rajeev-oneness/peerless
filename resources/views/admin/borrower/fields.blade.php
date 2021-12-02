@@ -83,8 +83,8 @@
                                                             <tr>
                                                                 <td style="width: 50px">{{$index + 1}}</td>
                                                                 <td class="fields_col-1">
-                                                                    <h6 class="font-weight-bold">{!! $item->fieldDetails->name !!}
-                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</h6>
+                                                                    <label class="font-weight-bold">{!! $item->fieldDetails->name !!}
+                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
                                                                 </td>
                                                                 <td class="fields_col-2">
                                                                     @if ($data->agreementRfq > 0)
