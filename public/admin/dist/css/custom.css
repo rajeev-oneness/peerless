@@ -424,9 +424,17 @@ mark {
     background: rgb(52,106,160) !important;
     background: linear-gradient(180deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%) !important;
     position: fixed !important;
+    overflow-y: scroll;
+    min-height: 100vh !important;
+    height: unset !important;
+}
+.side-gradient::-webkit-scrollbar{
+    display: none;
+    background: none;
 }
 .btn-primary, .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
-    background-color: #29aae1 !important;
+    background-color: #f1585a !important;
+    border: 0;
 }
 
 .showRoleTable h6{
@@ -434,6 +442,7 @@ mark {
 }
 .brand-link{
     background-color: #fff !important;
+    padding: 1.25rem 0.5rem;
 }
 .brand-link span{
     color: rgb(241 88 90);
@@ -441,6 +450,28 @@ mark {
     font-weight: 900;
     letter-spacing: 1px;
     margin-top: 10px;
+    font-size: 30px;
+    line-height: 30px;
+}
+.brand-link .p-text{
+    color: rgb(241 88 90);
+    font-weight: 400;
+    letter-spacing: 3.5px;
+    font-size: 14px;
+    margin-bottom: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: margin-left .3s linear, opacity .3s ease, visibility .3s ease;
+}
+body.sidebar-collapse .p-text{
+    visibility: hidden;
+    margin-left: -10px;
+    opacity: 0;
+}
+aside:hover .p-text{
+    visibility: visible;
+    margin-left: 0;
+    opacity: 1;
 }
 
 .brand-link .brand-image{
@@ -452,4 +483,14 @@ mark {
 [class*=sidebar-dark-] .sidebar a{
     color: #fff !important;
     white-space: nowrap;
+}
+.nav-pills .nav-link:not(.active):hover{
+    background-color: #29aae1 !important;
+    
+}
+.form-control{
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #f1585a;
+    border-radius: 0;
 }
