@@ -78,16 +78,15 @@
                                                 @if (count($data->fields) > 0)
                                                     <form action="{{ route('user.borrower.agreement.store') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        <table class="table table-sm table-bordered table-hover">
+                                                        <table class="table table-sm table-bordered table-hover" id="agreementFieldsTable">
                                                             @foreach ($data->fields as $index => $item)
                                                             <tr>
                                                                 <td style="width: 50px">{{$index + 1}}</td>
                                                                 <td class="fields_col-1">
-                                                                    <h6 class="font-weight-bold">{!! $item->fieldDetails->name !!}
-                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</h6>
+                                                                    <label class="font-weight-bold">{!! $item->fieldDetails->name !!}
+                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
                                                                 </td>
                                                                 <td class="fields_col-2">
-
                                                                     @if ($data->agreementRfq > 0)
                                                                         {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required', $borrowerId = $id) !!}
                                                                     @else
@@ -103,9 +102,13 @@
                                                                         <input type="hidden" name="agreement_id" value="{{ $data->agreement_id }}">
 
                                                                         @if ($data->agreementRfq > 0)
+
+                                                                        {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
+
                                                                         <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button>
+
                                                                         @else
-                                                                        <button type="submit" class="btn btn-sm btn-primary">Submit changes <i class="fas fa-upload"></i></button>
+                                                                        <button type="submit" class="btn btn-sm btn-primary">Submit data <i class="fas fa-upload"></i></button>
                                                                         @endif
                                                                     </div>
                                                                 </td>
@@ -135,8 +138,7 @@
                                                                 @foreach ($documentHead->siblingsDocuments as $childItem)
                                                                     <div class="col-sm-2">
                                                                         <div class="card">
-                                                                            <div class="card-header p-2">
-                                                                                {{ $childItem->name }}</div>
+                                                                            <div class="card-header p-2">{{ $childItem->name }}</div>
                                                                             <div class="card-body p-2">
                                                                                 <div class="image__preview">
                                                                                     <img class="card-img-top img-fluid" src="{{ documentSrc($childItem->id, $id, 'image') }}" alt="Cover Image" id="image__preview{{ $childItem->id }}">
@@ -229,9 +231,12 @@
     <script src="{{ asset('admin/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
 
     <script>
+        // step by step document upload
         var stepper = new Stepper($('.bs-stepper')[0]);
 
+        // document upload
         function docUpload(input, agreement_document_id) {
+            // after selecting an image, show preview
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -313,15 +318,17 @@
             });
         }
 
+        // clear image after browse, before upload
         function clearimg(count) {
             // $("#image_"+count).val('');
-            $('#image__preview' + count).attr('src', '{{ asset('admin/uploads/blank.png') }}');
+            $('#image__preview' + count).attr('src', '{{ asset('admin/static-required/blank.png') }}');
             // $('#image__preview_label'+count).removeClass('btn-success').html('Browse <i class="uil uil-camera-plus"></i>');
             $('#image__preview_label' + count).show();
             $('#image__upload_label' + count).hide();
             $('#remove__image' + count).hide();
         }
 
+        // view document
         function viewUploadedDocument(id) {
             $.ajax({
                 url : '{{route("user.borrower.agreement.document.show")}}',
@@ -353,6 +360,7 @@
             });
         }
 
+        // verify document
         function verifyUploadedDocument(id, type) {
             let typeShow = '';
             if (type == 1) {
@@ -399,6 +407,24 @@
                     });
                 }
             });
+        }
+
+        // edit agreement fields
+        function editAgreementFields() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to edit the agreement fields. All the disabled fields will be active",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, edit it!',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#agreementFieldsTable input, select, textarea').prop('disabled', false);
+                }
+            })
         }
     </script>
 @endsection

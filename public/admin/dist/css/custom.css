@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
 .main-sidebar .sidebar .sidebar-logout {
     position: fixed;
     bottom: 0;
-    background-color: #343a40;
+    background-color: #f4f6f9;
+    color: rgb(52,106,160) ;
 }
 
+.main-sidebar .sidebar .sidebar-logout p, .main-sidebar .sidebar .sidebar-logout i{
+    color: rgb(52,106,160) ;
+}
 .box-profile .change-image {
     position: absolute;
     right: 50%;
@@ -25,7 +31,7 @@
 }
 
 .user-profile-holder img {
-    height: 50px;
+    height: 45px;
     margin-right: 10px;
     padding: 1px;
     border: 3px solid #b7b7b7;
@@ -336,14 +342,14 @@ mark {
 }
 
 .fields_col-1 {
-    width: 200px;
-    max-width: 200px;
+    width: 300px;
+    max-width: 300px;
     overflow: hidden;
 }
 
 .fields_col-2 {
-    width: 700px;
-    max-width: 700px;
+    width: 600px;
+    max-width: 600px;
     overflow: hidden;
 }
 
@@ -387,6 +393,11 @@ mark {
     background-color: tomato;
 }
 
+/* .borrower-address-holder {
+    height: 38px;
+    min-height: 38px;
+    overflow: hidden;
+} */
 
 /* datatable style */
 .dt-buttons,.dataTables_info{
@@ -407,4 +418,38 @@ mark {
     .dt-buttons,.dataTables_info{
         float: none;
     }
+}
+
+.side-gradient{
+    background: rgb(52,106,160) !important;
+    background: linear-gradient(180deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%) !important;
+    position: fixed !important;
+}
+.btn-primary, .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: #29aae1 !important;
+}
+
+.showRoleTable h6{
+    color: #384a61;
+}
+.brand-link{
+    background-color: #fff !important;
+}
+.brand-link span{
+    color: rgb(241 88 90);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.brand-link .brand-image{
+    box-shadow: none !important;
+    max-height: unset !important;
+    max-width: 50px !important;
+    border-radius: 0;
+}
+[class*=sidebar-dark-] .sidebar a{
+    color: #fff !important;
+    white-space: nowrap;
 }

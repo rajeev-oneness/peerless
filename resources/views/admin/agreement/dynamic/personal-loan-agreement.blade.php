@@ -9,7 +9,7 @@
         }
         @page { margin: 0px; }
         html {
-            font-family: sans-serif;
+            font-family: "Arial", sans-serif;
             line-height: 1.15;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1026,7 +1026,7 @@
         <div id="DivIdToPrint">
             <DIV id="page_1">
                 <DIV id="id1_1">
-                    <img src="{{asset('admin/stamp.jpg')}}" alt="" style="width: 700px;">
+                    <img src="{{asset('admin/static-required/stamp.jpg')}}" alt="" style="width: 700px;">
                     <P class="p0 ft0" style="text-align: center;padding-left: 0;">AGREEMENT</P>
                     <P class="p1 ft1">General Instructions :</P>
                     <P class="p2 ft1">All applications to be filled in <SPAN class="ft2">English </SPAN>in CAPITAL LETTERS using

@@ -46,15 +46,15 @@
 
                         <div class="dropdown-holder" style="overflow: hidden scroll;max-height: calc(100vh - 146px);">
                         @forelse ($notification as $index => $noti)
-                            @if ($index==15)
-                                @break;
-                            @endif
                             <a href="javascript:void(0)" class="dropdown-item {{($noti->read_flag == 0 ? 'unread' : 'read')}}" onclick="readNotification('{{$noti->id}}', '{{($noti->route ? route($noti->route) : '')}}')">
                                 <h6 class="noti-title">{{$noti->title}}</h6>
                                 <p class="noti-desc">{{$noti->message}}</p>
                                 <p class="noti-timing"> <i class="fas fa-history"></i> {{\carbon\carbon::parse($noti->created_at)->diffForHumans()}}</p>
                             </a>
                             <div class="dropdown-divider"></div>
+                            @if ($index==15)
+                                @break;
+                            @endif
                         @empty
                         <a href="javascript: void(0)" class="dropdown-item py-4">
                             <p class="small text-muted text-center">No notifications yet</p>
@@ -80,10 +80,10 @@
             </ul>
         </nav>
 
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{env('APP_NAME')}} Admin</span>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 side-gradient">
+            <a href="{{ route('home') }}" class="brand-link d-flex flex-column align-items-center">
+                <img src="{{ asset('admin/dist/img/money-bag.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text ">{{env('APP_NAME')}} Admin</span>
             </a>
 
             <div class="sidebar">
@@ -266,11 +266,8 @@
     // sweetalert delete alert
     function confirm4lert(path, id, type, sub = null) {
         var ext = '';
-        if (type == 'block') {
-            var ext = '. Blocked users cannot login';
-        } else if (type == 'activate') {
-            var ext = '. User can login again';
-        }
+        if (type == 'block') {var ext = '. Blocked users cannot login';}
+        else if (type == 'activate') {var ext = '. User can login again';}
         Swal.fire({
             title: 'Are you sure?',
             text: 'You want to '+type+' the record'+ext,
@@ -278,9 +275,7 @@
             showCancelButton: true,
             confirmButtonColor: '#f44336',
             cancelButtonColor: '#8b8787',
-            customClass: {
-                confirmButton: 'box-shadow-danger',
-            },
+            customClass: {confirmButton: 'box-shadow-danger',},
             confirmButtonText: 'Yes, '+type+' it!'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -292,17 +287,10 @@
                         if (type == 'delete') {
                             $('#tr_'+id).remove();
 
-                            if (sub == 'sub') {
-                                $('#tr_sub_'+id+'').remove();
-                            }
+                            if (sub == 'sub') {$('#tr_sub_'+id+'').remove();}
+                            if (sub == 'yajraDelete') {$borrowersTable.ajax.reload();}
 
-                            if (sub == 'yajraDelete') {
-                                $borrowersTable.ajax.reload();
-                            }
-
-                            Swal.fire(
-                                response.title, response.message, 'success'
-                            )
+                            Swal.fire(response.title, response.message, 'success')
                         } else if (type == 'block' || type == 'activate') {
                             if (response.title == 'Blocked') {
                                 $('#tr_'+id+' .block-button').removeClass('badge-dark').addClass('badge-danger').text('Blocked');
@@ -310,9 +298,7 @@
                                 $('#tr_'+id+' .block-button').removeClass('badge-danger').addClass('badge-dark').text('Active');
                             }
 
-                            Swal.fire(
-                                response.title+'!', response.message, 'success'
-                            )
+                            Swal.fire(response.title+'!', response.message, 'success')
                         }
                     }
                 });
@@ -368,15 +354,6 @@
             }
         });
     }
-
-    // download notification
-    $('.download-agreement').on('click', function () {
-        $(this).addClass('badge-disabled');
-        toastFire('info', 'Download started...');
-        setTimeout(() => {
-            $(this).removeClass('badge-disabled');
-        }, 7000);
-    });
 </script>
 
 @yield('script')

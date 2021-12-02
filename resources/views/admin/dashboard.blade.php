@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
-                    <a href="{{route('user.borrower.list')}}" class="d-flex"><span class="info-box-icon bg-info elevation-1"><i class="fas fa-users-cog"></i></span></a>
+                    <a href="{{route('user.borrower.list')}}" class="d-flex"><span class="info-box-icon text-info elevation-1"><i class="fas fa-users-cog"></i></span></a>
                     <div class="info-box-content">
                         <span class="info-box-text">Total borrower listing</span>
                         <span class="info-box-number">
@@ -20,7 +20,7 @@
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <a href="{{route('user.agreement.list')}}" class="d-flex"><span class="info-box-icon bg-danger elevation-1"><i class="fas fa-edit"></i></span></a>
+                    <a href="{{route('user.agreement.list')}}" class="d-flex"><span class="info-box-icon text-danger elevation-1"><i class="fas fa-edit"></i></span></a>
                     <div class="info-box-content">
                         <span class="info-box-text">Total agreements</span>
                         <span class="info-box-number">{{$data->agreement}}</span>
@@ -30,7 +30,7 @@
             <div class="clearfix hidden-md-up"></div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <a href="{{route('user.employee.list')}}" class="d-flex"><span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span></a>
+                    <a href="{{route('user.employee.list')}}" class="d-flex"><span class="info-box-icon text-success elevation-1"><i class="fas fa-users"></i></span></a>
                     <div class="info-box-content">
                         <span class="info-box-text">Employee</span>
                         <span class="info-box-number">{{$data->employee}}</span>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <a href="{{route('user.office.list')}}" class="d-flex"><span class="info-box-icon bg-warning elevation-1"><i class="fas fa-building"></i></span></a>
+                    <a href="{{route('user.office.list')}}" class="d-flex"><span class="info-box-icon text-warning elevation-1"><i class="fas fa-building"></i></span></a>
                     <div class="info-box-content">
                         <span class="info-box-text">Office</span>
                         <span class="info-box-number">{{$data->office}}</span>
