@@ -3,9 +3,13 @@
 .main-sidebar .sidebar .sidebar-logout {
     position: fixed;
     bottom: 0;
-    background-color: #343a40;
+    background-color: #f4f6f9;
+    color: rgb(52,106,160) ;
 }
 
+.main-sidebar .sidebar .sidebar-logout p, .main-sidebar .sidebar .sidebar-logout i{
+    color: rgb(52,106,160) ;
+}
 .box-profile .change-image {
     position: absolute;
     right: 50%;
@@ -422,7 +426,7 @@ mark {
     position: fixed !important;
 }
 .btn-primary, .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
-    background-color: #2798ff !important;
+    background-color: #29aae1 !important;
 }
 
 .showRoleTable h6{
@@ -442,6 +446,10 @@ mark {
 .brand-link .brand-image{
     box-shadow: none !important;
     max-height: unset !important;
-    max-width: 75px !important;
+    max-width: 50px !important;
     border-radius: 0;
+}
+[class*=sidebar-dark-] .sidebar a{
+    color: #fff !important;
+    white-space: nowrap;
 }

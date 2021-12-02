@@ -9,7 +9,7 @@
         }
         @page { margin: 0px; }
         html {
-            font-family: sans-serif;
+            font-family: "Arial", sans-serif;
             line-height: 1.15;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
