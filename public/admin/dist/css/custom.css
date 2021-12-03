@@ -491,6 +491,17 @@ aside:hover .p-text{
 .form-control{
     background: #fff;
     border: 0;
-    border-bottom: 1px solid #f1585a;
+    border-bottom: 1px solid #29aae1;
     border-radius: 0;
+}
+
+.field-heading {
+    background: linear-gradient(90deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%);
+    color: #fff;
+    border: 0 !important;
+    padding: 5px 45px !important;
+    position: sticky;
+    top: -1px;
+    z-index: 99;
+    margin: 0;
 }

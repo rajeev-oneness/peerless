@@ -9,6 +9,7 @@ use App\Models\AgreementDocumentUpload;
 use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
+use App\Models\FieldParent;
 use App\Models\UserType;
 use Exception;
 use Illuminate\Http\Request;
@@ -234,13 +235,14 @@ class BorrowerController extends Controller
             $data->agreement_name = $agreement->agreementDetails->name;
             break;
         }
+        $data->parentFields = FieldParent::with('childRelation')->get();
 
-        $data->fields = AgreementField::where('agreement_id', $data->agreement_id)->get();
+        $data->fields = AgreementField::with('fieldDetails')->where('agreement_id', $data->agreement_id)->get();
         $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
 
         $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
 
-        $data->uploadedDocuments = AgreementDocumentUpload::where('borrower_id', $borrower_id)->get();
+        // $data->uploadedDocuments = AgreementDocumentUpload::where('borrower_id', $borrower_id)->get();
 
         return view('admin.borrower.fields', compact('data', 'id'));
     }

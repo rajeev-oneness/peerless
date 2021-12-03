@@ -65,11 +65,64 @@ function checkStringFileAray($data)
 
 // form elements check & show values
 /*** fields blade & admin.borrower.fields blade ***/
-function form3lements(int $field_id, string $name = null, string $type, string $value = null, string $key_name = null, int $width = 100, string $required = '', string $borrowerId = '')
+function form3lements(int $field_id, string $name = null, string $type, string $value = null, string $key_name = null, string $required = '', string $borrowerId = '', string $form_type = null)
 {
     $respValue = '';
     $disabledField = '';
     if (!empty($borrowerId)) {
+        // in case of adding agreement data, auto-fill borrower details starts
+        if (isset($form_type) == 'create') {
+            // fetching borrower details
+            $borrower = \App\Models\Borrower::findOrFail($borrowerId);
+            switch($key_name){
+                // borrower name prefix
+                case 'prefixoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->name_prefix;
+                    break;
+                // borrower full name
+                case 'nameoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->full_name;
+                    break;
+                // borrower date of birth
+                case 'dateofbirthoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->date_of_birth;
+                    break;
+                // borrower email id
+                case 'emailidoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->email;
+                    break;
+                // borrower mobile number
+                case 'mobilenumberoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->mobile;
+                    break;
+                // borrower occupation
+                case 'occupationoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->occupation;
+                    break;
+                // borrower marital status
+                case 'maritalstatusoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->marital_status;
+                    break;
+                // borrower street address
+                case 'streetaddressoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->street_address;
+                    break;
+                default :
+                    $disabledField = '';
+                    $respValue = '';
+                    break;
+            }
+        }
+        // in case of adding agreement data, auto-fill borrower details ends
+
         $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
 
         if ($rfq) {
@@ -82,33 +135,33 @@ function form3lements(int $field_id, string $name = null, string $type, string $
 
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'email':
-            $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'number':
-            $response = '<input type="number" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="number" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'date':
-            $response = '<input type="date" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'time':
-            $response = '<input type="time" placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<input type="time" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'file':
-            $response = '<div class="custom-file custom-file-sm w-' . $width . '"><input type="file" class="custom-file-input" id="customFile" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'><label class="custom-file-label" for="customFile">Choose ' . $name . '</label></div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<div class="custom-file custom-file-sm"><input type="file" class="custom-file-input" id="customFile" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'><label class="custom-file-label" for="customFile">Choose ' . $name . '</label></div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'select':
             $expValue = explode(', ', $value);
             $option = '<option value="" selected hidden>Select ' . $name . '</option>';
             foreach ($expValue as $index => $val) {
                 $selected = '';
-                if ($respValue == $val) $selected = 'selected';
+                if (strtolower($respValue) == strtolower($val)) $selected = 'selected';
 
                 $option .= '<option value="' . $val . '" ' . $selected . '>' . $val . '</option>';
             }
-            $response = '<select class="form-control form-control-sm w-' . $width . '" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<select class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'checkbox':
             $expValue = explode(', ', $value);
@@ -133,7 +186,7 @@ function form3lements(int $field_id, string $name = null, string $type, string $
             $response = '<div class="form-check form-check-inline">' . $option . '</div>';
             break;
         case 'textarea':
-            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm w-' . $width . '" style="min-height:50px;max-height:100px" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $respValue . '</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm" style="min-height:50px;max-height:100px" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $respValue . '</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         default:
             $response = '<input type="text">';
@@ -144,7 +197,7 @@ function form3lements(int $field_id, string $name = null, string $type, string $
 }
 
 // generate key name from field name
-function generateKeyForForm($string)
+function generateKeyForForm(string $string)
 {
     $key = '';
     for ($i = 0; $i < strlen($string); $i++) {

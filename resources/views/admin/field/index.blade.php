@@ -29,7 +29,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($data as $index => $item)
+                                    @forelse ($data->parentFields as $index => $parent)
+                                        <tr>
+                                            <td colspan="4" class="field-heading">{{$parent->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            @foreach ($parent->childRelation as $index => $item)
+                                            <tr id="tr_{{ $item->childField->id }}">
+                                                <td>{{ $index + 1 }}</td>
+                                                <td class="fields_col-1">
+                                                    <label class="font-weight-bold">{!! $item->childField->name !!} {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}
+                                                    </label>
+                                                </td>
+                                                <td class="fields_col-2">
+                                                    {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name) !!}
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="single-line">
+                                                        <a href="{{route('user.field.edit', $item->childField->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+    
+                                                        {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.field.destroy')}}', {{$item->childField->id}}, 'delete')">Delete</a> --}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%"><em>No records found</em></td>
+                                        </tr>
+                                    @endforelse
+
+                                    {{-- @forelse ($data->childFields as $index => $item)
                                         <tr id="tr_{{ $item->id }}">
                                             <td>{{ $index + 1 }}</td>
                                             <td class="fields_col-1">
@@ -37,13 +68,11 @@
                                                 </label>
                                             </td>
                                             <td class="fields_col-2">
-                                                {!! form3lements($item->id, $item->name, $item->inputType->name, $item->value, $item->key_name, 100) !!}
+                                                {!! form3lements($item->id, $item->name, $item->inputType->name, $item->value, $item->key_name) !!}
                                             </td>
                                             <td class="text-right">
                                                 <div class="single-line">
-                                                    {{-- <a href="{{route('user.field.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a> --}}
-
-                                                    {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.field.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                    <a href="{{route('user.field.edit', $item->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -51,7 +80,7 @@
                                         <tr>
                                             <td colspan="100%"><em>No records found</em></td>
                                         </tr>
-                                    @endforelse
+                                    @endforelse --}}
                                 </tbody>
                             </table>
                         </div>

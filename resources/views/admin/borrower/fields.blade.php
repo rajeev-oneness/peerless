@@ -79,22 +79,40 @@
                                                     <form action="{{ route('user.borrower.agreement.store') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <table class="table table-sm table-bordered table-hover" id="agreementFieldsTable">
-                                                            @foreach ($data->fields as $index => $item)
+                                                            {{-- @foreach ($data->fields as $index => $item) --}}
+                                                            @forelse ($data->parentFields as $index => $parent)
+                                                            <tr>
+                                                                <td colspan="3" class="field-heading">{{$parent->name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                            </tr>
+                                                            @foreach ($parent->childRelation as $index => $item)
                                                             <tr>
                                                                 <td style="width: 50px">{{$index + 1}}</td>
                                                                 <td class="fields_col-1">
-                                                                    <label class="font-weight-bold">{!! $item->fieldDetails->name !!}
-                                                                    {!! $item->fieldDetails->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
+                                                                    <label class="font-weight-bold">{!! $item->childField->name !!}
+                                                                    {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
                                                                 </td>
                                                                 <td class="fields_col-2">
-                                                                    @if ($data->agreementRfq > 0)
-                                                                        {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required', $borrowerId = $id) !!}
-                                                                    @else
-                                                                        {!! form3lements($item->fieldDetails->id, $item->fieldDetails->name, $item->fieldDetails->inputType->name, $item->fieldDetails->value, $item->fieldDetails->key_name, 100, 'required') !!} 
-                                                                    @endif
+                                                                    @php
+                                                                        if ($data->agreementRfq > 0) {
+                                                                            $formType = 'show';
+                                                                        } else {
+                                                                            $formType = 'create';
+                                                                        }
+                                                                    @endphp
+
+                                                                    {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
                                                                 </td>
                                                             </tr>
                                                             @endforeach
+                                                            @empty
+                                                            <tr>
+                                                                <td colspan="100%"><em>No records found</em></td>
+                                                            </tr>
+                                                            @endforelse
+
+                                                            {{-- data submit / edit --}}
                                                             <tr>
                                                                 <td colspan="3" style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;">
                                                                     <div class="w-100 text-right">

@@ -17,68 +17,92 @@ class CreateFieldsTable extends Migration
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->string('type')->comment('input text, input email, textarea, select');
+            $table->tinyInteger('type')->default(0)->comment('0 means header for fields, others means input types');
             $table->longText('value')->nullable()->comment('comma separated value of fields');
-            $table->text('key_name');
+            $table->text('key_name')->nullable();
             $table->tinyInteger('required')->default(0)->comment('1 is required, 0 is not');
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        $validDocumentsList = 'PAN card, Aadhar card, Bank Statement, Driving License, Passport';
-        $natureOfLoan = 'Holiday/ Vacation financing, To Finance Festive Celebrations or Needs, Finance Weddings, Build/ Renovate house, Medical Emergency, Refinancing The Home Loan, To Fix A Car, Financing Education, Business Expansion, Debt Consolidation';
+        //name prefix, genders list, marital status
+        $namePrefixList = 'Mr., Miss, Mrs., Prof., Dr.';
+        $gendersList = 'male, female, trans, rather not say';
+        $maritalStatusList = 'married, unmarried, divorced, widowed';
+
+        // valid document lists for borrower & co-borrower
+        $validDocumentsList = 'Aadhar card, Bank statement, Driving license, Electricity bill, Passport';
+
+        // nature/ type of loan
+        $natureOfLoan = 'Loan against salary, Loan against salary with check-off, Loan to Prefessional, Loan to Professional RLOC, Loan to Professional RLOC with check-off, Loan to Professional RLOC without check-off';
+
+        // loan application documents to attach
         $loanApplicationDocumentsToAttach = 'Salary Certificate from current Employer, Proof of identity, Proof of current residential & official address, Latest three months&apos; Bank Statement (where salary / income is credited or accumulated), Salary slips for last three months preceding application date, Two passport size photographs, Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank&#44; of the Borrower(s) to transfer to the Lender on the Due Dates&#44; the amounts which are required to be paid by the Borrower(s)&#44; as specified in terms of Repayment in Schedule II, Copies of last 2 years&apos; ITR, Signature Verification by banker (as per PFSL format), Proof of other income, Proof of assets (copy of registered deed of house property / statement of accounts of mutual fund / insurance policy / statement of demat account), Guarantor&apos;s net worth certificate (as per PFSL format)';
 
-        $data = [
-            // ['name' => 'Name prefix', 'type' => '7', 'value' => 'Mr., Ms., Mrs.', 'key_name' => 'nameprefix'],
-            // ['name' => 'First name', 'type' => '1', 'value' => '', 'key_name' => 'firstname'],
-            // ['name' => 'Middle name', 'type' => '1', 'value' => '', 'key_name' => 'middlename'],
-            // ['name' => 'Last name', 'type' => '1', 'value' => '', 'key_name' => 'lastname'],
-            // ['name' => 'Date of birth', 'type' => '4', 'value' => '', 'key_name' => 'dateofbirth'],
-            // ['name' => 'Marital status', 'type' => '7', 'value' => 'Married, Unmarried, Divorced, Widowed', 'key_name' => 'maritalstatus'],
-            // ['name' => 'Email id', 'type' => '2', 'value' => '', 'key_name' => 'emailid'],
-            // ['name' => 'Phone number', 'type' => '3', 'value' => '', 'key_name' => 'phonenumber'],
+        // repatyment tenure in months
+        $repaymentTenureValue = '';
+        for($i = 1; $i < 61; $i++) {
+            if ($i != 60) $repaymentTenureValue .= $i.', ';
+            else $repaymentTenureValue .= $i;
+        }
 
+        $data = [
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
-            // ['name' => 'Stamp of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'stampoftheauthorisedsignatory'],
-            // ['name' => 'Signature of the authorised signatory', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheauthorisedsignatory'],
 
             // borrower details
             ['name' => 'Customer ID', 'type' => 1, 'value' => '', 'key_name' => 'customerid'],
-            ['name' => 'Prefix of the Borrower', 'type' => 7, 'value' => 'Mr., Ms., Mrs.', 'key_name' => 'prefixoftheborrower'],
+            ['name' => 'Prefix of the Borrower', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixoftheborrower'],
             ['name' => 'Name of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheborrower'],
             ['name' => 'Street address of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressoftheborrower'],
             ['name' => 'PAN card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheborrower'],
             ['name' => 'Officially Valid Documents of the Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheborrower'],
-            ['name' => 'Occupation of the Borrower', 'type' => 1, 'value' => $validDocumentsList, 'key_name' => 'occupationoftheborrower'],
-            ['name' => 'Resident status of the Borrower', 'type' => 8, 'value' => 'Permanent address, Temporary address', 'key_name' => 'residentstatusoftheborrower'],
+            ['name' => 'Occupation of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheborrower'],
+            ['name' => 'Resident status of the Borrower', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusoftheborrower'],
             ['name' => 'Date of birth of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheborrower'],
-            ['name' => 'Marital status of the Borrower', 'type' => 7, 'value' => 'Married, Unmarried, Divorced, Widowed', 'key_name' => 'maritalstatusoftheborrower'],
+            ['name' => 'Marital status of the Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheborrower'],
             ['name' => 'Highest education of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
             ['name' => 'Mobile number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
             ['name' => 'Email ID of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheborrower'],
-            // ['name' => 'Signature of the Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureoftheborrower'],
 
             // co borrower details
-            ['name' => 'Prefix of the Co-Borrower', 'type' => 7, 'value' => 'Mr., Ms., Mrs.', 'key_name' => 'prefixofthecoborrower'],
+            ['name' => 'Prefix of the Co-Borrower', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixofthecoborrower'],
             ['name' => 'Name of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'nameofthecoborrower'],
             ['name' => 'Street address of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressofthecoborrower'],
+            ['name' => 'Pincode of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pincodeofthecoborrower'],
+            ['name' => 'City of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'cityofthecoborrower'],
+            ['name' => 'State of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'stateofthecoborrower'],
             ['name' => 'PAN card number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberofthecoborrower'],
             ['name' => 'Officially Valid Documents of the Co-Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsofthecoborrower'],
-            ['name' => 'Occupation of the Co-Borrower', 'type' => 1, 'value' => $validDocumentsList, 'key_name' => 'occupationofthecoborrower'],
-            ['name' => 'Resident status of the Co-Borrower', 'type' => 8, 'value' => 'Permanent address, Temporary address', 'key_name' => 'residentstatusofthecoborrower'],
+            ['name' => 'Occupation of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationofthecoborrower'],
+            ['name' => 'Resident status of the Co-Borrower', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusofthecoborrower'],
             ['name' => 'Date of birth of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower'],
-            ['name' => 'Marital status of the Co-Borrower', 'type' => 7, 'value' => 'Married, Unmarried, Divorced, Widowed', 'key_name' => 'maritalstatusofthecoborrower'],
+            ['name' => 'Marital status of the Co-Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusofthecoborrower'],
             ['name' => 'Highest education of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
             ['name' => 'Mobile number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
             ['name' => 'Email ID of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
             // ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
 
             // guarantor details
-            // ['name' => 'Name of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheguarantor'],
-            ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
-            ['name' => 'Loan Account Number', 'type' => 1, 'value' => '', 'key_name' => 'loanaccountnumber'],
+            ['name' => 'Prefix of the Guarantor', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixoftheguarantor'],
+            ['name' => 'Name of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheguarantor'],
+            ['name' => 'Street address of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressoftheguarantor'],
+            ['name' => 'Pincode of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'pincodeoftheguarantor'],
+            ['name' => 'City of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'cityoftheguarantor'],
+            ['name' => 'State of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'stateoftheguarantor'],
+            ['name' => 'PAN card number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheguarantor'],
+            ['name' => 'Officially Valid Documents of the Guarantor', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheguarantor'],
+            ['name' => 'Occupation of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheguarantor'],
+            ['name' => 'Resident status of the Guarantor', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusoftheguarantor'],
+            ['name' => 'Date of birth of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheguarantor'],
+            ['name' => 'Marital status of the Guarantor', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheguarantor'],
+            ['name' => 'Highest education of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheguarantor'],
+            ['name' => 'Mobile number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheguarantor'],
+            ['name' => 'Email ID of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheguarantor'],
+
+            // ['name' => 'Guarantor City', 'type' => 1, 'value' => '', 'key_name' => 'guarantorcity'],
+            // ['name' => 'Guarantor Pincode', 'type' => 1, 'value' => '', 'key_name' => 'guarantorpincode'],
+            // ['name' => 'Guarantor State', 'type' => 1, 'value' => '', 'key_name' => 'guarantorstate'],
 
             // witness 1 details
             ['name' => 'Witness 1 Full name', 'type' => 1, 'value' => '', 'key_name' => 'witness1fullname'],
@@ -96,36 +120,33 @@ class CreateFieldsTable extends Migration
             ['name' => 'Witness 2 State', 'type' => 1, 'value' => '', 'key_name' => 'witness2state'],
             // ['name' => 'Witness 2 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness2signature'],
 
-            // guarantor details
-            ['name' => 'Guarantor Full name', 'type' => 1, 'value' => '', 'key_name' => 'guarantorfullname'],
-            ['name' => 'Guarantor Street address', 'type' => 1, 'value' => '', 'key_name' => 'guarantorstreetaddress'],
-            ['name' => 'Guarantor City', 'type' => 1, 'value' => '', 'key_name' => 'guarantorcity'],
-            ['name' => 'Guarantor Pincode', 'type' => 1, 'value' => '', 'key_name' => 'guarantorpincode'],
-            ['name' => 'Guarantor State', 'type' => 1, 'value' => '', 'key_name' => 'guarantorstate'],
-            // ['name' => 'Guarantor Signature', 'type' => 6, 'value' => '', 'key_name' => 'guarantorsignature'],
+            // loan details
+            ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
+            ['name' => 'Loan Account Number', 'type' => 1, 'value' => '', 'key_name' => 'loanaccountnumber'],
 
             // agreement details
             ['name' => 'Place of agreement', 'type' => 1, 'value' => '', 'key_name' => 'placeofagreement'],
             ['name' => 'Date of agreement', 'type' => 4, 'value' => '', 'key_name' => 'dateofagreement'],
 
             // key facts of the loan
-            ['name' => 'Nature of Loan', 'type' => 1, 'value' => $natureOfLoan, 'key_name' => 'natureofloan'],
+            ['name' => 'Nature of Loan', 'type' => 7, 'value' => $natureOfLoan, 'key_name' => 'natureofloan'],
             ['name' => 'Loan amount in digits', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigits'],
             ['name' => 'Loan amount in digits in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigitsinwords'],
-            ['name' => 'Loan amount in lakh', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakh'],
-            ['name' => 'Loan amount in lakh in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakhinwords'],
+            // ['name' => 'Loan amount in lakh', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakh'],
+            // ['name' => 'Loan amount in lakh in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakhinwords'],
             ['name' => 'Loan reference number', 'type' => 1, 'value' => '', 'key_name' => 'loanreferencenumber'],
             ['name' => 'Purpose of Loan', 'type' => 1, 'value' => '', 'key_name' => 'purposeofloan'],
-            ['name' => 'Repayment tenure', 'type' => 1, 'value' => '', 'key_name' => 'repaymenttenure'],
+            ['name' => 'Repayment tenure (in months)', 'type' => 7, 'value' => $repaymentTenureValue, 'key_name' => 'repaymenttenureinmonths'],
             ['name' => 'Rate of Interest', 'type' => 1, 'value' => '', 'key_name' => 'rateofinterest'],
-            ['name' => 'Processing & Documentation charges', 'type' => 1, 'value' => '', 'key_name' => 'processingdocumentationcharges'],
+            ['name' => 'Processing charge (in percentage)', 'type' => 3, 'value' => '', 'key_name' => 'processingchargeinpercentage'],
+            ['name' => 'Documentation fee', 'type' => 3, 'value' => '', 'key_name' => 'documentationfee'],
             ['name' => 'Security & Margin', 'type' => 1, 'value' => '', 'key_name' => 'securitymargin'],
             ['name' => 'Guarantee', 'type' => 1, 'value' => '', 'key_name' => 'guarantee'],
             ['name' => 'Monthly instalments number', 'type' => 1, 'value' => '', 'key_name' => 'monthlyinstalmentsnumber'],
             ['name' => 'Monthly EMI in digits', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiindigits'],
             ['name' => 'Monthly EMI in words', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiinwords'],
             ['name' => 'Payment deduction from', 'type' => 8, 'value' => 'Deducted from the Borrower&apos;s salary by the Borrower&apos;s employer on monthly basis and credited into the Lender&apos;s bank Account, directly debited from the Borrower&apos;s bank Account and credited into lender&apos;s bank Account', 'key_name' => 'paymentdeductionfrom'],
-            ['name' => 'Date of credit of EMI into Lender&apos;s Bank Account', 'type' => 8, 'value' => '5th of every month, 2nd of every month, Others', 'key_name' => 'dateofcreditofemiintolendersbankaccount'],
+            ['name' => 'Date of credit of EMI into Lender&apos;s Bank Account', 'type' => 9, 'value' => '5th of every month, 2nd of every month, Others', 'key_name' => 'dateofcreditofemiintolendersbankaccount'],
             ['name' => 'Other date of EMI credit', 'type' => 1, 'value' => '', 'key_name' => 'otherdateofemicredit'],
             ['name' => 'Penal Interest percentage', 'type' => 1, 'value' => '', 'key_name' => 'penalinterestpercentage'],
             ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],

@@ -85,55 +85,57 @@
             //         } )
             //     }
             // },
-            dom: 'Blfrtip',
-            buttons: [
-                {
-                    extend: 'copyHtml5',
-                    exportOptions: {
-                        columns: [ 0, ':visible' ]
-                    },
-                    text: '<i class="fas fa-copy"></i>',
-                    className: 'btn-sm',
-                    titleAttr: 'Copy'
-                },
-                {
-                    extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: ':visible'
-                    },
-                    text: '<i class="fas fa-file-excel"></i>',
-                    className: 'btn-sm',
-                    titleAttr: 'Excel'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    },
-                    text: '<i class="fas fa-file-pdf"></i>',
-                    className: 'btn-sm',
-                    titleAttr: 'PDF'
-                },
-                {
-                    extend: 'csvHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    },
-                    text: '<i class="fas fa-file-csv"></i>',
-                    className: 'btn-sm',
-                    titleAttr: 'CSV'
-                },
-                {
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    },
-                    text: '<i class="fas fa-print"></i>',
-                    className: 'btn-sm',
-                    titleAttr: 'Print'
-                },
-            ],
-            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+
+            // dom: 'Blfrtip',
+            // buttons: [
+            //     {
+            //         extend: 'copyHtml5',
+            //         exportOptions: {
+            //             columns: [ 0, ':visible' ]
+            //         },
+            //         text: '<i class="fas fa-copy"></i>',
+            //         className: 'btn-sm',
+            //         titleAttr: 'Copy'
+            //     },
+            //     {
+            //         extend: 'excelHtml5',
+            //         exportOptions: {
+            //             columns: ':visible'
+            //         },
+            //         text: '<i class="fas fa-file-excel"></i>',
+            //         className: 'btn-sm',
+            //         titleAttr: 'Excel'
+            //     },
+            //     {
+            //         extend: 'pdfHtml5',
+            //         exportOptions: {
+            //             columns: [0, 1, 2, 3, 4]
+            //         },
+            //         text: '<i class="fas fa-file-pdf"></i>',
+            //         className: 'btn-sm',
+            //         titleAttr: 'PDF'
+            //     },
+            //     {
+            //         extend: 'csvHtml5',
+            //         exportOptions: {
+            //             columns: [0, 1, 2, 3, 4]
+            //         },
+            //         text: '<i class="fas fa-file-csv"></i>',
+            //         className: 'btn-sm',
+            //         titleAttr: 'CSV'
+            //     },
+            //     {
+            //         extend: 'print',
+            //         exportOptions: {
+            //             columns: [0, 1, 2, 3, 4]
+            //         },
+            //         text: '<i class="fas fa-print"></i>',
+            //         className: 'btn-sm',
+            //         titleAttr: 'Print'
+            //     },
+            // ],
+
+            // lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
             ajax: '{{ route('user.borrower.list') }}',
             columns: [
                 { data: 'id', name: 'id' },

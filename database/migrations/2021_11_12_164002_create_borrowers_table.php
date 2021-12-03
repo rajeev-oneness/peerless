@@ -40,7 +40,7 @@ class CreateBorrowersTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        $data = ['name_prefix' => 'mr.', 'full_name' => 'Yash Vardhan', 'gender' => 'male', 'email' => 'vardhan.yash@email.com', 'mobile' => '9038775709', 'occupation' => 'IT analyst', 'date_of_birth' => '1996-11-07', 'marital_status' => 'unmarried', 'street_address' => 'B/19 HN road', 'city' => 'Kolkata', 'pincode' => '700067', 'state' => 'West Bengal'];
+        $data = ['name_prefix' => 'Mr.', 'full_name' => 'Yash Vardhan', 'gender' => 'male', 'email' => 'vardhan.yash@email.com', 'mobile' => '9038775709', 'occupation' => 'IT analyst', 'date_of_birth' => '1996-11-07', 'marital_status' => 'unmarried', 'street_address' => 'B/19 HN road', 'city' => 'Kolkata', 'pincode' => '700067', 'state' => 'West Bengal'];
 
         DB::table('borrowers')->insert($data);
     }

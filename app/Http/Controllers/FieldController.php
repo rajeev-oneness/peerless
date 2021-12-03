@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Field;
+use App\Models\FieldParent;
 use App\Models\InputType;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,9 @@ class FieldController extends Controller
      */
     public function index()
     {
-        $data = Field::latest()->get();
+        $data = (object)[];
+        $data->parentFields = FieldParent::with('childRelation')->get();
+        // $data->childFields = Field::get();
         return view('admin.field.index', compact('data'));
     }
 
