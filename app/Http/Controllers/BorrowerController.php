@@ -28,7 +28,7 @@ class BorrowerController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $borrowers = Borrower::select('*')->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('id');
 
             return Datatables::of($borrowers)->make(true);
@@ -69,6 +69,7 @@ class BorrowerController extends Controller
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
             'mobile' => 'required|integer|digits:10',
+            'pan_card_number' => 'required|string|digits:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
@@ -88,6 +89,7 @@ class BorrowerController extends Controller
             $user->date_of_birth = $request->date_of_birth;
             $user->email = $request->email;
             $user->mobile = $request->mobile;
+            $user->pan_card_number = $request->pan_card_number;
             $user->occupation = $request->occupation;
             $user->marital_status = $request->marital_status;
             $user->street_address = $request->street_address;
@@ -99,19 +101,19 @@ class BorrowerController extends Controller
             $user->save();
 
             // notification fire
-            createNotification(auth()->user()->id, 1, 'new_borrower', 'New borrower, '.$request->name_prefix.' '.$request->full_name.' added by '.auth()->user()->emp_id);
+            createNotification(auth()->user()->id, 1, 'new_borrower', 'New borrower, ' . $request->name_prefix . ' ' . $request->full_name . ' added by ' . auth()->user()->emp_id);
 
             // activity log
             $logData = [
                 'type' => 'new_borrower',
                 'title' => 'New borrower created',
-                'desc' => 'New borrower, '.$request->full_name.' created by '.auth()->user()->emp_id
+                'desc' => 'New borrower, ' . $request->full_name . ' created by ' . auth()->user()->emp_id
             ];
             activityLog($logData);
 
             DB::commit();
             return redirect()->route('user.borrower.list')->with('success', 'Borrower created');
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             DB::rollback();
             $error['email'] = 'Something went wrong';
             return redirect(route('user.borrower.create'))->withErrors($error)->withInput($request->all());
@@ -135,6 +137,7 @@ class BorrowerController extends Controller
         $userdate_of_birth = $data->date_of_birth;
         $useremail = $data->email;
         $usermobile = $data->mobile;
+        $userpan_card_number = $data->pan_card_number;
         $userimage_path = asset($data->image_path);
         $useroccupation = $data->occupation;
         $usermarital_status = $data->marital_status;
@@ -143,7 +146,7 @@ class BorrowerController extends Controller
         $userpincode = $data->pincode;
         $userstate = $data->state;
 
-        return response()->json(['error' => false, 'data' => ['user_id' => $userid, 'name_prefix' => $username_prefix, 'name' => $userfull_name, 'gender' => $usergender, 'dateofbirth' => $userdate_of_birth, 'email' => $useremail, 'mobile' => $usermobile, 'image_path' => $userimage_path, 'occupation' => $useroccupation, 'marital_status' => $usermarital_status, 'street_address' => $userstreet_address, 'city' => $usercity, 'pincode' => $userpincode, 'state' => $userstate]]);
+        return response()->json(['error' => false, 'data' => ['user_id' => $userid, 'name_prefix' => $username_prefix, 'name' => $userfull_name, 'gender' => $usergender, 'dateofbirth' => $userdate_of_birth, 'email' => $useremail, 'mobile' => $usermobile, 'pan_card_number' => $userpan_card_number, 'image_path' => $userimage_path, 'occupation' => $useroccupation, 'marital_status' => $usermarital_status, 'street_address' => $userstreet_address, 'city' => $usercity, 'pincode' => $userpincode, 'state' => $userstate]]);
     }
 
     public function details(Request $request)
@@ -182,6 +185,7 @@ class BorrowerController extends Controller
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
             'mobile' => 'required|numeric|min:1',
+            'pan_card_number' => 'required|string|digits:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
@@ -198,6 +202,7 @@ class BorrowerController extends Controller
         $user->date_of_birth = $request->date_of_birth;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
+        $user->pan_card_number = $request->pan_card_number;
         $user->occupation = $request->occupation;
         $user->marital_status = $request->marital_status;
         $user->street_address = $request->street_address;
@@ -228,7 +233,7 @@ class BorrowerController extends Controller
         $borrower_id = $id;
         $data = (object)[];
         $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->where('id', $borrower_id)->get();
-        foreach($data->agreement as $agreement) {
+        foreach ($data->agreement as $agreement) {
             $data->name_prefix = $agreement->name_prefix;
             $data->full_name = $agreement->full_name;
             $data->agreement_id = $agreement->agreement_id;
@@ -281,19 +286,19 @@ class BorrowerController extends Controller
                 $logData = [
                     'type' => 'agreement_data_upload',
                     'title' => 'Agreement data uploaded',
-                    'desc' => ucwords($rfq->borrowerDetails->name_prefix).' '.$rfq->borrowerDetails->full_name.', '.$rfq->agreementDetails->name.' data added by '.auth()->user()->emp_id
+                    'desc' => ucwords($rfq->borrowerDetails->name_prefix) . ' ' . $rfq->borrowerDetails->full_name . ', ' . $rfq->agreementDetails->name . ' data added by ' . auth()->user()->emp_id
                 ];
                 activityLog($logData);
 
                 // notification(sender, receiver, type, message(optional), route(optional))
-                $notificationMessage = ucwords($rfq->borrowerDetails->name_prefix).' '.$rfq->borrowerDetails->full_name.', '.$rfq->agreementDetails->name.' data added by '.auth()->user()->emp_id;
+                $notificationMessage = ucwords($rfq->borrowerDetails->name_prefix) . ' ' . $rfq->borrowerDetails->full_name . ', ' . $rfq->agreementDetails->name . ' data added by ' . auth()->user()->emp_id;
                 $notificationRoute = 'user.borrower.list';
                 createNotification(auth()->user()->id, 1, 'agreement_data_upload', $notificationMessage, $notificationRoute);
 
                 DB::commit();
 
                 return redirect()->route('user.borrower.agreement', $request->borrower_id)->with('success', 'Fields added');
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 DB::rollback();
             }
         } else {
@@ -315,7 +320,7 @@ class BorrowerController extends Controller
 
         if (!$validator->fails()) {
             $filePath = fileUpload($request->document, 'borrower-documents');
-            AgreementDocumentUpload::where('borrower_id',$request->borrower_id)->where('agreement_document_id',$request->agreement_document_id)->update(['status' => 0]);
+            AgreementDocumentUpload::where('borrower_id', $request->borrower_id)->where('agreement_document_id', $request->agreement_document_id)->update(['status' => 0]);
             $file = new AgreementDocumentUpload();
             $file->borrower_id = $request->borrower_id;
             $file->agreement_document_id = $request->agreement_document_id;

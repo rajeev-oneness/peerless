@@ -33,6 +33,8 @@
                         <p class="text-dark small">{{$data->email}}</p>
                         <p class="text-muted small mb-0">Mobile</p>
                         <p class="text-dark small">{{$data->mobile}}</p>
+                        <p class="text-muted small mb-0">PAN card number</p>
+                        <p class="text-dark small">{{$data->pan_card_number}}</p>
 
                         <hr>
 

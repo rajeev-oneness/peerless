@@ -15,7 +15,8 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back</a>
+                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
+                                        class="fas fa-chevron-left"></i> Back</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -31,14 +32,19 @@
                                 </div>
                                 <div class="col-md-4 text-right">
                                     @if ($data->agreementRfq > 0)
-                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
+                                            class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                            View PDF</a>
 
-                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i> Download PDF</a>
+                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}"
+                                            class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i>
+                                            Download PDF</a>
                                     @endif
                                 </div>
 
                                 <div class="col-md-12 mt-3">
-                                    <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up the form first to view PDF</p>
+                                    <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up
+                                        the form first to view PDF</p>
                                 </div>
                             </div>
 
@@ -60,7 +66,8 @@
                                             <div class="step" data-target="#document-part">
                                                 <button type="button" class="step-trigger" role="tab"
                                                     aria-controls="document-part" id="document-part-trigger">
-                                                    <span class="bs-stepper-circle"><i class="fas fa-file-import"></i></span>
+                                                    <span class="bs-stepper-circle"><i
+                                                            class="fas fa-file-import"></i></span>
                                                     <span class="bs-stepper-label">Documents</span>
                                                 </button>
                                             </div>
@@ -74,59 +81,72 @@
                                             </div>
                                         </div>
                                         <div class="bs-stepper-content">
-                                            <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                                            <div id="information-part" class="content" role="tabpanel"
+                                                aria-labelledby="information-part-trigger">
                                                 @if (count($data->fields) > 0)
-                                                    <form action="{{ route('user.borrower.agreement.store') }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('user.borrower.agreement.store') }}"
+                                                        method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        <table class="table table-sm table-bordered table-hover" id="agreementFieldsTable">
+                                                        <table class="table table-sm table-bordered table-hover"
+                                                            id="agreementFieldsTable">
                                                             {{-- @foreach ($data->fields as $index => $item) --}}
-                                                            @forelse ($data->parentFields as $index => $parent)
-                                                            <tr>
-                                                                <td colspan="3" class="field-heading">{{$parent->name}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                            </tr>
-                                                            @foreach ($parent->childRelation as $index => $item)
-                                                            <tr>
-                                                                <td style="width: 50px">{{$index + 1}}</td>
-                                                                <td class="fields_col-1">
-                                                                    <label class="font-weight-bold">{!! $item->childField->name !!}
-                                                                    {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
-                                                                </td>
-                                                                <td class="fields_col-2">
-                                                                    @php
-                                                                        if ($data->agreementRfq > 0) {
-                                                                            $formType = 'show';
-                                                                        } else {
-                                                                            $formType = 'create';
-                                                                        }
-                                                                    @endphp
+                                                            @forelse ($data->parentFields as $indexParent => $parent)
+                                                                <tr>
+                                                                    <td colspan="3" class="field-heading">
+                                                                        {{ $parent->name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                </tr>
+                                                                @foreach ($parent->childRelation as $indexChild => $item)
+                                                                    <tr>
+                                                                        <td style="width: 50px">{{ $indexChild + 1 }}</td>
+                                                                        <td class="fields_col-1">
+                                                                            <label
+                                                                                class="font-weight-bold">{!! $item->childField->name !!}
+                                                                                {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
+                                                                        </td>
+                                                                        <td class="fields_col-2">
+                                                                            @php
+                                                                                if ($data->agreementRfq > 0) {
+                                                                                    $formType = 'show';
+                                                                                } else {
+                                                                                    $formType = 'create';
+                                                                                }
+                                                                            @endphp
 
-                                                                    {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
-                                                                </td>
-                                                            </tr>
-                                                            @endforeach
+                                                                            {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
                                                             @empty
-                                                            <tr>
-                                                                <td colspan="100%"><em>No records found</em></td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td colspan="100%"><em>No records found</em></td>
+                                                                </tr>
                                                             @endforelse
 
                                                             {{-- data submit / edit --}}
                                                             <tr>
-                                                                <td colspan="3" style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;">
+                                                                <td colspan="3"
+                                                                    style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;">
                                                                     <div class="w-100 text-right">
-                                                                        <input type="hidden" name="borrower_id" value="{{ $id }}">
-                                                                        <input type="hidden" name="agreement_id" value="{{ $data->agreement_id }}">
+                                                                        <input type="hidden" name="borrower_id"
+                                                                            value="{{ $id }}">
+                                                                        <input type="hidden" name="agreement_id"
+                                                                            value="{{ $data->agreement_id }}">
 
                                                                         @if ($data->agreementRfq > 0)
 
-                                                                        {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
+                                                                            {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
 
-                                                                        <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button>
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-primary"
+                                                                                onclick="stepper.next()">Go to Documents <i
+                                                                                    class="fas fa-chevron-right"></i></button>
 
                                                                         @else
-                                                                        <button type="submit" class="btn btn-sm btn-primary">Submit data <i class="fas fa-upload"></i></button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-sm btn-primary">Submit data
+                                                                                <i class="fas fa-upload"></i></button>
                                                                         @endif
                                                                     </div>
                                                                 </td>
@@ -142,7 +162,8 @@
                                                 @endif
                                             </div>
 
-                                            <div id="document-part" class="content" role="tabpanel" aria-labelledby="document-part-trigger">
+                                            <div id="document-part" class="content" role="tabpanel"
+                                                aria-labelledby="document-part-trigger">
                                                 <div class="card border shadow-none rounded-0">
                                                     <div class="card-body">
                                                         <div class="row">
@@ -156,10 +177,14 @@
                                                                 @foreach ($documentHead->siblingsDocuments as $childItem)
                                                                     <div class="col-sm-2">
                                                                         <div class="card">
-                                                                            <div class="card-header p-2">{{ $childItem->name }}</div>
+                                                                            <div class="card-header p-2">
+                                                                                {{ $childItem->name }}</div>
                                                                             <div class="card-body p-2">
                                                                                 <div class="image__preview">
-                                                                                    <img class="card-img-top img-fluid" src="{{ documentSrc($childItem->id, $id, 'image') }}" alt="Cover Image" id="image__preview{{ $childItem->id }}">
+                                                                                    <img class="card-img-top img-fluid"
+                                                                                        src="{{ documentSrc($childItem->id, $id, 'image') }}"
+                                                                                        alt="Cover Image"
+                                                                                        id="image__preview{{ $childItem->id }}">
                                                                                 </div>
                                                                                 <div class="row mt-2">
                                                                                     <div class="col-12 text-center">
@@ -182,9 +207,18 @@
 
                                                                                             {{-- <label for="file_{{ $childItem->id }}" class="btn btn-xs btn-primary" id="image__preview_label{{ $childItem->id }}">Browse <i class="fas fa-camera"></i></label> --}}
 
-                                                                                            <button type="submit" class="btn btn-xs btn-success mb-2" id="image__upload_label{{ $childItem->id }}" style="display:none" onclick="docUpload({{ $childItem->id }})"> Upload <i class="fas fa-upload"></i></button>
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-xs btn-success mb-2"
+                                                                                                id="image__upload_label{{ $childItem->id }}"
+                                                                                                style="display:none"
+                                                                                                onclick="docUpload({{ $childItem->id }})">
+                                                                                                Upload <i
+                                                                                                    class="fas fa-upload"></i></button>
 
-                                                                                            <label class="btn btn-xs btn-primary mb-2" id="image_upload_status_{{ $childItem->id }}" style="display:none"></label>
+                                                                                            <label
+                                                                                                class="btn btn-xs btn-primary mb-2"
+                                                                                                id="image_upload_status_{{ $childItem->id }}"
+                                                                                                style="display:none"></label>
 
                                                                                             <div
                                                                                                 class="progress progress-sm">
@@ -202,7 +236,8 @@
                                                                                                 class="remove_selected_file text-danger"
                                                                                                 id="remove__image{{ $childItem->id }}"
                                                                                                 style="display: none;"
-                                                                                                onclick="clearimg({{ $childItem->id }})"><i class="fas fa-times"></i></span>
+                                                                                                onclick="clearimg({{ $childItem->id }})"><i
+                                                                                                    class="fas fa-times"></i></span>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>
@@ -212,24 +247,34 @@
                                                                 @endforeach
                                                             @empty
                                                                 <div class="col-sm-12 text-center">
-                                                                    <p class="text-muted"><em>No documents to upload</em></p>
+                                                                    <p class="text-muted"><em>No documents to
+                                                                            upload</em></p>
                                                                 </div>
                                                             @endforelse
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer" style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;padding: 0.3rem;">
+                                                    <div class="card-footer"
+                                                        style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;padding: 0.3rem;">
                                                         <div class="text-right">
-                                                            <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Back to borrower's form</button>
-                                                            <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Submit <i class="fas fa-chevron-right"></i></button>
+                                                            <button class="btn btn-sm btn-primary"
+                                                                onclick="stepper.previous()"><i
+                                                                    class="fas fa-chevron-left"></i> Back to borrower's
+                                                                form</button>
+                                                            <button type="button" class="btn btn-sm btn-primary"
+                                                                onclick="stepper.next()">Go to Submit <i
+                                                                    class="fas fa-chevron-right"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div id="submit-part" class="content" role="tabpanel" aria-labelledby="submit-part-trigger">
-                                                <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Back to Documents</button>
+                                            <div id="submit-part" class="content" role="tabpanel"
+                                                aria-labelledby="submit-part-trigger">
+                                                <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i
+                                                        class="fas fa-chevron-left"></i> Back to Documents</button>
                                                 {{-- <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></button> --}}
-                                                <a href="{{route('user.borrower.list')}}" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
+                                                <a href="{{ route('user.borrower.list') }}"
+                                                    class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +313,8 @@
 
             $('#image_upload_form' + agreement_document_id).submit(function(event) {
                 event.preventDefault();
-                $('#image_upload_status_' + agreement_document_id).removeClass('btn-primary').removeClass('btn-success').removeClass('btn-danger');
+                $('#image_upload_status_' + agreement_document_id).removeClass('btn-primary').removeClass(
+                    'btn-success').removeClass('btn-danger');
                 var form = $(this);
                 $('#progress_' + agreement_document_id).css('width', '0').show();
                 $(this).ajaxSubmit({
@@ -287,8 +333,10 @@
                             if (evt.lengthComputable) {
                                 var percentComplete = evt.loaded / evt.total;
                                 percentComplete = parseInt(percentComplete * 100);
-                                $('#progress_' + agreement_document_id).text(percentComplete + '%');
-                                $('#progress_' + agreement_document_id).css('width', percentComplete + '%');
+                                $('#progress_' + agreement_document_id).text(percentComplete +
+                                    '%');
+                                $('#progress_' + agreement_document_id).css('width',
+                                    percentComplete + '%');
                             }
                         }, false);
                         return xhr;
@@ -299,7 +347,8 @@
                     beforeSend: function() {
                         $('#remove__image' + agreement_document_id).prop('disabled', true).hide();
                         $('#image__upload_label' + agreement_document_id).prop('disabled', true).hide();
-                        $('#image_upload_status_' + agreement_document_id).addClass('disabled').addClass('btn-primary mb-2').html('Uploading...').show();
+                        $('#image_upload_status_' + agreement_document_id).addClass('disabled')
+                            .addClass('btn-primary mb-2').html('Uploading...').show();
                     },
                     success: function(data) {
                         // console.log("success");
@@ -307,24 +356,32 @@
                         $('#image_upload_form' + agreement_document_id).trigger("reset");
                         // var obj = $.parseJSON(data);
                         if (data.response_code == 200) {
-                            $('#image_upload_status_' + agreement_document_id).hide().html('').removeClass('disabled').removeClass('btn-primary');
-                            $('#image_upload_status_' + agreement_document_id).addClass('btn-success').html('Complete <i class="uil uil-check"></i>').show();
+                            $('#image_upload_status_' + agreement_document_id).hide().html('')
+                                .removeClass('disabled').removeClass('btn-primary');
+                            $('#image_upload_status_' + agreement_document_id).addClass('btn-success')
+                                .html('Complete <i class="uil uil-check"></i>').show();
                             setTimeout(function() {
                                 // $('#image_upload_status_'+agreement_document_id).css('visibility', 'hidden');
-                                $('#progress_' + agreement_document_id).css('width', '0').hide();
+                                $('#progress_' + agreement_document_id).css('width', '0')
+                            .hide();
                                 $('#image_upload_status_' + agreement_document_id).hide();
                                 $('#image__preview_label' + agreement_document_id).show();
-                                $('#image__upload_label' + agreement_document_id).prop('disabled', false);
+                                $('#image__upload_label' + agreement_document_id).prop(
+                                    'disabled', false);
                             }, 3500);
                         } else {
-                            $('#image_upload_status_' + agreement_document_id).hide().html('').removeClass('disabled').removeClass('btn-primary');
-                            $('#image_upload_status_' + agreement_document_id).addClass('btn-danger').html(data.message).show();
+                            $('#image_upload_status_' + agreement_document_id).hide().html('')
+                                .removeClass('disabled').removeClass('btn-primary');
+                            $('#image_upload_status_' + agreement_document_id).addClass('btn-danger')
+                                .html(data.message).show();
                             setTimeout(function() {
                                 // $('#image_upload_status_'+agreement_document_id).css('visibility', 'hidden');
-                                $('#progress_' + agreement_document_id).css('width', '0').hide();
+                                $('#progress_' + agreement_document_id).css('width', '0')
+                            .hide();
                                 $('#image_upload_status_' + agreement_document_id).hide();
                                 $('#image__preview_label' + agreement_document_id).show();
-                                $('#image__upload_label' + agreement_document_id).prop('disabled', false);
+                                $('#image__upload_label' + agreement_document_id).prop(
+                                    'disabled', false);
                             }, 5000);
                         }
                     },
@@ -349,24 +406,43 @@
         // view document
         function viewUploadedDocument(id) {
             $.ajax({
-                url : '{{route("user.borrower.agreement.document.show")}}',
-                method : 'post',
-                data : {'_token' : '{{csrf_token()}}', id : id},
-                success : function(result) {
+                url: '{{ route('user.borrower.agreement.document.show') }}',
+                method: 'post',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    id: id
+                },
+                success: function(result) {
                     // console.log(result.message);
                     let content = '';
                     if (result.response_code == 200) {
-                        content += '<p class="text-muted small mb-1">Borrower</p><h6>'+result.message.agreement_document_upload.borrower_details.name_prefix+' '+result.message.agreement_document_upload.borrower_details.full_name+'</h6>';
+                        content += '<p class="text-muted small mb-1">Borrower</p><h6>' + result.message
+                            .agreement_document_upload.borrower_details.name_prefix + ' ' + result.message
+                            .agreement_document_upload.borrower_details.full_name + '</h6>';
 
                         content += '<p class="text-muted small mb-2 mt-3">Agreement</p>';
 
-                        content += '<div class="card"><div class="card-header p-2"><h3 class="card-title">'+result.message.agreement_document_upload.document_details.name+'</h3><div class="card-tools"><button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button><a class="btn btn-tool" href="'+result.file+'" download><i class="fas fa-download"></i></a></div></div><div class="card-body p-0"><img src="'+result.file+'" class="w-100" alt="'+result.message.agreement_document_upload.document_details.name+'"></div></div>';
+                        content += '<div class="card"><div class="card-header p-2"><h3 class="card-title">' +
+                            result.message.agreement_document_upload.document_details.name +
+                            '</h3><div class="card-tools"><button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button><a class="btn btn-tool" href="' +
+                            result.file +
+                            '" download><i class="fas fa-download"></i></a></div></div><div class="card-body p-0"><img src="' +
+                            result.file + '" class="w-100" alt="' + result.message.agreement_document_upload
+                            .document_details.name + '"></div></div>';
 
                         content += '<p class="text-muted small mb-2 mt-3">Verify</p>';
                         if (result.message.agreement_document_upload.verify == 0) {
-                            content += '<div id="verifyDocBigger"><a href="javascript: void(0)" class="btn btn-sm btn-danger" onclick="verifyUploadedDocument('+result.message.agreement_document_upload.id+', '+result.message.agreement_document_upload.verify+')">Document is unverified. Tap here to verify</a></div>';
+                            content +=
+                                '<div id="verifyDocBigger"><a href="javascript: void(0)" class="btn btn-sm btn-danger" onclick="verifyUploadedDocument(' +
+                                result.message.agreement_document_upload.id + ', ' + result.message
+                                .agreement_document_upload.verify +
+                                ')">Document is unverified. Tap here to verify</a></div>';
                         } else {
-                            content += '<div id="verifyDocBigger"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument('+result.message.agreement_document_upload.id+', '+result.message.agreement_document_upload.verify+')">Document is verified. Tap here to remove verification</a></div>';
+                            content +=
+                                '<div id="verifyDocBigger"><a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument(' +
+                                result.message.agreement_document_upload.id + ', ' + result.message
+                                .agreement_document_upload.verify +
+                                ')">Document is verified. Tap here to remove verification</a></div>';
                         }
                     } else {
                         content += '<p class="text-muted small mb-1">No data found. Try again</p>';
@@ -389,7 +465,7 @@
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: 'You want to '+typeShow+' the record',
+                text: 'You want to ' + typeShow + ' the record',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#f44336',
@@ -397,26 +473,41 @@
                 customClass: {
                     confirmButton: 'box-shadow-danger',
                 },
-                confirmButtonText: 'Yes, '+typeShow+' it!'
+                confirmButtonText: 'Yes, ' + typeShow + ' it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url : '{{route("user.borrower.agreement.document.verify")}}',
-                        method : 'post',
-                        data : {'_token' : '{{csrf_token()}}', id : id, type: type},
-                        success : function(result) {
+                        url: '{{ route('user.borrower.agreement.document.verify') }}',
+                        method: 'post',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            id: id,
+                            type: type
+                        },
+                        success: function(result) {
                             if (result.response_code == 200) {
                                 if (result.updateStatusCode == 1) {
-                                    $('#verifyDocBigger').html('<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument('+id+', 0)">Document is verified. Tap here to remove verification</a>');
+                                    $('#verifyDocBigger').html(
+                                        '<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument(' +
+                                        id +
+                                        ', 0)">Document is verified. Tap here to remove verification</a>'
+                                        );
 
-                                    $('#verifyDocToggle'+id).removeClass('btn-danger').addClass('btn-success').html('<i class="fas fa-clipboard-check"></i>');
+                                    $('#verifyDocToggle' + id).removeClass('btn-danger').addClass(
+                                        'btn-success').html(
+                                        '<i class="fas fa-clipboard-check"></i>');
                                 } else {
-                                    $('#verifyDocBigger').html('<a href="javascript: void(0)" class="btn btn-sm btn-danger" onclick="verifyUploadedDocument('+id+', 1)">Document is unverified. Tap here to verify</a>');
+                                    $('#verifyDocBigger').html(
+                                        '<a href="javascript: void(0)" class="btn btn-sm btn-danger" onclick="verifyUploadedDocument(' +
+                                        id + ', 1)">Document is unverified. Tap here to verify</a>');
 
-                                    $('#verifyDocToggle'+id).removeClass('btn-success').addClass('btn-danger').html('<i class="fas fa-question-circle"></i>');
+                                    $('#verifyDocToggle' + id).removeClass('btn-success').addClass(
+                                        'btn-danger').html('<i class="fas fa-question-circle"></i>');
                                 }
                             } else {
-                                $('#verifyDocBigger').html('<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument('+id+')">Something happened. Try again</a>');
+                                $('#verifyDocBigger').html(
+                                    '<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument(' +
+                                    id + ')">Something happened. Try again</a>');
                             }
                             // $('#appendContent').html(content);
                             // $('#userDetailsModalLabel').text('Borrower details');

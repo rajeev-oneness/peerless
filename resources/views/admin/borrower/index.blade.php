@@ -36,6 +36,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Contact</th>
+                                    <th>PAN card</th>
                                     <th>Address</th>
                                     <th>Loan details</th>
                                     <th class="text-right">Action</th>
@@ -154,6 +155,12 @@
                 {
                     data: 'mobile', name: 'mobile',
                     render: function(data, type, full, meta) {
+                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.pan_card_number+'</p></div>';
+                    }
+                },
+                {
+                    data: 'mobile', name: 'mobile',
+                    render: function(data, type, full, meta) {
                         return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.street_address+'</p><p class="small text-muted mb-0"><span title="City">'+full.city+'</span>, <span title="Pincode">'+full.pincode+'</span>, <span title="State">'+full.state+'</span></p></div>';
                     }
                 },
@@ -209,11 +216,16 @@
                         if (result.data.mobile != null) {
                             mobileShow = result.data.mobile;
                         }
+                        let panCardShow = '<em class="text-muted">No data</em>';
+                        if (result.data.pan_card_number != null) {
+                            panCardShow = result.data.pan_card_number;
+                        }
 
                         content += '<div class="w-100 user-profile-holder mb-3"><img src="'+result.data.image_path+'"></div>';
                         content += '<p class="text-muted small mb-1">Name</p><h6>'+result.data.name_prefix+' '+result.data.name+'</h6>';
                         content += '<p class="text-muted small mb-1">Email</p><h6>'+result.data.email+'</h6>';
                         content += '<p class="text-muted small mb-1">Phone number</p><h6>'+mobileShow+'</h6>';
+                        content += '<p class="text-muted small mb-1">PAN Card number</p><h6>'+panCardShow+'</h6>';
                         content += '<p class="text-muted small mb-1">Address</p><h6>'+result.data.street_address+'</h6>';
                         content += '<h6>'+result.data.city+', '+result.data.pincode+', '+result.data.state+'</h6>';
 
