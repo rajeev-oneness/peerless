@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
 .main-sidebar .sidebar .sidebar-logout {
+    border-radius: 0.25rem;
     position: fixed;
     bottom: 0;
     background-color: #f4f6f9;
-    color: rgb(52,106,160) ;
+    color: #346aa0;
 }
 
 .main-sidebar .sidebar .sidebar-logout p, .main-sidebar .sidebar .sidebar-logout i{
-    color: rgb(52,106,160) ;
+    color: #346aa0;
 }
 .box-profile .change-image {
     position: absolute;
@@ -348,9 +349,17 @@ mark {
 }
 
 .fields_col-2 {
-    width: 600px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
     overflow: hidden;
+    display: flex;
+}
+.fields_col-2 span.post-text{
+    min-width: 10%;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #53aae0;
+    font-weight: 600;
+    color: #285381;
 }
 
 .image__preview {
@@ -504,4 +513,5 @@ aside:hover .p-text{
     top: -1px;
     z-index: 99;
     margin: 0;
+    font-weight: 600;
 }

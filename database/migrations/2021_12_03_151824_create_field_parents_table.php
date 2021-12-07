@@ -28,6 +28,7 @@ class CreateFieldParentsTable extends Migration
             ['name' => 'Guarantor details'],
             ['name' => 'Witness 1 details'],
             ['name' => 'Witness 2 details'],
+            ['name' => 'Others'],
         ];
 
         DB::table('field_parents')->insert($data);

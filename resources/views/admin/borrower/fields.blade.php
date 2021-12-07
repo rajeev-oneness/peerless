@@ -3,297 +3,306 @@
 @section('title', 'Setup agreement fields')
 
 @section('content')
-    <section class="content">
-        <link rel="stylesheet" href="{{ asset('admin/plugins/bs-stepper/css/bs-stepper.min.css') }}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-chevron-left"></i> Back</a>
+<section class="content">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/bs-stepper/css/bs-stepper.min.css') }}">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                            <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
+                                    class="fas fa-chevron-left"></i> Back</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="font-weight-light text-dark">
+                                    <span class="font-weight-normal" title="Borrower's name">
+                                        {{ ucwords($data->name_prefix) }}
+                                        {{ $data->full_name }}
+                                    </span> -
+                                    <span title="Agreement name">{{ $data->agreement_name }}</span>
+                                </h5>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                @if ($data->agreementRfq > 0)
+                                    <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
+                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                        View PDF</a>
+
+                                    <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}"
+                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i>
+                                        Download PDF</a>
+                                @endif
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up
+                                    the form first to view PDF</p>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h5 class="font-weight-light text-dark">
-                                        <span class="font-weight-normal" title="Borrower's name">
-                                            {{ ucwords($data->name_prefix) }}
-                                            {{ $data->full_name }}
-                                        </span> -
-                                        <span title="Agreement name">{{ $data->agreement_name }}</span>
-                                    </h5>
-                                </div>
-                                <div class="col-md-4 text-right">
-                                    @if ($data->agreementRfq > 0)
-                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
-                                            class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
-                                            View PDF</a>
 
-                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}"
-                                            class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i>
-                                            Download PDF</a>
-                                    @endif
-                                </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
 
-                                <div class="col-md-12 mt-3">
-                                    <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up
-                                        the form first to view PDF</p>
-                                </div>
-                            </div>
+                                <input type="hidden" name="borrower_id" id="borrower_id" value="{{ request()->id }}">
 
-                            <div class="row mt-4">
-                                <div class="col-12">
-
-                                    <input type="hidden" name="borrower_id" id="borrower_id" value="{{ request()->id }}">
-
-                                    <div class="bs-stepper">
-                                        <div class="bs-stepper-header" role="tablist">
-                                            <div class="step" data-target="#information-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle"><i class="fas fa-user"></i></span>
-                                                    <span class="bs-stepper-label">Borrower's information</span>
-                                                </button>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="step" data-target="#document-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="document-part" id="document-part-trigger">
-                                                    <span class="bs-stepper-circle"><i
-                                                            class="fas fa-file-import"></i></span>
-                                                    <span class="bs-stepper-label">Documents</span>
-                                                </button>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="step" data-target="#submit-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="submit-part" id="submit-part-trigger">
-                                                    <span class="bs-stepper-circle"><i class="fas fa-save"></i></span>
-                                                    <span class="bs-stepper-label">Submit</span>
-                                                </button>
-                                            </div>
+                                <div class="bs-stepper">
+                                    <div class="bs-stepper-header" role="tablist">
+                                        <div class="step" data-target="#information-part">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                aria-controls="information-part" id="information-part-trigger">
+                                                <span class="bs-stepper-circle"><i class="fas fa-user"></i></span>
+                                                <span class="bs-stepper-label">Borrower's information</span>
+                                            </button>
                                         </div>
-                                        <div class="bs-stepper-content">
-                                            <div id="information-part" class="content" role="tabpanel"
-                                                aria-labelledby="information-part-trigger">
-                                                @if (count($data->fields) > 0)
-                                                    <form action="{{ route('user.borrower.agreement.store') }}"
-                                                        method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <table class="table table-sm table-bordered table-hover"
-                                                            id="agreementFieldsTable">
-                                                            {{-- @foreach ($data->fields as $index => $item) --}}
-                                                            @forelse ($data->parentFields as $indexParent => $parent)
-                                                                <tr>
-                                                                    <td colspan="3" class="field-heading">
-                                                                        {{ $parent->name }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                </tr>
-                                                                @foreach ($parent->childRelation as $indexChild => $item)
-                                                                    <tr>
-                                                                        <td style="width: 50px">{{ $indexChild + 1 }}</td>
-                                                                        <td class="fields_col-1">
-                                                                            <label
-                                                                                class="font-weight-bold">{!! $item->childField->name !!}
-                                                                                {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
-                                                                        </td>
-                                                                        <td class="fields_col-2">
-                                                                            @php
-                                                                                if ($data->agreementRfq > 0) {
-                                                                                    $formType = 'show';
-                                                                                } else {
-                                                                                    $formType = 'create';
-                                                                                }
-                                                                            @endphp
-
-                                                                            {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            @empty
-                                                                <tr>
-                                                                    <td colspan="100%"><em>No records found</em></td>
-                                                                </tr>
-                                                            @endforelse
-
-                                                            {{-- data submit / edit --}}
+                                        <div class="line"></div>
+                                        <div class="step" data-target="#document-part">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                aria-controls="document-part" id="document-part-trigger">
+                                                <span class="bs-stepper-circle"><i
+                                                        class="fas fa-file-import"></i></span>
+                                                <span class="bs-stepper-label">Documents</span>
+                                            </button>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="step" data-target="#submit-part">
+                                            <button type="button" class="step-trigger" role="tab"
+                                                aria-controls="submit-part" id="submit-part-trigger">
+                                                <span class="bs-stepper-circle"><i class="fas fa-save"></i></span>
+                                                <span class="bs-stepper-label">Submit</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="bs-stepper-content">
+                                        <div id="information-part" class="content" role="tabpanel"
+                                            aria-labelledby="information-part-trigger">
+                                            @if (count($data->fields) > 0)
+                                                <form action="{{ route('user.borrower.agreement.store') }}"
+                                                    method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <table class="table table-sm table-bordered table-hover"
+                                                        id="agreementFieldsTable">
+                                                        {{-- @foreach ($data->fields as $index => $item) --}}
+                                                        @forelse ($data->parentFields as $indexParent => $parent)
                                                             <tr>
-                                                                <td colspan="3"
-                                                                    style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;">
-                                                                    <div class="w-100 text-right">
-                                                                        <input type="hidden" name="borrower_id"
-                                                                            value="{{ $id }}">
-                                                                        <input type="hidden" name="agreement_id"
-                                                                            value="{{ $data->agreement_id }}">
-
-                                                                        @if ($data->agreementRfq > 0)
-
-                                                                            {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
-
-                                                                            <button type="button"
-                                                                                class="btn btn-sm btn-primary"
-                                                                                onclick="stepper.next()">Go to Documents <i
-                                                                                    class="fas fa-chevron-right"></i></button>
-
-                                                                        @else
-                                                                            <button type="submit"
-                                                                                class="btn btn-sm btn-primary">Submit data
-                                                                                <i class="fas fa-upload"></i></button>
-                                                                        @endif
-                                                                    </div>
-                                                                </td>
+                                                                <td colspan="3" class="field-heading">
+                                                                    {{ $parent->name }}</td>
                                                             </tr>
-                                                        </table>
-                                                    </form>
-                                                @else
-                                                    <div class="w-100">
-                                                        <p><em>No fields found for this agreement</em></p>
-                                                        <a href="{{ route('user.agreement.fields', $data->agreement_id) }}"
-                                                            class="btn btn-sm btn-primary">Setup fields</a>
-                                                    </div>
-                                                @endif
-                                            </div>
+                                                            @foreach ($parent->childRelation as $indexChild => $item)
+                                                                <tr>
+                                                                    <td style="width: 50px">{{ $indexChild + 1 }}</td>
+                                                                    <td class="fields_col-1">
+                                                                        <label
+                                                                            class="font-weight-bold">{!! $item->childField->name !!}
+                                                                            {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
+                                                                    </td>
+                                                                    <td class="fields_col-2">
+                                                                        @php
+                                                                            if ($data->agreementRfq > 0) {
+                                                                                $formType = 'show';
+                                                                            } else {
+                                                                                $formType = 'create';
+                                                                            }
+                                                                        @endphp
 
-                                            <div id="document-part" class="content" role="tabpanel"
-                                                aria-labelledby="document-part-trigger">
-                                                <div class="card border shadow-none rounded-0">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            @forelse ($data->requiredDocuments as $index => $documentHead)
-                                                                <div class="col-sm-12">
-                                                                    <p class="text-dark font-weight-bold">
-                                                                        {{ $index + 1 }} {{ $documentHead->name }}
-                                                                    </p>
+                                                                        {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="100%"><em>No records found</em></td>
+                                                            </tr>
+                                                        @endforelse
+
+                                                        {{-- data submit / edit --}}
+                                                        <tr>
+                                                            <td colspan="3"
+                                                                style="position: sticky;bottom: -1px;z-index: 99;background-color: #e9e9e9;">
+                                                                <div class="w-100 text-right">
+                                                                    <input type="hidden" name="borrower_id"
+                                                                        value="{{ $id }}">
+                                                                    <input type="hidden" name="agreement_id"
+                                                                        value="{{ $data->agreement_id }}">
+
+                                                                    @if ($data->agreementRfq > 0)
+
+                                                                        {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
+
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-primary"
+                                                                            onclick="stepper.next()">Go to Documents <i
+                                                                                class="fas fa-chevron-right"></i></button>
+
+                                                                    @else
+                                                                        <button type="submit"
+                                                                            class="btn btn-sm btn-primary">Submit data
+                                                                            <i class="fas fa-upload"></i></button>
+                                                                    @endif
                                                                 </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </form>
+                                            @else
+                                                <div class="w-100">
+                                                    <p><em>No fields found for this agreement</em></p>
+                                                    <a href="{{ route('user.agreement.fields', $data->agreement_id) }}"
+                                                        class="btn btn-sm btn-primary">Setup fields</a>
+                                                </div>
+                                            @endif
+                                        </div>
 
-                                                                @foreach ($documentHead->siblingsDocuments as $childItem)
-                                                                    <div class="col-sm-2">
-                                                                        <div class="card">
-                                                                            <div class="card-header p-2">
-                                                                                {{ $childItem->name }}</div>
-                                                                            <div class="card-body p-2">
-                                                                                <div class="image__preview">
-                                                                                    <img class="card-img-top img-fluid"
-                                                                                        src="{{ documentSrc($childItem->id, $id, 'image') }}"
-                                                                                        alt="Cover Image"
-                                                                                        id="image__preview{{ $childItem->id }}">
-                                                                                </div>
-                                                                                <div class="row mt-2">
-                                                                                    <div class="col-12 text-center">
-                                                                                        <form class="fileUploadForm"
-                                                                                            enctype="multipart/form-data"
-                                                                                            id="image_upload_form{{ $childItem->id }}">
+                                        <div id="document-part" class="content" role="tabpanel"
+                                            aria-labelledby="document-part-trigger">
+                                            <div class="card border shadow-none rounded-0">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        @forelse ($data->requiredDocuments as $index => $documentHead)
+                                                            <div class="col-sm-12">
+                                                                <p class="text-dark font-weight-bold">
+                                                                    {{ $index + 1 }} {{ $documentHead->name }}
+                                                                </p>
+                                                            </div>
 
-                                                                                            <input type="file"
-                                                                                                name="document"
-                                                                                                id="file_{{ $childItem->id }}"
-                                                                                                class="borrower-document-upload d-none"
-                                                                                                onchange="docUpload(this, {{ $childItem->id }})">
+                                                            @foreach ($documentHead->siblingsDocuments as $childItem)
+                                                                <div class="col-sm-2">
+                                                                    <div class="card">
+                                                                        <div class="card-header p-2">
+                                                                            {{ $childItem->name }}</div>
+                                                                        <div class="card-body p-2">
+                                                                            <div class="image__preview">
+                                                                                <img class="card-img-top img-fluid"
+                                                                                    src="{{ documentSrc($childItem->id, $id, 'image') }}"
+                                                                                    alt="Cover Image"
+                                                                                    id="image__preview{{ $childItem->id }}">
+                                                                            </div>
+                                                                            <div class="row mt-2">
+                                                                                <div class="col-12 text-center">
+                                                                                    <form class="fileUploadForm"
+                                                                                        enctype="multipart/form-data"
+                                                                                        id="image_upload_form{{ $childItem->id }}">
 
-                                                                                            <input type="hidden"
-                                                                                                name="agreement_document_id"
-                                                                                                id="agreement_document_id_{{ $childItem->id }}"
-                                                                                                value="{{ $childItem->id }}">
+                                                                                        <input type="file"
+                                                                                            name="document"
+                                                                                            id="file_{{ $childItem->id }}"
+                                                                                            class="borrower-document-upload d-none"
+                                                                                            onchange="docUpload(this, {{ $childItem->id }})">
 
-                                                                                            {!! documentSrc($childItem->id, $id, 'action') !!}
+                                                                                        <input type="hidden"
+                                                                                            name="agreement_document_id"
+                                                                                            id="agreement_document_id_{{ $childItem->id }}"
+                                                                                            value="{{ $childItem->id }}">
 
-                                                                                            {{-- <label for="file_{{ $childItem->id }}" class="btn btn-xs btn-primary" id="image__preview_label{{ $childItem->id }}">Browse <i class="fas fa-camera"></i></label> --}}
+                                                                                        {!! documentSrc($childItem->id, $id, 'action') !!}
 
-                                                                                            <button type="submit"
-                                                                                                class="btn btn-xs btn-success mb-2"
-                                                                                                id="image__upload_label{{ $childItem->id }}"
-                                                                                                style="display:none"
-                                                                                                onclick="docUpload({{ $childItem->id }})">
-                                                                                                Upload <i
-                                                                                                    class="fas fa-upload"></i></button>
+                                                                                        {{-- <label for="file_{{ $childItem->id }}" class="btn btn-xs btn-primary" id="image__preview_label{{ $childItem->id }}">Browse <i class="fas fa-camera"></i></label> --}}
 
-                                                                                            <label
-                                                                                                class="btn btn-xs btn-primary mb-2"
-                                                                                                id="image_upload_status_{{ $childItem->id }}"
-                                                                                                style="display:none"></label>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-xs btn-success mb-2"
+                                                                                            id="image__upload_label{{ $childItem->id }}"
+                                                                                            style="display:none"
+                                                                                            onclick="docUpload({{ $childItem->id }})">
+                                                                                            Upload <i
+                                                                                                class="fas fa-upload"></i></button>
 
-                                                                                            <div
-                                                                                                class="progress progress-sm">
-                                                                                                <div class="progress-bar"
-                                                                                                    id="progress_{{ $childItem->id }}"
-                                                                                                    role="progressbar"
-                                                                                                    style="width: 0%;display:none;"
-                                                                                                    aria-valuenow="0"
-                                                                                                    aria-valuemin="0"
-                                                                                                    aria-valuemax="100">
-                                                                                                </div>
+                                                                                        <label
+                                                                                            class="btn btn-xs btn-primary mb-2"
+                                                                                            id="image_upload_status_{{ $childItem->id }}"
+                                                                                            style="display:none"></label>
+
+                                                                                        <div
+                                                                                            class="progress progress-sm">
+                                                                                            <div class="progress-bar"
+                                                                                                id="progress_{{ $childItem->id }}"
+                                                                                                role="progressbar"
+                                                                                                style="width: 0%;display:none;"
+                                                                                                aria-valuenow="0"
+                                                                                                aria-valuemin="0"
+                                                                                                aria-valuemax="100">
                                                                                             </div>
+                                                                                        </div>
 
-                                                                                            <span title="Remove image"
-                                                                                                class="remove_selected_file text-danger"
-                                                                                                id="remove__image{{ $childItem->id }}"
-                                                                                                style="display: none;"
-                                                                                                onclick="clearimg({{ $childItem->id }})"><i
-                                                                                                    class="fas fa-times"></i></span>
-                                                                                        </form>
-                                                                                    </div>
+                                                                                        <span title="Remove image"
+                                                                                            class="remove_selected_file text-danger"
+                                                                                            id="remove__image{{ $childItem->id }}"
+                                                                                            style="display: none;"
+                                                                                            onclick="clearimg({{ $childItem->id }})"><i
+                                                                                                class="fas fa-times"></i></span>
+                                                                                    </form>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                @endforeach
-                                                            @empty
-                                                                <div class="col-sm-12 text-center">
-                                                                    <p class="text-muted"><em>No documents to
-                                                                            upload</em></p>
                                                                 </div>
-                                                            @endforelse
-                                                        </div>
+                                                            @endforeach
+                                                        @empty
+                                                            <div class="col-sm-12 text-center">
+                                                                <p class="text-muted"><em>No documents to
+                                                                        upload</em></p>
+                                                            </div>
+                                                        @endforelse
                                                     </div>
-                                                    <div class="card-footer"
-                                                        style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;padding: 0.3rem;">
-                                                        <div class="text-right">
-                                                            <button class="btn btn-sm btn-primary"
-                                                                onclick="stepper.previous()"><i
-                                                                    class="fas fa-chevron-left"></i> Back to borrower's
-                                                                form</button>
-                                                            <button type="button" class="btn btn-sm btn-primary"
-                                                                onclick="stepper.next()">Go to Submit <i
-                                                                    class="fas fa-chevron-right"></i></button>
-                                                        </div>
+                                                </div>
+                                                <div class="card-footer"
+                                                    style="position: sticky;bottom: 0;z-index: 99;background-color: #e9e9e9;padding: 0.3rem;">
+                                                    <div class="text-right">
+                                                        <button class="btn btn-sm btn-primary"
+                                                            onclick="stepper.previous()"><i
+                                                                class="fas fa-chevron-left"></i> Back to borrower's
+                                                            form</button>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                            onclick="stepper.next()">Go to Submit <i
+                                                                class="fas fa-chevron-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div id="submit-part" class="content" role="tabpanel"
-                                                aria-labelledby="submit-part-trigger">
-                                                <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i
-                                                        class="fas fa-chevron-left"></i> Back to Documents</button>
-                                                {{-- <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></button> --}}
-                                                <a href="{{ route('user.borrower.list') }}"
-                                                    class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
-                                            </div>
+                                        <div id="submit-part" class="content" role="tabpanel"
+                                            aria-labelledby="submit-part-trigger">
+                                            <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i
+                                                    class="fas fa-chevron-left"></i> Back to Documents</button>
+                                            {{-- <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></button> --}}
+                                            <a href="{{ route('user.borrower.list') }}"
+                                                class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 @endsection
 
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <!-- bs stepper --> 
     <script src="{{ asset('admin/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 
     <script>
+        $(select).select2({
+            theme: 'bootstrap4'
+        });
         // step by step document upload
         var stepper = new Stepper($('.bs-stepper')[0]);
 

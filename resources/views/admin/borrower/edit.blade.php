@@ -187,9 +187,7 @@
                                         <select class="form-control" id="agreement_id" name="agreement_id">
                                             <option value="" hidden selected>Select Type of loan</option>
                                             @foreach ($data->agreement as $item)
-                                                <option value="{{ $item->id }}"
-                                                    {{ $data->user->agreement_id == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->name }}</option>
+                                                <option value="{{ $item->id }}" {{ old('agreement_id') ? (old('agreement_id') == $item->id ? 'selected' : '') : ($data->user->agreement_id == $item->id ? 'selected' : '') }}>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('agreement_id') <p class="small mb-0 text-danger">{{ $message }}</p>

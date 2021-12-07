@@ -47,6 +47,14 @@ class CreateFieldsTable extends Migration
             else $repaymentTenureValue .= $i;
         }
 
+        // bank list
+        $bankLists = '';
+        // $bankData = DB::table('bank_lists')->select('name')->orderBy('name', 'asc')->get();
+
+        // foreach ($bankData as $key => $bank) {
+        //     $bankLists .= $bank->name.', ';
+        // }
+
         $data = [
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
 
@@ -58,7 +66,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'PAN card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheborrower'],
             ['name' => 'Officially Valid Documents of the Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheborrower'],
             ['name' => 'Occupation of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheborrower'],
-            ['name' => 'Resident status of the Borrower', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusoftheborrower'],
+            ['name' => 'Resident status of the Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheborrower'],
             ['name' => 'Date of birth of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheborrower'],
             ['name' => 'Marital status of the Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheborrower'],
             ['name' => 'Highest education of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
@@ -75,7 +83,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'PAN card number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberofthecoborrower'],
             ['name' => 'Officially Valid Documents of the Co-Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsofthecoborrower'],
             ['name' => 'Occupation of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationofthecoborrower'],
-            ['name' => 'Resident status of the Co-Borrower', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusofthecoborrower'],
+            ['name' => 'Resident status of the Co-Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusofthecoborrower'],
             ['name' => 'Date of birth of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower'],
             ['name' => 'Marital status of the Co-Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusofthecoborrower'],
             ['name' => 'Highest education of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
@@ -93,7 +101,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'PAN card number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheguarantor'],
             ['name' => 'Officially Valid Documents of the Guarantor', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheguarantor'],
             ['name' => 'Occupation of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheguarantor'],
-            ['name' => 'Resident status of the Guarantor', 'type' => 9, 'value' => 'Permanent address, Rented address', 'key_name' => 'residentstatusoftheguarantor'],
+            ['name' => 'Resident status of the Guarantor', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheguarantor'],
             ['name' => 'Date of birth of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheguarantor'],
             ['name' => 'Marital status of the Guarantor', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheguarantor'],
             ['name' => 'Highest education of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheguarantor'],
@@ -121,8 +129,10 @@ class CreateFieldsTable extends Migration
             // ['name' => 'Witness 2 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness2signature'],
 
             // loan details
-            ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
+            // loan application number is loan reference number
+            // ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
             ['name' => 'Loan Account Number', 'type' => 1, 'value' => '', 'key_name' => 'loanaccountnumber'],
+            ['name' => 'Letter of Intent Number', 'type' => 1, 'value' => '', 'key_name' => 'letterofintentnumber'],
 
             // agreement details
             ['name' => 'Place of agreement', 'type' => 1, 'value' => '', 'key_name' => 'placeofagreement'],
@@ -138,53 +148,73 @@ class CreateFieldsTable extends Migration
             ['name' => 'Purpose of Loan', 'type' => 1, 'value' => '', 'key_name' => 'purposeofloan'],
             ['name' => 'Repayment tenure (in months)', 'type' => 7, 'value' => $repaymentTenureValue, 'key_name' => 'repaymenttenureinmonths'],
             ['name' => 'Rate of Interest', 'type' => 1, 'value' => '', 'key_name' => 'rateofinterest'],
-            ['name' => 'Processing charge (in percentage)', 'type' => 3, 'value' => '', 'key_name' => 'processingchargeinpercentage'],
-            ['name' => 'Documentation fee', 'type' => 3, 'value' => '', 'key_name' => 'documentationfee'],
+            ['name' => 'Processing charge (in percentage)', 'type' => 1, 'value' => '', 'key_name' => 'processingchargeinpercentage'],
+            ['name' => 'Documentation fee', 'type' => 1, 'value' => '', 'key_name' => 'documentationfee'],
             ['name' => 'Security & Margin', 'type' => 1, 'value' => '', 'key_name' => 'securitymargin'],
             ['name' => 'Guarantee', 'type' => 1, 'value' => '', 'key_name' => 'guarantee'],
             ['name' => 'Monthly instalments number', 'type' => 1, 'value' => '', 'key_name' => 'monthlyinstalmentsnumber'],
-            ['name' => 'Monthly EMI in digits', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiindigits'],
+            ['name' => 'Monthly EMI', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiindigits'],
             ['name' => 'Monthly EMI in words', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiinwords'],
             ['name' => 'Payment deduction from', 'type' => 8, 'value' => 'Deducted from the Borrower&apos;s salary by the Borrower&apos;s employer on monthly basis and credited into the Lender&apos;s bank Account, directly debited from the Borrower&apos;s bank Account and credited into lender&apos;s bank Account', 'key_name' => 'paymentdeductionfrom'],
             ['name' => 'Date of credit of EMI into Lender&apos;s Bank Account', 'type' => 9, 'value' => '5th of every month, 2nd of every month, Others', 'key_name' => 'dateofcreditofemiintolendersbankaccount'],
-            ['name' => 'Other date of EMI credit', 'type' => 1, 'value' => '', 'key_name' => 'otherdateofemicredit'],
+            ['name' => 'Other date of EMI credit', 'type' => 3, 'value' => '', 'key_name' => 'otherdateofemicredit'],
             ['name' => 'Penal Interest percentage', 'type' => 1, 'value' => '', 'key_name' => 'penalinterestpercentage'],
-            ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
+            // ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
+            ['name' => 'Beneficiary Name of Borrower&apos;s bank', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrowersbank'],
             ['name' => 'Savings account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingsaccountnumberofborrower'],
-            ['name' => 'Bank address of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaddressofborrower'],
-            ['name' => 'Beneficiary Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrower'],
-            ['name' => 'Bank Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameofborrower'],
+            ['name' => 'Bank Name of Borrower', 'type' => 7, 'value' => $bankLists, 'key_name' => 'banknameofborrower'],
             ['name' => 'Branch Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'branchnameofborrower'],
-            ['name' => 'IFSC code of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'ifsccodeofborrower'],
+            ['name' => 'Bank address of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaddressofborrower'],
+            ['name' => 'IFS code of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'ifscodeofborrower'],
             ['name' => 'Insurance of Borrower', 'type' => 10, 'value' => '', 'key_name' => 'insuranceofborrower'],
             ['name' => 'Documents to be attached with application for loan', 'type' => 8, 'value' => $loanApplicationDocumentsToAttach, 'key_name' => 'documentstobeattachedwithapplicationforloan'],
             ['name' => 'Other documents to be attached with application for loan', 'type' => 1, 'value' => $loanApplicationDocumentsToAttach, 'key_name' => 'otherdocumentstobeattachedwithapplicationforloan'],
 
             // Personal loan facility agreement dated
-            ['name' => 'Personal loan facility agreement dated', 'type' => 4, 'value' => '', 'key_name' => 'personalloanfacilityagreementdated'],
+
+
+            /********* no 75 removal *********/
+            // ['name' => 'Personal loan facility agreement dated', 'type' => 4, 'value' => '', 'key_name' => 'personalloanfacilityagreementdated'],
             ['name' => 'Deed of Personal Guarantee date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpersonalguaranteedate'],
-            ['name' => 'Deed of Pledge of Moveable Properties (Shares, Bonds, Debentures, Mutual Funds) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate'],
-            ['name' => 'Deed of Mortgage of Inmoveable Properties (Land, House, Warehouse) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofmortgageofinmoveablepropertieslandhousewarehousedate'],
-            ['name' => 'Power of Attorney date', 'type' => 4, 'value' => '', 'key_name' => 'powerofattorneydate'],
-            ['name' => 'Deed of Assignment (Insurance Policy, Fixed Deposit) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofassignmentinsurancepolicyfixeddepositdate'],
+            /********* no 77 removal *********/
+            // ['name' => 'Deed of Pledge of Moveable Properties (Shares, Bonds, Debentures, Mutual Funds) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate'],
+            /********* no 78 removal *********/
+            // ['name' => 'Deed of Mortgage of Inmoveable Properties (Land, House, Warehouse) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofmortgageofinmoveablepropertieslandhousewarehousedate'],
+            /********* no 79 removal *********/
+            // ['name' => 'Power of Attorney date', 'type' => 4, 'value' => '', 'key_name' => 'powerofattorneydate'],
+            /********* no 80 removal *********/
+            // ['name' => 'Deed of Assignment (Insurance Policy, Fixed Deposit) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofassignmentinsurancepolicyfixeddepositdate'],
 
             // DEMAND PROMISSORY NOTE
-            ['name' => 'Demand Promissory Note Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteplace'],
-            ['name' => 'Demand Promissory Note Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynotedate'],
-            ['name' => 'Demand Promissory Note Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteamount'],
+            // for borrower 
+            ['name' => 'Demand Promissory Note for borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforborrowerplace'],
+            ['name' => 'Demand Promissory Note for borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforborrowerdate'],
+            ['name' => 'Demand Promissory Note for borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforborroweramount'],
+            // for co-borrower
+            ['name' => 'Demand Promissory Note for co-borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerplace'],
+            ['name' => 'Demand Promissory Note for co-borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerdate'],
+            ['name' => 'Demand Promissory Note for co-borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborroweramount'],
+
+            // CONTINUING SECURITY LETTER
+            ['name' => 'Continuing Security Letter Date 1', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate1'],
+            ['name' => 'Continuing Security Letter Date 2', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate2'],
+
+            // UNDERTAKING CUM INDEMNITY
+            ['name' => 'Undertaking Cum Indemnity Date', 'type' => 4, 'value' => '', 'key_name' => 'undertakingcumindemnitydate'],
 
             // file uploads
             // ['name' => 'Borrower&apos;s request to employer for EMI deduction from salary', 'type' => 6, 'value' => '', 'key_name' => 'borrowersrequesttoemployerforemideductionfromsalary'],
 
             // NACH declaration
-            ['name' => 'NACH Declaration for and on be half of', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationforandonbehalfof'],
-            ['name' => 'NACH Declaration Name 1', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname1'],
+            /********** REMOVE NACH declaration **********/
+            // ['name' => 'NACH Declaration for and on be half of', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationforandonbehalfof'],
+            // ['name' => 'NACH Declaration Name 1', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname1'],
             // ['name' => 'NACH Declaration Signature 1', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature1'],
-            ['name' => 'NACH Declaration Name 2', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname2'],
+            // ['name' => 'NACH Declaration Name 2', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname2'],
             // ['name' => 'NACH Declaration Signature 2', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature2'],
-            ['name' => 'NACH Declaration Name 3', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname3'],
+            // ['name' => 'NACH Declaration Name 3', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname3'],
             // ['name' => 'NACH Declaration Signature 3', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature3'],
-            ['name' => 'NACH Declaration Name 4', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname4'],
+            // ['name' => 'NACH Declaration Name 4', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname4'],
             // ['name' => 'NACH Declaration Signature 4', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature4'],
 
             // MISCELLANEOUS DOCUMENTS upload

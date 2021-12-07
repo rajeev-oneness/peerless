@@ -65,7 +65,8 @@ function checkStringFileAray($data)
 
 // form elements check & show values
 /*** fields blade & admin.borrower.fields blade ***/
-function form3lements(int $field_id, string $name = null, string $type, string $value = null, string $key_name = null, string $required = '', string $borrowerId = '', string $form_type = null)
+// parameters fields id, field name - placeholder, field type - text/email, value - select/radio, 
+function form3lements($field_id, $name, $type, $value=null, $key_name, $required=null, $borrowerId=null, $form_type=null)
 {
     $respValue = '';
     $disabledField = '';
@@ -75,6 +76,11 @@ function form3lements(int $field_id, string $name = null, string $type, string $
             // fetching borrower details
             $borrower = \App\Models\Borrower::findOrFail($borrowerId);
             switch($key_name){
+                // borrower id
+                case 'customerid' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->id;
+                    break;
                 // borrower name prefix
                 case 'prefixoftheborrower' :
                     $disabledField = 'disabled';
@@ -99,6 +105,11 @@ function form3lements(int $field_id, string $name = null, string $type, string $
                 case 'mobilenumberoftheborrower' :
                     $disabledField = 'disabled';
                     $respValue = $borrower->mobile;
+                    break;
+                // borrower pan card number
+                case 'pancardnumberoftheborrower' :
+                    $disabledField = 'disabled';
+                    $respValue = $borrower->pan_card_number;
                     break;
                 // borrower occupation
                 case 'occupationoftheborrower' :
@@ -133,21 +144,40 @@ function form3lements(int $field_id, string $name = null, string $type, string $
         }
     }
 
+    // adding extra text after fields
+    $extraPostField = '';
+    $extraPreField = '';
+    if ($key_name == 'loanamountindigits') $extraPreField = '<span class="post-text">Rs.</span>';
+    if ($key_name == 'processingchargeinpercentage') $extraPostField = '<span class="post-text">+ Taxes</span>';
+    if ($key_name == 'documentationfee') {
+        $extraPreField = '<span class="post-text">Rs.</span>';
+        $extraPostField = '<span class="post-text">+ Taxes</span>';
+    }
+
+    // working with required/ optional fields
+    if ($key_name == 'otherdateofemicredit') $required = '';
+    if ($key_name == 'demandpromissorynoteforcoborrowerdate') $required = '';
+    if ($key_name == 'continuingsecurityletterdate2') $required = '';
+    if ($key_name == 'otherdocumentstobeattachedwithapplicationforloan') $required = '';
+    // if ($key_name == 'otherdateofemicredit' && $key_name = 'demandpromissorynoteforcoborrowerdate' && $key_name = 'continuingsecurityletterdate2') {
+    //     $required = '';
+    // }
+
     switch ($type) {
         case 'text':
-            $response = '<input type="text" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = $extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'email':
-            $response = '<input type="email" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = $extraPreField.'<input type="email" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'number':
-            $response = '<input type="number" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = $extraPreField.'<input type="number" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'date':
-            $response = '<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = $extraPreField.'<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'time':
-            $response = '<input type="time" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = $extraPreField.'<input type="time" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'file':
             $response = '<div class="custom-file custom-file-sm"><input type="file" class="custom-file-input" id="customFile" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'><label class="custom-file-label" for="customFile">Choose ' . $name . '</label></div><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';

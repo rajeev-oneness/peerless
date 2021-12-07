@@ -2471,7 +2471,8 @@
                             Documentation charges</td>
                         <td>
                             <p>
-                                {{$data->processingdocumentationcharges}}
+                                {{$data->processingchargeinpercentage}}
+                                ({{$data->documentationfee}})
                             </p>
                         </td>
                     </tr>
@@ -2595,10 +2596,10 @@
                         </td>
                         <td>
                             <p>
-                                Savings / Current Account No : {{$data->savingscurrentaccountnumberofborrower}} <br>
-                                Beneficiary : {{$data->beneficiarynameofborrower}} <br>
+                                Savings / Current Account No : {{$data->savingsaccountnumberofborrower}} <br>
+                                Beneficiary : {{$data->beneficiarynameofborrowersbank}} <br>
                                 Name of bank & Branch : {{$data->banknameofborrower}} / {{$data->branchnameofborrower}} <br>
-                                IFSC Code : {{$data->ifsccodeofborrower}} <br>
+                                IFSC Code : {{$data->ifscodeofborrower}} <br>
                             </p>
                         </td>
                     </tr>
@@ -2927,9 +2928,9 @@
                 <table class="table_23 border0" style="width:80%; margin:0 auto;">
                     <tr>
                         <td style="text-align:right;" class="border0" colspan="2">
-                            <p class="ft131">Place : {{$data->demandpromissorynoteplace}}</p>
-                            <p class="ft131">Dated : {{$data->demandpromissorynotedate}}</p>
-                            <p class="ft131">Rs. {{$data->demandpromissorynoteamount}}/-</p>
+                            <p class="ft131">Place : {{$data->demandpromissorynoteforborrowerplace}}</p>
+                            <p class="ft131">Dated : {{$data->demandpromissorynoteforborrowerdate}}</p>
+                            <p class="ft131">Rs. {{$data->demandpromissorynoteforborroweramount}}/-</p>
                         </td>
                     </tr>
                     <tr>
@@ -3085,8 +3086,8 @@
                         <td class="border0">
                             <p>
                                 I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note
-                                dated {{$data->dateofagreement}} for Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}}) Only payable
-                                and dated {{$data->dateofagreement}}
+                                dated {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}}) Only payable
+                                and dated {{$data->continuingsecurityletterdate2}}
                                 for Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
                                 demand, which is given by me / us as Security for repayment of the loan Granted to me/ us by PFSL, the Lender, by
                                 execution of Personal Loan Agreement dated {{$data->dateofagreement}}, together with interest and other amounts due there
@@ -3166,7 +3167,7 @@
                                 <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <br>
                                 <span class="ft2"> ( Rupees {{$data->loanamountindigitsinwords}}) Only</span>
                                 I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
-                                _______________________dated___________.
+                                {{$data->letterofintentnumber}} dated {{$data->undertakingcumindemnitydate}}.
                                 In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan Facility Agreement, I/we do
                                 here by irrevocably and unconditionally agree and undertake as follows :
                                 <br><br>
@@ -3265,20 +3266,17 @@
                     </TABLE>
                 </DIV>
             </DIV>
-        
+
             <div class="page-break"></div>
-        
+
             <DIV id="page_27">
-        
-            
                 <DIV style="text-align:center;">
-                    <P class="ft5">ANNEXURE III</P>
-                    <p class="ft5">UNDERTAKING-CUM-INDEMNITY</p>
-                    <P class="ft2">(This Undertaking Cum Indemnity executed at the place and date stated in the Schedule I therein under written )</P>
+                    <P class="ft5">ANNEXURE IV</P>
+                    <p class="ft5">REQUEST FOR DISBURSEMENT</p>
+                    <P class="ft2">(This Request for Disbursement executed at the place and date stated in the Schedule I therein under written)</P>
                     <br><br><br>
                 </div>
-        
-        
+
                 <table class="table_24 border0">
                     <tr>
                         <td class="border0">
@@ -3301,12 +3299,11 @@
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-        
                                 Re: Loan Account No {{$data->loanaccountnumber}} Request for disbursement of
                                 sanctioned loan of Rs. {{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) only<br>
-                                This is with reference to your Letter Of Intent No.________________________dated_______ conveying sanction of the
+                                This is with reference to your Letter Of Intent No. {{$data->letterofintentnumber}} dated {{$data->dateofagreement}} conveying sanction of the
                                 subject facility. I / We have since completed all the formalities regarding documentation of the facility in terms of the
-                                Personal Loan Facility Agreement dated ________________ executed between you and me/ us . I / us now request you to
+                                Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed between you and me/ us . I / us now request you to
                                 disburse the loan after deduction of Processing fees, Documentation charges etc. as stipulated in the Letter of ln tent
                                 under the sanctioned facility. You may also adjust the disbursal amount with the Insurance Premium amount for onward
                                 payment to the Insurer . <br><br>
@@ -3320,7 +3317,7 @@
                     <tr>
                         <td class="border0">
                             <p>
-                                Bank Account Name : {{$data->beneficiarynameofborrower}}
+                                Bank Account Name : {{$data->beneficiarynameofborrowersbank}}
                             </p>
                         </td>
                     </tr>
@@ -3348,7 +3345,7 @@
                     <tr>
                         <td class="border0">
                             <p>
-                                IFS Code : {{$data->ifsccodeofborrower}}
+                                IFS Code : {{$data->ifscodeofborrower}}
                             </p>
                         </td>
                     </tr>
@@ -3363,37 +3360,28 @@
         
                 </table>
         
-        
                 <TABLE cellpadding=0 cellspacing=0 class="t28 border0">
                     <TR>
                         <TD class="tr20 td68 border0"><P style="display:inline-block; border-top:1px solid #000;" class="p15 ft10">Signature of Borrower</P></TD>
                         <TD class="tr20 td69 border0"><P style="display:inline-block; border-top:1px solid #000;" class="p15 ft10">Signature of Co Borrower</P></TD>
                     </TR>
                 </TABLE>
-        
-        
-                
-            
             </DIV>
-        
+
             <div class="page-break"></div>
-        
+
             <DIV id="page_28">
-            
-                    
                 <DIV style="text-align:center;">
                     <P class="ft5">ANNEXURE V</P>
                     <p class="ft5" style="font-size:16px !important; padding:25px 0;">BORROWER'S REQUEST TO EMPLOYER FOR EMI DEDUCTION FROM SALARY</p>
                     <P class="ft2">Original document to be affixed with signature of the Borrower(s) and authorization of Employer</P>
                     <br><br><br>
                 </div>
-            
             </DIV>
-        
+
             <div class="page-break"></div>
-        
+
             <DIV id="page_29">
-            
                 <DIV style="text-align:center;">
                     <P class="ft5">ANNEXURE V</P>
                     <p class="ft5" style="font-size:16px !important; padding:25px 0;">BORROWER'S REQUEST TO EMPLOYER FOR EMI DEDUCTION FROM SALARY</p>

@@ -23,10 +23,14 @@ class CreateAgreementFieldsTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        // personbal loan fields, total no of current fields = 100
-        for ($i = 1; $i <= 100; $i++) {
-            DB::table('agreement_fields')->insert(['agreement_id' => 1, 'field_id' => $i]);
+        $totalFieldsCount = DB::table('fields')->count();
+        $data = [];
+
+        for($i = 1; $i <= $totalFieldsCount; $i++) {
+            array_push($data, ['agreement_id' => 1, 'field_id' => $i]);
         }
+
+        DB::table('agreement_fields')->insert($data);
     }
 
     /**

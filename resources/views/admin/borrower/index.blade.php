@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-sm table-bordered table-hover display responsive" id="borrowers-table" style="width:100%">
+                        <table class="table table-sm table-bordered table-hover" id="borrowers-table" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -72,6 +72,77 @@
         $borrowersTable = $('#borrowers-table').DataTable({
             processing: true,
             serverSide: true,
+            ajax: '{{ route('user.borrower.list') }}',
+            columns: [
+                {
+                    data: 'id', name: 'id'
+                    // , render: function(data, type, full, meta) {
+                    //     console.log(full);
+                    //     return full.length;
+                    // }
+                },
+                {
+                    data: 'full_name', name: 'full_name',
+                    render: function(data, type, full, meta) {
+                        return '<div class="user-profile-holder"><div class="flex-shrink-0"><img src="{!! asset("'+full.image_path+'") !!}" alt="user-image-'+full.id+'"></div><div class="flex-grow-1 ms-3"><p class="name"> <span class="text-capitalize">'+full.name_prefix+'</span> '+full.full_name+'</p><p class="small text-muted mb-0">'+full.occupation+'</p></div></div>';
+                    }
+                },
+                {
+                    data: 'gender', name: 'gender',
+                    render: function(data, type, full, meta) {
+                        return '<p class="single-line small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> '+full.email+'</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> '+full.mobile+'</p>';
+                    }
+                },
+                {
+                    data: 'mobile', name: 'mobile',
+                    render: function(data, type, full, meta) {
+                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.pan_card_number+'</p></div>';
+                    }
+                },
+                {
+                    data: 'mobile', name: 'mobile',
+                    render: function(data, type, full, meta) {
+                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.street_address+'</p><p class="small text-muted mb-0"><span title="City">'+full.city+'</span>, <span title="Pincode">'+full.pincode+'</span>, <span title="State">'+full.state+'</span></p></div>';
+                    }
+                },
+                {
+                    data: 'id', name: 'id',
+                    render: function(data, type, full, meta) {
+                        // console.log(full);
+                        if (full.agreement_id == 0) {
+                            return '<div class="single-line"><p class="small text-muted"> <em>No agreement yet</em> </p></div>';
+                        } else {
+                            let route = '{{route("user.borrower.agreement", 'id')}}';
+                            route = route.replace('id', full.id);
+
+                            if (full.borrower_agreement_rfq == null || full.borrower_agreement_rfq.lebgth < 1) {
+                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-danger action-button" title="Setup loan application form"> Incomplete loan agreement </a></div>';
+                            } else {
+                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-success action-button" title="Setup loan application form"> complete loan agreement</a></div>';
+                            }
+                        }
+                    }
+                },
+                {
+                    data: 'id', name: 'id', orderable: false, searchable: false,
+                    render: function( data, type, full, meta ) {
+                        let editRoute = '{{route("user.borrower.edit", 'id')}}';
+                        editRoute = editRoute.replace('id', full.id);
+
+                        let deleteRoute = "'{{route("user.borrower.destroy")}}'";
+                        let deleteText = "'delete'";
+                        let deletetype = "'yajraDelete'";
+
+                        $view = '<a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('+full.id+')">View</a> ';
+
+                        $edit = '<a href="'+editRoute+'" class="badge badge-dark action-button" title="Edit">Edit</a> ';
+
+                        $destroy = '<a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('+deleteRoute+', '+full.id+', '+deleteText+', '+deletetype+')">Delete</a>';
+
+                        return '<div class="single-line">'+$view+$edit+$destroy+'</div>';
+                    }
+                },
+            ]
             // fixedHeader: true,
             // responsive: {
             //     details: {
@@ -137,71 +208,6 @@
             // ],
 
             // lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-            ajax: '{{ route('user.borrower.list') }}',
-            columns: [
-                { data: 'id', name: 'id' },
-                {
-                    data: 'full_name', name: 'full_name',
-                    render: function(data, type, full, meta) {
-                        return '<div class="user-profile-holder"><div class="flex-shrink-0"><img src="{!! asset("'+full.image_path+'") !!}" alt="user-image-'+full.id+'"></div><div class="flex-grow-1 ms-3"><p class="name"> <span class="text-capitalize">'+full.name_prefix+'</span> '+full.full_name+'</p><p class="small text-muted mb-0">'+full.occupation+'</p></div></div>';
-                    }
-                },
-                {
-                    data: 'gender', name: 'gender',
-                    render: function(data, type, full, meta) {
-                        return '<p class="single-line small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> '+full.email+'</p><p class="small text-dark mb-1"><i class="fas fa-phone fa-rotate-90 mr-2"></i> '+full.mobile+'</p>';
-                    }
-                },
-                {
-                    data: 'mobile', name: 'mobile',
-                    render: function(data, type, full, meta) {
-                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.pan_card_number+'</p></div>';
-                    }
-                },
-                {
-                    data: 'mobile', name: 'mobile',
-                    render: function(data, type, full, meta) {
-                        return '<div class="borrower-address-holder"><p class="small text-muted mb-0" title="Street address">'+full.street_address+'</p><p class="small text-muted mb-0"><span title="City">'+full.city+'</span>, <span title="Pincode">'+full.pincode+'</span>, <span title="State">'+full.state+'</span></p></div>';
-                    }
-                },
-                {
-                    data: 'id', name: 'id',
-                    render: function(data, type, full, meta) {
-                        // console.log(full);
-                        if (full.agreement_id == 0) {
-                            return '<div class="single-line"><p class="small text-muted"> <em>No agreement yet</em> </p></div>';
-                        } else {
-                            let route = '{{route("user.borrower.agreement", 'id')}}';
-                            route = route.replace('id', full.id);
-
-                            if (full.borrower_agreement_rfq == null || full.borrower_agreement_rfq.lebgth < 1) {
-                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-danger action-button" title="Setup loan application form"> Incomplete loan agreement </a></div>';
-                            } else {
-                                return '<h5 class="text-dark small mb-0">'+full.agreement_details.name+'</h5><div class="single-line"><a href="'+route+'" class="badge badge-success action-button" title="Setup loan application form"> complete loan agreement</a></div>';
-                            }
-                        }
-                    }
-                },
-                {
-                    data: 'id', name: 'id', orderable: false, searchable: false,
-                    render: function( data, type, full, meta ) {
-                        let editRoute = '{{route("user.borrower.edit", 'id')}}';
-                        editRoute = editRoute.replace('id', full.id);
-
-                        let deleteRoute = "'{{route("user.borrower.destroy")}}'";
-                        let deleteText = "'delete'";
-                        let deletetype = "'yajraDelete'";
-
-                        $view = '<a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('+full.id+')">View</a> ';
-
-                        $edit = '<a href="'+editRoute+'" class="badge badge-dark action-button" title="Edit">Edit</a> ';
-
-                        $destroy = '<a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('+deleteRoute+', '+full.id+', '+deleteText+', '+deletetype+')">Delete</a>';
-
-                        return '<div class="single-line">'+$view+$edit+$destroy+'</div>';
-                    }
-                },
-            ]
         });
 
         function viewDeta1ls(id) {

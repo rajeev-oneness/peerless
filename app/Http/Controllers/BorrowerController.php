@@ -69,12 +69,12 @@ class BorrowerController extends Controller
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
             'mobile' => 'required|integer|digits:10',
-            'pan_card_number' => 'required|string|digits:10',
+            'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
             'city' => 'required|string|min:1|max:200',
-            'pincode' => 'required|string|min:1|max:200',
+            'pincode' => 'required|integer|digits:6',
             'state' => 'required|string|min:1|max:200',
             'agreement_id' => 'nullable|numeric|min:1'
         ]);
@@ -185,12 +185,12 @@ class BorrowerController extends Controller
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
             'mobile' => 'required|numeric|min:1',
-            'pan_card_number' => 'required|string|digits:10',
+            'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
             'street_address' => 'required|string|min:1|max:200',
             'city' => 'required|string|min:1|max:200',
-            'pincode' => 'required|string|min:1|max:200',
+            'pincode' => 'required|integer|digits:6',
             'state' => 'required|string|min:1|max:200',
             'agreement_id' => 'nullable|numeric|min:1'
         ]);
