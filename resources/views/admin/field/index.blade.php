@@ -95,14 +95,12 @@
     </div>
 </section>
 
-<!-- Select2 -->
-    <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 @endsection
 
 @section('script')
+    <!-- Select2 -->
+    <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
-    $(select).select2({
-        theme: 'bootstrap4'
-    });
+    $('select').select2();
     </script>
 @endsection
