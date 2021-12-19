@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -28,18 +29,18 @@ class BorrowerController extends Controller
      */
     public function index(Request $request)
     {
+        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
+        return view('admin.borrower.index', compact('data'));
+    }
+
+    public function indexOld(Request $request)
+    {
         if ($request->ajax()) {
             $borrowers = Borrower::select('*')->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('id');
 
             return Datatables::of($borrowers)->make(true);
         }
-        return view('admin.borrower.index');
-    }
-
-    public function indexOld(Request $request)
-    {
-        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
-        return view('admin.borrower.index-old', compact('data'));
+        return view('admin.borrower.index-old');
     }
 
     /**
@@ -377,5 +378,86 @@ class BorrowerController extends Controller
         } else {
             return response()->json(['response_code' => 400, 'tile' => 'failure', 'message' => $validator->errors()->first()]);
         }
+    }
+
+    public function upload(Request $request) {
+        if (!empty($request->file)) {
+        // if ($request->input('submit') != null ) {
+            $file = $request->file('file');
+            // File Details 
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $tempPath = $file->getRealPath();
+            $fileSize = $file->getSize();
+            $mimeType = $file->getMimeType();
+
+            // Valid File Extensions
+            $valid_extension = array("csv", "docx");
+            // 2MB in Bytes
+            $maxFileSize = 2097152; 
+            // Check file extension
+            if(in_array(strtolower($extension), $valid_extension)) {
+                // Check file size
+                if($fileSize <= $maxFileSize) {
+                    // File upload location
+                    $location = 'upload/borrower/csv';
+
+                    // Upload file
+                    $file->move($location, $filename);
+
+                    // Import CSV to Database
+                    $filepath = public_path($location."/".$filename);
+
+                    // Reading file
+                    $file = fopen($filepath,"r");
+
+                    $importData_arr = array();
+                    $i = 0;
+
+                    while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+                        $num = count($filedata );
+
+                        // Skip first row
+                        if($i == 0){
+                            $i++;
+                            continue; 
+                        }
+                        for ($c=0; $c < $num; $c++) {
+                            $importData_arr[$i][] = $filedata [$c];
+                        }
+                        $i++;
+                    }
+                    fclose($file);
+
+                    // Insert to MySQL database
+                    foreach($importData_arr as $importData){
+                        $insertData = array(
+                            // "CUSTOMER_ID" => $importData[0],
+                            "name_prefix" => $importData[0],
+                            "full_name" => $importData[1],
+                            "first_name" => $importData[2],
+                            "occupation" => $importData[3],
+                            "street_address" => $importData[4],
+                            "city" => $importData[5],
+                            "pincode" => $importData[6],
+                            "state" => $importData[7]
+                        );
+
+                        Borrower::insertData($insertData);
+                    }
+
+                    Session::flash('message', 'Import Successful.');
+                } else {
+                    Session::flash('message', 'File too large. File must be less than 2MB.');
+                }
+            } else {
+                Session::flash('message', 'Invalid File Extension.');
+            }
+        } else {
+            Session::flash('message', 'No file found.');
+        }
+
+        // Redirect to index
+        return redirect()->route('user.borrower.list');
     }
 }

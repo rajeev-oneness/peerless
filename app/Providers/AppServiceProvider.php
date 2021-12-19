@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             $APP_data->APP__name = 'Hundee Admin';
             $APP_data->EMP_ID_PREFIX = 'PFSL';
             $APP_data->genderList = ['male', 'female', 'trans', 'rather not say'];
-            $APP_data->namePrefix = ['Mr.', 'Miss', 'Mrs.', 'Prof.', 'Dr.'];
+            $APP_data->namePrefix = ['Mr.', 'Miss', 'Mrs.', 'Prof.', 'Dr.', 'CA'];
             $APP_data->maritalStatus = ['married', 'unmarried', 'divorced', 'widowed'];
 
             // notification

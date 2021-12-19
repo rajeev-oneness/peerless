@@ -46,7 +46,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::get('/{id}/edit', [BorrowerController::class, 'edit'])->name('user.borrower.edit');
         Route::post('/{id}/update', [BorrowerController::class, 'update'])->name('user.borrower.update');
         Route::post('/destroy', [BorrowerController::class, 'destroy'])->name('user.borrower.destroy');
-
+        Route::post('/csv/upload', [BorrowerController::class, 'upload'])->name('user.borrower.csv.upload');
+        
         // agreement
         Route::get('/{id}/agreement', [BorrowerController::class, 'agreementFields'])->name('user.borrower.agreement');
         Route::post('/agreement/store', [BorrowerController::class, 'agreementStore'])->name('user.borrower.agreement.store');
