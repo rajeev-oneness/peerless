@@ -157,7 +157,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Monthly EMI in words', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiinwords'],
             ['name' => 'Payment deduction from', 'type' => 8, 'value' => 'Deducted from the Borrower&apos;s salary by the Borrower&apos;s employer on monthly basis and credited into the Lender&apos;s bank Account, directly debited from the Borrower&apos;s bank Account and credited into lender&apos;s bank Account', 'key_name' => 'paymentdeductionfrom'],
             ['name' => 'Date of credit of EMI into Lender&apos;s Bank Account', 'type' => 9, 'value' => '5th of every month, 2nd of every month, Others', 'key_name' => 'dateofcreditofemiintolendersbankaccount'],
-            ['name' => 'Other date of EMI credit', 'type' => 3, 'value' => '', 'key_name' => 'otherdateofemicredit'],
+            ['name' => 'Other date of EMI credit', 'type' => 4, 'value' => '', 'key_name' => 'otherdateofemicredit'],
             ['name' => 'Penal Interest percentage', 'type' => 1, 'value' => '', 'key_name' => 'penalinterestpercentage'],
             // ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
             ['name' => 'Beneficiary Name of Borrower&apos;s bank', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrowersbank'],

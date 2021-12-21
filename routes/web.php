@@ -38,6 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
     // borrower
     Route::group(['prefix' => 'borrower'], function () {
         Route::get('/', [BorrowerController::class, 'index'])->name('user.borrower.list');
+        Route::post('/load', [BorrowerController::class, 'indexLoad'])->name('user.borrower.load');
         // Route::get('/old', [BorrowerController::class, 'indexOld'])->name('user.borrower.oldlist');
         Route::get('/create', [BorrowerController::class, 'create'])->name('user.borrower.create');
         Route::post('/store', [BorrowerController::class, 'store'])->name('user.borrower.store');

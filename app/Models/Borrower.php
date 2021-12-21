@@ -12,7 +12,7 @@ class Borrower extends Model
     use HasFactory, SoftDeletes;
 
     public static function insertData($data) {
-        $value=DB::table('borrowers')->where('name_prefix', $data['name_prefix'])->get();
+        $value = DB::table('borrowers')->where('pan_card_number', $data['pan_card_number'])->get();
         if($value->count() == 0) {
            DB::table('borrowers')->insert($data);
         }

@@ -14,7 +14,7 @@ class AddColumnToBorrowersTable extends Migration
     public function up()
     {
         Schema::table('borrowers', function (Blueprint $table) {
-            $table->string('pan_card_number', 10)->nullable()->after('block');
+            $table->string('pan_card_number', 100)->nullable()->after('block');
             $table->bigInteger('uploaded_by')->nullable()->after('pan_card_number');
         });
     }

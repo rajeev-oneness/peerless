@@ -29,8 +29,41 @@ class BorrowerController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Borrower::with('agreementDetails')->latest()->paginate(20);
+        // return view('admin.borrower.index');
+
+        $data = Borrower::where([
+            [function ($query) use ($request) {
+                if ($term = $request->term) {
+                    $query
+                    ->orWhere('name_prefix', 'LIKE', '%'.$term.'%')
+                    ->orWhere('full_name', 'LIKE', '%'.$term.'%')
+                    ->orWhere('email', 'LIKE', '%'.$term.'%')
+                    ->orWhere('mobile', 'LIKE', '%'.$term.'%')
+                    ->orWhere('pan_card_number', 'LIKE', '%'.$term.'%')
+                    ->get();
+                }
+            }]
+        ])
+        ->with('agreementDetails')->latest('id')->paginate(20);
+
+        // $data = Borrower::with('agreementDetails')->latest('id')->paginate(5);
         return view('admin.borrower.index', compact('data'));
+    }
+
+    public function indexLoad(Request $request)
+    {
+        if (!empty($request->search)) {
+            $search = $request->search;
+            $data = Borrower::where('full_name', 'LIKE', '%'.$search.'%')->latest('id')->get();
+        } else {
+            $data = Borrower::latest('id')->get();
+        }
+
+        if ($data) {
+            return response()->json(['resp_code' => 200, 'message' => 'Data found', 'data' => $data]);
+        } else {
+            return response()->json(['resp_code' => 400, 'message' => 'No data found']);
+        }
     }
 
     public function indexOld(Request $request)
@@ -380,9 +413,10 @@ class BorrowerController extends Controller
         }
     }
 
-    public function upload(Request $request) {
+    public function upload(Request $request)
+    {
         if (!empty($request->file)) {
-        // if ($request->input('submit') != null ) {
+            // if ($request->input('submit') != null ) {
             $file = $request->file('file');
             // File Details 
             $filename = $file->getClientOriginalName();
@@ -392,72 +426,253 @@ class BorrowerController extends Controller
             $mimeType = $file->getMimeType();
 
             // Valid File Extensions
-            $valid_extension = array("csv", "docx");
-            // 2MB in Bytes
-            $maxFileSize = 2097152; 
+            $valid_extension = array("csv");
+            // 50MB in Bytes
+            $maxFileSize = 50097152;
             // Check file extension
-            if(in_array(strtolower($extension), $valid_extension)) {
+            if (in_array(strtolower($extension), $valid_extension)) {
                 // Check file size
-                if($fileSize <= $maxFileSize) {
+                if ($fileSize <= $maxFileSize) {
                     // File upload location
                     $location = 'upload/borrower/csv';
-
                     // Upload file
                     $file->move($location, $filename);
-
                     // Import CSV to Database
-                    $filepath = public_path($location."/".$filename);
-
+                    $filepath = public_path($location . "/" . $filename);
                     // Reading file
-                    $file = fopen($filepath,"r");
-
+                    $file = fopen($filepath, "r");
                     $importData_arr = array();
                     $i = 0;
-
-                    while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
-                        $num = count($filedata );
-
+                    while (($filedata = fgetcsv($file, 10000, ",")) !== FALSE) {
+                        $num = count($filedata);
                         // Skip first row
-                        if($i == 0){
+                        if ($i == 0) {
                             $i++;
-                            continue; 
+                            continue;
                         }
-                        for ($c=0; $c < $num; $c++) {
-                            $importData_arr[$i][] = $filedata [$c];
+                        for ($c = 0; $c < $num; $c++) {
+                            $importData_arr[$i][] = $filedata[$c];
                         }
                         $i++;
                     }
                     fclose($file);
 
-                    // Insert to MySQL database
-                    foreach($importData_arr as $importData){
+                    // echo '<pre>';print_r($importData_arr);exit();
+
+                    // Insert into database
+                    foreach ($importData_arr as $importData) {
                         $insertData = array(
                             // "CUSTOMER_ID" => $importData[0],
-                            "name_prefix" => $importData[0],
-                            "full_name" => $importData[1],
-                            "first_name" => $importData[2],
-                            "occupation" => $importData[3],
-                            "street_address" => $importData[4],
-                            "city" => $importData[5],
-                            "pincode" => $importData[6],
-                            "state" => $importData[7]
-                        );
+                            "name_prefix" => isset($importData[1]) ? $importData[1] : null,
+                            "full_name" => (isset($importData[2]) ? $importData[2] : null).(isset($importData[3]) ? ' '.$importData[3] : null).(isset($importData[4]) ? ' '.$importData[4] : null),
+                            "first_name" => isset($importData[2]) ? $importData[2] : null,
+                            "middle_name" => isset($importData[3]) ? $importData[3] : null,
+                            "last_name" => isset($importData[4]) ? $importData[4] : null,
+                            "Customer_Type" => isset($importData[5]) ? $importData[5] : null,
+                            "Resident_Status" => isset($importData[6]) ? $importData[6] : null,
+                            "Aadhar_Number" => isset($importData[7]) ? $importData[7] : null,
+                            "pan_card_number" => isset($importData[8]) ? $importData[8] : null,
+                            "Main_Constitution" => isset($importData[9]) ? $importData[9] : null,
+                            "Sub_Constitution" => isset($importData[10]) ? $importData[10] : null,
 
+                            "gender" => isset($importData[11]) ? $importData[11] : null,
+                            "date_of_birth" => isset($importData[12]) ? $importData[12] : null,
+                            "KYC_Date" => isset($importData[13]) ? $importData[13] : null,
+                            "Re_KYC_Due_Date" => isset($importData[14]) ? $importData[14] : null,
+                            "Minor" => isset($importData[15]) ? $importData[15] : null,
+                            "Customer_Category" => isset($importData[16]) ? $importData[16] : null,
+                            "mobile" => isset($importData[17]) ? $importData[17] : null,
+                            "Alternate_Mobile_No" => isset($importData[18]) ? $importData[18] : null,
+                            "email" => isset($importData[19]) ? $importData[19] : null,
+                            "Telephone_No" => isset($importData[20]) ? $importData[20] : null,
+                            "Office_Telephone_No" => isset($importData[21]) ? $importData[21] : null,
+                            "FAX_No" => isset($importData[22]) ? $importData[22] : null,
+                            "Preferred_Language" => isset($importData[23]) ? $importData[23] : null,
+                            "REMARKS" => isset($importData[24]) ? $importData[24] : null,
+                            "KYC_Care_of" => isset($importData[25]) ? $importData[25] : null,
+                            "KYC_HOUSE_NO" => isset($importData[26]) ? $importData[26] : null,
+                            "KYC_LANDMARK" => isset($importData[27]) ? $importData[27] : null,
+                            "KYC_Street" => isset($importData[28]) ? $importData[28] : null,
+                            "KYC_LOCALITY" => isset($importData[29]) ? $importData[29] : null,
+                            "KYC_PINCODE" => isset($importData[30]) ? $importData[30] : null,
+
+                            "KYC_Country" => isset($importData[31]) ? $importData[31] : null,
+                            "KYC_State" => isset($importData[32]) ? $importData[32] : null,
+                            "KYC_District" => isset($importData[33]) ? $importData[33] : null,
+                            "KYC_POST_OFFICE" => isset($importData[34]) ? $importData[34] : null,
+                            "KYC_CITY" => isset($importData[35]) ? $importData[35] : null,
+                            "KYC_Taluka" => isset($importData[36]) ? $importData[36] : null,
+                            "KYC_Population_Group" => isset($importData[37]) ? $importData[37] : null,
+                            "COMM_Care_of" => isset($importData[38]) ? $importData[38] : null,
+                            "COMM_HOUSE_NO" => isset($importData[39]) ? $importData[39] : null,
+                            "COMM_LANDMARK" => isset($importData[40]) ? $importData[40] : null,
+                            "COMM_Street" => isset($importData[41]) ? $importData[41] : null,
+                            "COMM_LOCALITY" => isset($importData[42]) ? $importData[42] : null,
+                            "COMM_PINCODE" => isset($importData[43]) ? $importData[43] : null,
+                            "COMM_Country" => isset($importData[44]) ? $importData[44] : null,
+                            "COMM_State" => isset($importData[45]) ? $importData[45] : null,
+                            "COMM_District" => isset($importData[46]) ? $importData[46] : null,
+                            "COMM_POST_OFFICE" => isset($importData[47]) ? $importData[47] : null,
+                            "COMM_CITY" => isset($importData[48]) ? $importData[48] : null,
+                            "COMM_Taluka" => isset($importData[49]) ? $importData[49] : null,
+                            "COMM_Population_Group" => isset($importData[50]) ? $importData[50] : null,
+
+                            "Social_Media" => isset($importData[51]) ? $importData[51] : null,
+                            "Social_Media_ID" => isset($importData[52]) ? $importData[52] : null,
+                            "PROFESSION" => isset($importData[53]) ? $importData[53] : null,
+                            "EDUCATION" => isset($importData[54]) ? $importData[54] : null,
+                            "ORGANISATION_NAME" => isset($importData[55]) ? $importData[55] : null,
+                            "NET_INCOME" => isset($importData[56]) ? $importData[56] : null,
+                            "NET_EXPENSE" => isset($importData[57]) ? $importData[57] : null,
+                            "NET_SAVINGS" => isset($importData[58]) ? $importData[58] : null,
+                            "Years_in_Organization" => isset($importData[59]) ? $importData[59] : null,
+                            "CIBIL_SCORE" => isset($importData[60]) ? $importData[60] : null,
+                            "PERSONAL_LOAN_SCORE" => isset($importData[61]) ? $importData[61] : null,
+                            "GST_EXEMPTED" => isset($importData[62]) ? $importData[62] : null,
+                            "RM_EMP_ID" => isset($importData[63]) ? $importData[63] : null,
+                            "RM_Designation" => isset($importData[64]) ? $importData[64] : null,
+                            "RM_TITLE" => isset($importData[65]) ? $importData[65] : null,
+                            "RM_NAME" => isset($importData[66]) ? $importData[66] : null,
+                            "RM_Landline_No" => isset($importData[67]) ? $importData[67] : null,
+                            "RM_MOBILE_NO" => isset($importData[68]) ? $importData[68] : null,
+                            "RM_EMAIL_ID" => isset($importData[69]) ? $importData[69] : null,
+                            "DSA_ID" => isset($importData[70]) ? $importData[70] : null,
+                            "DSA_NAME" => isset($importData[71]) ? $importData[71] : null,
+                            "DSA_LANDLINE_NO" => isset($importData[72]) ? $importData[72] : null,
+                            "DSA_MOBILE_NO" => isset($importData[73]) ? $importData[73] : null,
+                            "DSA_EMAIL_ID" => isset($importData[74]) ? $importData[74] : null,
+                            "GIR_NO" => isset($importData[75]) ? $importData[75] : null,
+                            "RATION_CARD_NO" => isset($importData[76]) ? $importData[76] : null,
+                            "DRIVING_LINC" => isset($importData[77]) ? $importData[77] : null,
+                            "NPR_NO" => isset($importData[78]) ? $importData[78] : null,
+                            "PASSPORT_NO" => isset($importData[79]) ? $importData[79] : null,
+                            "EXPORTER_CODE" => isset($importData[80]) ? $importData[80] : null,
+
+                            "GST_NO" => isset($importData[81]) ? $importData[81] : null,
+                            "Voter_ID" => isset($importData[82]) ? $importData[82] : null,
+                            "CUSTM_2" => isset($importData[83]) ? $importData[83] : null,
+                            "CATEGORY" => isset($importData[84]) ? $importData[84] : null,
+                            "RELIGION" => isset($importData[85]) ? $importData[85] : null,
+                            "MINORITY_STATUS" => isset($importData[86]) ? $importData[86] : null,
+                            "CASTE" => isset($importData[87]) ? $importData[87] : null,
+                            "SUB_CAST" => isset($importData[88]) ? $importData[88] : null,
+                            "RESERVATION_TYP" => isset($importData[89]) ? $importData[89] : null,
+                            "Physically_Challenged" => isset($importData[90]) ? $importData[90] : null,
+                            "Weaker_Section" => isset($importData[91]) ? $importData[91] : null,
+                            "Valued_Customer" => isset($importData[92]) ? $importData[92] : null,
+                            "Special_Category_1" => isset($importData[93]) ? $importData[93] : null,
+                            "Vip_Category" => isset($importData[94]) ? $importData[94] : null,
+                            "Special_Category_2" => isset($importData[95]) ? $importData[95] : null,
+                            "Senior_Citizen" => isset($importData[96]) ? $importData[96] : null,
+                            "Senior_Citizen_From" => isset($importData[97]) ? $importData[97] : null,
+                            "marital_status" => isset($importData[98]) ? $importData[98] : null,
+                            "NO_OF_DEPEND" => isset($importData[99]) ? $importData[99] : null,
+                            "SPOUSE" => isset($importData[100]) ? $importData[100] : null,
+                            // checked with CSV, STATUS - okay 
+
+                            "CHILDREN" => isset($importData[101]) ? $importData[101] : null,
+                            "PARENTS" => isset($importData[102]) ? $importData[102] : null,
+                            "Employee_Staus" => isset($importData[103]) ? $importData[103] : null,
+                            "Employee_No" => isset($importData[104]) ? $importData[104] : null,
+                            "EMP_Date" => isset($importData[105]) ? $importData[105] : null,
+                            "Nature_of_Occupation" => isset($importData[106]) ? $importData[106] : null,
+                            "EMPLYEER_NAME" => isset($importData[107]) ? $importData[107] : null,
+                            "Role" => isset($importData[108]) ? $importData[108] : null,
+                            "SPECIALIZATION" => isset($importData[109]) ? $importData[109] : null,
+                            "EMP_GRADE" => isset($importData[110]) ? $importData[110] : null,
+
+                            "DESIGNATION" => isset($importData[111]) ? $importData[111] : null,
+                            "Office_Address" => isset($importData[112]) ? $importData[112] : null,
+                            "Office_Phone" => isset($importData[113]) ? $importData[113] : null,
+                            "Office_EXTENSION" => isset($importData[114]) ? $importData[114] : null,
+                            "Office_Fax" => isset($importData[115]) ? $importData[115] : null,
+                            "Office_MOBILE" => isset($importData[116]) ? $importData[116] : null,
+                            "Office_PINCODE" => isset($importData[117]) ? $importData[117] : null,
+                            "Office_CITY" => isset($importData[118]) ? $importData[118] : null, // CITY -> Office_CITY
+                            "Working_Since" => isset($importData[119]) ? $importData[119] : null,
+                            "Working_in_Current_company_Yrs" => isset($importData[120]) ? $importData[120] : null,
+
+                            "RETIRE_AGE" => isset($importData[121]) ? $importData[121] : null,
+                            "Nature_of_Business" => isset($importData[122]) ? $importData[122] : null,
+                            "Annual_Income" => isset($importData[123]) ? $importData[123] : null,
+                            "Prof_Self_Employed" => isset($importData[124]) ? $importData[124] : null,
+                            "Prof_Self_Annual_Income" => isset($importData[125]) ? $importData[125] : null,
+                            "IT_RETURN_YR1" => isset($importData[126]) ? $importData[126] : null,
+                            "INCOME_DECLARED1" => isset($importData[127]) ? $importData[127] : null,
+                            "TAX_PAID" => isset($importData[128]) ? $importData[128] : null,
+                            "REFUND_CLAIMED1" => isset($importData[129]) ? $importData[129] : null,
+                            "IT_RETURN_YR2" => isset($importData[130]) ? $importData[130] : null,
+
+                            "INCOME_DECLARED2" => isset($importData[131]) ? $importData[131] : null,
+                            "TAX_PAID2" => isset($importData[132]) ? $importData[132] : null,
+                            "REFUND_CLAIMED2" => isset($importData[133]) ? $importData[133] : null,
+                            "IT_RETURN_YR3" => isset($importData[134]) ? $importData[134] : null,
+                            "INCOME_DECLARED3" => isset($importData[135]) ? $importData[135] : null,
+                            "TAX_PAID3" => isset($importData[136]) ? $importData[136] : null,
+                            "REFUND_CLAIMED3" => isset($importData[137]) ? $importData[137] : null,
+                            "Maiden_Title" => isset($importData[138]) ? $importData[138] : null,
+                            "Maiden_First_Name" => isset($importData[139]) ? $importData[139] : null,
+                            "Maiden_Middle_Name" => isset($importData[140]) ? $importData[140] : null,
+                            // checked with CSV, STATUS - okay 
+
+                            "Maiden_Last_Name" => isset($importData[141]) ? $importData[141] : null,
+                            "Father_Title" => isset($importData[142]) ? $importData[142] : null,
+                            "Father_First_Name" => isset($importData[143]) ? $importData[143] : null,
+                            "Father_Middle_Name" => isset($importData[144]) ? $importData[144] : null,
+                            "Father_Last_Name" => isset($importData[145]) ? $importData[145] : null,
+                            "Mother_Title" => isset($importData[146]) ? $importData[146] : null,
+                            "Mother_First_Name" => isset($importData[147]) ? $importData[147] : null,
+                            "Mothers_Maiden_Name" => isset($importData[148]) ? $importData[148] : null,
+                            "Generic_Surname" => isset($importData[149]) ? $importData[149] : null,
+                            "Spouse_Title" => isset($importData[150]) ? $importData[150] : null,
+                            // checked with CSV, STATUS - okay 
+
+                            "Spouse_First_Name" => isset($importData[151]) ? $importData[151] : null,
+                            "Spouse_Family_Name" => isset($importData[152]) ? $importData[152] : null,
+                            "Identification_Mark" => isset($importData[153]) ? $importData[153] : null,
+                            "Country_of_Domicile" => isset($importData[154]) ? $importData[154] : null,
+                            "Qualification" => isset($importData[155]) ? $importData[155] : null,
+                            "Nationality" => isset($importData[156]) ? $importData[156] : null,
+                            "Blood_Group" => isset($importData[157]) ? $importData[157] : null,
+                            "Offences" => isset($importData[158]) ? $importData[158] : null,
+                            "Politically_Exposed" => isset($importData[159]) ? $importData[159] : null,
+                            "Residence_Type" => isset($importData[160]) ? $importData[160] : null,
+                            // checked with CSV, STATUS - okay 
+
+                            // "Spouse_First_Name" => isset($importData[161]) ? $importData[161] : null,
+                            // "Spouse_Family_Name" => isset($importData[162]) ? $importData[162] : null,
+                            // "Identification_Mark" => isset($importData[163]) ? $importData[163] : null,
+                            // "Country_of_Domicile" => isset($importData[164]) ? $importData[164] : null,
+                            // "Qualification" => isset($importData[165]) ? $importData[165] : null,
+                            // "Nationality" => isset($importData[166]) ? $importData[166] : null,
+                            // "Blood_Group" => isset($importData[167]) ? $importData[167] : null,
+                            // "Offences" => isset($importData[168]) ? $importData[168] : null,
+                            // "Politically_Exposed" => isset($importData[169]) ? $importData[169] : null,
+                            // "Residence_Type" => isset($importData[170]) ? $importData[170] : null,
+
+                            "AREA" => isset($importData[161]) ? $importData[161] : null,
+                            "land_mark" => isset($importData[162]) ? $importData[162] : null,
+                            "Owned" => isset($importData[163]) ? $importData[163] : null,
+                            "Rented" => isset($importData[164]) ? $importData[164] : null,
+                            "Rent_Per_Month" => isset($importData[165]) ? $importData[165] : null,
+                            "Ancestral" => isset($importData[166]) ? $importData[166] : null,
+                            "EMPLOYERRS" => isset($importData[167]) ? $importData[167] : null,
+                            "Staying_Since" => isset($importData[168]) ? $importData[168] : null,
+                        );
+                        // echo '<pre>';print_r($insertData);exit();
                         Borrower::insertData($insertData);
                     }
-
                     Session::flash('message', 'Import Successful.');
                 } else {
-                    Session::flash('message', 'File too large. File must be less than 2MB.');
+                    Session::flash('message', 'File too large. File must be less than 50MB.');
                 }
             } else {
-                Session::flash('message', 'Invalid File Extension.');
+                Session::flash('message', 'Invalid File Extension. supported extensions are ' . implode(', ', $valid_extension));
             }
         } else {
             Session::flash('message', 'No file found.');
         }
 
-        // Redirect to index
         return redirect()->route('user.borrower.list');
     }
 }

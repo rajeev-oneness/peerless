@@ -3,8 +3,6 @@
 @section('title', 'Borrower list')
 
 @section('content')
-{{-- <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
 
 <section class="content">
     <div class="container-fluid">
@@ -24,21 +22,56 @@
                     </div>
                     <div class="card-body">
                         @if(Session::has('message'))
-                            <p>{{ Session::get('message') }}</p>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong>{{ Session::get('message') }}</strong> 
+                            </div>
                         @endif
-                        <p class="small text-muted">Displaying {{$data->firstItem()}} to {{$data->lastItem()}} out of {{$data->total()}} entries</p>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <p class="small text-muted">Displaying {{$data->firstItem()}} to {{$data->lastItem()}} out of {{$data->total()}} entries</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                {{-- <input type="text" placeholder="What are you looking for..." class="form-control form-control-sm w-50 float-right" id="borrowerSearchField"> --}}
+
+                                <form action="{{ route('user.borrower.list') }}" method="GET" role="search">
+                                    <div class="input-group">
+                                        <input type="search" class="form-control form-control-sm" name="term" placeholder="What are you looking for..." id="term" value="{{app('request')->input('term')}}" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info btn-sm rounded-0" type="submit" title="Search projects">
+                                                    <i class="fas fa-search"></i> Search
+                                                </button>
+                                            </span>
+                                            <a href="{{ route('user.borrower.list') }}">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-danger btn-sm rounded-0" type="button" title="Refresh page">
+                                                        Reset <i class="fas fa-sync-alt"></i>
+                                                    </button>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                         <table class="table table-sm table-bordered table-hover" id="borrowers-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Contact</th>
+                                    <th>PAN card number</th>
                                     <th>Address</th>
                                     <th>Loan details</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="loadBorrowers">
                                 @forelse ($data as $index => $item)
                                 <tr id="tr_{{$item->id}}">
                                     <td>{{$data->firstItem() + $index}}</td>
@@ -49,7 +82,7 @@
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <p class="name">{{ucwords($item->name_prefix)}} {{$item->full_name}}</p>
-                                                <p class="small text-muted">{{$item->occupation}}</p>
+                                                <p class="small text-muted mb-0">{{$item->occupation}}</p>
                                             </div>
                                         </div>
                                     </td>
@@ -58,8 +91,11 @@
                                         <p class="small text-dark mb-0">@php if(!empty($item->mobile)) { echo '<i class="fas fa-phone fa-rotate-90 mr-2"></i> '.$item->mobile; } else { echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>'; } @endphp</p>
                                     </td>
                                     <td>
+                                        <p class="small text-muted mb-0" title="Street address">{{$item->pan_card_number}}</p>
+                                    </td>
+                                    <td>
                                         <p class="small text-muted mb-0" title="Street address">{{$item->street_address}}</p>
-                                        <p class="small text-muted">
+                                        <p class="small text-muted mb-0">
                                             <span title="City">{{$item->city}}</span>, 
                                             <span title="Pincode">{{$item->pincode}}</span>, 
                                             <span title="State">{{$item->state}}</span>
@@ -100,30 +136,33 @@
     </div>
 </section>
 
-<div class="modal fade" id="csvUploadModal">
+<div class="modal fade" id="csvUploadModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header"></div>
+            <div class="modal-header">
+                Import CSV data
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
             <div class="modal-body">
-                <form method='post' action='{{route('user.borrower.csv.upload')}}' enctype='multipart/form-data' >
+                <form method="post" action="{{route('user.borrower.csv.upload')}}" enctype="multipart/form-data" id="borrowerCsvUpload">
                     @csrf
-                    <input type='file' name='file' >
-                    <button type="submit">Import</button>
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button type="submit" class="btn btn-sm btn-primary" id="csvImportBtn">Import <i class="fas fa-upload"></i></button>
                 </form>
             </div>
-            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
 @endsection
 
 @section('script')
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> --}}
-
     <script>
-        $('#csvUploadModal').modal('show');
+        $('#borrowerCsvUpload').on('submit', function() {
+            $('#csvImportBtn').attr('disabled', true).html('Please wait...');
+            $('.close').attr('disabled', true);
+        });
+
         function viewDeta1ls(route, id) {
             $.ajax({
                 url : route,
