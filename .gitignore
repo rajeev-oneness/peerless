@@ -17,3 +17,4 @@ yarn-error.log
 /public/admin/uploads/profile-picture/*
 /public/upload/*
 error_log
+*.zip

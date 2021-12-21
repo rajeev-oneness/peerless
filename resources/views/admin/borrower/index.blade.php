@@ -31,12 +31,10 @@
                         @endif
 
                         <div class="row mb-3">
-                            <div class="col-sm-6">
+                            <div class="col-sm-7">
                                 <p class="small text-muted">Displaying {{$data->firstItem()}} to {{$data->lastItem()}} out of {{$data->total()}} entries</p>
                             </div>
-                            <div class="col-sm-6 text-right">
-                                {{-- <input type="text" placeholder="What are you looking for..." class="form-control form-control-sm w-50 float-right" id="borrowerSearchField"> --}}
-
+                            <div class="col-sm-5 text-right">
                                 <form action="{{ route('user.borrower.list') }}" method="GET" role="search">
                                     <div class="input-group">
                                         <input type="search" class="form-control form-control-sm" name="term" placeholder="What are you looking for..." id="term" value="{{app('request')->input('term')}}" autocomplete="off">
