@@ -98,7 +98,9 @@ class BorrowerController extends Controller
     {
         $request->validate([
             'name_prefix' => 'required|string|min:1|max:50',
-            'full_name' => 'required|string|min:1|max:200',
+            'first_name' => 'required|string|min:1|max:200',
+            'middle_name' => 'nullable|string|min:1|max:200',
+            'last_name' => 'required|string|min:1|max:200',
             'gender' => 'required|string|min:1|max:30',
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
@@ -118,7 +120,10 @@ class BorrowerController extends Controller
         try {
             $user = new Borrower;
             $user->name_prefix = $request->name_prefix;
-            $user->full_name = $request->full_name;
+            $user->first_name = $request->first_name;
+            $user->middle_name = $request->middle_name;
+            $user->last_name = $request->last_name;
+            $user->full_name = $request->first_name.($request->middle_name ? ' '.$request->middle_name : null).' '.$request->last_name;
             $user->gender = $request->gender;
             $user->date_of_birth = $request->date_of_birth;
             $user->email = $request->email;
@@ -214,7 +219,9 @@ class BorrowerController extends Controller
     {
         $request->validate([
             'name_prefix' => 'required|string|min:1|max:50',
-            'full_name' => 'required|string|min:1|max:200',
+            'first_name' => 'required|string|min:1|max:200',
+            'middle_name' => 'nullable|string|min:1|max:200',
+            'last_name' => 'required|string|min:1|max:200',
             'gender' => 'required|string|min:1|max:30',
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
@@ -231,7 +238,10 @@ class BorrowerController extends Controller
 
         $user = Borrower::findOrFail($id);
         $user->name_prefix = $request->name_prefix;
-        $user->full_name = $request->full_name;
+        $user->first_name = $request->first_name;
+        $user->middle_name = $request->middle_name;
+        $user->last_name = $request->last_name;
+        $user->full_name = $request->first_name.($request->middle_name ? ' '.$request->middle_name : null).' '.$request->last_name;
         $user->gender = $request->gender;
         $user->date_of_birth = $request->date_of_birth;
         $user->email = $request->email;

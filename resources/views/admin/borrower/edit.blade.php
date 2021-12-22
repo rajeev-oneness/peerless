@@ -22,16 +22,22 @@
                                 @csrf
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" id="name_prefix" name="name_prefix">
+                                    <div class="col-sm-1">
+                                        <select class="form-control px-0" id="name_prefix" name="name_prefix">
                                             <option value="" hidden selected>Select Prefix</option>
                                             @foreach ($APP_data->namePrefix as $item)
                                                 <option value="{{ $item }}" {{ $data->user->name_prefix == $item ? 'selected' : '' }}>{{ $item }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('full_name') {{ 'is-invalid' }} @enderror" id="full_name" name="full_name" placeholder="Full name" value="{{ old('full_name') ? old('full_name') : $data->user->full_name }}" autofocus>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('first_name') {{ 'is-invalid' }} @enderror" id="first_name" name="first_name" placeholder="Full name" value="{{ old('first_name') ? old('first_name') : $data->user->first_name }}" autofocus>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('middle_name') {{ 'is-invalid' }} @enderror" id="middle_name" name="middle_name" placeholder="Full name" value="{{ old('middle_name') ? old('middle_name') : $data->user->middle_name }}" autofocus>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('last_name') {{ 'is-invalid' }} @enderror" id="last_name" name="last_name" placeholder="Full name" value="{{ old('last_name') ? old('last_name') : $data->user->last_name }}" autofocus>
                                     </div>
                                 </div>
                                 <div class="row">

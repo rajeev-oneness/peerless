@@ -21,22 +21,30 @@
                             @csrf
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" id="name_prefix" name="name_prefix">
-                                            <option value="" hidden selected>Select Prefix</option>
+                                    <div class="col-sm-1">
+                                        <select class="form-control px-0" id="name_prefix" name="name_prefix">
+                                            <option value="" hidden selected>Prefix</option>
                                             @foreach ($APP_data->namePrefix as $item)
                                                 <option value="{{ $item }}" {{ old('name_prefix') ? (old('name_prefix') == $item ? 'selected' : '') : '' }}>{{ $item }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('full_name') {{ 'is-invalid' }} @enderror" id="full_name" name="full_name" placeholder="Full name" value="{{ old('full_name') }}" autofocus>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('first_name') {{ 'is-invalid' }} @enderror" id="first_name" name="first_name" placeholder="First name" value="{{ old('first_name') }}" autofocus>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('middle_name') {{ 'is-invalid' }} @enderror" id="middle_name" name="middle_name" placeholder="Middle name" value="{{ old('middle_name') }}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control @error('last_name') {{ 'is-invalid' }} @enderror" id="last_name" name="last_name" placeholder="Last name" value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-8 offset-sm-2">
                                         @error('name_prefix') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
-                                        @error('full_name') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
+                                        @error('first_name') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
+                                        @error('middle_name') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
+                                        @error('last_name') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
