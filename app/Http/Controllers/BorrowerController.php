@@ -35,16 +35,16 @@ class BorrowerController extends Controller
             [function ($query) use ($request) {
                 if ($term = $request->term) {
                     $query
-                    ->orWhere('name_prefix', 'LIKE', '%'.$term.'%')
-                    ->orWhere('full_name', 'LIKE', '%'.$term.'%')
-                    ->orWhere('email', 'LIKE', '%'.$term.'%')
-                    ->orWhere('mobile', 'LIKE', '%'.$term.'%')
-                    ->orWhere('pan_card_number', 'LIKE', '%'.$term.'%')
-                    ->get();
+                        ->orWhere('name_prefix', 'LIKE', '%' . $term . '%')
+                        ->orWhere('full_name', 'LIKE', '%' . $term . '%')
+                        ->orWhere('email', 'LIKE', '%' . $term . '%')
+                        ->orWhere('mobile', 'LIKE', '%' . $term . '%')
+                        ->orWhere('pan_card_number', 'LIKE', '%' . $term . '%')
+                        ->get();
                 }
             }]
         ])
-        ->with('agreementDetails')->latest('id')->paginate(20);
+            ->with('agreementDetails')->latest('id')->paginate(20);
 
         // $data = Borrower::with('agreementDetails')->latest('id')->paginate(5);
         return view('admin.borrower.index', compact('data'));
@@ -54,7 +54,7 @@ class BorrowerController extends Controller
     {
         if (!empty($request->search)) {
             $search = $request->search;
-            $data = Borrower::where('full_name', 'LIKE', '%'.$search.'%')->latest('id')->get();
+            $data = Borrower::where('full_name', 'LIKE', '%' . $search . '%')->latest('id')->get();
         } else {
             $data = Borrower::latest('id')->get();
         }
@@ -123,7 +123,7 @@ class BorrowerController extends Controller
             $user->first_name = $request->first_name;
             $user->middle_name = $request->middle_name;
             $user->last_name = $request->last_name;
-            $user->full_name = $request->first_name.($request->middle_name ? ' '.$request->middle_name : null).' '.$request->last_name;
+            $user->full_name = $request->first_name . ($request->middle_name ? ' ' . $request->middle_name : null) . ' ' . $request->last_name;
             $user->gender = $request->gender;
             $user->date_of_birth = $request->date_of_birth;
             $user->email = $request->email;
@@ -241,7 +241,7 @@ class BorrowerController extends Controller
         $user->first_name = $request->first_name;
         $user->middle_name = $request->middle_name;
         $user->last_name = $request->last_name;
-        $user->full_name = $request->first_name.($request->middle_name ? ' '.$request->middle_name : null).' '.$request->last_name;
+        $user->full_name = $request->first_name . ($request->middle_name ? ' ' . $request->middle_name : null) . ' ' . $request->last_name;
         $user->gender = $request->gender;
         $user->date_of_birth = $request->date_of_birth;
         $user->email = $request->email;
@@ -264,6 +264,54 @@ class BorrowerController extends Controller
         $user->Minor = $request->Minor;
         $user->Customer_Category = $request->Customer_Category;
         $user->Alternate_Mobile_No = $request->Alternate_Mobile_No;
+        $user->Telephone_No = $request->Telephone_No;
+        $user->Office_Telephone_No = $request->Office_Telephone_No;
+        $user->FAX_No = $request->FAX_No;
+        $user->Preferred_Language = $request->Preferred_Language;
+        $user->REMARKS = $request->REMARKS;
+        $user->KYC_Care_of = $request->KYC_Care_of;
+        $user->KYC_HOUSE_NO = $request->KYC_HOUSE_NO;
+        $user->KYC_LANDMARK = $request->KYC_LANDMARK;
+        $user->KYC_Street = $request->KYC_Street;
+        $user->KYC_LOCALITY = $request->KYC_LOCALITY;
+        $user->KYC_PINCODE = $request->KYC_PINCODE;
+
+        $user->KYC_Country = $request->KYC_Country;
+        $user->KYC_State = $request->KYC_State;
+        $user->KYC_District = $request->KYC_District;
+        $user->KYC_POST_OFFICE = $request->KYC_POST_OFFICE;
+        $user->KYC_CITY = $request->KYC_CITY;
+        $user->KYC_Taluka = $request->KYC_Taluka;
+        $user->KYC_Population_Group = $request->KYC_Population_Group;
+        $user->COMM_Care_of = $request->COMM_Care_of;
+        $user->COMM_HOUSE_NO = $request->COMM_HOUSE_NO;
+        $user->COMM_LANDMARK = $request->COMM_LANDMARK;
+        $user->COMM_Street = $request->COMM_Street;
+        $user->COMM_LOCALITY = $request->COMM_LOCALITY;
+        $user->COMM_PINCODE = $request->COMM_PINCODE;
+        $user->COMM_Country = $request->COMM_Country;
+        $user->COMM_State = $request->COMM_State;
+        $user->COMM_District = $request->COMM_District;
+        $user->COMM_POST_OFFICE = $request->COMM_POST_OFFICE;
+        $user->COMM_CITY = $request->COMM_CITY;
+        $user->COMM_Taluka = $request->COMM_Taluka;
+        $user->COMM_Population_Group = $request->COMM_Population_Group;
+        $user->Social_Media = $request->Social_Media;
+        $user->Social_Media_ID = $request->Social_Media_ID;
+        $user->PROFESSION = $request->PROFESSION;
+        $user->EDUCATION = $request->EDUCATION;
+        $user->ORGANISATION_NAME = $request->ORGANISATION_NAME;
+        $user->NET_INCOME = $request->NET_INCOME;
+        $user->NET_EXPENSE = $request->NET_EXPENSE;
+        $user->NET_SAVINGS    = $request->NET_SAVINGS;
+        $user->Years_in_Organization = $request->Years_in_Organization;
+        $user->CIBIL_SCORE = $request->CIBIL_SCORE;
+        $user->PERSONAL_LOAN_SCORE = $request->PERSONAL_LOAN_SCORE;
+        $user->GST_EXEMPTED = $request->GST_EXEMPTED;
+        $user->RM_EMP_ID = $request->RM_EMP_ID;
+        $user->RM_Designation = $request->RM_Designation;
+        $user->RM_TITLE = $request->RM_TITLE;
+        $user->RM_NAME = $request->RM_NAME;
         $user->save();
 
         return redirect()->route('user.borrower.list')->with('success', 'Borrower updated');
@@ -484,7 +532,7 @@ class BorrowerController extends Controller
                         $insertData = array(
                             // "CUSTOMER_ID" => $importData[0],
                             "name_prefix" => isset($importData[1]) ? $importData[1] : null,
-                            "full_name" => (isset($importData[2]) ? $importData[2] : null).(isset($importData[3]) ? ' '.$importData[3] : null).(isset($importData[4]) ? ' '.$importData[4] : null),
+                            "full_name" => (isset($importData[2]) ? $importData[2] : null) . (isset($importData[3]) ? ' ' . $importData[3] : null) . (isset($importData[4]) ? ' ' . $importData[4] : null),
                             "first_name" => isset($importData[2]) ? $importData[2] : null,
                             "middle_name" => isset($importData[3]) ? $importData[3] : null,
                             "last_name" => isset($importData[4]) ? $importData[4] : null,
