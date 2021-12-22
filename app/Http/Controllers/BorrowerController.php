@@ -244,6 +244,11 @@ class BorrowerController extends Controller
         $user->pincode = $request->pincode;
         $user->state = $request->state;
         $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
+        $user->Customer_Type = $request->Customer_Type;
+        $user->Resident_Status = $request->Resident_Status;
+        $user->Aadhar_Number = $request->Aadhar_Number;
+        $user->Main_Constitution = $request->Main_Constitution;
+        $user->Sub_Constitution = $request->Sub_Constitution;
         $user->save();
 
         return redirect()->route('user.borrower.list')->with('success', 'Borrower updated');
