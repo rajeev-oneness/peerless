@@ -23,8 +23,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
-                                    class="fas fa-chevron-left"></i> Back</a>
+                            <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -151,7 +150,7 @@
 
                                                                     @else
                                                                         <button type="submit"
-                                                                            class="btn btn-sm btn-primary">Submit data
+                                                                            class="btn btn-sm btn-primary">Submit data &amp; goto Documents
                                                                             <i class="fas fa-upload"></i></button>
                                                                     @endif
                                                                 </div>

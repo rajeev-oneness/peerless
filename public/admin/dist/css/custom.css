@@ -54,6 +54,10 @@
     margin-right: 3px;
 }
 
+#pan_card_number {
+    text-transform: uppercase;
+}
+
 .text-uppercase {
     text-transform: uppercase;
 }

@@ -27,9 +27,9 @@ class CreateFieldsTable extends Migration
         });
 
         //name prefix, genders list, marital status
-        $namePrefixList = 'Mr., Miss, Mrs., Prof., Dr.';
-        $gendersList = 'male, female, trans, rather not say';
-        $maritalStatusList = 'married, unmarried, divorced, widowed';
+        $namePrefixList = 'Mr, Miss, Mrs, Prof, Dr, CA';
+        $gendersList = 'Male, Female, Transgender, Rather not say';
+        $maritalStatusList = 'Married, Unmarried, Single, Divorced, Widowed';
 
         // valid document lists for borrower & co-borrower
         $validDocumentsList = 'Aadhar card, Bank statement, Driving license, Electricity bill, Passport';

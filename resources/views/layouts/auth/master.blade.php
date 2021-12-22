@@ -443,6 +443,11 @@
         $('input[name="field_name[monthlyemiindigits]"]').on('keyup', function() {
             $('input[name="field_name[monthlyemiinwords]"]').val(digitInW0rd($(this).val()));
         });
+
+        // pan card number
+        $('#pan_card_number').on('keyup', function() {
+            $(this).val($(this).val().toUpperCase());
+        });
     </script>
 
     @yield('script')

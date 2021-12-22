@@ -33,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $APP_data = (object)[];
             $APP_data->APP__name = 'Hundee Admin';
             $APP_data->EMP_ID_PREFIX = 'PFSL';
-            $APP_data->genderList = ['male', 'female', 'trans', 'rather not say'];
+            $APP_data->genderList = ['Male', 'Female', 'Transgender', 'Rather not say'];
             $APP_data->namePrefix = ['Mr', 'Miss', 'Mrs', 'Prof', 'Dr', 'CA'];
-            $APP_data->maritalStatus = ['married', 'unmarried', 'divorced', 'widowed'];
+            $APP_data->maritalStatus = ['Married', 'Unmarried', 'Single', 'Divorced', 'Widowed'];
 
             // notification
             $notification = [];
