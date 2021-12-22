@@ -49,14 +49,16 @@
                                                 <option value="{{ $item }}" {{ $data->user->gender == $item ? 'selected' : '' }}>{{ $item }}</option>
                                             @endforeach
                                         </select>
-                                        @error('gender') <p class="small mb-0 text-danger">{{ $message }}</p>
-                                        @enderror
+                                        @error('gender') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="date_of_birth" class="col-sm-2 col-form-label">Date of birth <span class="text-danger">*</span></label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control @error('date_of_birth') {{ 'is-invalid' }} @enderror" id="date_of_birth" name="date_of_birth" placeholder="Date of birth" value="{{ old('date_of_birth') ? old('date_of_birth') : $data->user->date_of_birth }}">
+                                        @php
+                                            $date_of_birth = date('Y-m-d', strtotime($data->user->date_of_birth));
+                                        @endphp
+                                        <input type="date" class="form-control @error('date_of_birth') {{ 'is-invalid' }} @enderror" id="date_of_birth" name="date_of_birth" placeholder="Date of birth" value="{{ old('date_of_birth') ? old('date_of_birth') : $date_of_birth }}">
                                         @error('date_of_birth') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
                                     </div>
                                 </div>
