@@ -24,8 +24,8 @@
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span
                                             class="text-danger">*</span></label>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" id="name_prefix" name="name_prefix">
+                                    <div class="col-sm-1">
+                                        <select class="form-control px-0" id="name_prefix" name="name_prefix">
                                             <option value="" hidden selected>Select Prefix</option>
                                             @foreach ($APP_data->namePrefix as $item)
                                                 <option value="{{ $item }}"
@@ -34,11 +34,25 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-3">
                                         <input type="text"
-                                            class="form-control @error('full_name') {{ 'is-invalid' }} @enderror"
-                                            id="full_name" name="full_name" placeholder="Full name"
-                                            value="{{ old('full_name') ? old('full_name') : $data->user->full_name }}"
+                                            class="form-control @error('first_name') {{ 'is-invalid' }} @enderror"
+                                            id="first_name" name="first_name" placeholder="Full name"
+                                            value="{{ old('first_name') ? old('first_name') : $data->user->first_name }}"
+                                            autofocus>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text"
+                                            class="form-control @error('middle_name') {{ 'is-invalid' }} @enderror"
+                                            id="middle_name" name="middle_name" placeholder="Full name"
+                                            value="{{ old('middle_name') ? old('middle_name') : $data->user->middle_name }}"
+                                            autofocus>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text"
+                                            class="form-control @error('last_name') {{ 'is-invalid' }} @enderror"
+                                            id="last_name" name="last_name" placeholder="Full name"
+                                            value="{{ old('last_name') ? old('last_name') : $data->user->last_name }}"
                                             autofocus>
                                     </div>
                                 </div>
@@ -62,18 +76,20 @@
                                                     {{ ucwords($item) }}</option>
                                             @endforeach
                                         </select>
-                                        @error('gender') <p class="small mb-0 text-danger">{{ $message }}</p>
-                                        @enderror
+                                        @error('gender') <p class="small mb-0 text-danger">{{ $message }}</p>@enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="date_of_birth" class="col-sm-2 col-form-label">Date of birth <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-10">
+                                        @php
+                                            $date_of_birth = date('Y-m-d', strtotime($data->user->date_of_birth));
+                                        @endphp
                                         <input type="date"
                                             class="form-control @error('date_of_birth') {{ 'is-invalid' }} @enderror"
                                             id="date_of_birth" name="date_of_birth" placeholder="Date of birth"
-                                            value="{{ old('date_of_birth') ? old('date_of_birth') : $data->user->date_of_birth }}">
+                                            value="{{ old('date_of_birth') ? old('date_of_birth') : $date_of_birth }}">
                                         @error('date_of_birth') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -227,7 +243,7 @@
                                     <div class="col-sm-10">
                                         <input type="text"
                                             class="form-control @error('Aadhar_Number') {{ 'is-invalid' }} @enderror"
-                                            id="Aadhar_Number" name="Aadhar_Number" placeholder="Aadhar_Number"
+                                            id="Aadhar_Number" name="Aadhar_Number" placeholder="Aadhar Number"
                                             value="{{ old('Aadhar_Number') ? old('Aadhar_Number') : $data->user->Aadhar_Number }}">
                                         @error('Aadhar_Number') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
@@ -239,7 +255,7 @@
                                     <div class="col-sm-10">
                                         <input type="text"
                                             class="form-control @error('Main_Constitution') {{ 'is-invalid' }} @enderror"
-                                            id="Main_Constitution" name="Main_Constitution" placeholder="Main_Constitution"
+                                            id="Main_Constitution" name="Main_Constitution" placeholder="Main Constitution"
                                             value="{{ old('Main_Constitution') ? old('Main_Constitution') : $data->user->Main_Constitution }}">
                                         @error('Main_Constitution') <p class="small mb-0 text-danger">{{ $message }}
                                             </p>
@@ -251,7 +267,7 @@
                                     <div class="col-sm-10">
                                         <input type="text"
                                             class="form-control @error('Sub_Constitution') {{ 'is-invalid' }} @enderror"
-                                            id="Sub_Constitution" name="Sub_Constitution" placeholder="Sub_Constitution"
+                                            id="Sub_Constitution" name="Sub_Constitution" placeholder="Sub Constitution"
                                             value="{{ old('Sub_Constitution') ? old('Sub_Constitution') : $data->user->Sub_Constitution }}">
                                         @error('Sub_Constitution') <p class="small mb-0 text-danger">{{ $message }}
                                             </p>
@@ -302,7 +318,7 @@
                                         <input type="text"
                                             class="form-control @error('Customer_Category') {{ 'is-invalid' }} @enderror"
                                             id="Customer_Category" name="Customer_Category" placeholder="Customer Category"
-                                            value="{{ old('Customer_Category') ? old('Customer_Category') : $data->user->Sub_Constitution }}">
+                                            value="{{ old('Customer_Category') ? old('Customer_Category') : $data->user->Customer_Category }}">
                                         @error('Customer_Category') <p class="small mb-0 text-danger">{{ $message }}
                                             </p>
                                         @enderror
@@ -315,9 +331,10 @@
                                         <input type="text"
                                             class="form-control @error('Alternate_Mobile_No') {{ 'is-invalid' }} @enderror"
                                             id="Alternate_Mobile_No" name="Alternate_Mobile_No"
-                                            placeholder="Sub_Constitution"
-                                            value="{{ old('Sub_Constitution') ? old('Sub_Constitution') : $data->user->Sub_Constitution }}">
-                                        @error('Sub_Constitution') <p class="small mb-0 text-danger">{{ $message }}
+                                            placeholder="Alternate_Mobile_No"
+                                            value="{{ old('Alternate Mobile No') ? old('Alternate_Mobile_No') : $data->user->Alternate_Mobile_No }}">
+                                        @error('Alternate_Mobile_No') <p class="small mb-0 text-danger">
+                                                {{ $message }}
                                             </p>
                                         @enderror
                                     </div>
