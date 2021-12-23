@@ -1032,6 +1032,382 @@
                                             </p>
                                         @enderror
                                     </div>
+                                </div>
+                                
+                                
+
+                                <div class="form-group row">
+                                    <label for="RM_Landline_No" class="col-sm-2 col-form-label">RM Landline No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RM_Landline_No') {{ 'is-invalid' }} @enderror"
+                                            id="RM_Landline_No" name="RM_Landline_No" placeholder="RM Landline No"
+                                            value="{{ old('RM_Landline_No') ? old('RM_Landline_No') : $data->user->RM_Landline_No }}">
+                                        @error('RM_Landline_No') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="RM_MOBILE_NO" class="col-sm-2 col-form-label">RM Mobile No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RM_MOBILE_NO') {{ 'is-invalid' }} @enderror"
+                                            id="RM_MOBILE_NO" name="RM_MOBILE_NO" placeholder="RM Mobile No"
+                                            value="{{ old('RM_MOBILE_NO') ? old('RM_MOBILE_NO') : $data->user->RM_MOBILE_NO }}">
+                                        @error('RM_MOBILE_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="RM_EMAIL_ID" class="col-sm-2 col-form-label">RM Email Id
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RM_EMAIL_ID') {{ 'is-invalid' }} @enderror"
+                                            id="RM_EMAIL_ID" name="RM_EMAIL_ID" placeholder="RM Email Id"
+                                            value="{{ old('RM_EMAIL_ID') ? old('RM_EMAIL_ID') : $data->user->RM_EMAIL_ID }}">
+                                        @error('RM_EMAIL_ID') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="DSA_ID" class="col-sm-2 col-form-label">DSA ID
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DSA_ID') {{ 'is-invalid' }} @enderror"
+                                            id="DSA_ID" name="DSA_ID" placeholder="DSA ID"
+                                            value="{{ old('DSA_ID') ? old('DSA_ID') : $data->user->DSA_ID }}">
+                                        @error('DSA_ID') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="DSA_NAME" class="col-sm-2 col-form-label">DSA Name
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DSA_NAME') {{ 'is-invalid' }} @enderror"
+                                            id="DSA_NAME" name="DSA_NAME" placeholder="DSA Name"
+                                            value="{{ old('DSA_NAME') ? old('DSA_NAME') : $data->user->DSA_NAME }}">
+                                        @error('DSA_NAME') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+
+
+
+                                <div class="form-group row">
+                                    <label for="DSA_LANDLINE_NO" class="col-sm-2 col-form-label">DSA Landline No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DSA_LANDLINE_NO') {{ 'is-invalid' }} @enderror"
+                                            id="DSA_LANDLINE_NO" name="DSA_LANDLINE_NO" placeholder="DSA Landline No"
+                                            value="{{ old('DSA_LANDLINE_NO') ? old('DSA_LANDLINE_NO') : $data->user->DSA_LANDLINE_NO }}">
+                                        @error('DSA_LANDLINE_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="DSA_MOBILE_NO" class="col-sm-2 col-form-label">DSA Mobile No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DSA_MOBILE_NO') {{ 'is-invalid' }} @enderror"
+                                            id="DSA_MOBILE_NO" name="DSA_MOBILE_NO" placeholder="DSA Mobie No"
+                                            value="{{ old('DSA_MOBILE_NO') ? old('DSA_MOBILE_NO') : $data->user->DSA_MOBILE_NO }}">
+                                        @error('DSA_MOBILE_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="DSA_EMAIL_ID" class="col-sm-2 col-form-label">DSA Email Id
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DSA_EMAIL_ID') {{ 'is-invalid' }} @enderror"
+                                            id="DSA_EMAIL_ID" name="DSA_EMAIL_ID" placeholder="DSA Email Id"
+                                            value="{{ old('DSA_EMAIL_ID') ? old('DSA_EMAIL_ID') : $data->user->DSA_EMAIL_ID }}">
+                                        @error('DSA_EMAIL_ID') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="GIR_NO" class="col-sm-2 col-form-label">GIR No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('GIR_NO') {{ 'is-invalid' }} @enderror"
+                                            id="GIR_NO" name="GIR_NO" placeholder="GIR No"
+                                            value="{{ old('GIR_NO') ? old('GIR_NO') : $data->user->GIR_NO }}">
+                                        @error('GIR_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="RATION_CARD_NO" class="col-sm-2 col-form-label">Ration Card No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RATION_CARD_NO') {{ 'is-invalid' }} @enderror"
+                                            id="RATION_CARD_NO" name="RATION_CARD_NO" placeholder="Ration Card No"
+                                            value="{{ old('RATION_CARD_NO') ? old('RATION_CARD_NO') : $data->user->RATION_CARD_NO }}">
+                                        @error('RATION_CARD_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+
+
+                                <div class="form-group row">
+                                    <label for="DRIVING_LINC" class="col-sm-2 col-form-label">Driving License
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DRIVING_LINC') {{ 'is-invalid' }} @enderror"
+                                            id="DRIVING_LINC" name="DRIVING_LINC" placeholder="Driving License"
+                                            value="{{ old('DRIVING_LINC') ? old('DRIVING_LINC') : $data->user->DRIVING_LINC }}">
+                                        @error('DRIVING_LINC') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="NPR_NO" class="col-sm-2 col-form-label">NPR No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('NPR_NO') {{ 'is-invalid' }} @enderror"
+                                            id="NPR_NO" name="NPR_NO" placeholder="NPR No"
+                                            value="{{ old('NPR_NO') ? old('NPR_NO') : $data->user->NPR_NO }}">
+                                        @error('NPR_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="PASSPORT_NO" class="col-sm-2 col-form-label">Passport No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('PASSPORT_NO') {{ 'is-invalid' }} @enderror"
+                                            id="PASSPORT_NO" name="PASSPORT_NO" placeholder="Passport No"
+                                            value="{{ old('PASSPORT_NO') ? old('PASSPORT_NO') : $data->user->PASSPORT_NO }}">
+                                        @error('PASSPORT_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="EXPORTER_CODE" class="col-sm-2 col-form-label">Exporter Code
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('EXPORTER_CODE') {{ 'is-invalid' }} @enderror"
+                                            id="EXPORTER_CODE" name="EXPORTER_CODE" placeholder="Exporter Code"
+                                            value="{{ old('EXPORTER_CODE') ? old('EXPORTER_CODE') : $data->user->EXPORTER_CODE }}">
+                                        @error('EXPORTER_CODE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="GST_NO" class="col-sm-2 col-form-label">GST No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('GST_NO') {{ 'is-invalid' }} @enderror"
+                                            id="GST_NO" name="GST_NO" placeholder="GST No"
+                                            value="{{ old('GST_NO') ? old('GST_NO') : $data->user->GST_NO }}">
+                                        @error('GST_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="Voter_ID	" class="col-sm-2 col-form-label">Voter Id
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Voter_ID') {{ 'is-invalid' }} @enderror"
+                                            id="Voter_ID" name="Voter_ID" placeholder="Voter Id"
+                                            value="{{ old('Voter_ID') ? old('Voter_ID') : $data->user->Voter_ID }}">
+                                        @error('Voter_ID') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+
+
+                                <div class="form-group row">
+                                    <label for="CUSTM_2" class="col-sm-2 col-form-label">CUSTM 2
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('CUSTM_2') {{ 'is-invalid' }} @enderror"
+                                            id="CUSTM_2" name="CUSTM_2" placeholder="CUSTM 2"
+                                            value="{{ old('CUSTM_2') ? old('CUSTM_2') : $data->user->CUSTM_2 }}">
+                                        @error('CUSTM_2') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="CATEGORY" class="col-sm-2 col-form-label">Category
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('CATEGORY') {{ 'is-invalid' }} @enderror"
+                                            id="CATEGORY" name="CATEGORY" placeholder="Category"
+                                            value="{{ old('CATEGORY') ? old('CATEGORY') : $data->user->CATEGORY }}">
+                                        @error('CATEGORY') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="RELIGION" class="col-sm-2 col-form-label">religion
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RELIGION') {{ 'is-invalid' }} @enderror"
+                                            id="RELIGION" name="RELIGION" placeholder="Religion"
+                                            value="{{ old('RELIGION') ? old('RELIGION') : $data->user->RELIGION }}">
+                                        @error('RELIGION') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="MINORITY_STATUS" class="col-sm-2 col-form-label">Minority Status
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('MINORITY_STATUS') {{ 'is-invalid' }} @enderror"
+                                            id="MINORITY_STATUS" name="MINORITY_STATUS" placeholder="Minority status"
+                                            value="{{ old('MINORITY_STATUS') ? old('MINORITY_STATUS') : $data->user->MINORITY_STATUS }}">
+                                        @error('MINORITY_STATUS') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="CASTE" class="col-sm-2 col-form-label">Cast
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('CASTE') {{ 'is-invalid' }} @enderror"
+                                            id="CASTE" name="CASTE" placeholder="Cast"
+                                            value="{{ old('CASTE') ? old('CASTE') : $data->user->CASTE }}">
+                                        @error('CASTE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+
+
+                                <div class="form-group row">
+                                    <label for="SUB_CAST" class="col-sm-2 col-form-label">Sub Cast
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('SUB_CAST') {{ 'is-invalid' }} @enderror"
+                                            id="SUB_CAST" name="SUB_CAST" placeholder="Sub Cast"
+                                            value="{{ old('SUB_CAST') ? old('SUB_CAST') : $data->user->SUB_CAST }}">
+                                        @error('SUB_CAST') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="RESERVATION_TYP" class="col-sm-2 col-form-label">Rservation Type
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('RESERVATION_TYP') {{ 'is-invalid' }} @enderror"
+                                            id="RESERVATION_TYP" name="RESERVATION_TYP" placeholder="Reservation Type"
+                                            value="{{ old('RESERVATION_TYP') ? old('RESERVATION_TYP') : $data->user->RESERVATION_TYP }}">
+                                        @error('RESERVATION_TYP') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="Physically_Challenged" class="col-sm-2 col-form-label">Physically Challenged
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Physically_Challenged') {{ 'is-invalid' }} @enderror"
+                                            id="Physically_Challenged" name="Physically Challenged" placeholder="Physically_Challenged"
+                                            value="{{ old('Physically_Challenged') ? old('Physically_Challenged') : $data->user->Physically_Challenged }}">
+                                        @error('Physically_Challenged') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="Weaker_Section" class="col-sm-2 col-form-label">Weaker Section
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Weaker_Section') {{ 'is-invalid' }} @enderror"
+                                            id="Weaker_Section" name="Weaker_Section" placeholder="Weaker Section"
+                                            value="{{ old('Weaker_Section') ? old('Weaker_Section') : $data->user->Weaker_Section }}">
+                                        @error('Weaker_Section') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label for="Valued_Customer" class="col-sm-2 col-form-label">Valued Customer
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Valued_Customer') {{ 'is-invalid' }} @enderror"
+                                            id="Valued_Customer" name="Valued_Customer" placeholder="Valued Customer"
+                                            value="{{ old('Valued_Customer') ? old('Valued_Customer') : $data->user->Valued_Customer }}">
+                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
                                 </div> 
 
                                 <div class="form-group row">
