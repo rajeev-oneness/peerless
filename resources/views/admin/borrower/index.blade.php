@@ -92,11 +92,13 @@
                                         <p class="small text-muted mb-0" title="Street address">{{$item->pan_card_number}}</p>
                                     </td>
                                     <td>
-                                        <p class="small text-muted mb-0" title="Street address">{{$item->street_address}}</p>
+                                        <p class="small text-muted mb-0" title="Street address">{{(strtolower($item->KYC_HOUSE_NO) != 'na' && $item->KYC_HOUSE_NO != '') ? $item->KYC_HOUSE_NO.' ' : ''}} {{($item->KYC_HOUSE_NO == $item->KYC_Street) ? '' : $item->KYC_Street }}</p>
                                         <p class="small text-muted mb-0">
-                                            <span title="City">{{$item->city}}</span>, 
-                                            <span title="Pincode">{{$item->pincode}}</span>, 
-                                            <span title="State">{{$item->state}}</span>
+                                            <span title="City">{{($item->KYC_Street == $item->KYC_LOCALITY) ? '' : $item->KYC_LOCALITY }}</span>
+                                            <span title="Pincode">{{$item->KYC_CITY}}</span>
+                                            <span title="State">{{$item->KYC_State}}</span>
+                                            <span title="State">{{$item->KYC_PINCODE}}</span>
+                                            <span title="State">{{$item->KYC_Country}}</span>
                                         </p>
                                     </td>
                                     <td>

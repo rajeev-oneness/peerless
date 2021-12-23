@@ -47,14 +47,6 @@ class CreateFieldsTable extends Migration
             else $repaymentTenureValue .= $i;
         }
 
-        // bank list
-        $bankLists = '';
-        // $bankData = DB::table('bank_lists')->select('name')->orderBy('name', 'asc')->get();
-
-        // foreach ($bankData as $key => $bank) {
-        //     $bankLists .= $bank->name.', ';
-        // }
-
         $data = [
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
 
@@ -162,7 +154,7 @@ class CreateFieldsTable extends Migration
             // ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
             ['name' => 'Beneficiary Name of Borrower&apos;s bank', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrowersbank'],
             ['name' => 'Savings account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingsaccountnumberofborrower'],
-            ['name' => 'Bank Name of Borrower', 'type' => 7, 'value' => $bankLists, 'key_name' => 'banknameofborrower'],
+            ['name' => 'Bank Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameofborrower'],
             ['name' => 'Branch Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'branchnameofborrower'],
             ['name' => 'Bank address of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaddressofborrower'],
             ['name' => 'IFS code of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'ifscodeofborrower'],

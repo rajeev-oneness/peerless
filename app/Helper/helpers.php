@@ -70,6 +70,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
 {
     $respValue = '';
     $disabledField = '';
+    $extraClass = ''; // extra class name for filtering
     if (!empty($borrowerId)) {
         // in case of adding agreement data, auto-fill borrower details starts
         if (isset($form_type) == 'create') {
@@ -145,6 +146,11 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     $respValue = $display_house_no.$display_street.$display_locality.$display_city.$display_state.$display_pincode.$display_country;
 
                     break;
+                // borrower marital status
+                case 'ifscodeofborrower' :
+                    $disabledField = '';
+                    $extraClass = 'ifsCodeFetch';
+                    break;
                 default :
                     $disabledField = '';
                     $respValue = '';
@@ -184,7 +190,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
 
     switch ($type) {
         case 'text':
-            $response = $extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
+            $response = $extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm '.$extraClass.'" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'email':
             $response = $extraPreField.'<input type="email" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;

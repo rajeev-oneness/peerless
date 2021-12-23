@@ -448,6 +448,26 @@
         $('#pan_card_number').on('keyup', function() {
             $(this).val($(this).val().toUpperCase());
         });
+
+        // borrower agreement ifs code api 
+        $('.ifsCodeFetch').on('keyup', function() {
+            let ifsc = $(this).val();
+            if (ifsc.length > 10) {
+                $.ajax({
+                    url : "https://ifsc.razorpay.com/"+ifsc,
+                    method : "GET",
+                    success: function(result) {
+                        // console.log(result);
+                        // bank name
+                        $('input[name="field_name[banknameofborrower]"]').val(result.BANK);
+                        // branch
+                        $('input[name="field_name[branchnameofborrower]"]').val(result.BRANCH);
+                        // address
+                        $('input[name="field_name[bankaddressofborrower]"]').val(result.ADDRESS);
+                    }
+                });
+            }
+        });
     </script>
 
     @yield('script')
