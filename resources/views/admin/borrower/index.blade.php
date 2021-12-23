@@ -72,7 +72,7 @@
                             <tbody id="loadBorrowers">
                                 @forelse ($data as $index => $item)
                                 <tr id="tr_{{$item->id}}">
-                                    <td>{{$data->firstItem() + $index}}</td>
+                                    <td>{{$item->CUSTOMER_ID}}</td>
                                     <td>
                                         <div class="user-profile-holder">
                                             <div class="flex-shrink-0">

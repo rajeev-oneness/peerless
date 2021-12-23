@@ -91,6 +91,15 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     $disabledField = 'disabled';
                     $respValue = $borrower->full_name;
                     break;
+                // Officially Valid Documents of the Borrower
+                case 'officiallyvaliddocumentsoftheborrower' :
+                    $comma_seperated_aadhar = $borrower->Aadhar_Number ? $borrower->Aadhar_Number : 'empty';
+                    $comma_seperated_license = $borrower->DRIVING_LINC ? $borrower->DRIVING_LINC : 'empty';
+                    $comma_seperated_passport = $borrower->PASSPORT_NO ? $borrower->PASSPORT_NO : 'empty';
+
+                    $respValue = $comma_seperated_aadhar.', '.$comma_seperated_license.', '.$comma_seperated_passport;
+                    // $respValue = $borrower->Aadhar_Number.', '.$borrower->DRIVING_LINC ? $borrower->DRIVING_LINC : ''.', '.$borrower->PASSPORT_NO ? $borrower->PASSPORT_NO : '';
+                    break;
                 // borrower date of birth
                 case 'dateofbirthoftheborrower' :
                     $disabledField = 'disabled';
@@ -124,7 +133,17 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 // borrower street address
                 case 'streetaddressoftheborrower' :
                     $disabledField = 'disabled';
-                    $respValue = $borrower->street_address;
+
+                    $display_house_no = (strtolower($borrower->KYC_HOUSE_NO) != 'na' && $borrower->KYC_HOUSE_NO != '') ? $borrower->KYC_HOUSE_NO.' ' : '';
+                    $display_street = (strtolower($borrower->KYC_Street) != 'na' || $borrower->KYC_Street != '') ? $borrower->KYC_Street.' ' : '';
+                    $display_locality = (strtolower($borrower->KYC_LOCALITY) != 'na' || $borrower->KYC_LOCALITY != '') ? $borrower->KYC_LOCALITY.' ' : '';
+                    $display_city = (strtolower($borrower->KYC_CITY) != 'na' || $borrower->KYC_CITY != '') ? $borrower->KYC_CITY.' ' : '';
+                    $display_state = (strtolower($borrower->KYC_State) != 'na' || $borrower->KYC_State != '') ? $borrower->KYC_State.' ' : '';
+                    $display_pincode = (strtolower($borrower->KYC_PINCODE) != 'na' || $borrower->KYC_PINCODE != '') ? $borrower->KYC_PINCODE.' ' : '';
+                    $display_country = (strtolower($borrower->KYC_Country) != 'na' || $borrower->KYC_Country != '') ? $borrower->KYC_Country.' ' : '';
+
+                    $respValue = $display_house_no.$display_street.$display_locality.$display_city.$display_state.$display_pincode.$display_country;
+
                     break;
                 default :
                     $disabledField = '';

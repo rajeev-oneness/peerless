@@ -44,7 +44,7 @@ class BorrowerController extends Controller
                 }
             }]
         ])
-            ->with('agreementDetails')->latest('id')->paginate(20);
+            ->with('agreementDetails')->latest('CUSTOMER_ID')->paginate(20);
 
         // $data = Borrower::with('agreementDetails')->latest('id')->paginate(5);
         return view('admin.borrower.index', compact('data'));
@@ -338,6 +338,16 @@ class BorrowerController extends Controller
         $user->Physically_Challenged = $request->Physically_Challenged;
         $user->Weaker_Section = $request->Weaker_Section;
         $user->Valued_Customer = $request->Valued_Customer;
+        $user->Special_Category_1 = $request->Special_Category_1;
+        $user->Vip_Category = $request->Vip_Category;
+        $user->Special_Category_2 = $request->Special_Category_2;
+        $user->Senior_Citizen = $request->Senior_Citizen;
+        $user->Senior_Citizen_From = $request->Senior_Citizen_From;
+        $user->SPOUSE = $request->SPOUSE;
+        $user->CHILDREN = $request->CHILDREN;
+        $user->PARENTS = $request->PARENTS;
+        $user->Employee_Staus = $request->Employee_Staus;
+        $user->Employee_No = $request->Employee_No;
         $user->save();
 
         return redirect()->route('user.borrower.list')->with('success', 'Borrower updated');
@@ -556,9 +566,9 @@ class BorrowerController extends Controller
                     // Insert into database
                     foreach ($importData_arr as $importData) {
                         $insertData = array(
-                            // "CUSTOMER_ID" => $importData[0],
+                            "CUSTOMER_ID" => $importData[0],
                             "name_prefix" => isset($importData[1]) ? $importData[1] : null,
-                            "full_name" => (isset($importData[2]) ? $importData[2] : null) . (isset($importData[3]) ? ' ' . $importData[3] : null) . (isset($importData[4]) ? ' ' . $importData[4] : null),
+                            // "full_name" => (isset($importData[2]) ? $importData[2] : null) . (isset($importData[3]) ? ' ' . $importData[3] : null) . (isset($importData[4]) ? ' ' . $importData[4] : null),
                             "first_name" => isset($importData[2]) ? $importData[2] : null,
                             "middle_name" => isset($importData[3]) ? $importData[3] : null,
                             "last_name" => isset($importData[4]) ? $importData[4] : null,
@@ -752,6 +762,14 @@ class BorrowerController extends Controller
                             "Ancestral" => isset($importData[166]) ? $importData[166] : null,
                             "EMPLOYERRS" => isset($importData[167]) ? $importData[167] : null,
                             "Staying_Since" => isset($importData[168]) ? $importData[168] : null,
+
+                            // EXTRA FIELDS
+                            "full_name" => (isset($importData[2]) ? $importData[2] : null) . (isset($importData[3]) ? ' ' . $importData[3] : null) . (isset($importData[4]) ? ' ' . $importData[4] : null),
+                            "occupation" => isset($importData[53]) ? $importData[53] : null,
+                            "street_address" => isset($importData[28]) ? $importData[28] : null,
+                            "city" => isset($importData[35]) ? $importData[35] : null,
+                            "pincode" => isset($importData[30]) ? $importData[30] : null,
+                            "state" => isset($importData[32]) ? $importData[32] : null,
                         );
                         // echo '<pre>';print_r($insertData);exit();
                         Borrower::insertData($insertData);

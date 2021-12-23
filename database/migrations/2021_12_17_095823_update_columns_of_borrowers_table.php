@@ -15,7 +15,7 @@ class UpdateColumnsOfBorrowersTable extends Migration
     public function up()
     {
         Schema::table('borrowers', function (Blueprint $table) {
-            // $table->bigInteger('CUSTOMER_ID')->after('id');
+            $table->bigInteger('CUSTOMER_ID')->after('id')->nullable();
             $table->TEXT('Customer_Type', 50)->nullable();
             $table->TEXT('Resident_Status', 50)->nullable();
             $table->TEXT('Aadhar_Number', 12)->nullable();

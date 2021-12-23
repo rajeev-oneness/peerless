@@ -1,6 +1,6 @@
 @extends('layouts.auth.master')
 
-@section('title', 'Edit user')
+@section('title', 'Edit Borrower')
 
 @section('content')
     <section class="content">
@@ -37,21 +37,21 @@
                                     <div class="col-sm-3">
                                         <input type="text"
                                             class="form-control @error('first_name') {{ 'is-invalid' }} @enderror"
-                                            id="first_name" name="first_name" placeholder="Full name"
+                                            id="first_name" name="first_name" placeholder="First name"
                                             value="{{ old('first_name') ? old('first_name') : $data->user->first_name }}"
                                             autofocus>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text"
                                             class="form-control @error('middle_name') {{ 'is-invalid' }} @enderror"
-                                            id="middle_name" name="middle_name" placeholder="Full name"
+                                            id="middle_name" name="middle_name" placeholder="Middle name"
                                             value="{{ old('middle_name') ? old('middle_name') : $data->user->middle_name }}"
                                             autofocus>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text"
                                             class="form-control @error('last_name') {{ 'is-invalid' }} @enderror"
-                                            id="last_name" name="last_name" placeholder="Full name"
+                                            id="last_name" name="last_name" placeholder="Last name"
                                             value="{{ old('last_name') ? old('last_name') : $data->user->last_name }}"
                                             autofocus>
                                     </div>
@@ -1409,6 +1409,340 @@
                                         @enderror
                                     </div>
                                 </div> 
+
+
+                                <div class="form-group row">
+                                    <label for="Special_Category_1" class="col-sm-2 col-form-label">Special Category 1
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Special_Category_1') {{ 'is-invalid' }} @enderror"
+                                            id="Special_Category_1" name="Special Category 1" placeholder="Special_Category_1"
+                                            value="{{ old('Special_Category_1') ? old('Special_Category_1') : $data->user->Special_Category_1 }}">
+                                        @error('Special_Category_1') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Vip_Category" class="col-sm-2 col-form-label">Vip Category
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Vip_Category') {{ 'is-invalid' }} @enderror"
+                                            id="Vip_Category" name="Vip_Category" placeholder="Vip Category"
+                                            value="{{ old('Vip_Category') ? old('Vip_Category') : $data->user->Vip_Category }}">
+                                        @error('Vip_Category') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Special_Category_2" class="col-sm-2 col-form-label">Special Category 2
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Special_Category_2') {{ 'is-invalid' }} @enderror"
+                                            id="Special_Category_2" name="Special_Category_2" placeholder="Special Category 2"
+                                            value="{{ old('Special_Category_2') ? old('Special_Category_2') : $data->user->Special_Category_2 }}">
+                                        @error('Special_Category_2') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Senior_Citizen" class="col-sm-2 col-form-label">Senior Citizen
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Senior_Citizen') {{ 'is-invalid' }} @enderror"
+                                            id="Senior_Citizen" name="Senior_Citizen" placeholder="Senior Citizen"
+                                            value="{{ old('Senior_Citizen') ? old('Senior_Citizen') : $data->user->Senior_Citizen }}">
+                                        @error('Senior_Citizen') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Senior_Citizen_From" class="col-sm-2 col-form-label">Senior Citizen From
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Senior_Citizen_From') {{ 'is-invalid' }} @enderror"
+                                            id="Senior_Citizen_From" name="Senior_Citizen_From" placeholder="Senior Citizen From"
+                                            value="{{ old('Senior_Citizen_From') ? old('Senior_Citizen_From') : $data->user->Senior_Citizen_From }}">
+                                        @error('Senior_Citizen_From') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="NO_OF_DEPEND" class="col-sm-2 col-form-label">No Of Depend
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('NO_OF_DEPEND') {{ 'is-invalid' }} @enderror"
+                                            id="NO_OF_DEPEND" name="NO_OF_DEPEND" placeholder="No Of Depend"
+                                            value="{{ old('NO_OF_DEPEND') ? old('NO_OF_DEPEND') : $data->user->NO_OF_DEPEND }}">
+                                        @error('NO_OF_DEPEND') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="SPOUSE" class="col-sm-2 col-form-label">Spouse
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('SPOUSE') {{ 'is-invalid' }} @enderror"
+                                            id="SPOUSE" name="SPOUSE" placeholder="Spouse"
+                                            value="{{ old('SPOUSE') ? old('SPOUSE') : $data->user->SPOUSE }}">
+                                        @error('SPOUSE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="CHILDREN" class="col-sm-2 col-form-label">Children
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('CHILDREN') {{ 'is-invalid' }} @enderror"
+                                            id="CHILDREN" name="CHILDREN" placeholder="Children"
+                                            value="{{ old('CHILDREN') ? old('CHILDREN') : $data->user->CHILDREN }}">
+                                        @error('CHILDREN') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="PARENTS" class="col-sm-2 col-form-label">Parents
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('PARENTS') {{ 'is-invalid' }} @enderror"
+                                            id="PARENTS" name="PARENTS" placeholder="Parents"
+                                            value="{{ old('PARENTS') ? old('PARENTS') : $data->user->PARENTS }}">
+                                        @error('PARENTS') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Employee_Staus" class="col-sm-2 col-form-label">Employee_Staus
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Employee_Staus') {{ 'is-invalid' }} @enderror"
+                                            id="Employee_Staus" name="Employee_Staus" placeholder="Employee_Staus"
+                                            value="{{ old('Employee_Staus') ? old('Employee_Staus') : $data->user->Employee_Staus }}">
+                                        @error('Employee_Staus') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Employee_No" class="col-sm-2 col-form-label">Employee No
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Employee_No') {{ 'is-invalid' }} @enderror"
+                                            id="Employee_No" name="Employee_No" placeholder="Employee No"
+                                            value="{{ old('Employee_No') ? old('Employee_No') : $data->user->Employee_No }}">
+                                        @error('Employee_No') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="EMP_Date" class="col-sm-2 col-form-label">EMP Date
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('EMP_Date') {{ 'is-invalid' }} @enderror"
+                                            id="EMP_Date" name="EMP_Date" placeholder="EMP Date"
+                                            value="{{ old('EMP_Date') ? old('EMP_Date') : $data->user->EMP_Date }}">
+                                        @error('EMP_Date') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Nature_of_Occupation" class="col-sm-2 col-form-label">Nature of Occupation
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Nature_of_Occupation') {{ 'is-invalid' }} @enderror"
+                                            id="Nature_of_Occupation" name="Nature_of_Occupation" placeholder="Nature of Occupation"
+                                            value="{{ old('Nature_of_Occupation') ? old('Nature_of_Occupation') : $data->user->Nature_of_Occupation }}">
+                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="EMPLYEER_NAME" class="col-sm-2 col-form-label">Employer Name
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('EMPLYEER_NAME') {{ 'is-invalid' }} @enderror"
+                                            id="EMPLYEER_NAME" name="EMPLYEER_NAME" placeholder="Employer Name"
+                                            value="{{ old('EMPLYEER_NAME') ? old('EMPLYEER_NAME') : $data->user->EMPLYEER_NAME }}">
+                                        @error('EMPLYEER_NAME') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Role" class="col-sm-2 col-form-label">Role
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Role') {{ 'is-invalid' }} @enderror"
+                                            id="Role" name="Role" placeholder="Role"
+                                            value="{{ old('Role') ? old('Role') : $data->user->Role }}">
+                                        @error('Role') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="SPECIALIZATION" class="col-sm-2 col-form-label">Specialization
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('SPECIALIZATION') {{ 'is-invalid' }} @enderror"
+                                            id="SPECIALIZATION" name="SPECIALIZATION" placeholder="Specialization"
+                                            value="{{ old('SPECIALIZATION') ? old('SPECIALIZATION') : $data->user->SPECIALIZATION }}">
+                                        @error('SPECIALIZATION') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="EMP_GRADE" class="col-sm-2 col-form-label">EMP Grade
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('EMP_GRADE') {{ 'is-invalid' }} @enderror"
+                                            id="EMP_GRADE" name="EMP_GRADE" placeholder="EMP Grade"
+                                            value="{{ old('EMP_GRADE') ? old('EMP_GRADE') : $data->user->EMP_GRADE }}">
+                                        @error('EMP_GRADE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="DESIGNATION" class="col-sm-2 col-form-label">Designation
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('DESIGNATION') {{ 'is-invalid' }} @enderror"
+                                            id="DESIGNATION" name="DESIGNATION" placeholder="DESIGNATION"
+                                            value="{{ old('DESIGNATION') ? old('DESIGNATION') : $data->user->DESIGNATION }}">
+                                        @error('DESIGNATION') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Office_Address" class="col-sm-2 col-form-label">Office Address
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Office_Address') {{ 'is-invalid' }} @enderror"
+                                            id="Office_Address" name="Office_Address" placeholder="Office Address"
+                                            value="{{ old('Office_Address') ? old('Office_Address') : $data->user->Office_Address }}">
+                                        @error('Office_Address') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Office_Phone" class="col-sm-2 col-form-label">Office Phone
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Office_Phone') {{ 'is-invalid' }} @enderror"
+                                            id="Office_Phone" name="Office_Phone" placeholder="Office Phone"
+                                            value="{{ old('Office_Phone') ? old('Office_Phone') : $data->user->Office_Phone }}">
+                                        @error('Office_Phone') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Office_EXTENSION" class="col-sm-2 col-form-label">Office 
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Office_EXTENSION') {{ 'is-invalid' }} @enderror"
+                                            id="Office_EXTENSION" name="Office_EXTENSION" placeholder="Office_EXTENSION"
+                                            value="{{ old('Office_EXTENSION') ? old('Office_EXTENSION') : $data->user->Office_EXTENSION }}">
+                                        @error('Office_EXTENSION') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Valued_Customer" class="col-sm-2 col-form-label">Valued
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Valued_Customer') {{ 'is-invalid' }} @enderror"
+                                            id="Valued_Customer" name="Valued_Customer" placeholder="Valued"
+                                            value="{{ old('Valued_Customer') ? old('Valued_Customer') : $data->user->Valued_Customer }}">
+                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="Valued_Customer" class="col-sm-2 col-form-label">Valued
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('Valued_Customer') {{ 'is-invalid' }} @enderror"
+                                            id="Valued_Customer" name="Valued_Customer" placeholder="Valued"
+                                            value="{{ old('Valued_Customer') ? old('Valued_Customer') : $data->user->Valued_Customer }}">
+                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
