@@ -62,7 +62,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Customer ID', 'type' => 1, 'value' => '', 'key_name' => 'customerid'],
             ['name' => 'Prefix of the Borrower', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixoftheborrower'],
             ['name' => 'Name of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheborrower'],
-            ['name' => 'Street address of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressoftheborrower'],
+            ['name' => 'Street address of the Borrower', 'type' => 10, 'value' => '', 'key_name' => 'streetaddressoftheborrower'],
             ['name' => 'PAN card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheborrower'],
             ['name' => 'Officially Valid Documents of the Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheborrower'],
             ['name' => 'Occupation of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheborrower'],

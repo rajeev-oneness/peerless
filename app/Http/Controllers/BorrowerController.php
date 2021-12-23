@@ -97,6 +97,7 @@ class BorrowerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'customer_id' => 'required|integer|min:1|digits_between:1,20',
             'name_prefix' => 'required|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
@@ -108,10 +109,20 @@ class BorrowerController extends Controller
             'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
-            'street_address' => 'required|string|min:1|max:200',
-            'city' => 'required|string|min:1|max:200',
-            'pincode' => 'required|integer|digits:6',
-            'state' => 'required|string|min:1|max:200',
+
+            'KYC_HOUSE_NO' => 'nullable|string|min:1|max:200',
+            'KYC_Street' => 'required|string|min:1|max:200',
+            'KYC_LOCALITY' => 'required|string|min:1|max:200',
+            'KYC_CITY' => 'required|string|min:1|max:200',
+            'KYC_State' => 'required|string|min:1|max:200',
+            'KYC_PINCODE' => 'required|string|min:1|max:200',
+            'KYC_Country' => 'required|string|min:1|max:200',
+
+            // 'street_address' => 'required|string|min:1|max:200',
+            // 'city' => 'required|string|min:1|max:200',
+            // 'pincode' => 'required|integer|digits:6',
+            // 'state' => 'required|string|min:1|max:200',
+
             'agreement_id' => 'nullable|numeric|min:1'
         ]);
 
@@ -119,6 +130,7 @@ class BorrowerController extends Controller
 
         try {
             $user = new Borrower;
+            $user->CUSTOMER_ID = $request->customer_id;
             $user->name_prefix = $request->name_prefix;
             $user->first_name = $request->first_name;
             $user->middle_name = $request->middle_name;
@@ -131,10 +143,20 @@ class BorrowerController extends Controller
             $user->pan_card_number = $request->pan_card_number;
             $user->occupation = $request->occupation;
             $user->marital_status = $request->marital_status;
+
+            $user->KYC_HOUSE_NO = $request->KYC_HOUSE_NO;
+            $user->KYC_Street = $request->KYC_Street;
+            $user->KYC_LOCALITY = $request->KYC_LOCALITY;
+            $user->KYC_CITY = $request->KYC_CITY;
+            $user->KYC_State = $request->KYC_State;
+            $user->KYC_PINCODE = $request->KYC_PINCODE;
+            $user->KYC_Country = $request->KYC_Country;
+
             $user->street_address = $request->street_address;
             $user->city = $request->city;
             $user->pincode = $request->pincode;
             $user->state = $request->state;
+
             $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
             $user->uploaded_by = auth()->user()->id;
             $user->save();
@@ -218,6 +240,7 @@ class BorrowerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'customer_id' => 'required|integer|min:1|digits_between:1,20',
             'name_prefix' => 'required|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
@@ -229,14 +252,25 @@ class BorrowerController extends Controller
             'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
-            'street_address' => 'required|string|min:1|max:200',
-            'city' => 'required|string|min:1|max:200',
-            'pincode' => 'required|integer|digits:6',
-            'state' => 'required|string|min:1|max:200',
+
+            'KYC_HOUSE_NO' => 'nullable|string|min:1|max:200',
+            'KYC_Street' => 'required|string|min:1|max:200',
+            'KYC_LOCALITY' => 'required|string|min:1|max:200',
+            'KYC_CITY' => 'required|string|min:1|max:200',
+            'KYC_State' => 'required|string|min:1|max:200',
+            'KYC_PINCODE' => 'required|string|min:1|max:200',
+            'KYC_Country' => 'required|string|min:1|max:200',
+
+            // 'street_address' => 'required|string|min:1|max:200',
+            // 'city' => 'required|string|min:1|max:200',
+            // 'pincode' => 'required|integer|digits:6',
+            // 'state' => 'required|string|min:1|max:200',
+
             'agreement_id' => 'nullable|numeric|min:1'
         ]);
 
         $user = Borrower::findOrFail($id);
+        $user->CUSTOMER_ID = $request->customer_id;
         $user->name_prefix = $request->name_prefix;
         $user->first_name = $request->first_name;
         $user->middle_name = $request->middle_name;
@@ -249,10 +283,20 @@ class BorrowerController extends Controller
         $user->pan_card_number = $request->pan_card_number;
         $user->occupation = $request->occupation;
         $user->marital_status = $request->marital_status;
+
+        $user->KYC_HOUSE_NO = $request->KYC_HOUSE_NO;
+        $user->KYC_Street = $request->KYC_Street;
+        $user->KYC_LOCALITY = $request->KYC_LOCALITY;
+        $user->KYC_CITY = $request->KYC_CITY;
+        $user->KYC_State = $request->KYC_State;
+        $user->KYC_PINCODE = $request->KYC_PINCODE;
+        $user->KYC_Country = $request->KYC_Country;
+
         $user->street_address = $request->street_address;
         $user->city = $request->city;
         $user->pincode = $request->pincode;
         $user->state = $request->state;
+
         $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
         $user->Customer_Type = $request->Customer_Type;
         $user->Resident_Status = $request->Resident_Status;

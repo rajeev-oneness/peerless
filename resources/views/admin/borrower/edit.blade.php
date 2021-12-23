@@ -13,14 +13,21 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-chevron-left"></i> Back</a>
+                                <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <form class="form-horizontal" method="POST"
                                 action="{{ route('user.borrower.update', $data->user->id) }}" id="profile-form">
                                 @csrf
+                                <div class="form-group row">
+                                    <label for="customer_id" class="col-sm-2 col-form-label">Customer ID<span class="text-danger">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control @error('customer_id') {{ 'is-invalid' }} @enderror" id="customer_id" name="customer_id" placeholder="Customer ID" value="{{ old('customer_id') ? old('customer_id') : $data->user->CUSTOMER_ID }}">
+
+                                        @error('customer_id') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span
                                             class="text-danger">*</span></label>
@@ -157,7 +164,201 @@
                                         @enderror
                                     </div>
                                 </div>
+
+
+
                                 <div class="form-group row">
+                                    <label for="KYC_Care_of" class="col-sm-2 col-form-label">KYC Care of
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_Care_of') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_Care_of" name="KYC_Care_of" placeholder="KYC Care of"
+                                            value="{{ old('KYC_Care_of') ? old('KYC_Care_of') : $data->user->KYC_Care_of }}">
+                                        @error('KYC_Care_of') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_HOUSE_NO" class="col-sm-2 col-form-label">KYC HOUSE NO
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_HOUSE_NO') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_HOUSE_NO" name="KYC_HOUSE_NO" placeholder="KYC House No"
+                                            value="{{ old('KYC_HOUSE_NO') ? old('KYC_HOUSE_NO') : $data->user->KYC_HOUSE_NO }}">
+                                        @error('KYC_HOUSE_NO') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_LANDMARK" class="col-sm-2 col-form-label">KYC Landmark
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_LANDMARK') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_LANDMARK" name="KYC_LANDMARK" placeholder="KYC Landmark"
+                                            value="{{ old('KYC_LANDMARK') ? old('KYC_LANDMARK') : $data->user->KYC_LANDMARK }}">
+                                        @error('KYC_LANDMARK') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_LOCALITY" class="col-sm-2 col-form-label">KYC Locality
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_LOCALITY') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_LOCALITY" name="KYC_LOCALITY" placeholder="KYC Street"
+                                            value="{{ old('KYC_LOCALITY') ? old('KYC_LOCALITY') : $data->user->KYC_Street }}">
+                                        @error('KYC_LOCALITY') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_Street" class="col-sm-2 col-form-label">KYC Street
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_Street') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_Street" name="KYC_Street" placeholder="KYC Street"
+                                            value="{{ old('KYC_Street') ? old('KYC_Street') : $data->user->KYC_Street }}">
+                                        @error('KYC_Street') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_PINCODE" class="col-sm-2 col-form-label">KYC Pincode
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_PINCODE') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_PINCODE" name="KYC_PINCODE" placeholder="KYC Pincode"
+                                            value="{{ old('KYC_PINCODE') ? old('KYC_PINCODE') : $data->user->KYC_PINCODE }}">
+                                        @error('KYC_PINCODE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group row">
+                                    <label for="KYC_Country" class="col-sm-2 col-form-label">KYC Country
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_Country') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_Country" name="KYC_Country" placeholder="KYC Country"
+                                            value="{{ old('KYC_Country') ? old('KYC_Country') : $data->user->KYC_Country }}">
+                                        @error('KYC_Country') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_State" class="col-sm-2 col-form-label">KYC State
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_State') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_State" name="KYC_State" placeholder="KYC State"
+                                            value="{{ old('KYC_State') ? old('KYC_State') : $data->user->KYC_State }}">
+                                        @error('KYC_State') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_District" class="col-sm-2 col-form-label">KYC District
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_District') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_District" name="KYC_District" placeholder="KYC District"
+                                            value="{{ old('KYC_District') ? old('KYC_District') : $data->user->KYC_District }}">
+                                        @error('KYC_District') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_POST_OFFICE" class="col-sm-2 col-form-label">KYC Post Office
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_POST_OFFICE') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_POST_OFFICE" name="KYC_POST_OFFICE" placeholder="KYC Post Office"
+                                            value="{{ old('KYC_POST_OFFICE') ? old('KYC_POST_OFFICE') : $data->user->KYC_POST_OFFICE }}">
+                                        @error('KYC_POST_OFFICE') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_CITY" class="col-sm-2 col-form-label">KYC City
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_CITY') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_CITY" name="KYC_CITY" placeholder="KYC City"
+                                            value="{{ old('KYC_CITY') ? old('KYC_CITY') : $data->user->KYC_CITY }}">
+                                        @error('KYC_CITY') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_Taluka" class="col-sm-2 col-form-label">KYC Taluka
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_Taluka') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_Taluka" name="KYC_Taluka" placeholder="KYC Taluka"
+                                            value="{{ old('KYC_Taluka') ? old('KYC_Taluka') : $data->user->KYC_Taluka }}">
+                                        @error('KYC_Taluka') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="KYC_Population_Group" class="col-sm-2 col-form-label">KYC Population Group
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text"
+                                            class="form-control @error('KYC_Population_Group') {{ 'is-invalid' }} @enderror"
+                                            id="KYC_Population_Group" name="KYC_Population_Group"
+                                            placeholder="KYC_Population_Group"
+                                            value="{{ old('KYC_Population_Group') ? old('KYC_Population_Group') : $data->user->KYC_Population_Group }}">
+                                        @error('KYC_Population_Group') <p class="small mb-0 text-danger">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- <div class="form-group row">
                                     <label for="street_address" class="col-sm-2 col-form-label">Address <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-10">
@@ -196,7 +397,9 @@
 
                                         @error('state') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
                                     </div>
-                                </div>
+                                </div> -->
+
+
                                 <div class="form-group row">
                                     <label for="agreement_id" class="col-sm-2 col-form-label">Type of loan</label>
                                     <div class="col-sm-10">
@@ -424,198 +627,10 @@
 
 
 
-                                <div class="form-group row">
-                                    <label for="KYC_Care_of" class="col-sm-2 col-form-label">KYC Care of
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_Care_of') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_Care_of" name="KYC_Care_of" placeholder="KYC Care of"
-                                            value="{{ old('KYC_Care_of') ? old('KYC_Care_of') : $data->user->KYC_Care_of }}">
-                                        @error('KYC_Care_of') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_HOUSE_NO" class="col-sm-2 col-form-label">KYC HOUSE NO
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_HOUSE_NO') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_HOUSE_NO" name="KYC_HOUSE_NO" placeholder="KYC House No"
-                                            value="{{ old('KYC_HOUSE_NO') ? old('KYC_HOUSE_NO') : $data->user->KYC_HOUSE_NO }}">
-                                        @error('KYC_HOUSE_NO') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_LANDMARK" class="col-sm-2 col-form-label">KYC Landmark
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_LANDMARK') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_LANDMARK" name="KYC_LANDMARK" placeholder="KYC Landmark"
-                                            value="{{ old('KYC_LANDMARK') ? old('KYC_LANDMARK') : $data->user->KYC_LANDMARK }}">
-                                        @error('KYC_LANDMARK') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_LOCALITY" class="col-sm-2 col-form-label">KYC Locality
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_LOCALITY') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_LOCALITY" name="KYC_LOCALITY" placeholder="KYC Street"
-                                            value="{{ old('KYC_LOCALITY') ? old('KYC_LOCALITY') : $data->user->KYC_Street }}">
-                                        @error('KYC_LOCALITY') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_Street" class="col-sm-2 col-form-label">KYC Street
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_Street') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_Street" name="KYC_Street" placeholder="KYC Street"
-                                            value="{{ old('KYC_Street') ? old('KYC_Street') : $data->user->KYC_Street }}">
-                                        @error('KYC_Street') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_PINCODE" class="col-sm-2 col-form-label">KYC Pincode
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_PINCODE') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_PINCODE" name="KYC_PINCODE" placeholder="KYC Pincode"
-                                            value="{{ old('KYC_PINCODE') ? old('KYC_PINCODE') : $data->user->KYC_PINCODE }}">
-                                        @error('KYC_PINCODE') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
 
 
 
 
-                                <div class="form-group row">
-                                    <label for="KYC_Country" class="col-sm-2 col-form-label">KYC Country
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_Country') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_Country" name="KYC_Country" placeholder="KYC Country"
-                                            value="{{ old('KYC_Country') ? old('KYC_Country') : $data->user->KYC_Country }}">
-                                        @error('KYC_Country') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_State" class="col-sm-2 col-form-label">KYC State
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_State') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_State" name="KYC_State" placeholder="KYC State"
-                                            value="{{ old('KYC_State') ? old('KYC_State') : $data->user->KYC_State }}">
-                                        @error('KYC_State') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_District" class="col-sm-2 col-form-label">KYC District
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_District') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_District" name="KYC_District" placeholder="KYC District"
-                                            value="{{ old('KYC_District') ? old('KYC_District') : $data->user->KYC_District }}">
-                                        @error('KYC_District') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_POST_OFFICE" class="col-sm-2 col-form-label">KYC Post Office
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_POST_OFFICE') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_POST_OFFICE" name="KYC_POST_OFFICE" placeholder="KYC Post Office"
-                                            value="{{ old('KYC_POST_OFFICE') ? old('KYC_POST_OFFICE') : $data->user->KYC_POST_OFFICE }}">
-                                        @error('KYC_POST_OFFICE') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_CITY" class="col-sm-2 col-form-label">KYC City
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_CITY') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_CITY" name="KYC_CITY" placeholder="KYC City"
-                                            value="{{ old('KYC_CITY') ? old('KYC_CITY') : $data->user->KYC_CITY }}">
-                                        @error('KYC_CITY') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="KYC_Taluka" class="col-sm-2 col-form-label">KYC Taluka
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_Taluka') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_Taluka" name="KYC_Taluka" placeholder="KYC Taluka"
-                                            value="{{ old('KYC_Taluka') ? old('KYC_Taluka') : $data->user->KYC_Taluka }}">
-                                        @error('KYC_Taluka') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <div class="form-group row">
-                                    <label for="KYC_Population_Group" class="col-sm-2 col-form-label">KYC Population Group
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('KYC_Population_Group') {{ 'is-invalid' }} @enderror"
-                                            id="KYC_Population_Group" name="KYC_Population_Group"
-                                            placeholder="KYC_Population_Group"
-                                            value="{{ old('KYC_Population_Group') ? old('KYC_Population_Group') : $data->user->KYC_Population_Group }}">
-                                        @error('KYC_Population_Group') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="form-group row">
                                     <label for="COMM_Care_of" class="col-sm-2 col-form-label">Communication Care of
                                     </label>
@@ -1033,8 +1048,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
-                                
 
                                 <div class="form-group row">
                                     <label for="RM_Landline_No" class="col-sm-2 col-form-label">RM Landline No

@@ -20,6 +20,14 @@
                             <form class="form-horizontal" method="POST" action="{{ route('user.borrower.store') }}" id="profile-form">
                             @csrf
                                 <div class="form-group row">
+                                    <label for="customer_id" class="col-sm-2 col-form-label">Customer ID<span class="text-danger">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control @error('customer_id') {{ 'is-invalid' }} @enderror" id="customer_id" name="customer_id" placeholder="Customer ID" value="{{ old('customer_id') }}">
+                                        @error('customer_id') <p class="small mb-0 text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-1">
                                         <select class="form-control px-0" id="name_prefix" name="name_prefix">
@@ -114,31 +122,52 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="street_address" class="col-sm-2 col-form-label">Address <span class="text-danger">*</span></label>
+                                    <label for="street_address" class="col-sm-2 col-form-label">Permanent Address <span class="text-danger">*</span></label>
+
                                     <div class="col-sm-10">
-                                        <textarea class="form-control @error('street_address') {{ 'is-invalid' }} @enderror" id="street_address" name="street_address" placeholder="Street address">{{ old('street_address') }}</textarea>
-                                        @error('street_address') <p class="small mb-0 text-danger">{{ $message }}</p>
+                                        <input type="text" class="form-control @error('KYC_HOUSE_NO') {{ 'is-invalid' }} @enderror" id="KYC_HOUSE_NO" name="KYC_HOUSE_NO" placeholder="House number" value="{{ old('KYC_HOUSE_NO') }}">
+
+                                        @error('KYC_HOUSE_NO') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                    </div>
+
+                                    <div class="col-sm-10 offset-sm-2 mt-2">
+                                        <textarea class="form-control @error('KYC_Street') {{ 'is-invalid' }} @enderror" id="KYC_Street" name="KYC_Street" placeholder="Street">{{ old('KYC_Street') }}</textarea>
+                                        @error('KYC_Street') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
 
                                     <div class="col-sm-10 offset-sm-2 mt-2">
-                                        <input type="text" class="form-control @error('city') {{ 'is-invalid' }} @enderror" id="city" name="city" placeholder="City" value="{{ old('city') }}">
+                                        <input type="text" class="form-control @error('KYC_LOCALITY') {{ 'is-invalid' }} @enderror" id="KYC_LOCALITY" name="KYC_LOCALITY" placeholder="Locality" value="{{ old('KYC_LOCALITY') }}">
 
-                                        @error('city') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                        @error('KYC_LOCALITY') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
                                     </div>
 
                                     <div class="col-sm-10 offset-sm-2 mt-2">
-                                        <input type="text" class="form-control @error('pincode') {{ 'is-invalid' }} @enderror" id="pincode" name="pincode" placeholder="Pincode" value="{{ old('pincode') }}">
+                                        <input type="text" class="form-control @error('KYC_CITY') {{ 'is-invalid' }} @enderror" id="KYC_CITY" name="KYC_CITY" placeholder="City" value="{{ old('KYC_CITY') }}">
 
-                                        @error('pincode') <p class="small mb-0 text-danger">{{ $message }}</p>
+                                        @error('KYC_CITY') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                    </div>
+
+                                    <div class="col-sm-10 offset-sm-2 mt-2">
+                                        <input type="text" class="form-control @error('KYC_State') {{ 'is-invalid' }} @enderror" id="KYC_State" name="KYC_State" placeholder="State" value="{{ old('KYC_State') }}">
+
+                                        @error('KYC_State') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                    </div>
+
+                                    <div class="col-sm-10 offset-sm-2 mt-2">
+                                        <input type="text" class="form-control @error('KYC_PINCODE') {{ 'is-invalid' }} @enderror" id="KYC_PINCODE" name="KYC_PINCODE" placeholder="Pincode" value="{{ old('KYC_PINCODE') }}">
+
+                                        @error('KYC_PINCODE') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
 
                                     <div class="col-sm-10 offset-sm-2 mt-2">
-                                        <input type="text" class="form-control @error('state') {{ 'is-invalid' }} @enderror" id="state" name="state" placeholder="State" value="{{ old('state') }}">
+                                        <input type="text" class="form-control @error('KYC_Country') {{ 'is-invalid' }} @enderror" id="KYC_Country" name="KYC_Country" placeholder="Country" value="{{ old('KYC_Country') }}">
 
-                                        @error('state') <p class="small mb-0 text-danger">{{ $message }}</p> @enderror
+                                        @error('KYC_Country') <p class="small mb-0 text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
+
                                 </div>
                                 <div class="form-group row">
                                     <label for="agreement_id" class="col-sm-2 col-form-label">Type of loan</label>

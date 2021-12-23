@@ -85,8 +85,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="small text-dark mb-1"><i class="fas fa-envelope mr-2"></i> {{$item->email}}</p>
-                                        <p class="small text-dark mb-0">@php if(!empty($item->mobile)) { echo '<i class="fas fa-phone fa-rotate-90 mr-2"></i> '.$item->mobile; } else { echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>'; } @endphp</p>
+                                        <p class="small text-dark mb-1">{{$item->email}}</p>
+                                        <p class="small text-dark mb-0">@php if(!empty($item->mobile)) { echo $item->mobile; } else { echo '<i class="fas fa-phone fa-rotate-90 text-danger"></i>'; } @endphp</p>
                                     </td>
                                     <td>
                                         <p class="small text-muted mb-0" title="Street address">{{$item->pan_card_number}}</p>
