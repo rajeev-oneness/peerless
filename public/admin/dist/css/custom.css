@@ -438,8 +438,8 @@ mark {
     background: linear-gradient(180deg, rgba(52,106,160,1) 0%, rgba(17,48,82,1) 100%) !important;
     position: fixed !important;
     overflow-y: scroll;
-    min-height: 100vh !important;
-    height: unset !important;
+    /* min-height: 100vh !important;
+    height: unset !important; */
 }
 .side-gradient::-webkit-scrollbar{
     display: none;
@@ -449,7 +449,34 @@ mark {
     background-color: #f1585a !important;
     border: 0;
 }
+.sidebar nav{
+    max-height: 360px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
 
+    
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ec585a;
+    border-radius: 5px;
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 .showRoleTable h6{
     color: #384a61;
 }

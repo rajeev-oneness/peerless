@@ -1725,41 +1725,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="Valued_Customer" class="col-sm-2 col-form-label">Valued
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('Valued_Customer') {{ 'is-invalid' }} @enderror"
-                                            id="Valued_Customer" name="Valued_Customer" placeholder="Valued"
-                                            value="{{ old('Valued_Customer') ? old('Valued_Customer') : $data->user->Valued_Customer }}">
-                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
+                                
 
-
-
-                                <div class="form-group row">
-                                    <label for="Valued_Customer" class="col-sm-2 col-form-label">Valued
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text"
-                                            class="form-control @error('Valued_Customer') {{ 'is-invalid' }} @enderror"
-                                            id="Valued_Customer" name="Valued_Customer" placeholder="Valued"
-                                            value="{{ old('Valued_Customer') ? old('Valued_Customer') : $data->user->Valued_Customer }}">
-                                        @error('Valued_Customer') <p class="small mb-0 text-danger">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
+                                <div class="form-group row" style="position: sticky;bottom: -1px;z-index: 99;background-color: #e9e9e9;text-align: right;padding: 5px 0;">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Update changes <i class="fas fa-edit"></i></button>
                                     </div>
                                 </div>
                             </form>

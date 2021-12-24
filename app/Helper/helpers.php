@@ -133,7 +133,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     break;
                 // borrower street address
                 case 'streetaddressoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
 
                     $display_house_no = (strtolower($borrower->KYC_HOUSE_NO) != 'na' && $borrower->KYC_HOUSE_NO != '') ? $borrower->KYC_HOUSE_NO.' ' : '';
                     $display_street = (strtolower($borrower->KYC_Street) != 'na' || $borrower->KYC_Street != '') ? $borrower->KYC_Street.' ' : '';

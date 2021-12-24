@@ -162,7 +162,7 @@
                                         <p>Office management</p>
                                     </a>
                                 </li>
-                            @endif
+                            @endif  
                             <li class="nav-item">
                                 <a href="{{ route('user.profile') }}"
                                     class="nav-link {{ request()->is('user/profile*') ? 'active' : '' }}">
