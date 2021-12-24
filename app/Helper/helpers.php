@@ -146,14 +146,40 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     $respValue = $display_house_no.$display_street.$display_locality.$display_city.$display_state.$display_pincode.$display_country;
 
                     break;
-                // borrower marital status
+                // IFS code fetch API
                 case 'ifscodeofborrower' :
                     $disabledField = '';
-                    $extraClass = 'ifsCodeFetch';
+                    $extraClass = 'ifsCodeFetch text-uppercase';
+                    break;
+                // Rate of interest/ processing charge/ documentation fee/ monthly EMI/ Penal Interest percentage
+                case 'rateofinterest' :
+                    $disabledField = '';
+                    $extraClass = 'numberField';
+                    break;
+                // processing charge
+                case 'processingchargeinpercentage' :
+                    $disabledField = '';
+                    $extraClass = 'numberField';
+                    break;
+                // documentation fee
+                case 'documentationfee' :
+                    $disabledField = '';
+                    $extraClass = 'numberField';
+                    break;
+                // monthly EMI
+                case 'monthlyemiindigits' :
+                    $disabledField = '';
+                    $extraClass = 'numberField';
+                    break;
+                // Penal Interest percentage
+                case 'penalinterestpercentage' :
+                    $disabledField = '';
+                    $extraClass = 'numberField';
                     break;
                 default :
                     $disabledField = '';
                     $respValue = '';
+                    $extraClass = '';
                     break;
             }
         }
@@ -199,8 +225,13 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $response = $extraPreField.'<input type="number" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'date':
-            $respValue = date('Y-m-d', strtotime($respValue));
-            $response = $extraPreField.'<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
+            if (isset($form_type) == 'show') {
+                $respValue = date('Y-m-d', strtotime($respValue));
+            } else {
+                $respValue = '';
+            }
+
+            $response = $extraPreField.'<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' '.$respValue.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'time':
             $response = $extraPreField.'<input type="time" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;

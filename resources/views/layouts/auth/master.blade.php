@@ -452,7 +452,7 @@
         // borrower agreement ifs code api 
         $('.ifsCodeFetch').on('keyup', function() {
             let ifsc = $(this).val();
-            if (ifsc.length > 10) {
+            if (ifsc.length == 11) {
                 $.ajax({
                     url : "https://ifsc.razorpay.com/"+ifsc,
                     method : "GET",
@@ -467,6 +467,27 @@
                     }
                 });
             }
+        });
+
+        // accept interger only and one decimal point
+        // $('.numberField').on('keyup', function(event) {
+        $(".numberField").keydown(function (event) {
+            console.log(event.keyCode);
+            if (event.shiftKey == true) {
+                event.preventDefault();
+            }
+
+            if ((event.keyCode >= 48 && event.keyCode <= 57) || 
+                (event.keyCode >= 96 && event.keyCode <= 105) || 
+                event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
+                event.keyCode == 39 || event.keyCode == 46 || event.keyCode == 190) {
+
+            } else {
+                event.preventDefault();
+            }
+
+            if($(this).val().indexOf('.') !== -1 && event.keyCode == 190)
+                event.preventDefault();
         });
     </script>
 
