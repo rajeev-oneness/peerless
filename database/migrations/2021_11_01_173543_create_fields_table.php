@@ -30,6 +30,8 @@ class CreateFieldsTable extends Migration
         $namePrefixList = 'Mr, Miss, Mrs, Prof, Dr, CA';
         $gendersList = 'Male, Female, Transgender, Rather not say';
         $maritalStatusList = 'Married, Unmarried, Single, Divorced, Widowed';
+        // highest qualification list
+        $highestQualificationList = 'AAS, BAS, B Arch, BA, BBA, MBA, DDS, DBA, MD, Pharm D, PhD, B Tech, M Tech, BCA, MCA';
 
         // valid document lists for borrower & co-borrower
         $validDocumentsList = 'Aadhar card, Bank statement, Driving license, Electricity bill, Passport';
@@ -61,7 +63,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Resident status of the Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheborrower'],
             ['name' => 'Date of birth of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheborrower'],
             ['name' => 'Marital status of the Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheborrower'],
-            ['name' => 'Highest education of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheborrower'],
+            ['name' => 'Highest education of the Borrower', 'type' => 7, 'value' => $highestQualificationList, 'key_name' => 'highesteducationoftheborrower'],
             ['name' => 'Mobile number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
             ['name' => 'Email ID of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheborrower'],
 
@@ -78,7 +80,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Resident status of the Co-Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusofthecoborrower'],
             ['name' => 'Date of birth of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower'],
             ['name' => 'Marital status of the Co-Borrower', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusofthecoborrower'],
-            ['name' => 'Highest education of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationofthecoborrower'],
+            ['name' => 'Highest education of the Co-Borrower', 'type' => 7, 'value' => $highestQualificationList, 'key_name' => 'highesteducationofthecoborrower'],
             ['name' => 'Mobile number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
             ['name' => 'Email ID of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
             // ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
@@ -96,7 +98,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Resident status of the Guarantor', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheguarantor'],
             ['name' => 'Date of birth of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheguarantor'],
             ['name' => 'Marital status of the Guarantor', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusoftheguarantor'],
-            ['name' => 'Highest education of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'highesteducationoftheguarantor'],
+            ['name' => 'Highest education of the Guarantor', 'type' => 7, 'value' => $highestQualificationList, 'key_name' => 'highesteducationoftheguarantor'],
             ['name' => 'Mobile number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheguarantor'],
             ['name' => 'Email ID of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheguarantor'],
 

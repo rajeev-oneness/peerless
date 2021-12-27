@@ -3,6 +3,9 @@
 <head>
     <title>{{ $data->fileName }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         .page-break {
             page-break-after: always;
@@ -1067,7 +1070,7 @@
                         <tr>
                             <td>Name of the Guarantor:</td>
                             <td>
-                                {{$data->guarantorfullname}}
+                                {{$data->nameoftheguarantor}}
                             </td>
                         </tr>
                         <tr>
@@ -1838,7 +1841,7 @@
                         </td>
                         <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: center ">Mr./Ms. <span> {{$data->nameoftheborrower}}
+                            <p class="ft1" style="text-align: center ">{{$data->prefixoftheborrower}} <span> {{$data->nameoftheborrower}}
                                 </span></p>
 
                         </td>
@@ -1867,7 +1870,7 @@
                         </td>
                         <td class="border0">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: center">Mr./Ms. <span> {{$data->nameofthecoborrower}}
+                            <p class="ft1" style="text-align: center">{{$data->prefixofthecoborrower}} <span> {{$data->nameofthecoborrower}}
                                 </span> </p>
 
                         </td>
@@ -1903,7 +1906,7 @@
                         </td>
                         <td class="border0">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: center">Mr./Ms. <span>  </span> </p>
+                            <p class="ft1" style="text-align: center">{{$data->prefixofthecoborrower}} <span> {{$data->nameofthecoborrower}} </span> </p>
 
                         </td>
                         <td colspan="2" class="border0">
@@ -1951,7 +1954,7 @@
                         </td>
                         <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Mr./Ms. <span>  </span> </p>
+                            <p class="ft1" style="text-align: right">Mr./Ms. <span> {{$data->nameoftheauthorisedsignatory}} </span> </p>
 
                         </td>
 
@@ -2088,7 +2091,7 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Name : {{$data->guarantorfullname}}</p>
+                            <p class="ft1" style="text-align: right">Name : {{$data->prefixoftheguarantor}} {{$data->nameoftheguarantor}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -2097,7 +2100,7 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">Address : {{$data->guarantorstreetaddress}}</p>
+                            <p class="ft1" style="text-align: right">Address : {{$data->streetaddressoftheguarantor}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -2106,8 +2109,8 @@
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
                             <p>&nbsp;</p>
-                            <p class="ft1" style="text-align: right">City : {{$data->guarantorcity}} <span>Pin
-                                    code</span>{{$data->guarantorpincode}} <span>State</span>{{$data->guarantorstate}}
+                            <p class="ft1" style="text-align: right">City : {{$data->cityoftheguarantor}} <span>Pin
+                                    code</span>{{$data->pincodeoftheguarantor}} <span>State</span>{{$data->stateoftheguarantor}}
                             </p>
                         </td>
                     </tr>
@@ -2437,7 +2440,7 @@
                         </td>
                         <td>
                             <p>
-                                Rs. {{$data->loanamountinlakh}} lakh (Rupees {{$data->loanamountinlakhinwords}} lakh only)
+                                Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}} only)
                                 Reference no {{$data->loanreferencenumber}} dated {{date('Y-m-d')}}
                             </p>
                         </td>
@@ -2454,7 +2457,7 @@
                         <td>iv. Repayment tenure</td>
                         <td>
                             <p>
-                                {{$data->repaymenttenure}} from the date of disbursement
+                                {{$data->repaymenttenureinmonths}} from the date of disbursement
                             </p>
                         </td>
                     </tr>
@@ -2471,7 +2474,7 @@
                             Documentation charges</td>
                         <td>
                             <p>
-                                {{$data->processingchargeinpercentage}}
+                                {{$data->processingchargeinpercentage}}%
                                 ({{$data->documentationfee}})
                             </p>
                         </td>
@@ -2553,7 +2556,7 @@
                     <tr>
                         <td>
                             x. 
-                            Date of credit of EMI into Lender’s
+                            Date of credit of EMI into Lender&apos;s
                             Bank Account
                         </td>
                         <td>
@@ -2725,7 +2728,42 @@
                     <P class="p240 ft5">DOCUMENTS TO BE ATTACHED WITH APPLICATION FOR LOAN</P>
                     <P class="p241 ft8">Please ( ) Tick Whichever Applicable</P>
 
-                    {{$data->documentstobeattachedwithapplicationforloan}}
+                    @php
+                        $originalData = [
+                            'Salary Certificate from current Employer', 
+                            'Proof of identity', 
+                            'Proof of current residential & official address', 
+                            'Latest three months&apos Bank Statement (where salary / income is credited or accumulated)', 
+                            'Salary slips for last three months preceding application date', 
+                            'Two passport size photographs', 
+                            'Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to
+                            designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in Schedule II', 
+                            'Copies of last 2 years&apos; ITR', 
+                            'Signature Verification by banker (as per PFSL format)', 
+                            'Proof of other income', 
+                            'Proof of assets (copy of registered deed of house property / statement of accounts of mutual fund / insurance policy / statement of demat account)', 
+                            'Guarantor&apos;s net worth certificate (as per PFSL format)', 
+                        ];
+                        $commaSeperatedSelectedData = $data->documentstobeattachedwithapplicationforloan;
+
+                        if(!empty($commaSeperatedSelectedData)) {
+                            $selectedData = explode(',', $commaSeperatedSelectedData);
+
+                            echo '<ol type="i">';
+                            foreach($originalData as $item) {
+                                $show = '';
+                                if(in_array($item, $selectedData)) {
+                                    $show = '<i class="fas fa-check"></i>';
+                                }
+                                echo '<li>'.$show.$item.'</li>';
+                            }
+                            echo '<li>
+                                Others (please specify)<br>
+                                '.$data->otherdocumentstobeattachedwithapplicationforloan.'
+                            </li>';
+                            echo '</ol>';
+                        }
+                    @endphp
 
                     {{-- <P class="p242 ft1"><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from current Employer;</SPAN></P>
                     <P class="p242 ft1"><SPAN class="ft1">(ii)</SPAN><SPAN class="ft134">Proof of identity;</SPAN></P>
@@ -2740,7 +2778,9 @@
                     <P class="p248 ft1"><SPAN class="ft1">(xi)</SPAN><SPAN class="ft138">Proof of assets (copy of registered deed of house property / statement of accounts of</SPAN></P>
                     <P class="p249 ft1">mutual fund / insurance policy / statement of demat account)</P>
                     <P class="p250 ft1"><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth certificate (as per PFSL format)</SPAN></P> --}}
-                    <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify) {{$data->otherdocumentstobeattachedwithapplicationforloan}} </SPAN></P>
+
+
+                    {{-- <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify) {{$data->otherdocumentstobeattachedwithapplicationforloan}} </SPAN></P> --}}
                     
         
                     <br><br><br><br>
@@ -2780,7 +2820,7 @@
             <DIV id="id22_1">
                 <P class="p252 ft5">SCHEDULE V</P>
                 <P class="p253 ft140">FACILITY SPECIFIC DOCUMENTS EXECUTED BY BORROWER(S) / GUARANTOR (S) TO BE CONSIDERED PART & PARCEL OF THE</P>
-                <P class="p254 ft10">PERSONAL LOAN FACILITY AGREEMENT DATED {{$data->personalloanfacilityagreementdated}} </P>
+                <P class="p254 ft10">PERSONAL LOAN FACILITY AGREEMENT DATED {{$data->dateofagreement}} </P>
                 <P class="p255">Please ( tick )</P>
             </div>
         
@@ -2938,7 +2978,7 @@
                         <p class="ft131">
                             ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay
                             Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East,
-                            Kolkata – 700 069, or order for value received the sum of Rs. {{$data->loanamountinlakh}} (Rupees) {{$data->loanamountinlakhinwords}} only with 
+                            Kolkata – 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with 
                             interest there on at the rate of DEMAND PROMISSORY NOTE {{$data->rateofinterest}} %
                             Per annum _____________ with rests along with all costs, charges, expenses, taxes,
                             cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to
@@ -2998,9 +3038,9 @@
                 <table class="table_23 border0" style="width:80%; margin:0 auto;">
                     <tr>
                         <td class="border0" colspan="2">
-        
+
                         <p class="ft131">
-                            ON DE MAND, I / We, {{$data->nameoftheborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata – 700 069, or order for value received the sum of Rs {{$data->loanamountinlakh}} (Rupees) {{$data->loanamountinlakhinwords}} only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with ___________rests along with all costs, charges, expenses, taxes, cess, levies,
+                            ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata – 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with ___________rests along with all costs, charges, expenses, taxes, cess, levies,
                             duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be
                             Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypo the cated to any one
                             as required by PFSL, the lender, without notice tome / us.

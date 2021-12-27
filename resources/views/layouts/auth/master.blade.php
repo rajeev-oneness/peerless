@@ -170,7 +170,7 @@
                                     <p>Profile</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="margin-bottom: 60px;">
                                 <a href="{{ route('user.logs') }}"
                                     class="nav-link {{ request()->is('user/logs*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user-cog"></i>
@@ -414,7 +414,7 @@
             str += (n[2] != 0) ? (onesDigit[Number(n[2])] || twosDigit[n[2][0]] + ' ' + onesDigit[n[2][1]]) + 'lakh ' : '';
             str += (n[3] != 0) ? (onesDigit[Number(n[3])] || twosDigit[n[3][0]] + ' ' + onesDigit[n[3][1]]) + 'thousand ' : '';
             str += (n[4] != 0) ? (onesDigit[Number(n[4])] || twosDigit[n[4][0]] + ' ' + onesDigit[n[4][1]]) + 'hundred ' : '';
-            str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (onesDigit[Number(n[5])] || twosDigit[n[5][0]] + ' ' + onesDigit[n[5][1]]) + 'only ' : '';
+            str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (onesDigit[Number(n[5])] || twosDigit[n[5][0]] + ' ' + onesDigit[n[5][1]]) : '';
             return str;
         }
 
@@ -472,7 +472,7 @@
         // accept interger only and one decimal point
         // $('.numberField').on('keyup', function(event) {
         $(".numberField").keydown(function (event) {
-            console.log(event.keyCode);
+            // console.log(event.keyCode);
             if (event.shiftKey == true) {
                 event.preventDefault();
             }
@@ -480,12 +480,14 @@
             if ((event.keyCode >= 48 && event.keyCode <= 57) || 
                 (event.keyCode >= 96 && event.keyCode <= 105) || 
                 event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
-                event.keyCode == 39 || event.keyCode == 46 || event.keyCode == 190) {
+                event.keyCode == 39 || event.keyCode == 46 || event.keyCode == 190 || event.keyCode == 110) {
 
             } else {
                 event.preventDefault();
             }
 
+            if($(this).val().indexOf('.') !== -1 && event.keyCode == 110)
+                event.preventDefault();
             if($(this).val().indexOf('.') !== -1 && event.keyCode == 190)
                 event.preventDefault();
         });

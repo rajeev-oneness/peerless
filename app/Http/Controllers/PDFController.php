@@ -66,10 +66,13 @@ class PDFController extends Controller
         $data->title = 'personal loan agreement';
         $data->date = date('Y-m-d');
         $data->customerid = $this->getData($agreement, 'customerid');
+        $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');
         $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
+        $data->prefixofthecoborrower = $this->getData($agreement, 'prefixofthecoborrower');
         $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
-        // $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
-        $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        // $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
         // loan application number is loan reference number, application number is removed 
         $data->loanapplicationnumber = $this->getData($agreement, 'loanreferencenumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
@@ -93,11 +96,12 @@ class PDFController extends Controller
         $data->witness2state = $this->getData($agreement, 'witness2state');
 
         // guarantor
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
         $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
-        $data->guarantorstreetaddress = $this->getData($agreement, 'guarantorstreetaddress');
-        $data->guarantorcity = $this->getData($agreement, 'guarantorcity');
-        $data->guarantorpincode = $this->getData($agreement, 'guarantorpincode');
-        $data->guarantorstate = $this->getData($agreement, 'guarantorstate');
+        $data->streetaddressoftheguarantor = $this->getData($agreement, 'streetaddressoftheguarantor');
+        $data->cityoftheguarantor = $this->getData($agreement, 'cityoftheguarantor');
+        $data->pincodeoftheguarantor = $this->getData($agreement, 'pincodeoftheguarantor');
+        $data->stateoftheguarantor = $this->getData($agreement, 'stateoftheguarantor');
 
         // borrower
         $data->streetaddressoftheborrower = $this->getData($agreement, 'streetaddressoftheborrower');
@@ -130,6 +134,7 @@ class PDFController extends Controller
 
         // page 16
         $data->nameoftheauthorisedsignatory = $this->getData($agreement, 'nameoftheauthorisedsignatory');
+        // $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
 
         // page 18
         $data->natureofloan = $this->getData($agreement, 'natureofloan');
@@ -139,7 +144,7 @@ class PDFController extends Controller
         $data->loanamountinlakhinwords = $this->getData($agreement, 'loanamountinlakhinwords');
         $data->loanreferencenumber = $this->getData($agreement, 'loanreferencenumber');
         $data->purposeofloan = $this->getData($agreement, 'purposeofloan');
-        $data->repaymenttenure = $this->getData($agreement, 'repaymenttenure');
+        $data->repaymenttenureinmonths = $this->getData($agreement, 'repaymenttenureinmonths');
         $data->rateofinterest = $this->getData($agreement, 'rateofinterest');
         $data->processingchargeinpercentage = $this->getData($agreement, 'processingchargeinpercentage');
         $data->documentationfee = $this->getData($agreement, 'documentationfee');
@@ -168,7 +173,7 @@ class PDFController extends Controller
         $data->otherdocumentstobeattachedwithapplicationforloan = $this->getData($agreement, 'otherdocumentstobeattachedwithapplicationforloan');
 
         // page 22
-        $data->personalloanfacilityagreementdated = $this->getData($agreement, 'personalloanfacilityagreementdated');
+        // $data->personalloanfacilityagreementdated = $this->getData($agreement, 'personalloanfacilityagreementdated');
         $data->deedofpersonalguaranteedate = $this->getData($agreement, 'deedofpersonalguaranteedate');
         $data->deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate = $this->getData($agreement, 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate');
         $data->deedofmortgageofinmoveablepropertieslandhousewarehousedate = $this->getData($agreement, 'deedofmortgageofinmoveablepropertieslandhousewarehousedate');

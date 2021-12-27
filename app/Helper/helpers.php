@@ -79,17 +79,17 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             switch($key_name){
                 // borrower id
                 case 'customerid' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->id;
                     break;
                 // borrower name prefix
                 case 'prefixoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->name_prefix;
                     break;
                 // borrower full name
                 case 'nameoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->full_name;
                     break;
                 // Officially Valid Documents of the Borrower
@@ -103,32 +103,32 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     break;
                 // borrower date of birth
                 case 'dateofbirthoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->date_of_birth;
                     break;
                 // borrower email id
                 case 'emailidoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->email;
                     break;
                 // borrower mobile number
                 case 'mobilenumberoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->mobile;
                     break;
                 // borrower pan card number
                 case 'pancardnumberoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->pan_card_number;
                     break;
                 // borrower occupation
                 case 'occupationoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->occupation;
                     break;
                 // borrower marital status
                 case 'maritalstatusoftheborrower' :
-                    $disabledField = 'disabled';
+                    $disabledField = '';
                     $respValue = $borrower->marital_status;
                     break;
                 // borrower street address
@@ -191,7 +191,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $agreementData = AgreementData::where('rfq_id', $rfq->id)->where('field_name', $key_name)->first();
             if ($agreementData) $respValue = $agreementData->field_value;
 
-            $disabledField = 'disabled';
+            $disabledField = '';
         }
     }
 
@@ -225,11 +225,11 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $response = $extraPreField.'<input type="number" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
         case 'date':
-            if (isset($form_type) == 'show') {
-                $respValue = date('Y-m-d', strtotime($respValue));
-            } else {
-                $respValue = '';
-            }
+            // if (isset($form_type) == 'show') {
+            //     $respValue = date('Y-m-d', strtotime($respValue));
+            // } else {
+            //     $respValue = '';
+            // }
 
             $response = $extraPreField.'<input type="date" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' '.$respValue.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
             break;
@@ -273,7 +273,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $response = '<div class="form-check form-check-inline">' . $option . '</div>';
             break;
         case 'textarea':
-            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm" style="min-height:50px;max-height:100px" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $respValue . '</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $respValue . '</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         default:
             $response = '<input type="text">';
