@@ -69,7 +69,7 @@
                                                 <span class="bs-stepper-label">Borrower's information</span>
                                             </button>
                                         </div>
-                                        <div class="line"></div>
+                                        {{-- <div class="line"></div>
                                         <div class="step" data-target="#document-part">
                                             <button type="button" class="step-trigger" role="tab"
                                                 aria-controls="document-part" id="document-part-trigger">
@@ -85,7 +85,7 @@
                                                 <span class="bs-stepper-circle"><i class="fas fa-save"></i></span>
                                                 <span class="bs-stepper-label">Submit</span>
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="bs-stepper-content">
                                         <div id="information-part" class="content" role="tabpanel"
@@ -143,14 +143,15 @@
 
                                                                         {{-- <button type="button" class="btn btn-sm btn-success" onclick="editAgreementFields()">Edit <i class="fas fa-edit"></i></button> --}}
 
-                                                                        <button type="button"
-                                                                            class="btn btn-sm btn-primary"
-                                                                            onclick="stepper.next()">Go to Documents <i
-                                                                                class="fas fa-chevron-right"></i></button>
+                                                                        {{-- <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button> --}}
+
+                                                                                <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
+                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                        View PDF</a>
 
                                                                     @else
                                                                         <button type="submit"
-                                                                            class="btn btn-sm btn-primary">Submit data &amp; goto Documents
+                                                                            class="btn btn-sm btn-primary">Submit data
                                                                             <i class="fas fa-upload"></i></button>
                                                                     @endif
                                                                 </div>
@@ -167,7 +168,7 @@
                                             @endif
                                         </div>
 
-                                        <div id="document-part" class="content" role="tabpanel"
+                                        {{-- <div id="document-part" class="content" role="tabpanel"
                                             aria-labelledby="document-part-trigger">
                                             <div class="card border shadow-none rounded-0">
                                                 <div class="card-body">
@@ -209,8 +210,6 @@
                                                                                             value="{{ $childItem->id }}">
 
                                                                                         {!! documentSrc($childItem->id, $id, 'action') !!}
-
-                                                                                        {{-- <label for="file_{{ $childItem->id }}" class="btn btn-xs btn-primary" id="image__preview_label{{ $childItem->id }}">Browse <i class="fas fa-camera"></i></label> --}}
 
                                                                                         <button type="submit"
                                                                                             class="btn btn-xs btn-success mb-2"
@@ -271,16 +270,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <div id="submit-part" class="content" role="tabpanel"
-                                            aria-labelledby="submit-part-trigger">
-                                            <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i
-                                                    class="fas fa-chevron-left"></i> Back to Documents</button>
-                                            {{-- <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></button> --}}
-                                            <a href="{{ route('user.borrower.list') }}"
-                                                class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a>
-                                        </div>
+                                        {{-- <div id="submit-part" class="content" role="tabpanel" aria-labelledby="submit-part-trigger"> --}}
+                                            {{-- <button class="btn btn-sm btn-primary" onclick="stepper.previous()"><i class="fas fa-chevron-left"></i> Back to Documents</button> --}}
+
+                                            {{-- <a href="{{ route('user.borrower.list') }}" class="btn btn-sm btn-primary">Submit <i class="fas fa-save"></i></a> --}}
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>
