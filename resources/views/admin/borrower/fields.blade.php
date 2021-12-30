@@ -119,7 +119,7 @@
                                                                             }
                                                                         @endphp
 
-                                                                        {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, 'required', $borrowerId = $id, $formType) !!}
+                                                                        {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, '', $borrowerId = $id, $formType) !!}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

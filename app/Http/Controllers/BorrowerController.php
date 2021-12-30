@@ -133,7 +133,7 @@ class BorrowerController extends Controller
             $past_data = Borrower::select('CUSTOMER_ID')->latest('CUSTOMER_ID')->first();
 
             $user = new Borrower;
-            $user->CUSTOMER_ID = (int)$past_data->CUSTOMER_ID + 1;
+            $user->CUSTOMER_ID = ($past_data == null) ? 1 : (int)$past_data->CUSTOMER_ID + 1;
             $user->name_prefix = $request->name_prefix;
             $user->first_name = $request->first_name;
             $user->middle_name = $request->middle_name;

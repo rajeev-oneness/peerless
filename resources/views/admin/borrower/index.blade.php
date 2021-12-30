@@ -75,9 +75,9 @@
                                     <td>{{$item->CUSTOMER_ID}}</td>
                                     <td>
                                         <div class="user-profile-holder">
-                                            <div class="flex-shrink-0">
+                                            {{-- <div class="flex-shrink-0">
                                                 <img src="{{asset($item->image_path)}}" alt="user-image-{{ $item->id }}">
-                                            </div>
+                                            </div> --}}
                                             <div class="flex-grow-1 ms-3">
                                                 <p class="name">{{ucwords($item->name_prefix)}} {{$item->full_name}}</p>
                                                 <p class="small text-muted mb-0">{{$item->occupation}}</p>
