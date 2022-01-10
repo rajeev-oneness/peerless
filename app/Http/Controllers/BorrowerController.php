@@ -97,7 +97,8 @@ class BorrowerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'customer_id' => 'required|integer|min:1|digits_between:1,20',
+            // manual entry customer id
+            'customer_id' => 'required|integer|min:1|digits_between:1,20',
             'name_prefix' => 'required|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
@@ -130,10 +131,11 @@ class BorrowerController extends Controller
 
         try {
             // old data for latest CUSTOMER ID
-            $past_data = Borrower::select('CUSTOMER_ID')->latest('CUSTOMER_ID')->first();
+            // $past_data = Borrower::select('CUSTOMER_ID')->latest('CUSTOMER_ID')->first();
 
             $user = new Borrower;
-            $user->CUSTOMER_ID = ($past_data == null) ? 1 : (int)$past_data->CUSTOMER_ID + 1;
+            // $user->CUSTOMER_ID = ($past_data == null) ? 1 : (int)$past_data->CUSTOMER_ID + 1;
+            $user->CUSTOMER_ID = $request->customer_id;
             $user->name_prefix = $request->name_prefix;
             $user->first_name = $request->first_name;
             $user->middle_name = $request->middle_name;

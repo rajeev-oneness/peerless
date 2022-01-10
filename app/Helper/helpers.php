@@ -70,6 +70,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
 {
     $respValue = '';
     $disabledField = '';
+    $optionalFieldsData = ''; // optional for officially valid documents
     $extraClass = ''; // extra class name for filtering
     if (!empty($borrowerId)) {
         // in case of adding agreement data, auto-fill borrower details starts
@@ -80,7 +81,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 // borrower id
                 case 'customerid' :
                     $disabledField = '';
-                    $respValue = $borrower->id;
+                    $respValue = $borrower->CUSTOMER_ID;
                     break;
                 // borrower name prefix
                 case 'prefixoftheborrower' :
@@ -94,13 +95,519 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     break;
                 // Officially Valid Documents of the Borrower
                 case 'officiallyvaliddocumentsoftheborrower' :
-                    $comma_seperated_aadhar = $borrower->Aadhar_Number ? $borrower->Aadhar_Number : 'empty';
-                    $comma_seperated_license = $borrower->DRIVING_LINC ? $borrower->DRIVING_LINC : 'empty';
-                    $comma_seperated_passport = $borrower->PASSPORT_NO ? $borrower->PASSPORT_NO : 'empty';
+                    // 	Officially Valid Documents entry fields
 
-                    $respValue = $comma_seperated_aadhar.', '.$comma_seperated_license.', '.$comma_seperated_passport;
-                    // $respValue = $borrower->Aadhar_Number.', '.$borrower->DRIVING_LINC ? $borrower->DRIVING_LINC : ''.', '.$borrower->PASSPORT_NO ? $borrower->PASSPORT_NO : '';
-                    break;
+                    // 1 borrower - aadhar card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataAadharNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'aadharcardnumberoftheborrower')->first();
+                            if ($agreementDataAadharNo) {
+                                // if data is filled & watching only
+                                $respValueAadharCardNo = $agreementDataAadharNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueAadharCardNo = $borrower->Aadhar_Number;
+                    }
+
+                    $optionalFieldsInsideData = '<input type="text" placeholder="Aadhar card number of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[aadharcardnumberoftheborrower]" value="'.$respValueAadharCardNo.'" style="display:none;"><input type="hidden" value="96" name="field_id[96]">';
+
+                    // 2 borrower - voter card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataVoterCardNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'votercardnumberoftheborrower')->first();
+                            if ($agreementDataVoterCardNo) {
+                                // if data is filled & watching only
+                                $respValueVoterCardNo = $agreementDataVoterCardNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueVoterCardNo = $borrower->Voter_ID;
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Voter card number of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[votercardnumberoftheborrower]" value="'.$respValueVoterCardNo.'" style="display:none;"><input type="hidden" value="97" name="field_id[97]">';
+
+                    // 3 borrower - bank acc no, name, ifsc
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataBankAccNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankaccountnumberoftheborrower')->first();
+                            $agreementDataBankName = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'banknameoftheborrower')->first();
+                            $agreementDataBankIfsc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankifscoftheborrower')->first();
+                            if ($agreementDataBankAccNo) {
+                                // if data is filled & watching only
+                                $respValueBankAccNo = $agreementDataBankAccNo->field_value;
+                            }
+                            if ($agreementDataBankName) {
+                                // if data is filled & watching only
+                                $respValueBankName = $agreementDataBankName->field_value;
+                            }
+                            if ($agreementDataBankIfsc) {
+                                // if data is filled & watching only
+                                $respValueBankIfsc = $agreementDataBankIfsc->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueBankAccNo = '';
+                        $respValueBankName = '';
+                        $respValueBankIfsc = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Bank account number of the Borrower" class="form-control form-control-sm" name="field_name[bankaccountnumberoftheborrower]" value="'.$respValueBankAccNo.'" style="display:none;"><input type="hidden" value="98" name="field_id[98]"> <input type="text" placeholder="Bank name of the Borrower" class="form-control form-control-sm" name="field_name[banknameoftheborrower]" value="'.$respValueBankName.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="99" name="field_id[99]"> <input type="text" placeholder="Bank IFSC of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[bankifscoftheborrower]" value="'.$respValueBankIfsc.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="100" name="field_id[100]"> </div>';
+
+                    // 4 borrower - driving license, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataLicenseNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicensenumberoftheborrower')->first();
+                            $agreementDataLicenseIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseissuedateoftheborrower')->first();
+                            $agreementDataLicenseExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseexpirydateoftheborrower')->first();
+                            if ($agreementDataLicenseNo) {
+                                // if data is filled & watching only
+                                $respValueLicenseNo = $agreementDataLicenseNo->field_value;
+                            }
+                            if ($agreementDataLicenseIssue) {
+                                // if data is filled & watching only
+                                $respValueLicenseIssue = $agreementDataLicenseIssue->field_value;
+                            }
+                            if ($agreementDataLicenseExpiry) {
+                                // if data is filled & watching only
+                                $respValueLicenseExpiry = $agreementDataLicenseExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueLicenseNo = $borrower->DRIVING_LINC;
+                        $respValueLicenseIssue = '';
+                        $respValueLicenseExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Driving license number of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[drivinglicensenumberoftheborrower]" value="'.$respValueLicenseNo.'" style="display:none;"><input type="hidden" value="101" name="field_id[101]"> <input type="date" placeholder="Driving license issue date of the Borrower" class="form-control form-control-sm" name="field_name[drivinglicenseissuedateoftheborrower]" value="'.$respValueLicenseIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="102" name="field_id[102]"> <input type="date" placeholder="Driving license expiry date of the Borrower" class="form-control form-control-sm" name="field_name[drivinglicenseexpirydateoftheborrower]" value="'.$respValueLicenseExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="103" name="field_id[103]"> </div>';
+
+                    // 5 borrower - electricity bill
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataElecBill = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'electricitybillnumberoftheborrower')->first();
+                            if ($agreementDataElecBill) {
+                                // if data is filled & watching only
+                                $respValueElecBill = $agreementDataElecBill->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueElecBill = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Electricity bill number of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[electricitybillnumberoftheborrower]" value="'.$respValueElecBill.'" style="display:none;"><input type="hidden" value="104" name="field_id[104]">';
+
+                    // 6 borrower - passport, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataPassportNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportnumberoftheborrower')->first();
+                            $agreementDataPassportIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportissuedateoftheborrower')->first();
+                            $agreementDataPassportExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportexpirydateoftheborrower')->first();
+                            if ($agreementDataPassportNo) {
+                                // if data is filled & watching only
+                                $respValuePassportNo = $agreementDataPassportNo->field_value;
+                            }
+                            if ($agreementDataPassportIssue) {
+                                // if data is filled & watching only
+                                $respValuePassportIssue = $agreementDataPassportIssue->field_value;
+                            }
+                            if ($agreementDataPassportExpiry) {
+                                // if data is filled & watching only
+                                $respValuePassportExpiry = $agreementDataPassportExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValuePassportNo = $borrower->PASSPORT_NO;
+                        $respValuePassportIssue = '';
+                        $respValuePassportExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Passport number of the Borrower" class="form-control form-control-sm text-uppercase" name="field_name[passportnumberoftheborrower]" value="'.$respValuePassportNo.'" style="display:none;"><input type="hidden" value="105" name="field_id[105]"> <input type="date" placeholder="Passport issue date of the Borrower" class="form-control form-control-sm" name="field_name[passportissuedateoftheborrower]" value="'.$respValuePassportIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="106" name="field_id[106]"> <input type="date" placeholder="Passport expiry date of the Borrower" class="form-control form-control-sm" name="field_name[passportexpirydateoftheborrower]" value="'.$respValuePassportExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="107" name="field_id[107]"> </div>';
+
+                    $optionalFieldsData = '<div class="w-100 mt-3">'.$optionalFieldsInsideData.'</div>';
+
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Officially Valid Documents of the Co-Borrower
+                case 'officiallyvaliddocumentsofthecoborrower' :
+                    // 	Officially Valid Documents entry fields
+
+                    // 1 coborrower - aadhar card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataAadharNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'aadharcardnumberofthecoborrower')->first();
+                            if ($agreementDataAadharNo) {
+                                // if data is filled & watching only
+                                $respValueAadharCardNo = $agreementDataAadharNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueAadharCardNo = '';
+                    }
+
+                    $optionalFieldsInsideData = '<input type="text" placeholder="Aadhar card number of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[aadharcardnumberofthecoborrower]" value="'.$respValueAadharCardNo.'" style="display:none;"><input type="hidden" value="108" name="field_id[108]">';
+
+                    // 2 coborrower - voter card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataVoterCardNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'votercardnumberofthecoborrower')->first();
+                            if ($agreementDataVoterCardNo) {
+                                // if data is filled & watching only
+                                $respValueVoterCardNo = $agreementDataVoterCardNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueVoterCardNo = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Voter card number of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[votercardnumberofthecoborrower]" value="'.$respValueVoterCardNo.'" style="display:none;"><input type="hidden" value="109" name="field_id[109]">';
+
+                    // 3 coborrower - bank acc no, name, ifsc
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataBankAccNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankaccountnumberofthecoborrower')->first();
+                            $agreementDataBankName = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'banknameofthecoborrower')->first();
+                            $agreementDataBankIfsc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankifscofthecoborrower')->first();
+                            if ($agreementDataBankAccNo) {
+                                // if data is filled & watching only
+                                $respValueBankAccNo = $agreementDataBankAccNo->field_value;
+                            }
+                            if ($agreementDataBankName) {
+                                // if data is filled & watching only
+                                $respValueBankName = $agreementDataBankName->field_value;
+                            }
+                            if ($agreementDataBankIfsc) {
+                                // if data is filled & watching only
+                                $respValueBankIfsc = $agreementDataBankIfsc->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueBankAccNo = '';
+                        $respValueBankName = '';
+                        $respValueBankIfsc = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Bank account number of the Co-Borrower" class="form-control form-control-sm" name="field_name[bankaccountnumberofthecoborrower]" value="'.$respValueBankAccNo.'" style="display:none;"><input type="hidden" value="110" name="field_id[110]"> <input type="text" placeholder="Bank name of the Co-Borrower" class="form-control form-control-sm" name="field_name[banknameofthecoborrower]" value="'.$respValueBankName.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="111" name="field_id[111]"> <input type="text" placeholder="Bank IFSC of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[bankifscofthecoborrower]" value="'.$respValueBankIfsc.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="112" name="field_id[112]"> </div>';
+
+                    // 4 coborrower - driving license, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataLicenseNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicensenumberofthecoborrower')->first();
+                            $agreementDataLicenseIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseissuedateofthecoborrower')->first();
+                            $agreementDataLicenseExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseexpirydateofthecoborrower')->first();
+                            if ($agreementDataLicenseNo) {
+                                // if data is filled & watching only
+                                $respValueLicenseNo = $agreementDataLicenseNo->field_value;
+                            }
+                            if ($agreementDataLicenseIssue) {
+                                // if data is filled & watching only
+                                $respValueLicenseIssue = $agreementDataLicenseIssue->field_value;
+                            }
+                            if ($agreementDataLicenseExpiry) {
+                                // if data is filled & watching only
+                                $respValueLicenseExpiry = $agreementDataLicenseExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueLicenseNo = '';
+                        $respValueLicenseIssue = '';
+                        $respValueLicenseExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Driving license number of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[drivinglicensenumberofthecoborrower]" value="'.$respValueLicenseNo.'" style="display:none;"><input type="hidden" value="113" name="field_id[113]"> <input type="date" placeholder="Driving license issue date of the Co-Borrower" class="form-control form-control-sm" name="field_name[drivinglicenseissuedateofthecoborrower]" value="'.$respValueLicenseIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="114" name="field_id[114]"> <input type="date" placeholder="Driving license expiry date of the Co-Borrower" class="form-control form-control-sm" name="field_name[drivinglicenseexpirydateofthecoborrower]" value="'.$respValueLicenseExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="115" name="field_id[115]"> </div>';
+
+                    // 5 coborrower - electricity bill
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataElecBill = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'electricitybillnumberofthecoborrower')->first();
+                            if ($agreementDataElecBill) {
+                                // if data is filled & watching only
+                                $respValueElecBill = $agreementDataElecBill->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueElecBill = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Electricity bill number of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[electricitybillnumberofthecoborrower]" value="'.$respValueElecBill.'" style="display:none;"><input type="hidden" value="116" name="field_id[116]">';
+
+                    // 6 coborrower - passport, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataPassportNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportnumberofthecoborrower')->first();
+                            $agreementDataPassportIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportissuedateofthecoborrower')->first();
+                            $agreementDataPassportExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportexpirydateofthecoborrower')->first();
+                            if ($agreementDataPassportNo) {
+                                // if data is filled & watching only
+                                $respValuePassportNo = $agreementDataPassportNo->field_value;
+                            }
+                            if ($agreementDataPassportIssue) {
+                                // if data is filled & watching only
+                                $respValuePassportIssue = $agreementDataPassportIssue->field_value;
+                            }
+                            if ($agreementDataPassportExpiry) {
+                                // if data is filled & watching only
+                                $respValuePassportExpiry = $agreementDataPassportExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValuePassportNo = '';
+                        $respValuePassportIssue = '';
+                        $respValuePassportExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Passport number of the Co-Borrower" class="form-control form-control-sm text-uppercase" name="field_name[passportnumberofthecoborrower]" value="'.$respValuePassportNo.'" style="display:none;"><input type="hidden" value="117" name="field_id[117]"> <input type="date" placeholder="Passport issue date of the Co-Borrower" class="form-control form-control-sm" name="field_name[passportissuedateofthecoborrower]" value="'.$respValuePassportIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="118" name="field_id[118]"> <input type="date" placeholder="Passport expiry date of the Co-Borrower" class="form-control form-control-sm" name="field_name[passportexpirydateofthecoborrower]" value="'.$respValuePassportExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="119" name="field_id[119]"> </div>';
+
+                    $optionalFieldsData = '<div class="w-100 mt-3">'.$optionalFieldsInsideData.'</div>';
+
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Officially Valid Documents of the Guarantor
+                case 'officiallyvaliddocumentsoftheguarantor' :
+                    // 	Officially Valid Documents entry fields
+
+                    // 1 guarantor - aadhar card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataAadharNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'aadharcardnumberoftheguarantor')->first();
+                            if ($agreementDataAadharNo) {
+                                // if data is filled & watching only
+                                $respValueAadharCardNo = $agreementDataAadharNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueAadharCardNo = '';
+                    }
+
+                    $optionalFieldsInsideData = '<input type="text" placeholder="Aadhar card number of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[aadharcardnumberoftheguarantor]" value="'.$respValueAadharCardNo.'" style="display:none;"><input type="hidden" value="120" name="field_id[120]">';
+
+                    // 2 guarantor - voter card
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataVoterCardNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'votercardnumberoftheguarantor')->first();
+                            if ($agreementDataVoterCardNo) {
+                                // if data is filled & watching only
+                                $respValueVoterCardNo = $agreementDataVoterCardNo->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueVoterCardNo = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Voter card number of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[votercardnumberoftheguarantor]" value="'.$respValueVoterCardNo.'" style="display:none;"><input type="hidden" value="121" name="field_id[121]">';
+
+                    // 3 guarantor - bank acc no, name, ifsc
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataBankAccNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankaccountnumberoftheguarantor')->first();
+                            $agreementDataBankName = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'banknameoftheguarantor')->first();
+                            $agreementDataBankIfsc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'bankifscoftheguarantor')->first();
+                            if ($agreementDataBankAccNo) {
+                                // if data is filled & watching only
+                                $respValueBankAccNo = $agreementDataBankAccNo->field_value;
+                            }
+                            if ($agreementDataBankName) {
+                                // if data is filled & watching only
+                                $respValueBankName = $agreementDataBankName->field_value;
+                            }
+                            if ($agreementDataBankIfsc) {
+                                // if data is filled & watching only
+                                $respValueBankIfsc = $agreementDataBankIfsc->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueBankAccNo = '';
+                        $respValueBankName = '';
+                        $respValueBankIfsc = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Bank account number of the Guarantor" class="form-control form-control-sm" name="field_name[bankaccountnumberoftheguarantor]" value="'.$respValueBankAccNo.'" style="display:none;"><input type="hidden" value="122" name="field_id[122]"> <input type="text" placeholder="Bank name of the Guarantor" class="form-control form-control-sm" name="field_name[banknameoftheguarantor]" value="'.$respValueBankName.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="123" name="field_id[123]"> <input type="text" placeholder="Bank IFSC of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[bankifscoftheguarantor]" value="'.$respValueBankIfsc.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="124" name="field_id[124]"> </div>';
+
+                    // 4 guarantor - driving license, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataLicenseNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicensenumberoftheguarantor')->first();
+                            $agreementDataLicenseIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseissuedateoftheguarantor')->first();
+                            $agreementDataLicenseExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'drivinglicenseexpirydateoftheguarantor')->first();
+                            if ($agreementDataLicenseNo) {
+                                // if data is filled & watching only
+                                $respValueLicenseNo = $agreementDataLicenseNo->field_value;
+                            }
+                            if ($agreementDataLicenseIssue) {
+                                // if data is filled & watching only
+                                $respValueLicenseIssue = $agreementDataLicenseIssue->field_value;
+                            }
+                            if ($agreementDataLicenseExpiry) {
+                                // if data is filled & watching only
+                                $respValueLicenseExpiry = $agreementDataLicenseExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueLicenseNo = '';
+                        $respValueLicenseIssue = '';
+                        $respValueLicenseExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Driving license number of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[drivinglicensenumberoftheguarantor]" value="'.$respValueLicenseNo.'" style="display:none;"><input type="hidden" value="125" name="field_id[125]"> <input type="date" placeholder="Driving license issue date of the Guarantor" class="form-control form-control-sm" name="field_name[drivinglicenseissuedateoftheguarantor]" value="'.$respValueLicenseIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="126" name="field_id[126]"> <input type="date" placeholder="Driving license expiry date of the Guarantor" class="form-control form-control-sm" name="field_name[drivinglicenseexpirydateoftheguarantor]" value="'.$respValueLicenseExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="127" name="field_id[127]"> </div>';
+
+                    // 5 guarantor - electricity bill
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataElecBill = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'electricitybillnumberoftheguarantor')->first();
+                            if ($agreementDataElecBill) {
+                                // if data is filled & watching only
+                                $respValueElecBill = $agreementDataElecBill->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValueElecBill = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<input type="text" placeholder="Electricity bill number of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[electricitybillnumberoftheguarantor]" value="'.$respValueElecBill.'" style="display:none;"><input type="hidden" value="128" name="field_id[128]">';
+
+                    // 6 guarantor - passport, issue, expiry
+                    // value
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $agreementDataPassportNo = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportnumberoftheguarantor')->first();
+                            $agreementDataPassportIssue = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportissuedateoftheguarantor')->first();
+                            $agreementDataPassportExpiry = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'passportexpirydateoftheguarantor')->first();
+                            if ($agreementDataPassportNo) {
+                                // if data is filled & watching only
+                                $respValuePassportNo = $agreementDataPassportNo->field_value;
+                            }
+                            if ($agreementDataPassportIssue) {
+                                // if data is filled & watching only
+                                $respValuePassportIssue = $agreementDataPassportIssue->field_value;
+                            }
+                            if ($agreementDataPassportExpiry) {
+                                // if data is filled & watching only
+                                $respValuePassportExpiry = $agreementDataPassportExpiry->field_value;
+                            }
+                        }
+                    } else {
+                        // if data is not filled
+                        $respValuePassportNo = '';
+                        $respValuePassportIssue = '';
+                        $respValuePassportExpiry = '';
+                    }
+
+                    $optionalFieldsInsideData .= '<div class="d-flex"> <input type="text" placeholder="Passport number of the Guarantor" class="form-control form-control-sm text-uppercase" name="field_name[passportnumberoftheguarantor]" value="'.$respValuePassportNo.'" style="display:none;"><input type="hidden" value="129" name="field_id[129]"> <input type="date" placeholder="Passport issue date of the Guarantor" class="form-control form-control-sm" name="field_name[passportissuedateoftheguarantor]" value="'.$respValuePassportIssue.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="130" name="field_id[130]"> <input type="date" placeholder="Passport expiry date of the Guarantor" class="form-control form-control-sm" name="field_name[passportexpirydateoftheguarantor]" value="'.$respValuePassportExpiry.'" style="display:none;border-left: 1px solid #29aae1;"><input type="hidden" value="131" name="field_id[131]"> </div>';
+
+                    $optionalFieldsData = '<div class="w-100 mt-3">'.$optionalFieldsInsideData.'</div>';
+
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 // borrower date of birth
                 case 'dateofbirthoftheborrower' :
                     $disabledField = '';
@@ -185,8 +692,8 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
         }
         // in case of adding agreement data, auto-fill borrower details ends
 
+        // if rfq found, fetch filled data
         $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
-
         if ($rfq) {
             $agreementData = AgreementData::where('rfq_id', $rfq->id)->where('field_name', $key_name)->first();
             if ($agreementData) $respValue = $agreementData->field_value;
@@ -270,7 +777,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 if ($respValue == $val) $checked = 'checked';
                 $option .= '<input class="form-check-input" type="radio" name="field_name[' . $key_name . ']" id="' . $key_name . '-' . $index . '" value="' . $val . '" ' . $required . ' ' . $checked . ' '.$disabledField.'> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val . '</label><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             }
-            $response = '<div class="form-check form-check-inline">' . $option . '</div>';
+            $response = '<div class="form-check form-check-inline">' . $option . '</div>'.$optionalFieldsData;
             break;
         case 'textarea':
             $response = '<textarea placeholder="' . $name . '" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $respValue . '</textarea><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';

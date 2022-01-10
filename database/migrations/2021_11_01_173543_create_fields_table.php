@@ -34,7 +34,7 @@ class CreateFieldsTable extends Migration
         $highestQualificationList = 'AAS, BAS, B Arch, BA, BBA, MBA, DDS, DBA, MD, Pharm D, PhD, B Tech, M Tech, BCA, MCA';
 
         // valid document lists for borrower & co-borrower
-        $validDocumentsList = 'Aadhar card, Bank statement, Driving license, Electricity bill, Passport';
+        $validDocumentsList = 'Aadhar card, Voter card, Bank statement, Driving license, Electricity bill, Passport';
 
         // nature/ type of loan
         $natureOfLoan = 'Loan against salary, Loan against salary with check-off, Loan to Prefessional, Loan to Professional RLOC, Loan to Professional RLOC with check-off, Loan to Professional RLOC without check-off';
@@ -58,7 +58,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Name of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheborrower'],
             ['name' => 'Street address of the Borrower', 'type' => 10, 'value' => '', 'key_name' => 'streetaddressoftheborrower'],
             ['name' => 'PAN card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheborrower'],
-            ['name' => 'Officially Valid Documents of the Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheborrower'],
+            ['name' => 'Officially Valid Documents of the Borrower', 'type' => 9, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheborrower'],
             ['name' => 'Occupation of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheborrower'],
             ['name' => 'Resident status of the Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheborrower'],
             ['name' => 'Date of birth of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheborrower'],
@@ -75,7 +75,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'City of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'cityofthecoborrower'],
             ['name' => 'State of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'stateofthecoborrower'],
             ['name' => 'PAN card number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberofthecoborrower'],
-            ['name' => 'Officially Valid Documents of the Co-Borrower', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsofthecoborrower'],
+            ['name' => 'Officially Valid Documents of the Co-Borrower', 'type' => 9, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsofthecoborrower'],
             ['name' => 'Occupation of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'occupationofthecoborrower'],
             ['name' => 'Resident status of the Co-Borrower', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusofthecoborrower'],
             ['name' => 'Date of birth of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower'],
@@ -93,7 +93,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'City of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'cityoftheguarantor'],
             ['name' => 'State of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'stateoftheguarantor'],
             ['name' => 'PAN card number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberoftheguarantor'],
-            ['name' => 'Officially Valid Documents of the Guarantor', 'type' => 8, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheguarantor'],
+            ['name' => 'Officially Valid Documents of the Guarantor', 'type' => 9, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsoftheguarantor'],
             ['name' => 'Occupation of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'occupationoftheguarantor'],
             ['name' => 'Resident status of the Guarantor', 'type' => 9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusoftheguarantor'],
             ['name' => 'Date of birth of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthoftheguarantor'],
@@ -185,16 +185,67 @@ class CreateFieldsTable extends Migration
             ['name' => 'Demand Promissory Note for borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforborrowerdate'],
             ['name' => 'Demand Promissory Note for borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforborroweramount'],
             // for co-borrower
-            ['name' => 'Demand Promissory Note for co-borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerplace'],
-            ['name' => 'Demand Promissory Note for co-borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerdate'],
-            ['name' => 'Demand Promissory Note for co-borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborroweramount'],
+            // ['name' => 'Demand Promissory Note for co-borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerplace'],
+            // ['name' => 'Demand Promissory Note for co-borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerdate'],
+            // ['name' => 'Demand Promissory Note for co-borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborroweramount'],
 
             // CONTINUING SECURITY LETTER
             ['name' => 'Continuing Security Letter Date 1', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate1'],
-            ['name' => 'Continuing Security Letter Date 2', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate2'],
+            // ['name' => 'Continuing Security Letter Date 2', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate2'],
 
             // UNDERTAKING CUM INDEMNITY
             ['name' => 'Undertaking Cum Indemnity Date', 'type' => 4, 'value' => '', 'key_name' => 'undertakingcumindemnitydate'],
+
+
+
+            // OVDs : Aadhar card, Voter card, Bank statement, Driving license, Electricity bill, Passport
+            // borrower valid documents information starts
+            ['name' => 'Aadhar card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'aadharcardnumberoftheborrower'],
+            ['name' => 'Voter card number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'votercardnumberoftheborrower'],
+            ['name' => 'Bank account number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaccountnumberoftheborrower'],
+            ['name' => 'Bank name of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameoftheborrower'],
+            ['name' => 'Bank IFSC of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankifscoftheborrower'],
+            ['name' => 'Driving license number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'drivinglicensenumberoftheborrower'],
+            ['name' => 'Driving license issue date of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseissuedateoftheborrower'],
+            ['name' => 'Driving license expiry date of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseexpirydateoftheborrower'],
+            ['name' => 'Electricity bill number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'electricitybillnumberoftheborrower'],
+            ['name' => 'Passport number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'passportnumberoftheborrower'],
+            ['name' => 'Passport issue date of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'passportissuedateoftheborrower'],
+            ['name' => 'Passport expiry date of the Borrower', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateoftheborrower'],
+            // borrower valid documents information ends
+
+            // co-borrower valid documents information starts
+            ['name' => 'Aadhar card number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'aadharcardnumberofthecoborrower'],
+            ['name' => 'Voter card number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'votercardnumberofthecoborrower'],
+            ['name' => 'Bank account number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankaccountnumberofthecoborrower'],
+            ['name' => 'Bank name of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameofthecoborrower'],
+            ['name' => 'Bank IFSC of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'bankifscofthecoborrower'],
+            ['name' => 'Driving license number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'drivinglicensenumberofthecoborrower'],
+            ['name' => 'Driving license issue date of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseissuedateofthecoborrower'],
+            ['name' => 'Driving license expiry date of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseexpirydateofthecoborrower'],
+            ['name' => 'Electricity bill number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'electricitybillnumberofthecoborrower'],
+            ['name' => 'Passport number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'passportnumberofthecoborrower'],
+            ['name' => 'Passport issue date of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'passportissuedateofthecoborrower'],
+            ['name' => 'Passport expiry date of the Co-Borrower', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateofthecoborrower'],
+            // co-borrower valid documents information ends
+
+            // guarantor valid documents information starts
+            ['name' => 'Aadhar card number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'aadharcardnumberoftheguarantor'],
+            ['name' => 'Voter card number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'votercardnumberoftheguarantor'],
+            ['name' => 'Bank account number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'bankaccountnumberoftheguarantor'],
+            ['name' => 'Bank name of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'banknameoftheguarantor'],
+            ['name' => 'Bank IFSC of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'bankifscoftheguarantor'],
+            ['name' => 'Driving license number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'drivinglicensenumberoftheguarantor'],
+            ['name' => 'Driving license issue date of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseissuedateoftheguarantor'],
+            ['name' => 'Driving license expiry date of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseexpirydateoftheguarantor'],
+            ['name' => 'Electricity bill number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'electricitybillnumberoftheguarantor'],
+            ['name' => 'Passport number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'passportnumberoftheguarantor'],
+            ['name' => 'Passport issue date of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'passportissuedateoftheguarantor'],
+            ['name' => 'Passport expiry date of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateoftheguarantor'],
+            // guarantor valid documents information ends
+
+
+
 
             // file uploads
             // ['name' => 'Borrower&apos;s request to employer for EMI deduction from salary', 'type' => 6, 'value' => '', 'key_name' => 'borrowersrequesttoemployerforemideductionfromsalary'],

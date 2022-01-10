@@ -99,10 +99,50 @@
                                                         {{-- @foreach ($data->fields as $index => $item) --}}
                                                         @forelse ($data->parentFields as $indexParent => $parent)
                                                             <tr>
-                                                                <td colspan="3" class="field-heading">
-                                                                    {{ $parent->name }}</td>
+                                                                <td colspan="3" class="field-heading">{{ $parent->name }}</td>
                                                             </tr>
                                                             @foreach ($parent->childRelation as $indexChild => $item)
+
+                                                                @if ($item->childField->name == "Aadhar card number of the Borrower")
+                                                                @elseif ($item->childField->name == "Voter card number of the Borrower")
+                                                                @elseif ($item->childField->name == "Bank account number of the Borrower")
+                                                                @elseif ($item->childField->name == "Bank name of the Borrower")
+                                                                @elseif ($item->childField->name == "Bank IFSC of the Borrower")
+                                                                @elseif ($item->childField->name == "Driving license number of the Borrower")
+                                                                @elseif ($item->childField->name == "Driving license issue date of the Borrower")
+                                                                @elseif ($item->childField->name == "Driving license expiry date of the Borrower")
+                                                                @elseif ($item->childField->name == "Electricity bill number of the Borrower")
+                                                                @elseif ($item->childField->name == "Passport number of the Borrower")
+                                                                @elseif ($item->childField->name == "Passport issue date of the Borrower")
+                                                                @elseif ($item->childField->name == "Passport expiry date of the Borrower")
+
+                                                                @elseif ($item->childField->name == "Aadhar card number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Voter card number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Bank account number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Bank name of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Bank IFSC of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Driving license number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Driving license issue date of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Driving license expiry date of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Electricity bill number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Passport number of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Passport issue date of the Co-Borrower")
+                                                                @elseif ($item->childField->name == "Passport expiry date of the Co-Borrower")
+
+                                                                @elseif ($item->childField->name == "Aadhar card number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Voter card number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Bank account number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Bank name of the Guarantor")
+                                                                @elseif ($item->childField->name == "Bank IFSC of the Guarantor")
+                                                                @elseif ($item->childField->name == "Driving license number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Driving license issue date of the Guarantor")
+                                                                @elseif ($item->childField->name == "Driving license expiry date of the Guarantor")
+                                                                @elseif ($item->childField->name == "Electricity bill number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Passport number of the Guarantor")
+                                                                @elseif ($item->childField->name == "Passport issue date of the Guarantor")
+                                                                @elseif ($item->childField->name == "Passport expiry date of the Guarantor")
+
+                                                                @else
                                                                 <tr>
                                                                     <td style="width: 50px">{{ $indexChild + 1 }}</td>
                                                                     <td class="fields_col-1">
@@ -122,6 +162,8 @@
                                                                         {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, '', $borrowerId = $id, $formType) !!}
                                                                     </td>
                                                                 </tr>
+                                                                @endif
+                                                                
                                                             @endforeach
                                                         @empty
                                                             <tr>
@@ -145,9 +187,8 @@
 
                                                                         {{-- <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button> --}}
 
-                                                                                <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
-                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
-                                        View PDF</a>
+                                                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                                                        View PDF</a>
 
                                                                     @else
                                                                         <button type="submit"
@@ -541,5 +582,332 @@
                 }
             })
         }
+
+        // Officially Valid Documents of the Borrower on click
+        $('input[name="field_name[officiallyvaliddocumentsoftheborrower]"]').click(function(){
+            var inputValue = $(this).attr("value");
+            // console.log(inputValue);
+            if(inputValue == 'Aadhar card') {
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').show();
+
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+            } else if (inputValue == 'Voter card') {
+                $('input[name="field_name[votercardnumberoftheborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+
+            } else if (inputValue == 'Bank statement') {
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').show();
+                $('input[name="field_name[banknameoftheborrower]"]').show();
+                $('input[name="field_name[bankifscoftheborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+
+            } else if (inputValue == 'Driving license') {
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').show();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').show();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+
+            } else if (inputValue == 'Electricity bill') {
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+
+            } else if (inputValue == 'Passport') {
+                $('input[name="field_name[passportnumberoftheborrower]"]').show();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').show();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+
+            } else {
+                $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
+                $('input[name="field_name[banknameoftheborrower]"]').hide();
+                $('input[name="field_name[bankifscoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
+                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+            }
+        });
+
+        // Officially Valid Documents of the Co-Borrower on click
+        $('input[name="field_name[officiallyvaliddocumentsofthecoborrower]"]').click(function(){
+            var inputValue = $(this).attr("value");
+            // console.log(inputValue);
+            if(inputValue == 'Aadhar card') {
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').show();
+
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+            } else if (inputValue == 'Voter card') {
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+
+            } else if (inputValue == 'Bank statement') {
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').show();
+                $('input[name="field_name[banknameofthecoborrower]"]').show();
+                $('input[name="field_name[bankifscofthecoborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+
+            } else if (inputValue == 'Driving license') {
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').show();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').show();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+
+            } else if (inputValue == 'Electricity bill') {
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+
+            } else if (inputValue == 'Passport') {
+                $('input[name="field_name[passportnumberofthecoborrower]"]').show();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').show();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').show();
+
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+
+            } else {
+                $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[banknameofthecoborrower]"]').hide();
+                $('input[name="field_name[bankifscofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
+                $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
+                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
+                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+            }
+        });
+
+        // Officially Valid Documents of the Guarantor on click
+        $('input[name="field_name[officiallyvaliddocumentsoftheguarantor]"]').click(function(){
+            var inputValue = $(this).attr("value");
+            // console.log(inputValue);
+            if(inputValue == 'Aadhar card') {
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').show();
+
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+            } else if (inputValue == 'Voter card') {
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+
+            } else if (inputValue == 'Bank statement') {
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').show();
+                $('input[name="field_name[banknameoftheguarantor]"]').show();
+                $('input[name="field_name[bankifscoftheguarantor]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+
+            } else if (inputValue == 'Driving license') {
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').show();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').show();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+
+            } else if (inputValue == 'Electricity bill') {
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+
+            } else if (inputValue == 'Passport') {
+                $('input[name="field_name[passportnumberoftheguarantor]"]').show();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').show();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').show();
+
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+
+            } else {
+                $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[banknameoftheguarantor]"]').hide();
+                $('input[name="field_name[bankifscoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
+                $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
+                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
+                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+            }
+        });
     </script>
 @endsection

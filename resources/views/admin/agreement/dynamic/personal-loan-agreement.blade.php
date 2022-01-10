@@ -2157,6 +2157,20 @@
                         </td>
                         <td>
                             {{$data->officiallyvaliddocumentsoftheborrower}}
+
+                            @if ($data->officiallyvaliddocumentsoftheborrower == "Aadhar card")
+                                ({{$data->aadharcardnumberoftheborrower}})
+                            @elseif ($data->officiallyvaliddocumentsoftheborrower == "Voter card")
+                                ({{$data->votercardnumberoftheborrower}})
+                            @elseif ($data->officiallyvaliddocumentsoftheborrower == "Bank statement")
+                                ({{$data->bankaccountnumberoftheborrower}})
+                            @elseif ($data->officiallyvaliddocumentsoftheborrower == "Driving license")
+                                ({{$data->drivinglicensenumberoftheborrower}})
+                            @elseif ($data->officiallyvaliddocumentsoftheborrower == "Electricity bill")
+                                ({{$data->electricitybillnumberoftheborrower}})
+                            @elseif ($data->officiallyvaliddocumentsoftheborrower == "Passport")
+                                ({{$data->passportnumberoftheborrower}})
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -2204,7 +2218,7 @@
                             <P class="p204">Tel no / Email ID</P>
                         </td>
                         <td>
-                            {{$data->mobilenumberoftheborrower}} / {{$data->emailidoftheborrower}}
+                            {{$data->mobilenumberoftheborrower}} {{($data->emailidoftheborrower != null) ? '/ '.$data->emailidoftheborrower : ''}}
                         </td>
                     </tr>
                 </table>
@@ -2240,6 +2254,20 @@
                         </td>
                         <td>
                             {{$data->officiallyvaliddocumentsofthecoborrower}}
+
+                            @if ($data->officiallyvaliddocumentsofthecoborrower == "Aadhar card")
+                                ({{$data->aadharcardnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Voter card")
+                                ({{$data->votercardnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Bank statement")
+                                ({{$data->bankaccountnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Driving license")
+                                ({{$data->drivinglicensenumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Electricity bill")
+                                ({{$data->electricitybillnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Passport")
+                                ({{$data->passportnumberofthecoborrower}})
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -2287,7 +2315,7 @@
                             <P class="p204">Tel no / Email ID</P>
                         </td>
                         <td>
-                            {{$data->mobilenumberofthecoborrower}} / {{$data->emailidofthecoborrower}}
+                            {{$data->mobilenumberofthecoborrower}} {{($data->emailidofthecoborrower != null) ? '/ '.$data->emailidofthecoborrower : ''}}
                         </td>
                     </tr>
                 </table>
@@ -2323,6 +2351,20 @@
                         </td>
                         <td>
                             {{$data->officiallyvaliddocumentsofthecoborrower}}
+
+                            @if ($data->officiallyvaliddocumentsofthecoborrower == "Aadhar card")
+                                ({{$data->aadharcardnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Voter card")
+                                ({{$data->votercardnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Bank statement")
+                                ({{$data->bankaccountnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Driving license")
+                                ({{$data->drivinglicensenumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Electricity bill")
+                                ({{$data->electricitybillnumberofthecoborrower}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Passport")
+                                ({{$data->passportnumberofthecoborrower}})
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -2370,7 +2412,7 @@
                             <P class="p204">Tel no / Email ID</P>
                         </td>
                         <td>
-                            {{$data->mobilenumberofthecoborrower}} / {{$data->emailidofthecoborrower}}
+                            {{$data->mobilenumberofthecoborrower}} {{($data->emailidofthecoborrower != null) ? '/ '.$data->emailidofthecoborrower : ''}}
                         </td>
                     </tr>
                 </table>
@@ -2440,8 +2482,8 @@
                         </td>
                         <td>
                             <p>
-                                Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}} only)
-                                Reference no {{$data->loanreferencenumber}} dated {{date('Y-m-d')}}
+                                Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only
+                                Reference no {{$data->loanreferencenumber}} dated {{$data->dateofagreement}}
                             </p>
                         </td>
                     </tr>
@@ -2470,12 +2512,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>vi. Processing &
-                            Documentation charges</td>
+                        <td>vi. Processing fee <br> Documentation charges</td>
                         <td>
                             <p>
                                 {{$data->processingchargeinpercentage}}%
-                                ({{$data->documentationfee}})
+                                <br>
+                                {{$data->documentationfee}}
                             </p>
                         </td>
                     </tr>
@@ -2500,12 +2542,11 @@
                             of interest</td>
                         <td>
                             <p>
-                                Repayable in___________({{$data->monthlyinstalmentsnumber}}) Equated Monthly
+                                Repayable in ({{$data->monthlyinstalmentsnumber}}) Equated Monthly
                                 Instalments (EMIs) of Rs.{{$data->monthlyemiindigits}}/-
                                 (Rupees {{$data->monthlyemiinwords}} only)
-                                each, to be
+                                each, to be {{$data->paymentdeductionfrom}}
                             </p>
-                            {{$data->paymentdeductionfrom}}
                             {{-- <input type="checkbox">deducted from the Borrower's salary by the Borrower's employer on monthly basis and credited into the Lender's bank Account <br>
                             <input type="checkbox">directly debited from the Borrower's bank a/c and credited into lender's bank a/c as detailed in item no ( IX) here in below --}}
                         </td>
@@ -2602,6 +2643,7 @@
                                 Savings / Current Account No : {{$data->savingsaccountnumberofborrower}} <br>
                                 Beneficiary : {{$data->beneficiarynameofborrowersbank}} <br>
                                 Name of bank & Branch : {{$data->banknameofborrower}} / {{$data->branchnameofborrower}} <br>
+                                Bank address : {{$data->bankaddressofborrower}} <br>
                                 IFSC Code : {{$data->ifscodeofborrower}} <br>
                             </p>
                         </td>
@@ -2962,9 +3004,9 @@
                     <P class="ft5">ANNEXURE I</P>
                     <P class="ft5">DEMAND PROMISSORY NOTE</P>
                 </div>
-        
+
                 <br>
-        
+
                 <table class="table_23 border0" style="width:80%; margin:0 auto;">
                     <tr>
                         <td style="text-align:right;" class="border0" colspan="2">
@@ -2980,7 +3022,7 @@
                             Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East,
                             Kolkata – 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with 
                             interest there on at the rate of DEMAND PROMISSORY NOTE {{$data->rateofinterest}} %
-                            Per annum _____________ with rests along with all costs, charges, expenses, taxes,
+                            Per annum with rests along with all costs, charges, expenses, taxes,
                             cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to
                             time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypo the cated to
                             any one as required by PFSL, the lender, without notice tome / us.
@@ -3040,7 +3082,7 @@
                         <td class="border0" colspan="2">
 
                         <p class="ft131">
-                            ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata – 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with ___________rests along with all costs, charges, expenses, taxes, cess, levies,
+                            ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata – 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with rests along with all costs, charges, expenses, taxes, cess, levies,
                             duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be
                             Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypo the cated to any one
                             as required by PFSL, the lender, without notice tome / us.
@@ -3125,16 +3167,9 @@
                     <tr>
                         <td class="border0">
                             <p>
-                                I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note
-                                dated {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}}) Only payable
-                                and dated {{$data->continuingsecurityletterdate2}}
-                                for Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
-                                demand, which is given by me / us as Security for repayment of the loan Granted to me/ us by PFSL, the Lender, by
-                                execution of Personal Loan Agreement dated {{$data->dateofagreement}}, together with interest and other amounts due there
+                                I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note dated {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on demand, which is given by me / us as Security for repayment of the loan Granted to me/ us by PFSL, the Lender, by execution of Personal Loan Agreement dated {{$data->dateofagreement}}, together with interest and other amounts due there
                                 under and which may here after become due and payable by me / us to PFSL.
-                                Not with standing the fact that the out standing loan amount may be reduced from time to time or extinguished, the
-                                Promise to pay shall be a continuing Promise till the payment of the entire outstanding amount by me / us to the
-                                satisfaction of the Lender.
+                                Not with standing the fact that the out standing loan amount may be reduced from time to time or extinguished, the Promise to pay shall be a continuing Promise till the payment of the entire outstanding amount by me / us to the satisfaction of the Lender.
                                 <br><br>
                             </p>
                         </td>
