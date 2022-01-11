@@ -3077,7 +3077,7 @@
                     <tr>
                         <td style="text-align:right;" class="border0" colspan="2">
                             <p class="ft131">Place : {{$data->demandpromissorynoteforborrowerplace}}</p>
-                            <p class="ft131">Dated : </p>
+                            <p class="ft131">Dated : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                             <p class="ft131">Rs. {{$data->demandpromissorynoteforborroweramount}}/-</p>
                         </td>
                     </tr>
