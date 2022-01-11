@@ -2325,7 +2325,7 @@
                             <P class="p203 ">Name of the Co Borrower</P>
                         </td>
                         <td>
-                            {{$data->nameofthecoborrower}}
+                            {{$data->nameofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2333,7 +2333,7 @@
                             <P class="p204">Permanent Address</P>
                         </td>
                         <td>
-                            {{$data->streetaddressofthecoborrower}}
+                            {{$data->streetaddressofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2341,7 +2341,7 @@
                             <P class="p205">PAN</P>
                         </td>
                         <td>
-                            {{$data->pancardnumberofthecoborrower}}
+                            {{$data->pancardnumberofthecoborrower2}}
                         </td>
                     </tr>
                 
@@ -2350,20 +2350,20 @@
                             <P class="p204">Officially Valid Documents</P>
                         </td>
                         <td>
-                            {{$data->officiallyvaliddocumentsofthecoborrower}}
+                            {{$data->officiallyvaliddocumentsofthecoborrower2}}
 
-                            @if ($data->officiallyvaliddocumentsofthecoborrower == "Aadhar card")
-                                ({{$data->aadharcardnumberofthecoborrower}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Voter card")
-                                ({{$data->votercardnumberofthecoborrower}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Bank statement")
-                                ({{$data->bankaccountnumberofthecoborrower}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Driving license")
-                                ({{$data->drivinglicensenumberofthecoborrower}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Electricity bill")
-                                ({{$data->electricitybillnumberofthecoborrower}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower == "Passport")
-                                ({{$data->passportnumberofthecoborrower}})
+                            @if ($data->officiallyvaliddocumentsofthecoborrower2 == "Aadhar card")
+                                ({{$data->aadharcardnumberofthecoborrower2}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Voter card")
+                                ({{$data->votercardnumberofthecoborrower2}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Bank statement")
+                                ({{$data->bankaccountnumberofthecoborrower2}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Driving license")
+                                ({{$data->drivinglicensenumberofthecoborrower2}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Electricity bill")
+                                ({{$data->electricitybillnumberofthecoborrower2}})
+                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Passport")
+                                ({{$data->passportnumberofthecoborrower2}})
                             @endif
                         </td>
                     </tr>
@@ -2372,7 +2372,7 @@
                             <P class="p204">Occupation</P>
                         </td>
                         <td>
-                            {{$data->occupationofthecoborrower}}
+                            {{$data->occupationofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2380,7 +2380,7 @@
                             <P class="p204">Resident Status</P>
                         </td>
                         <td>
-                            {{$data->residentstatusofthecoborrower}}
+                            {{$data->residentstatusofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2388,7 +2388,7 @@
                             <P class="p205">Date of birth</P>
                         </td>
                         <td>
-                            {{$data->dateofbirthofthecoborrower}}
+                            {{$data->dateofbirthofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2396,7 +2396,7 @@
                             <P class="p204">Marital Status</P>
                         </td>
                         <td>
-                            {{$data->maritalstatusofthecoborrower}}
+                            {{$data->maritalstatusofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2404,7 +2404,7 @@
                             <P class="p205">Highest Education</P>
                         </td>
                         <td>
-                            {{$data->highesteducationofthecoborrower}}
+                            {{$data->highesteducationofthecoborrower2}}
                         </td>
                     </tr>
                     <tr>
@@ -2412,7 +2412,7 @@
                             <P class="p204">Tel no / Email ID</P>
                         </td>
                         <td>
-                            {{$data->mobilenumberofthecoborrower}} {{($data->emailidofthecoborrower != null) ? '/ '.$data->emailidofthecoborrower : ''}}
+                            {{$data->mobilenumberofthecoborrower2}} {{($data->emailidofthecoborrower2 != null) ? '/ '.$data->emailidofthecoborrower2 : ''}}
                         </td>
                     </tr>
                 </table>
@@ -2597,16 +2597,12 @@
                     <tr>
                         <td>
                             x. 
-                            Date of credit of EMI into Lender&apos;s
-                            Bank Account
+                            Date of credit of EMI into Lender&apos;s Bank Account
                         </td>
                         <td>
                             <p>
-                                {{$data->dateofcreditofemiintolendersbankaccount}}
-                                {{$data->otherdateofemicredit ? 'Other '.$data->otherdateofemicredit : ''}}
-                                {{-- <input type="checkbox"> 5<sup>th</sup> of every month
-                                <input type="checkbox"> 2<sup>nd</sup> of every month
-                                <input type="checkbox"> Others______ --}}
+                                {{ ($data->dateofcreditofemiintolendersbankaccount == 'Others') ? '' : $data->dateofcreditofemiintolendersbankaccount }}
+                                {{$data->otherdateofemicredit ? $data->otherdateofemicredit.' of every month' : ''}}
                             </p>
                         </td>
                     </tr>

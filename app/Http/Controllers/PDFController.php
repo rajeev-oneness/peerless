@@ -72,14 +72,9 @@ class PDFController extends Controller
         $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
         $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
         $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
-        // $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
         // loan application number is loan reference number, application number is removed 
         $data->loanapplicationnumber = $this->getData($agreement, 'loanreferencenumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
-
-        // $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
-        // $data->loanamountindigits = $this->getData($agreement, 'loanamountindigits');
-        // $data->loanamountindigitsinwords = $this->getData($agreement, 'loanamountindigitsinwords');
 
         // witness 1
         $data->witness1fullname = $this->getData($agreement, 'witness1fullname');
@@ -115,7 +110,7 @@ class PDFController extends Controller
         $data->mobilenumberoftheborrower = $this->getData($agreement, 'mobilenumberoftheborrower');
         $data->emailidoftheborrower = $this->getData($agreement, 'emailidoftheborrower');
 
-        // co-borrower
+        // co-borrower 1
         $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
         $data->streetaddressofthecoborrower = $this->getData($agreement, 'streetaddressofthecoborrower');
         $data->pancardnumberofthecoborrower = $this->getData($agreement, 'pancardnumberofthecoborrower');
@@ -128,13 +123,26 @@ class PDFController extends Controller
         $data->mobilenumberofthecoborrower = $this->getData($agreement, 'mobilenumberofthecoborrower');
         $data->emailidofthecoborrower = $this->getData($agreement, 'emailidofthecoborrower');
 
+        // co-borrower 2
+        $data->prefixofthecoborrower2 = $this->getData($agreement, 'prefixofthecoborrower2');
+        $data->nameofthecoborrower2 = $this->getData($agreement, 'nameofthecoborrower2');
+        $data->streetaddressofthecoborrower2 = $this->getData($agreement, 'streetaddressofthecoborrower2');
+        $data->pancardnumberofthecoborrower2 = $this->getData($agreement, 'pancardnumberofthecoborrower2');
+        $data->officiallyvaliddocumentsofthecoborrower2 = $this->getData($agreement, 'officiallyvaliddocumentsofthecoborrower2');
+        $data->occupationofthecoborrower2 = $this->getData($agreement, 'occupationofthecoborrower2');
+        $data->residentstatusofthecoborrower2 = $this->getData($agreement, 'residentstatusofthecoborrower2');
+        $data->dateofbirthofthecoborrower2 = ($this->getData($agreement, 'dateofbirthofthecoborrower2') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofbirthofthecoborrower2'))) : '';
+        $data->maritalstatusofthecoborrower2 = $this->getData($agreement, 'maritalstatusofthecoborrower2');
+        $data->highesteducationofthecoborrower2 = $this->getData($agreement, 'highesteducationofthecoborrower2');
+        $data->mobilenumberofthecoborrower2 = $this->getData($agreement, 'mobilenumberofthecoborrower2');
+        $data->emailidofthecoborrower2 = $this->getData($agreement, 'emailidofthecoborrower2');
+
         // agreement place & date
         $data->placeofagreement = $this->getData($agreement, 'placeofagreement');
         $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
 
         // page 16
         $data->nameoftheauthorisedsignatory = $this->getData($agreement, 'nameoftheauthorisedsignatory');
-        // $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
 
         // page 17
         $data->aadharcardnumberoftheborrower = $this->getData($agreement, 'aadharcardnumberoftheborrower');
@@ -150,6 +158,13 @@ class PDFController extends Controller
         $data->drivinglicensenumberofthecoborrower = $this->getData($agreement, 'drivinglicensenumberofthecoborrower');
         $data->electricitybillnumberofthecoborrower = $this->getData($agreement, 'electricitybillnumberofthecoborrower');
         $data->passportnumberofthecoborrower = $this->getData($agreement, 'passportnumberofthecoborrower');
+
+        $data->aadharcardnumberofthecoborrower2 = $this->getData($agreement, 'aadharcardnumberofthecoborrower2');
+        $data->votercardnumberofthecoborrower2 = $this->getData($agreement, 'votercardnumberofthecoborrower2');
+        $data->bankaccountnumberofthecoborrower2 = $this->getData($agreement, 'bankaccountnumberofthecoborrower2');
+        $data->drivinglicensenumberofthecoborrower2 = $this->getData($agreement, 'drivinglicensenumberofthecoborrower2');
+        $data->electricitybillnumberofthecoborrower2 = $this->getData($agreement, 'electricitybillnumberofthecoborrower2');
+        $data->passportnumberofthecoborrower2 = $this->getData($agreement, 'passportnumberofthecoborrower2');
 
         // page 18
         $data->natureofloan = $this->getData($agreement, 'natureofloan');
@@ -174,7 +189,6 @@ class PDFController extends Controller
         $data->dateofcreditofemiintolendersbankaccount = $this->getData($agreement, 'dateofcreditofemiintolendersbankaccount');
         $data->otherdateofemicredit = $this->getData($agreement, 'otherdateofemicredit');
         $data->penalinterestpercentage = $this->getData($agreement, 'penalinterestpercentage');
-        // $data->savingscurrentaccountnumberofborrower = $this->getData($agreement, 'savingscurrentaccountnumberofborrower');
         $data->savingsaccountnumberofborrower = $this->getData($agreement, 'savingsaccountnumberofborrower');
         $data->bankaddressofborrower = $this->getData($agreement, 'bankaddressofborrower');
         $data->beneficiarynameofborrowersbank = $this->getData($agreement, 'beneficiarynameofborrowersbank');
@@ -188,7 +202,6 @@ class PDFController extends Controller
         $data->otherdocumentstobeattachedwithapplicationforloan = $this->getData($agreement, 'otherdocumentstobeattachedwithapplicationforloan');
 
         // page 22
-        // $data->personalloanfacilityagreementdated = $this->getData($agreement, 'personalloanfacilityagreementdated');
         $data->deedofpersonalguaranteedate = ($this->getData($agreement, 'deedofpersonalguaranteedate') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'deedofpersonalguaranteedate'))) : '';
         $data->deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate = $this->getData($agreement, 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate');
         $data->deedofmortgageofinmoveablepropertieslandhousewarehousedate = $this->getData($agreement, 'deedofmortgageofinmoveablepropertieslandhousewarehousedate');
@@ -200,12 +213,6 @@ class PDFController extends Controller
         $data->demandpromissorynoteforborrowerplace = $this->getData($agreement, 'demandpromissorynoteforborrowerplace');
         $data->demandpromissorynoteforborrowerdate = ($this->getData($agreement, 'demandpromissorynoteforborrowerdate') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'demandpromissorynoteforborrowerdate'))) : '';
         $data->demandpromissorynoteforborroweramount = $this->getData($agreement, 'demandpromissorynoteforborroweramount');
-
-        // for co-borrower
-        // $data->demandpromissorynoteforcoborrowerplace = $this->getData($agreement, 'demandpromissorynoteforcoborrowerplace');
-        // $data->demandpromissorynoteforcoborrowerdate = $this->getData($agreement, 'demandpromissorynoteforcoborrowerdate');
-        // $data->demandpromissorynoteforcoborroweramount = $this->getData($agreement, 'demandpromissorynoteforcoborroweramount');
-
 
         // page 24
         $data->continuingsecurityletterdate1 = ($this->getData($agreement, 'continuingsecurityletterdate1') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'continuingsecurityletterdate1'))) : '';
@@ -223,30 +230,6 @@ class PDFController extends Controller
         $data->nachdeclarationname3 = $this->getData($agreement, 'nachdeclarationname3');
         $data->nachdeclarationname4 = $this->getData($agreement, 'nachdeclarationname4');
 
-
-
-
-        // $data = [
-        //     'fileName' => 'personal_loan_pdf',
-        //     'title' => 'personal loan pdf',
-        //     'date' => date('Y-m-d'),
-        //     'customerid' => $this->getData($agreement, 'customerid'),
-        //     'nameoftheborrower' => $this->getData($agreement, 'nameoftheborrower'),
-        //     'nameofthecoborrower' => $this->getData($agreement, 'nameofthecoborrower'),
-        //     'nameoftheguarantor' => $this->getData($agreement, 'nameoftheguarantor'),
-        //     'loanapplicationnumber' => $this->getData($agreement, 'loanapplicationnumber'),
-        //     'loanaccountnumber' => $this->getData($agreement, 'loanaccountnumber'),
-        //     'signatureoftheauthorisedsignatory' => $this->getData($agreement, 'signatureoftheauthorisedsignatory',true),
-        //     'signatureoftheborrower' => $this->getData($agreement, 'signatureoftheborrower'),
-        //     'signatureofthecoborrower' => $this->getData($agreement, 'signatureofthecoborrower'),
-        //     // 'value' => $agreement
-        // ];
-
-        // show in browser
-        // $viewhtml = View::make('admin.agreement.dynamic.personal-loan-agreement', $data)->render();
-        // $pdf = App::make('dompdf.wrapper');
-        // $pdf->loadHTML($viewhtml)->setPaper('a4', 'portrait');
-        // return $pdf->stream();
         return view('admin.agreement.dynamic.personal-loan-agreement', compact('data'));
     }
 

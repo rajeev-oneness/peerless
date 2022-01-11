@@ -419,7 +419,7 @@ class BorrowerController extends Controller
     {
         $borrower_id = $id;
         $data = (object)[];
-        $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->where('id', $borrower_id)->get();
+        $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->with('agreementDetails', 'borrowerAgreementRfq')->where('id', $borrower_id)->get();
         foreach ($data->agreement as $agreement) {
             $data->name_prefix = $agreement->name_prefix;
             $data->full_name = $agreement->full_name;
@@ -427,7 +427,7 @@ class BorrowerController extends Controller
             $data->agreement_name = $agreement->agreementDetails->name;
             break;
         }
-        $data->parentFields = FieldParent::with('childRelation')->get();
+        $data->parentFields = FieldParent::orderBy('position')->with('childRelation')->get();
 
         $data->fields = AgreementField::with('fieldDetails')->where('agreement_id', $data->agreement_id)->get();
         $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
@@ -435,6 +435,8 @@ class BorrowerController extends Controller
         $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
 
         // $data->uploadedDocuments = AgreementDocumentUpload::where('borrower_id', $borrower_id)->get();
+
+        // dd($data);
 
         return view('admin.borrower.fields', compact('data', 'id'));
     }

@@ -350,6 +350,10 @@ mark {
     border: 2px solid #5a5a5a;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 .fields_col-1 {
     width: 300px;
     max-width: 300px;
@@ -361,7 +365,7 @@ mark {
     max-width: 100%;
     overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .fields_col-2 span.post-text {

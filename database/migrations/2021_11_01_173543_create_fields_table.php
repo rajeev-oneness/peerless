@@ -49,6 +49,9 @@ class CreateFieldsTable extends Migration
             else $repaymentTenureValue .= $i;
         }
 
+        // other date of emi credit
+        $otherDateOfEmiCreditValue = '1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th, 26th, 27th, 28th, 29th, 30th, 31st';
+
         $data = [
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
 
@@ -67,7 +70,7 @@ class CreateFieldsTable extends Migration
             ['name' => 'Mobile number of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheborrower'],
             ['name' => 'Email ID of the Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheborrower'],
 
-            // co borrower details
+            // co borrower 1 details
             ['name' => 'Prefix of the Co-Borrower', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixofthecoborrower'],
             ['name' => 'Name of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'nameofthecoborrower'],
             ['name' => 'Street address of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressofthecoborrower'],
@@ -83,7 +86,6 @@ class CreateFieldsTable extends Migration
             ['name' => 'Highest education of the Co-Borrower', 'type' => 7, 'value' => $highestQualificationList, 'key_name' => 'highesteducationofthecoborrower'],
             ['name' => 'Mobile number of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower'],
             ['name' => 'Email ID of the Co-Borrower', 'type' => 1, 'value' => '', 'key_name' => 'emailidofthecoborrower'],
-            // ['name' => 'Signature of the Co-Borrower', 'type' => 6, 'value' => '', 'key_name' => 'signatureofthecoborrower'],
 
             // guarantor details
             ['name' => 'Prefix of the Guarantor', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixoftheguarantor'],
@@ -102,17 +104,12 @@ class CreateFieldsTable extends Migration
             ['name' => 'Mobile number of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberoftheguarantor'],
             ['name' => 'Email ID of the Guarantor', 'type' => 1, 'value' => '', 'key_name' => 'emailidoftheguarantor'],
 
-            // ['name' => 'Guarantor City', 'type' => 1, 'value' => '', 'key_name' => 'guarantorcity'],
-            // ['name' => 'Guarantor Pincode', 'type' => 1, 'value' => '', 'key_name' => 'guarantorpincode'],
-            // ['name' => 'Guarantor State', 'type' => 1, 'value' => '', 'key_name' => 'guarantorstate'],
-
             // witness 1 details
             ['name' => 'Witness 1 Full name', 'type' => 1, 'value' => '', 'key_name' => 'witness1fullname'],
             ['name' => 'Witness 1 Street address', 'type' => 1, 'value' => '', 'key_name' => 'witness1streetaddress'],
             ['name' => 'Witness 1 City', 'type' => 1, 'value' => '', 'key_name' => 'witness1city'],
             ['name' => 'Witness 1 Pincode', 'type' => 1, 'value' => '', 'key_name' => 'witness1pincode'],
             ['name' => 'Witness 1 State', 'type' => 1, 'value' => '', 'key_name' => 'witness1state'],
-            // ['name' => 'Witness 1 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness1signature'],
 
             // witness 2 details
             ['name' => 'Witness 2 Full name', 'type' => 1, 'value' => '', 'key_name' => 'witness2fullname'],
@@ -120,11 +117,9 @@ class CreateFieldsTable extends Migration
             ['name' => 'Witness 2 City', 'type' => 1, 'value' => '', 'key_name' => 'witness2city'],
             ['name' => 'Witness 2 Pincode', 'type' => 1, 'value' => '', 'key_name' => 'witness2pincode'],
             ['name' => 'Witness 2 State', 'type' => 1, 'value' => '', 'key_name' => 'witness2state'],
-            // ['name' => 'Witness 2 Signature', 'type' => 6, 'value' => '', 'key_name' => 'witness2signature'],
 
             // loan details
             // loan application number is loan reference number
-            // ['name' => 'Loan Application Number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
             ['name' => 'Loan Account Number', 'type' => 1, 'value' => '', 'key_name' => 'loanaccountnumber'],
             ['name' => 'Letter of Intent Number', 'type' => 1, 'value' => '', 'key_name' => 'letterofintentnumber'],
 
@@ -136,8 +131,6 @@ class CreateFieldsTable extends Migration
             ['name' => 'Nature of Loan', 'type' => 7, 'value' => $natureOfLoan, 'key_name' => 'natureofloan'],
             ['name' => 'Loan amount in digits', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigits'],
             ['name' => 'Loan amount in digits in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountindigitsinwords'],
-            // ['name' => 'Loan amount in lakh', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakh'],
-            // ['name' => 'Loan amount in lakh in words', 'type' => 1, 'value' => '', 'key_name' => 'loanamountinlakhinwords'],
             ['name' => 'Loan reference number', 'type' => 1, 'value' => '', 'key_name' => 'loanreferencenumber'],
             ['name' => 'Purpose of Loan', 'type' => 1, 'value' => '', 'key_name' => 'purposeofloan'],
             ['name' => 'Repayment tenure (in months)', 'type' => 7, 'value' => $repaymentTenureValue, 'key_name' => 'repaymenttenureinmonths'],
@@ -149,11 +142,10 @@ class CreateFieldsTable extends Migration
             ['name' => 'Monthly instalments number', 'type' => 1, 'value' => '', 'key_name' => 'monthlyinstalmentsnumber'],
             ['name' => 'Monthly EMI', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiindigits'],
             ['name' => 'Monthly EMI in words', 'type' => 1, 'value' => '', 'key_name' => 'monthlyemiinwords'],
-            ['name' => 'Payment deduction from', 'type' => 8, 'value' => 'Deducted from the Borrower&apos;s salary by the Borrower&apos;s employer on monthly basis and credited into the Lender&apos;s bank Account, directly debited from the Borrower&apos;s bank Account and credited into lender&apos;s bank Account', 'key_name' => 'paymentdeductionfrom'],
+            ['name' => 'Payment deduction from', 'type' => 8, 'value' => 'deducted from the Borrower&apos;s salary by the Borrower&apos;s employer on monthly basis and credited into the Lender&apos;s bank Account, directly debited from the Borrower&apos;s bank Account and credited into lender&apos;s bank Account', 'key_name' => 'paymentdeductionfrom'],
             ['name' => 'Date of credit of EMI into Lender&apos;s Bank Account', 'type' => 9, 'value' => '5th of every month, 2nd of every month, Others', 'key_name' => 'dateofcreditofemiintolendersbankaccount'],
-            ['name' => 'Other date of EMI credit', 'type' => 4, 'value' => '', 'key_name' => 'otherdateofemicredit'],
+            ['name' => 'Other date of EMI credit', 'type' => 7, 'value' => $otherDateOfEmiCreditValue, 'key_name' => 'otherdateofemicredit'],
             ['name' => 'Penal Interest percentage', 'type' => 1, 'value' => '', 'key_name' => 'penalinterestpercentage'],
-            // ['name' => 'Savings/ Current account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingscurrentaccountnumberofborrower'],
             ['name' => 'Beneficiary Name of Borrower&apos;s bank', 'type' => 1, 'value' => '', 'key_name' => 'beneficiarynameofborrowersbank'],
             ['name' => 'Savings account number of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'savingsaccountnumberofborrower'],
             ['name' => 'Bank Name of Borrower', 'type' => 1, 'value' => '', 'key_name' => 'banknameofborrower'],
@@ -163,35 +155,18 @@ class CreateFieldsTable extends Migration
             ['name' => 'Insurance of Borrower', 'type' => 10, 'value' => '', 'key_name' => 'insuranceofborrower'],
             ['name' => 'Documents to be attached with application for loan', 'type' => 8, 'value' => $loanApplicationDocumentsToAttach, 'key_name' => 'documentstobeattachedwithapplicationforloan'],
             ['name' => 'Other documents to be attached with application for loan', 'type' => 1, 'value' => $loanApplicationDocumentsToAttach, 'key_name' => 'otherdocumentstobeattachedwithapplicationforloan'],
-
             // Personal loan facility agreement dated
 
 
-            /********* no 75 removal *********/
-            // ['name' => 'Personal loan facility agreement dated', 'type' => 4, 'value' => '', 'key_name' => 'personalloanfacilityagreementdated'],
             ['name' => 'Deed of Personal Guarantee date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpersonalguaranteedate'],
-            /********* no 77 removal *********/
-            // ['name' => 'Deed of Pledge of Moveable Properties (Shares, Bonds, Debentures, Mutual Funds) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofpledgeofmoveablepropertiessharesbondsdebenturesmutualfundsdate'],
-            /********* no 78 removal *********/
-            // ['name' => 'Deed of Mortgage of Inmoveable Properties (Land, House, Warehouse) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofmortgageofinmoveablepropertieslandhousewarehousedate'],
-            /********* no 79 removal *********/
-            // ['name' => 'Power of Attorney date', 'type' => 4, 'value' => '', 'key_name' => 'powerofattorneydate'],
-            /********* no 80 removal *********/
-            // ['name' => 'Deed of Assignment (Insurance Policy, Fixed Deposit) date', 'type' => 4, 'value' => '', 'key_name' => 'deedofassignmentinsurancepolicyfixeddepositdate'],
 
             // DEMAND PROMISSORY NOTE
-            // for borrower 
             ['name' => 'Demand Promissory Note for borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforborrowerplace'],
             ['name' => 'Demand Promissory Note for borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforborrowerdate'],
             ['name' => 'Demand Promissory Note for borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforborroweramount'],
-            // for co-borrower
-            // ['name' => 'Demand Promissory Note for co-borrower Place', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerplace'],
-            // ['name' => 'Demand Promissory Note for co-borrower Date', 'type' => 4, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborrowerdate'],
-            // ['name' => 'Demand Promissory Note for co-borrower Amount', 'type' => 1, 'value' => '', 'key_name' => 'demandpromissorynoteforcoborroweramount'],
 
             // CONTINUING SECURITY LETTER
             ['name' => 'Continuing Security Letter Date 1', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate1'],
-            // ['name' => 'Continuing Security Letter Date 2', 'type' => 4, 'value' => '', 'key_name' => 'continuingsecurityletterdate2'],
 
             // UNDERTAKING CUM INDEMNITY
             ['name' => 'Undertaking Cum Indemnity Date', 'type' => 4, 'value' => '', 'key_name' => 'undertakingcumindemnitydate'],
@@ -244,27 +219,37 @@ class CreateFieldsTable extends Migration
             ['name' => 'Passport expiry date of the Guarantor', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateoftheguarantor'],
             // guarantor valid documents information ends
 
+            // co borrower 2 details
+            ['name' => 'Prefix of the Co-Borrower 2', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixofthecoborrower2'],
+            ['name' => 'Name of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'nameofthecoborrower2'],
+            ['name' => 'Street address of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'streetaddressofthecoborrower2'],
+            ['name' => 'Pincode of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'pincodeofthecoborrower2'],
+            ['name' => 'City of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'cityofthecoborrower2'],
+            ['name' => 'State of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'stateofthecoborrower2'],
+            ['name' => 'PAN card number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'pancardnumberofthecoborrower2'],
+            ['name' => 'Officially Valid Documents of the Co-Borrower 2', 'type' => 9, 'value' => $validDocumentsList, 'key_name' => 'officiallyvaliddocumentsofthecoborrower2'],
+            ['name' => 'Occupation of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'occupationofthecoborrower2'],
+            ['name' => 'Resident status of the Co-Borrower 2', 'type' =>  9, 'value' => 'Permanent address, Communication address', 'key_name' => 'residentstatusofthecoborrower2'],
+            ['name' => 'Date of birth of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'dateofbirthofthecoborrower2'],
+            ['name' => 'Marital status of the Co-Borrower 2', 'type' => 7, 'value' => $maritalStatusList, 'key_name' => 'maritalstatusofthecoborrower2'],
+            ['name' => 'Highest education of the Co-Borrower 2', 'type' => 7, 'value' => $highestQualificationList, 'key_name' => 'highesteducationofthecoborrower2'],
+            ['name' => 'Mobile number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'mobilenumberofthecoborrower2'],
+            ['name' => 'Email ID of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'emailidofthecoborrower2'],
 
-
-
-            // file uploads
-            // ['name' => 'Borrower&apos;s request to employer for EMI deduction from salary', 'type' => 6, 'value' => '', 'key_name' => 'borrowersrequesttoemployerforemideductionfromsalary'],
-
-            // NACH declaration
-            /********** REMOVE NACH declaration **********/
-            // ['name' => 'NACH Declaration for and on be half of', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationforandonbehalfof'],
-            // ['name' => 'NACH Declaration Name 1', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname1'],
-            // ['name' => 'NACH Declaration Signature 1', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature1'],
-            // ['name' => 'NACH Declaration Name 2', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname2'],
-            // ['name' => 'NACH Declaration Signature 2', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature2'],
-            // ['name' => 'NACH Declaration Name 3', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname3'],
-            // ['name' => 'NACH Declaration Signature 3', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature3'],
-            // ['name' => 'NACH Declaration Name 4', 'type' => 1, 'value' => '', 'key_name' => 'nachdeclarationname4'],
-            // ['name' => 'NACH Declaration Signature 4', 'type' => 6, 'value' => '', 'key_name' => 'nachdeclarationsignature4'],
-
-            // MISCELLANEOUS DOCUMENTS upload
-            // ['name' => 'Miscellaneous documents upload', 'type' => 6, 'value' => '', 'key_name' => 'miscellaneousdocumentsupload'],
-            // ['name' => 'CustomerID', 'type' => 1, 'value' => '', 'key_name' => 'customerid'],
+            // co-borrower 2 valid documents information starts
+            ['name' => 'Aadhar card number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'aadharcardnumberofthecoborrower2'],
+            ['name' => 'Voter card number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'votercardnumberofthecoborrower2'],
+            ['name' => 'Bank account number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'bankaccountnumberofthecoborrower2'],
+            ['name' => 'Bank name of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'banknameofthecoborrower2'],
+            ['name' => 'Bank IFSC of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'bankifscofthecoborrower2'],
+            ['name' => 'Driving license number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'drivinglicensenumberofthecoborrower2'],
+            ['name' => 'Driving license issue date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseissuedateofthecoborrower2'],
+            ['name' => 'Driving license expiry date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'drivinglicenseexpirydateofthecoborrower2'],
+            ['name' => 'Electricity bill number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'electricitybillnumberofthecoborrower2'],
+            ['name' => 'Passport number of the Co-Borrower 2', 'type' => 1, 'value' => '', 'key_name' => 'passportnumberofthecoborrower2'],
+            ['name' => 'Passport issue date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'passportissuedateofthecoborrower2'],
+            ['name' => 'Passport expiry date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateofthecoborrower2'],
+            // co-borrower valid documents information ends
         ];
 
         DB::table('fields')->insert($data);

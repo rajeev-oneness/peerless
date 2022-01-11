@@ -17,18 +17,20 @@ class CreateFieldParentsTable extends Migration
         Schema::create('field_parents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->tinyInteger('position');
             $table->softdeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
         $data = [
-            ['name' => 'Borrower details'],
-            ['name' => 'Co-borrower details'],
-            ['name' => 'Guarantor details'],
-            ['name' => 'Witness 1 details'],
-            ['name' => 'Witness 2 details'],
-            ['name' => 'Others'],
+            ['name' => 'Borrower details', 'position' => 1],
+            ['name' => 'Co-borrower 1 details', 'position' => 2],
+            ['name' => 'Guarantor details', 'position' => 4],
+            ['name' => 'Witness 1 details', 'position' => 5],
+            ['name' => 'Witness 2 details', 'position' => 6],
+            ['name' => 'Others', 'position' => 7],
+            ['name' => 'Co-borrower 2 details', 'position' => 3],
         ];
 
         DB::table('field_parents')->insert($data);

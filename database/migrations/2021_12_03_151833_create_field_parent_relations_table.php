@@ -27,13 +27,13 @@ class CreateFieldParentRelationsTable extends Migration
 
         $data = [];
         array_push($data, ['parent_id' => 6, 'child_id' => 1]);
-        // id of borrower, co-borrower, guarantor, witness1, witness2
-        for ($i = 1; $i <= 6; $i++) {
+        // id of borrower, co-borrower 1, co-borrower 2, guarantor, witness1, witness2
+        for ($i = 1; $i <= 7; $i++) {
             // borrower details
             for ($j = 2; $j <= 14 ; $j++) {
                 if ($i == 1) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
-            // co-borrower details
+            // co-borrower 1 details
             for ($j = 15; $j <= 29 ; $j++) {
                 if ($i == 2) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
@@ -50,10 +50,14 @@ class CreateFieldParentRelationsTable extends Migration
                 if ($i == 5) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
             // Other details
-            for ($j = 55; $j <= $totalFieldsCount ; $j++) {
+            for ($j = 55; $j <= 127 ; $j++) {
                 if ($i == 6) {
                     array_push($data, ['parent_id' => $i, 'child_id' => $j]);
                 }
+            }
+            // co-borrower 2 details
+            for ($j = 128; $j <= $totalFieldsCount ; $j++) {
+                if ($i == 7) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
         }
 
