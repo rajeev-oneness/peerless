@@ -600,10 +600,12 @@
             })
         }
 
-        // Officially Valid Documents of the Borrower on click
+        // Officially Valid Documents of the Borrower on click starts
         $('input[name="field_name[officiallyvaliddocumentsoftheborrower]"]').click(function(){
             var inputValue = $(this).attr("value");
-            // console.log(inputValue);
+            ovdBorrower(inputValue);
+        });
+        function ovdBorrower(inputValue) {
             if(inputValue == 'Aadhar card') {
                 $('input[name="field_name[aadharcardnumberoftheborrower]"]').show();
 
@@ -611,13 +613,9 @@
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('#borrowerDrivingLicenseHolder').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
+                $('#borrowerPassportHolder').hide();
             } else if (inputValue == 'Voter card') {
                 $('input[name="field_name[votercardnumberoftheborrower]"]').show();
 
@@ -625,14 +623,9 @@
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('#borrowerDrivingLicenseHolder').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
-
+                $('#borrowerPassportHolder').hide();
             } else if (inputValue == 'Bank statement') {
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').show();
                 $('input[name="field_name[banknameoftheborrower]"]').show();
@@ -640,18 +633,11 @@
 
                 $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('#borrowerDrivingLicenseHolder').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
-
+                $('#borrowerPassportHolder').hide();
             } else if (inputValue == 'Driving license') {
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').show();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').show();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').show();
+                $('#borrowerDrivingLicenseHolder').show();
 
                 $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
@@ -659,10 +645,7 @@
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
-
+                $('#borrowerPassportHolder').hide();
             } else if (inputValue == 'Electricity bill') {
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').show();
 
@@ -671,48 +654,40 @@
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
-
+                $('#borrowerDrivingLicenseHolder').hide();
+                $('#borrowerPassportHolder').hide();
             } else if (inputValue == 'Passport') {
-                $('input[name="field_name[passportnumberoftheborrower]"]').show();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').show();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').show();
+                $('#borrowerPassportHolder').show();
 
                 $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('#borrowerDrivingLicenseHolder').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-
             } else {
                 $('input[name="field_name[aadharcardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[votercardnumberoftheborrower]"]').hide();
                 $('input[name="field_name[bankaccountnumberoftheborrower]"]').hide();
                 $('input[name="field_name[banknameoftheborrower]"]').hide();
                 $('input[name="field_name[bankifscoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheborrower]"]').hide();
+                $('#borrowerDrivingLicenseHolder').hide();
+                $('#borrowerPassportHolder').hide();
                 $('input[name="field_name[electricitybillnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportnumberoftheborrower]"]').hide();
-                $('input[name="field_name[passportissuedateoftheborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheborrower]"]').hide();
             }
-        });
+        }
+        var ovdBorrowerSelected = $('input[name="field_name[officiallyvaliddocumentsoftheborrower]"]:checked').val();
+        ovdBorrower(ovdBorrowerSelected);
+        // Officially Valid Documents of the Borrower on click ends
 
-        // Officially Valid Documents of the Co-Borrower on click
+        // Officially Valid Documents of the Co-Borrower on click starts
         $('input[name="field_name[officiallyvaliddocumentsofthecoborrower]"]').click(function(){
             var inputValue = $(this).attr("value");
             // console.log(inputValue);
+            ovdCoBorrower(inputValue);
+        });
+        function ovdCoBorrower(inputValue) {
             if(inputValue == 'Aadhar card') {
                 $('input[name="field_name[aadharcardnumberofthecoborrower]"]').show();
 
@@ -720,13 +695,9 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+                $('#coBorrower1DrivingLicenseHolder').hide();
+                $('#coBorrower1PassportHolder').hide();
             } else if (inputValue == 'Voter card') {
                 $('input[name="field_name[votercardnumberofthecoborrower]"]').show();
 
@@ -734,14 +705,9 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
-
+                $('#coBorrower1DrivingLicenseHolder').hide();
+                $('#coBorrower1PassportHolder').hide();
             } else if (inputValue == 'Bank statement') {
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').show();
                 $('input[name="field_name[banknameofthecoborrower]"]').show();
@@ -749,18 +715,12 @@
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+                $('#coBorrower1DrivingLicenseHolder').hide();
+                $('#coBorrower1PassportHolder').hide();
 
             } else if (inputValue == 'Driving license') {
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').show();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').show();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').show();
+                $('#coBorrower1DrivingLicenseHolder').show();
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
@@ -768,10 +728,7 @@
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
-
+                $('#coBorrower1PassportHolder').hide();
             } else if (inputValue == 'Electricity bill') {
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').show();
 
@@ -780,48 +737,40 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
-
+                $('#coBorrower1DrivingLicenseHolder').hide();
+                $('#coBorrower1PassportHolder').hide();
             } else if (inputValue == 'Passport') {
-                $('input[name="field_name[passportnumberofthecoborrower]"]').show();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').show();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').show();
+                $('#coBorrower1PassportHolder').show();
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-
+                $('#coBorrower1DrivingLicenseHolder').hide();
             } else {
                 $('input[name="field_name[aadharcardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[bankaccountnumberofthecoborrower]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower]"]').hide();
+                $('#coBorrower1DrivingLicenseHolder').hide();
+                $('#coBorrower1PassportHolder').hide();
             }
-        });
+        }
+        var ovdCoBorrowerSelected = $('input[name="field_name[officiallyvaliddocumentsofthecoborrower]"]:checked').val();
+        ovdCoBorrower(ovdCoBorrowerSelected);
+        // Officially Valid Documents of the Co-Borrower on click ends
 
-        // Officially Valid Documents of the Co-Borrower 2 on click
+        // Officially Valid Documents of the Co-Borrower 2 on click starts
         $('input[name="field_name[officiallyvaliddocumentsofthecoborrower2]"]').click(function(){
             var inputValue = $(this).attr("value");
             // console.log(inputValue);
+            ovdCoBorrower2(inputValue);
+        });
+        function ovdCoBorrower2(inputValue) {
             if(inputValue == 'Aadhar card') {
                 $('input[name="field_name[aadharcardnumberofthecoborrower2]"]').show();
 
@@ -829,13 +778,9 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
+                $('#coBorrower2DrivingLicenseHolder').hide();
+                $('#coBorrower2PassportHolder').hide();
             } else if (inputValue == 'Voter card') {
                 $('input[name="field_name[votercardnumberofthecoborrower2]"]').show();
 
@@ -843,14 +788,9 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
-
+                $('#coBorrower2DrivingLicenseHolder').hide();
+                $('#coBorrower2PassportHolder').hide();
             } else if (inputValue == 'Bank statement') {
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').show();
                 $('input[name="field_name[banknameofthecoborrower2]"]').show();
@@ -858,18 +798,11 @@
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
-
+                $('#coBorrower2DrivingLicenseHolder').hide();
+                $('#coBorrower2PassportHolder').hide();
             } else if (inputValue == 'Driving license') {
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').show();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').show();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').show();
+                $('#coBorrower2DrivingLicenseHolder').show();
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower2]"]').hide();
@@ -877,10 +810,7 @@
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
-
+                $('#coBorrower2PassportHolder').hide();
             } else if (inputValue == 'Electricity bill') {
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').show();
 
@@ -889,48 +819,40 @@
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
-
+                $('#coBorrower2DrivingLicenseHolder').hide();
+                $('#coBorrower2PassportHolder').hide();
             } else if (inputValue == 'Passport') {
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').show();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').show();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').show();
+                $('#coBorrower2PassportHolder').show();
 
                 $('input[name="field_name[aadharcardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-
+                $('#coBorrower2DrivingLicenseHolder').hide();
             } else {
                 $('input[name="field_name[aadharcardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[votercardnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankaccountnumberofthecoborrower2]"]').hide();
                 $('input[name="field_name[banknameofthecoborrower2]"]').hide();
                 $('input[name="field_name[bankifscofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicensenumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateofthecoborrower2]"]').hide();
                 $('input[name="field_name[electricitybillnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportnumberofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportissuedateofthecoborrower2]"]').hide();
-                $('input[name="field_name[passportexpirydateofthecoborrower2]"]').hide();
+                $('#coBorrower2DrivingLicenseHolder').hide();
+                $('#coBorrower2PassportHolder').hide();
             }
-        });
+        }
+        var ovdCoBorrower2Selected = $('input[name="field_name[officiallyvaliddocumentsofthecoborrower2]"]:checked').val();
+        ovdCoBorrower2(ovdCoBorrower2Selected);
+        // Officially Valid Documents of the Co-Borrower 2 on click ends
 
-        // Officially Valid Documents of the Guarantor on click
+        // Officially Valid Documents of the Guarantor on click starts
         $('input[name="field_name[officiallyvaliddocumentsoftheguarantor]"]').click(function(){
             var inputValue = $(this).attr("value");
             // console.log(inputValue);
+            ovdGuarantor(inputValue);
+        });
+        function ovdGuarantor(inputValue) {
             if(inputValue == 'Aadhar card') {
                 $('input[name="field_name[aadharcardnumberoftheguarantor]"]').show();
 
@@ -938,13 +860,9 @@
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+                $('#guarantorDrivingLicenseHolder').hide();
+                $('#guarantorPassportHolder').hide();
             } else if (inputValue == 'Voter card') {
                 $('input[name="field_name[votercardnumberoftheguarantor]"]').show();
 
@@ -952,14 +870,9 @@
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
-
+                $('#guarantorDrivingLicenseHolder').hide();
+                $('#guarantorPassportHolder').hide();
             } else if (inputValue == 'Bank statement') {
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').show();
                 $('input[name="field_name[banknameoftheguarantor]"]').show();
@@ -967,18 +880,11 @@
 
                 $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
-
+                $('#guarantorDrivingLicenseHolder').hide();
+                $('#guarantorPassportHolder').hide();
             } else if (inputValue == 'Driving license') {
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').show();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').show();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').show();
+                $('#guarantorDrivingLicenseHolder').show();
 
                 $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
@@ -986,10 +892,7 @@
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
-
+                $('#guarantorPassportHolder').hide();
             } else if (inputValue == 'Electricity bill') {
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').show();
 
@@ -998,43 +901,32 @@
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
-
+                $('#guarantorDrivingLicenseHolder').hide();
+                $('#guarantorPassportHolder').hide();
             } else if (inputValue == 'Passport') {
-                $('input[name="field_name[passportnumberoftheguarantor]"]').show();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').show();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').show();
+                $('#guarantorPassportHolder').show();
 
                 $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-
+                $('#guarantorDrivingLicenseHolder').hide();
             } else {
                 $('input[name="field_name[aadharcardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[votercardnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[bankaccountnumberoftheguarantor]"]').hide();
                 $('input[name="field_name[banknameoftheguarantor]"]').hide();
                 $('input[name="field_name[bankifscoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicensenumberoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[drivinglicenseexpirydateoftheguarantor]"]').hide();
                 $('input[name="field_name[electricitybillnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportnumberoftheguarantor]"]').hide();
-                $('input[name="field_name[passportissuedateoftheguarantor]"]').hide();
-                $('input[name="field_name[passportexpirydateoftheguarantor]"]').hide();
+                $('#guarantorDrivingLicenseHolder').hide();
+                $('#guarantorPassportHolder').hide();
             }
-        });
+        }
+        var ovdGuarantorSelected = $('input[name="field_name[officiallyvaliddocumentsoftheguarantor]"]:checked').val();
+        ovdGuarantor(ovdGuarantorSelected);
+        // Officially Valid Documents of the Guarantor on click ends
 
         // Date of credit of EMI into Lender's Bank Account on click starts
         $('input[name="field_name[dateofcreditofemiintolendersbankaccount]"]').click(function(){

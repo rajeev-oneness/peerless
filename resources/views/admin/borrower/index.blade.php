@@ -46,9 +46,7 @@
                                             </span>
                                             <a href="{{ route('user.borrower.list') }}">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-danger btn-sm rounded-0" type="button" title="Refresh page">
-                                                        Reset <i class="fas fa-sync-alt"></i>
-                                                    </button>
+                                                    <button class="btn btn-danger btn-sm rounded-0" type="button" title="Refresh page"> Reset <i class="fas fa-sync-alt"></i></button>
                                                 </span>
                                             </a>
                                         </div>

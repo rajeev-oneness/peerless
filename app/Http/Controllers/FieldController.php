@@ -17,7 +17,7 @@ class FieldController extends Controller
     public function index()
     {
         $data = (object)[];
-        $data->parentFields = FieldParent::with('childRelation')->get();
+        $data->parentFields = FieldParent::with('childRelation')->orderBy('position')->get();
         // $data->childFields = Field::get();
         return view('admin.field.index', compact('data'));
     }
