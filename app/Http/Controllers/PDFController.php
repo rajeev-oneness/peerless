@@ -63,7 +63,8 @@ class PDFController extends Controller
         $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
 
         $data->date = date('d-m-Y');
-        $data->fileName = $this->getData($agreement, 'nameoftheborrower').'-personal-loan-agreement-'.$data->date;
+        $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
+        $data->fileName = $customBorrowerName.'-personal-loan-agreement-'.$data->date;
         $data->title = 'personal loan agreement';
         $data->customerid = $this->getData($agreement, 'customerid');
         $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');

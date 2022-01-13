@@ -269,7 +269,7 @@
     <header class="pdf-header">
         <div style="width:100%; max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
             <h1>
-                (PFSL) Personal loan _agreement.pdf
+                {{$data->fileName}}.pdf
             </h1>
             <button id='print-btn' onclick='printDiv();' class="btn btn-sm btn-primary">Print <i class="fas fa-print"></i> </button>
         </div>
