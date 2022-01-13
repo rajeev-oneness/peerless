@@ -2606,7 +2606,7 @@
                             <p>
                                 Repayable in ({{$data->monthlyinstalmentsnumber}}) Equated Monthly
                                 Instalments (EMIs) of Rs.{{$data->monthlyemiindigits}}/-
-                                (Rupees {{$data->monthlyemiinwords}} only)
+                                (Rupees {{$data->monthlyemiinwords}}) only
                                 each, to be {{$data->paymentdeductionfrom}}
                             </p>
                             {{-- <input type="checkbox">deducted from the Borrower's salary by the Borrower's employer
@@ -3125,7 +3125,7 @@
                                 Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless
                                 Bhavan, 3, Esplanade East,
                                 Kolkata - 700 069, or order for value received the sum of Rs.
-                                {{$data->loanamountindigits}} (Rupees) {{$data->loanamountindigitsinwords}} only with
+                                {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with
                                 interest there on at the rate of DEMAND PROMISSORY NOTE {{$data->rateofinterest}} %
                                 Per annum with rests along with all costs, charges, expenses, taxes,
                                 cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix
@@ -3202,8 +3202,8 @@
                                 ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably
                                 promise to pay Peerless Financial Services Limited (PFSL), having their Registered
                                 Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value
-                                received the sum of Rs {{$data->loanamountindigits}} (Rupees)
-                                {{$data->loanamountindigitsinwords}} only with interest there on at the rate of
+                                received the sum of Rs {{$data->loanamountindigits}} (Rupees
+                                {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of
                                 {{$data->rateofinterest}} % Perannum with rests along with all costs, charges, expenses,
                                 taxes, cess, levies,
                                 duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate
@@ -3384,13 +3384,12 @@
                             <p class="ft1">
                                 <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span
                                     class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <br>
-                                <span class="ft2"> ( Rupees {{$data->loanamountindigitsinwords}}) Only</span>
+                                <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span>
                                 I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and
                                 {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to
                                 the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us
                                 in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of
-                                <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees
-                                    {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
+                                <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
                                 {{$data->letterofintentnumber}} dated {{$data->undertakingcumindemnitydate}}.
                                 In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan
                                 Facility Agreement, I/we do
