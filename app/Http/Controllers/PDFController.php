@@ -234,6 +234,98 @@ class PDFController extends Controller
         return view('admin.agreement.dynamic.personal-loan-agreement', compact('data'));
     }
 
+    // dynamic PDF after filling up data page 3
+    public function showDynamicPdfPage3(Request $request, $borrowerId, $agreementId)
+    {
+        $data = (object)[];
+        $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
+
+        $data->date = date('d-m-Y');
+        $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
+        $data->fileName = $customBorrowerName.'-personal-loan-agreement-page-3-rs-100-'.$data->date;
+        $data->title = 'personal loan agreement';
+
+        $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
+        $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');
+        $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
+        $data->prefixofthecoborrower = $this->getData($agreement, 'prefixofthecoborrower');
+        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+
+        return view('admin.agreement.dynamic.personal-loan-agreement-page-3', compact('data'));
+    }
+
+    // dynamic PDF after filling up data page 24
+    public function showDynamicPdfPage24(Request $request, $borrowerId, $agreementId)
+    {
+        $data = (object)[];
+        $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
+
+        $data->date = date('d-m-Y');
+        $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
+        $data->fileName = $customBorrowerName.'-personal-loan-agreement-page-24-rs-10-'.$data->date;
+        $data->title = 'personal loan agreement';
+
+        $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
+        $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');
+        $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
+        $data->prefixofthecoborrower = $this->getData($agreement, 'prefixofthecoborrower');
+        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+
+        return view('admin.agreement.dynamic.personal-loan-agreement-page-24', compact('data'));
+    }
+
+    // dynamic PDF after filling up data page 25
+    public function showDynamicPdfPage25(Request $request, $borrowerId, $agreementId)
+    {
+        $data = (object)[];
+        $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
+
+        $data->date = date('d-m-Y');
+        $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
+        $data->fileName = $customBorrowerName.'-personal-loan-agreement-page-25-rs-50-'.$data->date;
+        $data->title = 'personal loan agreement';
+
+        $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
+        $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');
+        $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
+        $data->prefixofthecoborrower = $this->getData($agreement, 'prefixofthecoborrower');
+        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+
+        return view('admin.agreement.dynamic.personal-loan-agreement-page-25', compact('data'));
+    }
+
+    // dynamic PDF after filling up data page 31
+    public function showDynamicPdfPage31(Request $request, $borrowerId, $agreementId)
+    {
+        $data = (object)[];
+        $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
+
+        $data->date = date('d-m-Y');
+        $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
+        $data->fileName = $customBorrowerName.'-personal-loan-agreement-page-31-rs-10-'.$data->date;
+        $data->title = 'personal loan agreement';
+
+        $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
+        $data->prefixoftheborrower = $this->getData($agreement, 'prefixoftheborrower');
+        $data->nameoftheborrower = $this->getData($agreement, 'nameoftheborrower');
+        $data->prefixofthecoborrower = $this->getData($agreement, 'prefixofthecoborrower');
+        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
+        $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+
+        return view('admin.agreement.dynamic.personal-loan-agreement-page-31', compact('data'));
+    }
+
     // dynamic PDF after filling up data
     public function showDynamicDOMPdf(Request $request, $borrowerId, $agreementId)
     {

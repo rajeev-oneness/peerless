@@ -33,26 +33,24 @@
                                     <span class="font-weight-normal" title="Borrower's name">
                                         {{ ucwords($data->name_prefix) }}
                                         {{ $data->full_name }}
-                                    </span> -
-                                    <span title="Agreement name">{{ $data->agreement_name }}</span>
+                                    </span> - <span title="Agreement name">{{ $data->agreement_name }}</span>
                                 </h5>
                             </div>
                             <div class="col-md-4 text-right">
                                 @if ($data->agreementRfq > 0)
-                                    <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}"
-                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
-                                        View PDF</a>
+                                    <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
-                                    <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}"
-                                        class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i>
-                                        Download PDF</a>
+                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>View PDF</a> --}}
+
+                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i> Download PDF</a> --}}
                                 @endif
                             </div>
 
-                            <div class="col-md-12 mt-3">
-                                <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up
-                                    the form first to view PDF</p>
-                            </div>
+                            @if ($data->agreementRfq == 0)
+                                <div class="col-md-12 mt-3">
+                                    <p class="small text-muted mb-0"><span class="text-danger">*</span> Please fill up the form first to view PDF</p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="row mt-4">
@@ -205,13 +203,13 @@
 
                                                                         {{-- <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button> --}}
 
-                                                                        <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
-                                                                        View PDF</a>
+                                                                        <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+
+                                                                        {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                                                        View PDF</a> --}}
 
                                                                     @else
-                                                                        <button type="submit"
-                                                                            class="btn btn-sm btn-primary">Submit data
-                                                                            <i class="fas fa-upload"></i></button>
+                                                                        <button type="submit" class="btn btn-sm btn-primary">Submit data <i class="fas fa-upload"></i></button>
                                                                     @endif
                                                                 </div>
                                                             </td>
@@ -345,6 +343,34 @@
         </div>
     </div>
 </section>
+
+<!-- view pdf MODAL -->
+<div class="modal" id="viewPdfModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">View PDF</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+
+                <br><br>
+
+                <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
+
+                <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
+
+                <a href="{{ route('user.borrower.agreement.pdf.page25.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 25-Rs 50 Stamp paper</a>
+
+                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection
 
