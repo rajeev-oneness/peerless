@@ -61,7 +61,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Contact</th>
-                                    <th>PAN card number</th>
+                                    <th>PAN card</th>
                                     <th>Address</th>
                                     <th>Loan details</th>
                                     <th class="text-right">Action</th>
@@ -104,7 +104,7 @@
                                             @if ($item->agreement_id == 0)
                                                 <p class="small text-muted"> <em>No agreement yet</em> </p>
                                             @else
-                                                <a href="{{route('user.borrower.agreement', $item->id)}}" class="badge badge-primary action-button" title="Setup loan application form">{{$item->agreementDetails->name}}</a>
+                                                <a href="{{route('user.borrower.agreement', $item->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button" title="Setup loan application form">{{$item->agreementDetails->name}}</a>
                                             @endif
                                         </div>
                                     </td>

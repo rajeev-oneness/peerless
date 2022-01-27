@@ -355,10 +355,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p class="small mb-2">Main agreement</p>
                 <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                 <br><br>
 
+                <p class="small mb-2">Stamp paper</p>
                 <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
 
                 <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
