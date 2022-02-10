@@ -470,7 +470,6 @@
         });
 
         // accept interger only and one decimal point
-        // $('.numberField').on('keyup', function(event) {
         $(".numberField").keydown(function (event) {
             // console.log(event.keyCode);
             if (event.shiftKey == true) {
@@ -490,6 +489,11 @@
                 event.preventDefault();
             if($(this).val().indexOf('.') !== -1 && event.keyCode == 190)
                 event.preventDefault();
+        });
+
+        // button text changes on form submit
+        $('form').on('submit', function(e) {
+            $('button[type="submit"]').text('Loading...').prop('disabled', 'disabled');
         });
     </script>
 

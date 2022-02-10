@@ -44,9 +44,11 @@ class BorrowerController extends Controller
                 }
             }]
         ])
-            ->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('CUSTOMER_ID')->paginate(20);
+        ->with(['agreementDetails', 'borrowerAgreementRfq'])
+        ->latest('CUSTOMER_ID')
+        ->paginate(15)
+        ->appends(request()->query());
 
-        // $data = Borrower::with('agreementDetails')->latest('id')->paginate(5);
         return view('admin.borrower.index', compact('data'));
     }
 

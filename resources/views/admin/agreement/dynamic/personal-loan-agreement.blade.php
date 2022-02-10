@@ -262,7 +262,9 @@
             display:inline-block;
             width:30%;
         }
-
+        #page_24 .sign-table{
+            bottom: 30%;
+        }
     </style>
 </head>
 <body>
@@ -330,7 +332,7 @@
             <div class="page-break"></div>
 
             <div class="page" id="page_1">
-                <img src="{{asset('admin/static-required/stamp.jpg')}}" alt="" style="width: 650px; height:320px;object-fit:scale-down;display:block;margin:0 auto;">
+                {{-- <img src="{{asset('admin/static-required/stamp.jpg')}}" alt="" style="width: 650px; height:320px;object-fit:scale-down;display:block;margin:0 auto;"> --}}
 
                 <h3 style="margin-bottom: 60px">AGREEMENT</h3>
                 <p>General Instructions :</P>
@@ -488,13 +490,13 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>(x) Annexure - I</td>
+                        <td>(x) Annexure - VI</td>
                         <td>NACH Declaration</td>
                         <td>30</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>(x) Annexure - VII</td>
+                        <td>(xi) Annexure - VII</td>
                         <td>PDC LETTER CUM UNDERTAKING</td>
                         <td>31</td>
                     </tr>
@@ -694,7 +696,7 @@
                     Agreements together with its Schedules and Annexures as may be required under the Personal Loan
                     Facility
                     Agreement from the list Provided in <b>Schedule V </b>and any other documents, correspondences,
-                    agreement including all correspondences by way of email or otherwise exchanged between the Parties.
+                    agreement including all correspondences by way of email or otherwise exchanged between the Parties. (x) PDC Letter Cum Undertaking (Annexure VIII)
                 </P>
                 <P><b>1. &nbsp; &nbsp; "MARGIN SHORTFALL" </b>means where the
                     accumulated salary / professional income is inadequate to meet Margin Requirement as mentioned
@@ -906,8 +908,7 @@
                     Processing Fees for processing and sanction of Loan </P>
                 <P> <b>5.2</b> &nbsp; &nbsp; PFSL may not, having disbursed
                     any amount, disburse any further amount under the Loan Agreement, unless the following
-                    conditions are complied with, in the sole discretion of PFSL, before such further </P>
-                <P>disbursement:</P>
+                    conditions are complied with, in the sole discretion of PFSL, before such further disbursement:</P>
                 <P> <b>5.2.1</b> &nbsp; &nbsp; No event of default as specified
                     in Clause 9 hereinafter shall have occurred;</P>
                 <P> <b>5.2.2</b> &nbsp; &nbsp; The Borrower(s) shall have
@@ -2545,6 +2546,7 @@
                         <td>
                             <p>
                                 Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only
+                                <br>
                                 Reference no {{$data->loanreferencenumber}} dated {{$data->dateofagreement}}
                             </p>
                         </td>
@@ -2561,7 +2563,7 @@
                         <td>iv. Repayment tenure</td>
                         <td>
                             <p>
-                                {{$data->repaymenttenureinmonths}} from the date of disbursement
+                                {{$data->repaymenttenureinmonths}} months from the date of disbursement
                             </p>
                         </td>
                     </tr>
@@ -2577,9 +2579,9 @@
                         <td>vi. Processing fee <br> Documentation charges</td>
                         <td>
                             <p>
-                                {{$data->processingchargeinpercentage}}%
+                                {{$data->processingchargeinpercentage}}% of the sactioned loan amount plus applicable tax
                                 <br>
-                                {{$data->documentationfee}}
+                                Rs {{$data->documentationfee}} /- plus applicable tax
                             </p>
                         </td>
                     </tr>
@@ -3300,7 +3302,7 @@
                                 I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note dated
                                 {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /-
                                 (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for
+                                ____________________ for
                                 Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
                                 demand, which is given by me / us as Security for repayment of the loan Granted to me/
                                 us by PFSL, the Lender, by execution of Personal Loan Agreement dated
@@ -3329,15 +3331,11 @@
                     <tr>
                         <td>
                             <div class="sign-line"></div>
-                            <b>Authorised Signatories For PFSL</b>
+                            <b>Signature of Borrower</b>
                         </td>
                         <td>
                             <div class="sign-line"></div>
-                            <b>Borrower</b>
-                        </td>
-                        <td>
-                            <div class="sign-line"></div>
-                            <b>Co-Borrower</b>
+                            <b>Signature of Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
@@ -3382,8 +3380,7 @@
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span
-                                    class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <br>
+                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}}
                                 <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span>
                                 I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and
                                 {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to
@@ -3398,16 +3395,6 @@
                             </p>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td class="border0">
-                            <p>
-                                Thanking You <br><br>
-                                Yours Faithfully,
-                            </p>
-                        </td>
-                    </tr>
-
                 </table>
 
 
@@ -3693,7 +3680,7 @@
                     statutory levies and I/we am/are authorized to cancel/ amend the mandate by appropriately
                     communicating the cancellation / amendment request to Peerless Financial Services Limited or the
                     bank where I / we have authorized the debit.</P>
-                <P class="p324 ft1">For and on be half of {{$data->nachdeclarationforandonbehalfof}}</P>
+                <P class="p324 ft1">For and on behalf of {{$data->nachdeclarationforandonbehalfof}}</P>
                 <TABLE cellpadding=0 cellspacing=0 class="t31 table_30 border0">
                     <TR class="border0">
                         <TD class="tr28 td45">
@@ -3758,7 +3745,7 @@
 
                 <table class="border0">
                     <tr>
-                        <td class="border0">
+                        <td class="border0" colspan="7">
 
                             <b>Peerless Financial Services Limited</b> <br>
                             <b>Peerless Bhavan,</b> <br>
@@ -3766,15 +3753,18 @@
                             <b>Kolkata - 700 069</b> 
 
                         </td>
+                        <td style="text-align:right;" class="border0" colspan="3">
+                            <p>Dated : {{$data->dateofagreement}}</p>
+                        </td>
                     </tr>
 
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <b>Dear Sir,</b>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <b>Re: Loan Account no. __________________________ of for Rs.________________/-</b>
                             <br>
                             <p>I/ We refer to the disbursement of secured loan which you have agreed to make to me / us in accordance
@@ -3784,12 +3774,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <b>Details of Post-dated cheques</b>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0" style="padding-top: 0; text-align: center;">
+                        <td class="border0"  colspan="10" style="padding-top: 0; text-align: center;">
                             <table class="border0 empty-table">
                                 <tr>
                                     <th>
@@ -3839,11 +3829,25 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td>5.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>6.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <p>With reference to the above cheques issued to you, we hereby confirm and undertake as under:</p>
 
                             <ol>

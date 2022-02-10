@@ -87,7 +87,7 @@
                     console.log(result.data);
                     let content = '';
                     if (result.error == false) {
-                        let authorised_signatoryShow = '<em class="text-muted">No data</em>';
+                        /* let authorised_signatoryShow = '<em class="text-muted">No data</em>';
                         if (result.data.authorised_signatory.length > 0) {
                             authorised_signatoryShow = result.data.authorised_signatory;
                         }
@@ -100,17 +100,17 @@
                         let co_borrowerShow = '<em class="text-muted">No data</em>';
                         if (result.data.co_borrower.length > 0) {
                             co_borrowerShow = result.data.co_borrower;
-                        }
+                        } */
 
                         content += '<h6 class="font-weight-bold mb-3">'+result.data.name+'</h6>';
                         content += '<p class="text-muted small mb-0">Description</p>';
                         content += '<p class="text-dark small">'+result.data.description+'</p>';
-                        content += '<p class="text-muted small mb-0">Authorised Signatory</p>';
+                        /*content += '<p class="text-muted small mb-0">Authorised Signatory</p>';
                         content += '<p class="text-dark small">'+authorised_signatoryShow+'</p>';
                         content += '<p class="text-muted small mb-0">Borrower</p>';
                         content += '<p class="text-dark small">'+borrowerShow+'</p>';
                         content += '<p class="text-muted small mb-0">Co-borrower</p>';
-                        content += '<p class="text-dark small">'+co_borrowerShow+'</p>';
+                        content += '<p class="text-dark small">'+co_borrowerShow+'</p>'; */
 
                         let route = '{{route("user.agreement.details", 'id')}}';
                         route = route.replace('id',result.data.id);

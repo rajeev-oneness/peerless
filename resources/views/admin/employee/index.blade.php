@@ -22,6 +22,31 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm-7">
+                                    <p class="small text-muted">Displaying {{$data->firstItem()}} to {{$data->lastItem()}} out of {{$data->total()}} entries</p>
+                                </div>
+                                <div class="col-sm-5 text-right">
+                                    <form action="{{ route('user.employee.list') }}" method="GET" role="search">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control form-control-sm" name="term" placeholder="What are you looking for..." id="term" value="{{app('request')->input('term')}}" autocomplete="off">
+                                            <div class="input-group-append">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-info btn-sm rounded-0" type="submit" title="Search projects">
+                                                        <i class="fas fa-search"></i> Search
+                                                    </button>
+                                                </span>
+                                                <a href="{{ route('user.employee.list') }}">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-danger btn-sm rounded-0" type="button" title="Refresh page"> Reset <i class="fas fa-sync-alt"></i></button>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <table class="table table-sm table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -93,11 +118,15 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="100%"><em>No records found</em></td>
+                                            <td colspan="100%" class="text-center text-muted"><em>No records found</em></td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                             </table>
+
+                            <div class="pagination-view">
+                                {{$data->appends(request()->query())->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>

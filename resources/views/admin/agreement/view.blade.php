@@ -28,12 +28,12 @@
 
                         <hr>
 
-                        <p class="text-muted small mb-0">Authorised Signatory</p>
+                        {{-- <p class="text-muted small mb-0">Authorised Signatory</p>
                         <p class="text-dark small">{{$data->authorised_signatory}}</p>
                         <p class="text-muted small mb-0">Borrower</p>
                         <p class="text-dark small">{{$data->borrower}}</p>
                         <p class="text-muted small mb-0">Co-borrower</p>
-                        <p class="text-dark small">{{$data->co_borrower}}</p>
+                        <p class="text-dark small">{{$data->co_borrower}}</p> --}}
                     </div>
                 </div>
             </div>

@@ -20,9 +20,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::latest()->get();
+        $data = User::where([
+            [function ($query) use ($request) {
+                if ($term = $request->term) {
+                    $query
+                        ->orWhere('name', 'LIKE', '%' . $term . '%')
+                        ->orWhere('emp_id', 'LIKE', '%' . $term . '%')
+                        ->orWhere('email', 'LIKE', '%' . $term . '%')
+                        ->orWhere('mobile', 'LIKE', '%' . $term . '%')
+                        ->get();
+                }
+            }]
+        ])
+        ->latest('id')
+        ->paginate(15)
+        ->appends(request()->query());
+
+        // $data = User::latest()->paginate(20)->appends(request()->query());
         return view('admin.employee.index', compact('data'));
     }
 

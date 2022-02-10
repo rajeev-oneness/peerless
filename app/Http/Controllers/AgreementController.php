@@ -46,17 +46,17 @@ class AgreementController extends Controller
         $request->validate([
             'name' => 'required|string|min:1|max:255',
             'description' => 'required|string',
-            'authorised_signatory' => 'nullable',
-            'borrower' => 'nullable',
-            'co_borrower' => 'nullable',
+            // 'authorised_signatory' => 'nullable',
+            // 'borrower' => 'nullable',
+            // 'co_borrower' => 'nullable',
         ]);
 
         $agreement = new Agreement;
         $agreement->name = $request->name;
         $agreement->description = $request->description;
-        $agreement->authorised_signatory = $request->authorised_signatory ? $request->authorised_signatory : '';
-        $agreement->borrower = $request->borrower ? $request->borrower : '';
-        $agreement->co_borrower = $request->co_borrower ? $request->co_borrower : '';
+        // $agreement->authorised_signatory = $request->authorised_signatory ? $request->authorised_signatory : '';
+        // $agreement->borrower = $request->borrower ? $request->borrower : '';
+        // $agreement->co_borrower = $request->co_borrower ? $request->co_borrower : '';
         $agreement->html = '';
         $agreement->save();
 
@@ -105,17 +105,17 @@ class AgreementController extends Controller
         $request->validate([
             'name' => 'required|string|min:1|max:255',
             'description' => 'required|string',
-            'authorised_signatory' => 'nullable',
-            'borrower' => 'nullable',
-            'co_borrower' => 'nullable',
+            // 'authorised_signatory' => 'nullable',
+            // 'borrower' => 'nullable',
+            // 'co_borrower' => 'nullable',
         ]);
 
         $agreement = Agreement::findOrFail($id);
         $agreement->name = $request->name;
         $agreement->description = $request->description;
-        $agreement->authorised_signatory = $request->authorised_signatory ? $request->authorised_signatory : '';
-        $agreement->borrower = $request->borrower ? $request->borrower : '';
-        $agreement->co_borrower = $request->co_borrower ? $request->co_borrower : '';
+        // $agreement->authorised_signatory = $request->authorised_signatory ? $request->authorised_signatory : '';
+        // $agreement->borrower = $request->borrower ? $request->borrower : '';
+        // $agreement->co_borrower = $request->co_borrower ? $request->co_borrower : '';
         $agreement->save();
 
         return redirect()->route('user.agreement.list')->with('success', 'Agreement updated');

@@ -13,9 +13,30 @@ class OfficeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Office::latest()->get();
+        $data = Office::where([
+            [function ($query) use ($request) {
+                if ($term = $request->term) {
+                    $query
+                        ->orWhere('name', 'LIKE', '%' . $term . '%')
+                        ->orWhere('code', 'LIKE', '%' . $term . '%')
+                        ->orWhere('email', 'LIKE', '%' . $term . '%')
+                        ->orWhere('mobile', 'LIKE', '%' . $term . '%')
+                        ->orWhere('street_address', 'LIKE', '%' . $term . '%')
+                        ->orWhere('pincode', 'LIKE', '%' . $term . '%')
+                        ->orWhere('city', 'LIKE', '%' . $term . '%')
+                        ->orWhere('state', 'LIKE', '%' . $term . '%')
+                        ->orWhere('comment', 'LIKE', '%' . $term . '%')
+                        ->get();
+                }
+            }]
+        ])
+        ->latest('id')
+        ->paginate(15)
+        ->appends(request()->query());
+
+        // $data = Office::latest()->get();
         return view('admin.office.index', compact('data'));
     }
 

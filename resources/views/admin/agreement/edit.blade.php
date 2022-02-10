@@ -33,7 +33,7 @@
                                     @error('description') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="authorised_signatory" class="col-sm-2 col-form-label">Authorised signatory</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('authorised_signatory') {{'is-invalid'}} @enderror" id="authorised_signatory" name="authorised_signatory" placeholder="Authorised signatory" value="{{old('authorised_signatory') ? old('authorised_signatory') : $data->authorised_signatory}}">
@@ -53,7 +53,7 @@
                                     <input type="text" class="form-control @error('co_borrower') {{'is-invalid'}} @enderror" id="co_borrower" name="co_borrower" placeholder="Co-borrower" value="{{old('co_borrower') ? old('co_borrower') : $data->co_borrower}}">
                                     @error('co_borrower') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group row">
                                 <div class="offset-sm-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Save changes</button>

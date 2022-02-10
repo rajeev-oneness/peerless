@@ -219,7 +219,7 @@ class PDFController extends Controller
         $data->continuingsecurityletterdate1 = ($this->getData($agreement, 'continuingsecurityletterdate1') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'continuingsecurityletterdate1'))) : '';
 
         // page 25
-        $data->undertakingcumindemnitydate = $this->getData($agreement, 'undertakingcumindemnitydate');
+        $data->undertakingcumindemnitydate = ($this->getData($agreement, 'undertakingcumindemnitydate') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'undertakingcumindemnitydate'))) : '';
 
         // page 27
         $data->letterofintentnumber = $this->getData($agreement, 'letterofintentnumber');

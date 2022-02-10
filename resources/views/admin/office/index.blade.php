@@ -17,6 +17,31 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm-7">
+                                    <p class="small text-muted">Displaying {{$data->firstItem()}} to {{$data->lastItem()}} out of {{$data->total()}} entries</p>
+                                </div>
+                                <div class="col-sm-5 text-right">
+                                    <form action="{{ route('user.office.list') }}" method="GET" role="search">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control form-control-sm" name="term" placeholder="What are you looking for..." id="term" value="{{app('request')->input('term')}}" autocomplete="off">
+                                            <div class="input-group-append">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-info btn-sm rounded-0" type="submit" title="Search projects">
+                                                        <i class="fas fa-search"></i> Search
+                                                    </button>
+                                                </span>
+                                                <a href="{{ route('user.office.list') }}">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-danger btn-sm rounded-0" type="button" title="Refresh page"> Reset <i class="fas fa-sync-alt"></i></button>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <table class="table table-sm table-bordered table-hover" id="showOfficeTable">
                                 <thead>
                                     <tr>
@@ -51,19 +76,13 @@
                                                 {{ $item->city }}, {{ $item->pincode }}
                                             </td>
                                             <td class="text-right">
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
-                                                    title="View"
-                                                    onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'view')">View</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'view')">View</a>
 
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
-                                                    title="Edit"
-                                                    onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'edit')">Edit</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="Edit" onclick="viewDeta1ls('{{ route('user.office.show') }}', {{ $item->id }}, 'edit')">Edit</a>
 
                                                 {{-- <a href="{{ route('user.office.edit', $item->id) }}" class="badge badge-dark action-button" title="Edit">Edit</a> --}}
 
-                                                <a href="javascript: void(0)" class="badge badge-dark action-button"
-                                                    title="Delete"
-                                                    onclick="confirm4lert('{{ route('user.office.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
+                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{ route('user.office.destroy') }}', {{ $item->id }}, 'delete')">Delete</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -73,6 +92,10 @@
                                     @endforelse
                                 </tbody>
                             </table>
+
+                            <div class="pagination-view">
+                                {{$data->appends(request()->query())->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>

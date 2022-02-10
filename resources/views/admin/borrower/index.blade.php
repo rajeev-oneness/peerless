@@ -125,7 +125,7 @@
                         </table>
 
                         <div class="pagination-view">
-                            {{$data->links()}}
+                            {{$data->appends(request()->query())->links()}}
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
             <div class="modal-body">
                 <form method="post" action="{{route('user.borrower.csv.upload')}}" enctype="multipart/form-data" id="borrowerCsvUpload">
                     @csrf
-                    <input type="file" name="file" class="form-control">
+                    <input type="file" name="file" class="form-control" accept=".csv">
                     <br>
                     <button type="submit" class="btn btn-sm btn-primary" id="csvImportBtn">Import <i class="fas fa-upload"></i></button>
                 </form>
