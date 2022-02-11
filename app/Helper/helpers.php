@@ -965,12 +965,21 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $response = '<select class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
             break;
         case 'checkbox':
+            // print_r($respValue);
             $expValue = explode(', ', $value);
             $checkedValues = explode(',', strtolower($respValue));
+
+            foreach ($checkedValues as $key => $values) {
+                $newCheckedValues[] = generateKeyForForm($values);
+            }
+
+            // echo '<pre>';print_r($checkedValues);
+            // echo '<pre>';print_r($newCheckedValues);
             $option = '';
             foreach ($expValue as $index => $val) {
+                // echo $index.' ';print_r(generateKeyForForm($val));echo '<br>';
                 $checked = '';
-                if(in_array(strtolower($val),$checkedValues)) {$checked = 'checked';}
+                if(in_array(generateKeyForForm($val), $newCheckedValues)) $checked = 'checked';
 
                 $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '" '.$checked.' '.$disabledField.'> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val.' </label></div>';
             }

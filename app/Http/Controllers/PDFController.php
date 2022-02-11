@@ -112,7 +112,7 @@ class PDFController extends Controller
         $data->emailidoftheborrower = $this->getData($agreement, 'emailidoftheborrower');
 
         // co-borrower 1
-        $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
+        // $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
         $data->streetaddressofthecoborrower = $this->getData($agreement, 'streetaddressofthecoborrower');
         $data->pancardnumberofthecoborrower = $this->getData($agreement, 'pancardnumberofthecoborrower');
         $data->officiallyvaliddocumentsofthecoborrower = $this->getData($agreement, 'officiallyvaliddocumentsofthecoborrower');
