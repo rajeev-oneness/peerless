@@ -18,12 +18,18 @@ class Borrower extends Model
         }
     }
 
-    public function agreementDetails() {
-        return $this->belongsTo('App\Models\Agreement', 'agreement_id', 'id');
-    }
+    // public function agreementDetails() {
+    //     return $this->belongsTo('App\Models\Agreement', 'agreement_id', 'id');
+    // }
 
     public function borrowerAgreementRfq()
     {
         return $this->hasOne('App\Models\AgreementRfq', 'borrower_id', 'id');
     }
+
+    public function agreement()
+    {
+        return $this->hasMany('App\Models\BorrowerAgreement', 'borrower_id', 'id');
+    }
+    
 }

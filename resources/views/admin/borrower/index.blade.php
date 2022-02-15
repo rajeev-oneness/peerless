@@ -101,10 +101,12 @@
                                     </td>
                                     <td>
                                         <div class="single-line">
-                                            @if ($item->agreement_id == 0)
-                                                <p class="small text-muted"> <em>No agreement yet</em> </p>
+                                            @if (count($item->agreement) > 0)
+                                                @foreach ($item->agreement as $agreement)
+                                                    <a href="{{route('user.borrower.agreement', $agreement->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">{{ $agreement->agreementDetails->name }}</a>
+                                                @endforeach
                                             @else
-                                                <a href="{{route('user.borrower.agreement', $item->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button" title="Setup loan application form">{{$item->agreementDetails->name}}</a>
+                                                <p class="small text-muted"> <em>No agreement yet</em> </p>
                                             @endif
                                         </div>
                                     </td>

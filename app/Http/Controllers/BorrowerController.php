@@ -9,6 +9,7 @@ use App\Models\AgreementDocumentUpload;
 use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
+use App\Models\BorrowerAgreement;
 use App\Models\FieldParent;
 use App\Models\UserType;
 use Exception;
@@ -44,10 +45,12 @@ class BorrowerController extends Controller
                 }
             }]
         ])
-        ->with(['agreementDetails', 'borrowerAgreementRfq'])
+        ->with(['agreement', 'borrowerAgreementRfq'])
         ->latest('CUSTOMER_ID')
         ->paginate(15)
         ->appends(request()->query());
+
+        // dd($data);
 
         return view('admin.borrower.index', compact('data'));
     }
@@ -71,7 +74,7 @@ class BorrowerController extends Controller
     public function indexOld(Request $request)
     {
         if ($request->ajax()) {
-            $borrowers = Borrower::select('*')->with(['agreementDetails', 'borrowerAgreementRfq'])->latest('id');
+            $borrowers = Borrower::select('*')->with(['agreement', 'borrowerAgreementRfq'])->latest('id');
 
             return Datatables::of($borrowers)->make(true);
         }
@@ -98,6 +101,7 @@ class BorrowerController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             // manual entry customer id
             'customer_id' => 'required|integer|min:1|digits_between:1,20',
@@ -164,9 +168,16 @@ class BorrowerController extends Controller
             $user->pincode = $request->pincode;
             $user->state = $request->state;
 
-            $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
+            // $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
             $user->uploaded_by = auth()->user()->id;
             $user->save();
+
+            // borrower agreement
+            $borrower_agreement = new BorrowerAgreement();
+            $borrower_agreement->borrower_id = $user->id;
+            $borrower_agreement->agreement_id = $request->agreement_id;
+            $borrower_agreement->uploaded_by = auth()->user()->id;
+            $borrower_agreement->save();
 
             // notification fire
             createNotification(auth()->user()->id, 1, 'new_borrower', 'New borrower, ' . $request->name_prefix . ' ' . $request->full_name . ' added by ' . auth()->user()->emp_id);
@@ -419,34 +430,55 @@ class BorrowerController extends Controller
 
     public function agreementFields(Request $request, $id)
     {
-        $borrower_id = $id;
+        $borrower_agreement_id = $id;
         $data = (object)[];
-        $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->with('agreementDetails', 'borrowerAgreementRfq')->where('id', $borrower_id)->get();
-        foreach ($data->agreement as $agreement) {
-            $data->name_prefix = $agreement->name_prefix;
-            $data->full_name = $agreement->full_name;
-            $data->agreement_id = $agreement->agreement_id;
-            $data->agreement_name = $agreement->agreementDetails->name;
+        $data->borrower_agreement = BorrowerAgreement::with('borrowerDetails', 'agreementDetails')->where('id', $borrower_agreement_id)->get();
+
+        // dd($data->borrower_agreement);
+
+        foreach ($data->borrower_agreement as $borrower_agreement) {
+            $data->borrower_id = $borrower_agreement->borrower_id;
+            $data->name_prefix = $borrower_agreement->borrowerDetails->name_prefix;
+            $data->full_name = $borrower_agreement->borrowerDetails->full_name;
+            $data->agreement_id = $borrower_agreement->agreement_id;
+            $data->agreement_name = $borrower_agreement->agreementDetails->name;
             break;
         }
         $data->parentFields = FieldParent::orderBy('position')->with('childRelation')->get();
 
         $data->fields = AgreementField::with('fieldDetails')->where('agreement_id', $data->agreement_id)->get();
-        $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
+        $data->agreementRfq = AgreementRfq::where('borrower_id', $data->borrower_id)->where('agreement_id', $data->agreement_id)->count();
 
         $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
 
-        // $data->uploadedDocuments = AgreementDocumentUpload::where('borrower_id', $borrower_id)->get();
-
-        // dd($data);
-
         return view('admin.borrower.fields', compact('data', 'id'));
+
+        // $borrower_id = $id;
+        // $data = (object)[];
+        // $data->agreement = Borrower::select('id', 'name_prefix', 'full_name', 'agreement_id')->with('agreement', 'borrowerAgreementRfq')->where('id', $borrower_id)->get();
+        // foreach ($data->agreement as $agreement) {
+        //     $data->name_prefix = $agreement->name_prefix;
+        //     $data->full_name = $agreement->full_name;
+        //     $data->agreement_id = $agreement->agreement_id;
+        //     $data->agreement_name = $agreement->agreementDetails->name;
+        //     break;
+        // }
+        // $data->parentFields = FieldParent::orderBy('position')->with('childRelation')->get();
+
+        // $data->fields = AgreementField::with('fieldDetails')->where('agreement_id', $data->agreement_id)->get();
+        // $data->agreementRfq = AgreementRfq::where('borrower_id', $borrower_id)->where('agreement_id', $data->agreement_id)->count();
+
+        // $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
+
+        // return view('admin.borrower.fields', compact('data', 'id'));
     }
 
     public function agreementStore(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
+
         $rules = [
+            'borrower_agreement_id' => 'required|numeric|min:1',
             'borrower_id' => 'required|numeric|min:1',
             'agreement_id' => 'required|numeric|min:1',
             'field_name' => 'required'
@@ -458,12 +490,14 @@ class BorrowerController extends Controller
             DB::beginTransaction();
 
             try {
+                // agreement rfq
                 $rfq = new AgreementRfq();
                 $rfq->borrower_id = $request->borrower_id;
                 $rfq->agreement_id = $request->agreement_id;
                 $rfq->data_filled_by = auth()->user()->id;
                 $rfq->save();
 
+                // agreement data - fields & values
                 foreach ($request->field_name as $index => $field) {
                     $agreement = new AgreementData();
                     $agreement->rfq_id = $rfq->id;
@@ -486,9 +520,11 @@ class BorrowerController extends Controller
                 $notificationRoute = 'user.borrower.list';
                 createNotification(auth()->user()->id, 1, 'agreement_data_upload', $notificationMessage, $notificationRoute);
 
+                // dd($notificationMessage);
+
                 DB::commit();
 
-                return redirect()->route('user.borrower.agreement', $request->borrower_id)->with('success', 'Fields added');
+                return redirect()->route('user.borrower.agreement', $request->borrower_agreement_id)->with('success', 'Fields added successfully');
             } catch (Exception $e) {
                 DB::rollback();
             }

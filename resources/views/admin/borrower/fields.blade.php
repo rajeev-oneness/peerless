@@ -40,9 +40,9 @@
                                 @if ($data->agreementRfq > 0)
                                     <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
-                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>View PDF</a> --}}
+                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>View PDF</a> --}}
 
-                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id, 'status' => 'download']) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i> Download PDF</a> --}}
+                                    {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id, 'status' => 'download']) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-download"></i> Download PDF</a> --}}
                                 @endif
                             </div>
 
@@ -175,7 +175,7 @@
                                                                             }
                                                                         @endphp
 
-                                                                        {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, '', $borrowerId = $id, $formType) !!}
+                                                                        {!! form3lements($item->childField->id, $item->childField->name, $item->childField->inputType->name, $item->childField->value, $item->childField->key_name, '', $borrowerId = $data->borrower_id, $formType) !!}
                                                                     </td>
                                                                 </tr>
                                                                 @endif
@@ -192,10 +192,9 @@
                                                             <td colspan="3"
                                                                 style="position: sticky;bottom: -1px;z-index: 99;background-color: #e9e9e9;">
                                                                 <div class="w-100 text-right">
-                                                                    <input type="hidden" name="borrower_id"
-                                                                        value="{{ $id }}">
-                                                                    <input type="hidden" name="agreement_id"
-                                                                        value="{{ $data->agreement_id }}">
+                                                                    <input type="hidden" name="borrower_id" value="{{ $data->borrower_id }}">
+                                                                    <input type="hidden" name="agreement_id" value="{{ $data->agreement_id }}">
+                                                                    <input type="hidden" name="borrower_agreement_id" value="{{ $id }}">
 
                                                                     @if ($data->agreementRfq > 0)
 
@@ -205,7 +204,7 @@
 
                                                                         <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
-                                                                        {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
+                                                                        {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
                                                                         View PDF</a> --}}
 
                                                                     @else
@@ -243,7 +242,7 @@
                                                                         <div class="card-body p-2">
                                                                             <div class="image__preview">
                                                                                 <img class="card-img-top img-fluid"
-                                                                                    src="{{ documentSrc($childItem->id, $id, 'image') }}"
+                                                                                    src="{{ documentSrc($childItem->id, $data->borrower_id, 'image') }}"
                                                                                     alt="Cover Image"
                                                                                     id="image__preview{{ $childItem->id }}">
                                                                             </div>
@@ -264,7 +263,7 @@
                                                                                             id="agreement_document_id_{{ $childItem->id }}"
                                                                                             value="{{ $childItem->id }}">
 
-                                                                                        {!! documentSrc($childItem->id, $id, 'action') !!}
+                                                                                        {!! documentSrc($childItem->id, $data->borrower_id, 'action') !!}
 
                                                                                         <button type="submit"
                                                                                             class="btn btn-xs btn-success mb-2"
@@ -356,18 +355,18 @@
             </div>
             <div class="modal-body">
                 <p class="small mb-2">Main agreement</p>
-                <a href="{{ route('user.borrower.agreement.pdf.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                 <br><br>
 
                 <p class="small mb-2">Stamp paper</p>
-                <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
 
-                <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
 
-                <a href="{{ route('user.borrower.agreement.pdf.page25.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 25-Rs 50 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page25.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 25-Rs 50 Stamp paper</a>
 
-                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a>
             </div>
         </div>
     </div>
