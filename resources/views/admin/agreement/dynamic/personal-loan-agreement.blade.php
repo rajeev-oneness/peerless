@@ -672,7 +672,7 @@
                     Agreements together with its Schedules and Annexures as may be required under the Personal Loan
                     Facility
                     Agreement from the list Provided in <b>Schedule V </b>and any other documents, correspondences,
-                    agreement including all correspondences by way of email or otherwise exchanged between the Parties. (x) PDC Letter Cum Undertaking (Annexure VIII)
+                    agreement including all correspondences by way of email or otherwise exchanged between the Parties. (x) PDC Letter Cum Undertaking (Annexure VII)
                 </P>
                 <P><b>1. &nbsp; &nbsp; "MARGIN SHORTFALL" </b>means where the
                     accumulated salary / professional income is inadequate to meet Margin Requirement as mentioned
@@ -3092,7 +3092,7 @@
                     <tr>
                         <td class="border0" colspan="2">
                             <p class="ft131">
-                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of Demand Promissory Note {{$data->rateofinterest}} % Per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of Demand Promissory Note {{$data->rateofinterest}} % per annum with monthly interests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3156,7 +3156,7 @@
                         <td class="border0" colspan="2">
 
                             <p class="ft131">
-                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly interests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3242,8 +3242,7 @@
                             <p>
                                 I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note dated
                                 {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /-
-                                (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated
-                                ____________________ for
+                                (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated NIL for
                                 Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
                                 demand, which is given by me / us as Security for repayment of the loan Granted to me/
                                 us by PFSL, the Lender, by execution of Personal Loan Agreement dated
@@ -3323,8 +3322,8 @@
                             <p class="ft1">
                                 <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}}
                                 <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span>
-                                I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and
-                                {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to
+                                I/ We ,{{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) and
+                                {{$data->nameofthecoborrower }} ( <span class="ft2">“the Co borrower”</span> ) refer to
                                 the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us
                                 in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of
                                 <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
@@ -3702,7 +3701,7 @@
                     </tr>
                     <tr>
                         <td class="border0"  colspan="10">
-                            <b>Re: Loan Account no. __________________________ of for Rs.________________/-</b>
+                            <b>Re: Loan Account no. {{$data->loanaccountnumber}} of for Rs. {{$data->loanamountindigits}}/-</b>
                             <br>
                             <p>I/ We refer to the disbursement of secured loan which you have agreed to make to me / us in accordance
                                 with abovementioned agreement. I / We hereby enclose the following post-dated cheques in your favour
