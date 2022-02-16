@@ -284,7 +284,7 @@ class BorrowerController extends Controller
             // 'pincode' => 'required|integer|digits:6',
             // 'state' => 'required|string|min:1|max:200',
 
-            'agreement_id' => 'nullable|numeric|min:1'
+            // 'agreement_id' => 'nullable|numeric|min:1'
         ]);
 
         $user = Borrower::findOrFail($id);
@@ -315,7 +315,7 @@ class BorrowerController extends Controller
         $user->pincode = $request->pincode;
         $user->state = $request->state;
 
-        $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
+        // $user->agreement_id = $request->agreement_id ? $request->agreement_id : 0;
         $user->Customer_Type = $request->Customer_Type;
         $user->Resident_Status = $request->Resident_Status;
         $user->Aadhar_Number = $request->Aadhar_Number;

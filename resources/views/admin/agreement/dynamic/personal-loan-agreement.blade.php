@@ -19,6 +19,9 @@
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
+        .indexTable tbody tr td {
+            padding: 15px;
+        }
         .page-break {
             page-break-after: always;
             margin-top:30px;
@@ -52,10 +55,6 @@
         #outer_content {
             width: 100%;
         }
-        /*#DivIdToPrint {*/
-        /*    width: 80%;   */
-        /*    margin: 0 auto; */
-        /*}*/
         .btn {
             display: inline-block;
             font-weight: 400;
@@ -262,7 +261,9 @@
             display:inline-block;
             width:30%;
         }
-
+        #page_24 .sign-table{
+            bottom: 30%;
+        }
     </style>
 </head>
 <body>
@@ -277,22 +278,13 @@
     <br><br><br><br>
     <div id="outer_content">
         <div id="DivIdToPrint">
-
             <div class="page" id="cover-page">
-
                 <table>
                     <tr>
                         <td style="text-align: center;">
-                            <h1>
-                                PERSONAL <br>
-                                LOAN <br>
-                                FACILITY <br>
-                                AGREEMENT
-                            </h1>
+                            <h1>PERSONAL <br> LOAN <br> FACILITY <br> AGREEMENT</h1>
                             <h3><b>Peerless Financial Services Limited </b></h3>
-                            
                             <p>Registered & Head Office </p>
-
                             <p><b>Peerless Bhavan, 3 Esplanade East Kolkata 700069</b></p>
                             <span>
                                 <b>Phone</b> : <a href="tel:033-40622525">033-40622525 </a>
@@ -304,50 +296,35 @@
                             <div class="logo-img">
                                 <img style="width:100%;" src="https://www.peerlessfinance.in/assets/images/logo.png" alt="">
                             </div>
-                            <p>
-                                <b>CIN: U65993WB1988PLC044077</b>
-                            </p>
-
+                            <p><b>CIN: U65993WB1988PLC044077</b></p>
                             <div class="cover-meta" style="margin: 50px 0;">
                                 <p>
                                     <b>Customer ID </b> &nbsp; &nbsp;
                                     <b>{{$data->customerid}}</b>
-                                    {{-- <b style="border-bottom: 1px solid #000000; padding-bottom: 5px; width: 280px; min-height: 1px; display: inline-block;"></b> --}}
                                 </p>
-                                
                                 <p>
                                     <b>Loan Account No  </b> &nbsp; &nbsp;
                                     <b>{{$data->loanaccountnumber}}</b>
-                                    {{-- <b style="border-bottom: 1px solid #000000; padding-bottom: 5px; width: 280px; min-height: 1px; display: inline-block;"></b> --}}
                                 </p>
                             </div>
                         </td>
-                        
                     </tr>
                 </table>
-
             </div>
+
             <div class="page-break"></div>
 
             <div class="page" id="page_1">
-                <img src="{{asset('admin/static-required/stamp.jpg')}}" alt="" style="width: 650px; height:320px;object-fit:scale-down;display:block;margin:0 auto;">
+                {{-- <img src="{{asset('admin/static-required/stamp.jpg')}}" alt="" style="width: 650px; height:320px;object-fit:scale-down;display:block;margin:0 auto;"> --}}
 
                 <h3 style="margin-bottom: 60px">AGREEMENT</h3>
                 <p>General Instructions :</P>
-                <p>All applications to be filled in <b>English</b> in CAPITAL LETTERS using
-                    Ballpoint pen only.</P>
-                <p>Any amendments / overwriting / erasures/cuttings / hand written information in the blank
-                    space on any page should be countersigned.</P>
-                <p>The signature of the Borrower / <NOBR>Co-Borrower /</NOBR> Guarantor should be the same on
-                    the Loan Agreement & Loan Application Form.</P>
-                <p>All photocopies provided, to be <NOBR>self-attested /</NOBR> authenticated.</P>
-                <p>All pages of Schedules, Loan Agreement and Annexures to be mandatorily signed by the
-                    Borrower / Co Borrower and Guarantor, as may be specifically mentioned.</P>
-                <p>Deeds / agreements, as per format of PFSL, to be additionally executed with the
-                    Borrower(s) / Guarantor(s) as may be required under the terms of the Sanction Letter and
-                    appended to the
-                    Personal Loan Facility Agreement</P>
-
+                <p>All applications to be filled in <b>English</b> in CAPITAL LETTERS using Ballpoint pen only.</P>
+                <p>Any amendments / overwriting / erasures/cuttings / hand written information in the blank space on any page should be countersigned.</P>
+                <p>The signature of the Borrower / Co-Borrower / Guarantor should be the same on the Loan Agreement & Loan Application Form.</P>
+                <p>All photocopies provided, to be self-attested / authenticated.</P>
+                <p>All pages of Schedules, Loan Agreement and Annexures to be mandatorily signed by the Borrower / Co Borrower and Guarantor, as may be specifically mentioned.</P>
+                <p>Deeds / agreements, as per format of PFSL, to be additionally executed with the Borrower(s) / Guarantor(s) as may be required under the terms of the Sanction Letter and appended to the Personal Loan Facility Agreement</P>
 
                 <table style="margin-top: 20px;" class="table_1">
                     <tr>
@@ -392,13 +369,14 @@
                 </table>
                 <p class="page-no">1</p>
             </div>
+
             <div class="page-break"></div>
 
             <div class="page" id="page_2">
 
                 <h3 class="text-center">INDEX OF LEGAL DOCUMENTS FOR PERSONAL LOAN</h3>
 
-                <table cellpadding=0 cellspacing=0>
+                <table cellpadding=0 cellspacing=0 class="indexTable">
                     <tr>
                         <td></td>
                         <th class="text-center" colspan="2">NAME OF DOCUMENT</th>
@@ -488,13 +466,13 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>(x) Annexure - I</td>
+                        <td>(x) Annexure - VI</td>
                         <td>NACH Declaration</td>
                         <td>30</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>(x) Annexure - VII</td>
+                        <td>(xi) Annexure - VII</td>
                         <td>PDC LETTER CUM UNDERTAKING</td>
                         <td>31</td>
                     </tr>
@@ -694,7 +672,7 @@
                     Agreements together with its Schedules and Annexures as may be required under the Personal Loan
                     Facility
                     Agreement from the list Provided in <b>Schedule V </b>and any other documents, correspondences,
-                    agreement including all correspondences by way of email or otherwise exchanged between the Parties.
+                    agreement including all correspondences by way of email or otherwise exchanged between the Parties. (x) PDC Letter Cum Undertaking (Annexure VIII)
                 </P>
                 <P><b>1. &nbsp; &nbsp; "MARGIN SHORTFALL" </b>means where the
                     accumulated salary / professional income is inadequate to meet Margin Requirement as mentioned
@@ -906,8 +884,7 @@
                     Processing Fees for processing and sanction of Loan </P>
                 <P> <b>5.2</b> &nbsp; &nbsp; PFSL may not, having disbursed
                     any amount, disburse any further amount under the Loan Agreement, unless the following
-                    conditions are complied with, in the sole discretion of PFSL, before such further </P>
-                <P>disbursement:</P>
+                    conditions are complied with, in the sole discretion of PFSL, before such further disbursement:</P>
                 <P> <b>5.2.1</b> &nbsp; &nbsp; No event of default as specified
                     in Clause 9 hereinafter shall have occurred;</P>
                 <P> <b>5.2.2</b> &nbsp; &nbsp; The Borrower(s) shall have
@@ -2009,8 +1986,6 @@
                     </TR>
                 </table>
 
-                
-
                 {{-- witness 1 --}}
                 <table class="border0">
                     <tr>
@@ -2044,8 +2019,8 @@
                             
                             <p class="cps">
                                 <span>City : {{$data->witness1city}} </span>
-                                <span>Pin code{{$data->witness1pincode}}</span> 
-                                <span>State{{$data->witness1state}}</span>
+                                <span>Pin code : {{$data->witness1pincode}}</span> 
+                                <span>State : {{$data->witness1state}}</span>
                             </p>
 
                         </td>
@@ -2064,8 +2039,6 @@
                         </td>
                     </tr>
                 </table>
-
-                
 
                 {{-- witness 2 --}}
                 <table class="border0">
@@ -2121,8 +2094,6 @@
                     </tr>
                 </table>
 
-                
-
                 <table class="border0">
                     <tr>
                         <td class="border0" colspan="8">
@@ -2163,7 +2134,7 @@
                                 <span>State :  {{$data->stateoftheguarantor}}</span>
                             </p>
                             <p class="ft1" style="text-align:left; margin-top: 12px;">
-                                <b>Signed By Witness :</b> __________________________________________
+                                <b>Signed By Guarantor :</b> __________________________________________
                             </p>
                         </td>
                     </tr>
@@ -2285,7 +2256,7 @@
                             <b class="p203 ">Name of the Co Borrower</b>
                         </td>
                         <td>
-                            {{$data->nameofthecoborrower}}
+                            {{$data->nameofthecoborrower ? $data->nameofthecoborrower : 'NOT APPLICABLE'}}
                         </td>
                     </tr>
                     <tr>
@@ -2383,7 +2354,7 @@
                             <b class="p203 ">Name of the Co Borrower</b>
                         </td>
                         <td>
-                            {{$data->nameofthecoborrower2}}
+                            {{$data->nameofthecoborrower2 ? $data->nameofthecoborrower2 : 'NOT APPLICABLE'}}
                         </td>
                     </tr>
                     <tr>
@@ -2545,6 +2516,7 @@
                         <td>
                             <p>
                                 Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only
+                                <br>
                                 Reference no {{$data->loanreferencenumber}} dated {{$data->dateofagreement}}
                             </p>
                         </td>
@@ -2561,7 +2533,7 @@
                         <td>iv. Repayment tenure</td>
                         <td>
                             <p>
-                                {{$data->repaymenttenureinmonths}} from the date of disbursement
+                                {{$data->repaymenttenureinmonths}} months from the date of disbursement
                             </p>
                         </td>
                     </tr>
@@ -2577,9 +2549,9 @@
                         <td>vi. Processing fee <br> Documentation charges</td>
                         <td>
                             <p>
-                                {{$data->processingchargeinpercentage}}%
+                                {{$data->processingchargeinpercentage}}% of the sactioned loan amount plus applicable tax
                                 <br>
-                                {{$data->documentationfee}}
+                                Rs {{$data->documentationfee}} /- plus applicable tax
                             </p>
                         </td>
                     </tr>
@@ -3120,22 +3092,7 @@
                     <tr>
                         <td class="border0" colspan="2">
                             <p class="ft131">
-                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise
-                                to pay
-                                Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless
-                                Bhavan, 3, Esplanade East,
-                                Kolkata - 700 069, or order for value received the sum of Rs.
-                                {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with
-                                interest there on at the rate of DEMAND PROMISSORY NOTE {{$data->rateofinterest}} %
-                                Per annum with rests along with all costs, charges, expenses, taxes,
-                                cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix
-                                or at a rate which may from time to
-                                time be as signed by PFSL for value received. I/ We also agree that this note may be
-                                assigned/ pledged/ hypo the cated to
-                                any one as required by PFSL, the lender, without notice tome / us.
-                                Presentment for payment and requirement of prior notice and protest of this Note are
-                                hereby unconditionally and
-                                irrevocably waived.
+                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of Demand Promissory Note {{$data->rateofinterest}} % Per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3199,21 +3156,7 @@
                         <td class="border0" colspan="2">
 
                             <p class="ft131">
-                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably
-                                promise to pay Peerless Financial Services Limited (PFSL), having their Registered
-                                Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value
-                                received the sum of Rs {{$data->loanamountindigits}} (Rupees
-                                {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of
-                                {{$data->rateofinterest}} % Perannum with rests along with all costs, charges, expenses,
-                                taxes, cess, levies,
-                                duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate
-                                which may from time to time be
-                                Assigned by PFSL for value received. I / We also agree that this note may be assigned
-                                /pledged/ hypo the cated to any one
-                                as required by PFSL, the lender, without notice tome / us.
-                                Presentment for payment and requirement of prior notice and protest of this Note are
-                                hereby unconditionally and
-                                irrevocably waived.
+                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % Perannum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3300,7 +3243,7 @@
                                 I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note dated
                                 {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /-
                                 (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for
+                                ____________________ for
                                 Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
                                 demand, which is given by me / us as Security for repayment of the loan Granted to me/
                                 us by PFSL, the Lender, by execution of Personal Loan Agreement dated
@@ -3329,15 +3272,11 @@
                     <tr>
                         <td>
                             <div class="sign-line"></div>
-                            <b>Authorised Signatories For PFSL</b>
+                            <b>Signature of Borrower</b>
                         </td>
                         <td>
                             <div class="sign-line"></div>
-                            <b>Borrower</b>
-                        </td>
-                        <td>
-                            <div class="sign-line"></div>
-                            <b>Co-Borrower</b>
+                            <b>Signature of Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
@@ -3382,8 +3321,7 @@
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span
-                                    class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <br>
+                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}}
                                 <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span>
                                 I/ We ,{{$data->nameoftheborrower}}( <span class="ft2">'the Borrower'</span> ) and
                                 {{$data->nameofthecoborrower}}( <span class="ft2">“the Co borrower”</span> ) refer to
@@ -3398,16 +3336,6 @@
                             </p>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td class="border0">
-                            <p>
-                                Thanking You <br><br>
-                                Yours Faithfully,
-                            </p>
-                        </td>
-                    </tr>
-
                 </table>
 
 
@@ -3482,14 +3410,10 @@
                         5
                     </SPAN>
                     <SPAN class="ft142">
-                        I / we hereby confirm that I / we have been duly authorized and empowered in all respects to
-                        execute this
-                        Letter of Undertaking-cum-Indemnity and I /we am/ are fully aware that on the basis thereof PFSL
-                        has
-                        agreed to execute the said Personal Loan Facility Agreement against my / our salary.
+                        I / we hereby confirm that I / we have been duly authorized and empowered in all respects to execute this Letter of Undertaking-cum-Indemnity and I /we am/ are fully aware that on the basis thereof PFSL has agreed to execute the said Personal Loan Facility Agreement against {{ $data->nameofthecoborrower ? 'our' : 'my' }} salary.
                     </SPAN>
                 </P>
-                
+
                 <br><br>
 
                 <p class="page-no">25</p>
@@ -3693,7 +3617,7 @@
                     statutory levies and I/we am/are authorized to cancel/ amend the mandate by appropriately
                     communicating the cancellation / amendment request to Peerless Financial Services Limited or the
                     bank where I / we have authorized the debit.</P>
-                <P class="p324 ft1">For and on be half of {{$data->nachdeclarationforandonbehalfof}}</P>
+                <P class="p324 ft1">For and on behalf of {{$data->nachdeclarationforandonbehalfof}}</P>
                 <TABLE cellpadding=0 cellspacing=0 class="t31 table_30 border0">
                     <TR class="border0">
                         <TD class="tr28 td45">
@@ -3758,7 +3682,7 @@
 
                 <table class="border0">
                     <tr>
-                        <td class="border0">
+                        <td class="border0" colspan="7">
 
                             <b>Peerless Financial Services Limited</b> <br>
                             <b>Peerless Bhavan,</b> <br>
@@ -3766,16 +3690,19 @@
                             <b>Kolkata - 700 069</b> 
 
                         </td>
+                        <td style="text-align:right;" class="border0" colspan="3">
+                            <p>Dated : {{$data->dateofagreement}}</p>
+                        </td>
                     </tr>
 
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <b>Dear Sir,</b>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
-                            <b>Re: Loan Account no. {{$data->loanaccountnumber}} of for Rs. {{$data->loanamountindigits}}/-</b>
+                        <td class="border0"  colspan="10">
+                            <b>Re: Loan Account no. __________________________ of for Rs.________________/-</b>
                             <br>
                             <p>I/ We refer to the disbursement of secured loan which you have agreed to make to me / us in accordance
                                 with abovementioned agreement. I / We hereby enclose the following post-dated cheques in your favour
@@ -3784,12 +3711,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <b>Details of Post-dated cheques</b>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0" style="padding-top: 0; text-align: center;">
+                        <td class="border0"  colspan="10" style="padding-top: 0; text-align: center;">
                             <table class="border0 empty-table">
                                 <tr>
                                     <th>
@@ -3839,11 +3766,25 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td>5.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>6.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border0">
+                        <td class="border0"  colspan="10">
                             <p>With reference to the above cheques issued to you, we hereby confirm and undertake as under:</p>
 
                             <ol>
@@ -3855,9 +3796,9 @@
                                 </li>
                                 <li>
                                     <p>
-                                        I/ We shall not close our <b> Savings / Current Account No. {{$data->savingsaccountnumberofborrower}} with
-                                        {{$data->banknameofborrower}} (bank name) , {{$data->branchnameofborrower}} ( branch name)
-                                        ,{{$data->bankaddressofborrower}} ( address) </b> on which the aforesaid
+                                        I/ We shall not close our <b> Savings / Current Account No. ___________________ with
+                                        _____________________(bank name) , ____________________________( branch name)
+                                        ,_______________________ ___________________________ ( address) </b> on which the aforesaid
                                         cheques are drawn until such time the cheques issued to you are honoured by the drawee bank.
                                     </p>
                                 </li>

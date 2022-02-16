@@ -400,7 +400,7 @@
                                 </div> -->
 
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="agreement_id" class="col-sm-2 col-form-label">Type of loan</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="agreement_id" name="agreement_id">
@@ -414,7 +414,7 @@
                                         @error('agreement_id') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
 
 
 
