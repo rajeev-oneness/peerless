@@ -24,11 +24,22 @@ class CreateFieldParentRelationsTable extends Migration
         });
 
         $totalFieldsCount = DB::table('fields')->count();
+        $totalFieldsParentsCount = DB::table('field_parents')->count();
 
         $data = [];
+        // for authorised signatory name prefix
+        array_push($data, ['parent_id' => 6, 'child_id' => 155]);
+        // for authorised signatory name
         array_push($data, ['parent_id' => 6, 'child_id' => 1]);
+        // for Sanction letter date
+        array_push($data, ['parent_id' => 6, 'child_id' => 156]);
+        // for Name of the check-off Company
+        array_push($data, ['parent_id' => 6, 'child_id' => 157]);
+        // for Sanction letter number
+        array_push($data, ['parent_id' => 6, 'child_id' => 208]);
+
         // id of borrower, co-borrower 1, co-borrower 2, guarantor, witness1, witness2
-        for ($i = 1; $i <= 7; $i++) {
+        for ($i = 1; $i <= $totalFieldsParentsCount; $i++) {
             // borrower details
             for ($j = 2; $j <= 14 ; $j++) {
                 if ($i == 1) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
@@ -56,9 +67,18 @@ class CreateFieldParentRelationsTable extends Migration
                 }
             }
             // co-borrower 2 details
-            for ($j = 128; $j <= $totalFieldsCount ; $j++) {
+            for ($j = 128; $j <= 154 ; $j++) {
                 if ($i == 7) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
+
+            // id 155, 156, 157 skipped
+
+            // Post-dated cheques details
+            for ($j = 158; $j <= 207 ; $j++) {
+                if ($i == 8) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
+            }
+
+            // id 208 skipped
         }
 
         DB::table('field_parent_relations')->insert($data);

@@ -58,7 +58,7 @@
                         <table class="table table-sm table-bordered table-hover" id="borrowers-table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Contact</th>
                                     <th>PAN card</th>
@@ -70,7 +70,7 @@
                             <tbody id="loadBorrowers">
                                 @forelse ($data as $index => $item)
                                 <tr id="tr_{{$item->id}}">
-                                    <td>{{$item->CUSTOMER_ID}}</td>
+                                    <td>{{$item->id}}</td>
                                     <td>
                                         <div class="user-profile-holder">
                                             {{-- <div class="flex-shrink-0">
@@ -105,8 +105,15 @@
                                                 @foreach ($item->agreement as $agreement)
                                                     <a href="{{route('user.borrower.agreement', $agreement->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">{{ $agreement->agreementDetails->name }}</a>
                                                 @endforeach
+
+                                                @if (!$item->borrowerAgreementRfq)
+                                                <br>
+                                                <a href="{{ route('user.borrower.agreement.setup', $item->id) }}" class="badge badge-dark action-button">Settings</a>
+                                                @endif
                                             @else
-                                                <p class="small text-muted"> <em>No agreement yet</em> </p>
+                                                <p class="small text-muted mb-1"> <em>No agreement yet</em> </p>
+                                                <br>
+                                                <a href="{{ route('user.borrower.agreement.setup', $item->id) }}" class="badge badge-dark action-button">Add new</a>
                                             @endif
                                         </div>
                                     </td>

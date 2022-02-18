@@ -49,6 +49,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/destroy', [BorrowerController::class, 'destroy'])->name('user.borrower.destroy');
         Route::post('/csv/upload', [BorrowerController::class, 'upload'])->name('user.borrower.csv.upload');
 
+        // borrwoer agreement setup
+        Route::get('/{id}/agreement/setup', [BorrowerController::class, 'agreementSetups'])->name('user.borrower.agreement.setup');
+        Route::post('/agreement/create', [BorrowerController::class, 'agreementCreate'])->name('user.borrower.agreement.create');
+        Route::post('/agreement/destroy', [BorrowerController::class, 'agreementDestroy'])->name('user.borrower.agreement.destroy');
+
         // agreement
         Route::get('/{id}/agreement', [BorrowerController::class, 'agreementFields'])->name('user.borrower.agreement');
         Route::post('/agreement/store', [BorrowerController::class, 'agreementStore'])->name('user.borrower.agreement.store');
@@ -63,6 +68,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-25/view', [PDFController::class, 'showDynamicPdfPage25'])->name('user.borrower.agreement.pdf.page25.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-31/view', [PDFController::class, 'showDynamicPdfPage31'])->name('user.borrower.agreement.pdf.page31.view');
         // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'generateDynamicPdf'])->name('user.borrower.agreement.pdf.download');
+
+        // after agreement is filled
+        Route::get('/{id}/agreement/view', [BorrowerController::class, 'agreementFieldsView'])->name('user.borrower.agreement.view');
     });
 
     // role

@@ -264,6 +264,9 @@
         #page_24 .sign-table{
             bottom: 30%;
         }
+        .text-left {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -283,6 +286,7 @@
                     <tr>
                         <td style="text-align: center;">
                             <h1>PERSONAL <br> LOAN <br> FACILITY <br> AGREEMENT</h1>
+                            <br>
                             <h3><b>Peerless Financial Services Limited </b></h3>
                             <p>Registered & Head Office </p>
                             <p><b>Peerless Bhavan, 3 Esplanade East Kolkata 700069</b></p>
@@ -298,14 +302,30 @@
                             </div>
                             <p><b>CIN: U65993WB1988PLC044077</b></p>
                             <div class="cover-meta" style="margin: 50px 0;">
-                                <p>
+                                {{-- <p>
                                     <b>Customer ID </b> &nbsp; &nbsp;
                                     <b>{{$data->customerid}}</b>
-                                </p>
-                                <p>
-                                    <b>Loan Account No  </b> &nbsp; &nbsp;
-                                    <b>{{$data->loanaccountnumber}}</b>
-                                </p>
+                                </p> --}}
+
+                                <div style="width:100%;">
+                                    <div style="width:55%;margin:0 auto">
+                                        <table style="border: 0">
+                                            <tr>
+                                                <td style="width: 50%; border: 0;text-align: left; padding-left: 30px;"><b>Customer name</b></td>
+                                                <td style="width: 50%; border: 0;text-align: left"><b>: {{$data->prefixoftheborrower}} {{$data->nameoftheborrower}}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 50%; border: 0;text-align: left; padding-left: 30px;"><b>Sanction Letter No</b></td>
+                                                <td style="width: 50%; border: 0;text-align: left"><b>: {{$data->sanctionletternumber}}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 0;text-align: left; padding-left: 30px;"><b>Loan Account No</b></td>
+                                                <td style="border: 0;text-align: left"><b>: {{$data->loanaccountnumber}}</b></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -330,12 +350,12 @@
                     <tr>
                         <th colspan="2">For Office Use Only</th>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Customer ID:</td>
                         <td>
                             {{$data->customerid}}
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td>Name of the Borrower:</td>
                         <td>
@@ -345,19 +365,25 @@
                     <tr>
                         <td>Name of the Co-Borrower:</td>
                         <td>
-                            {{$data->nameofthecoborrower}}
+                            {{ ($data->nameofthecoborrower) ? $data->nameofthecoborrower : 'NOT APPLICABLE' }}
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Name of the Guarantor:</td>
                         <td>
-                            {{$data->nameoftheguarantor}}
+                            {{ ($data->nameoftheguarantor) ? $data->nameoftheguarantor : 'NOT APPLICABLE' }}
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td>Loan Application Number:</td>
                         <td>
                             {{$data->loanapplicationnumber}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sanction Letter Number:</td>
+                        <td>
+                            {{$data->sanctionletternumber}}
                         </td>
                     </tr>
                     <tr>
@@ -2084,17 +2110,14 @@
                             <p>&nbsp;</p>
                         </td>
                         <td class="border0" colspan="7" style="margin: 0; padding:0; line-height:0;">
-                            
-
                             <p class="ft1" style="text-align:left; margin-top: 12px;">
                                 <b>Signed By Witness</b> : __________________________________________
                             </p>
-
                         </td>
                     </tr>
                 </table>
 
-                <table class="border0">
+                {{-- <table class="border0">
                     <tr>
                         <td class="border0" colspan="8">
                             <p class="ft0" style="text-decoration: none; font-family:sans-serif; margin-bottom: 12px;">
@@ -2138,7 +2161,7 @@
                             </p>
                         </td>
                     </tr>
-                </table>
+                </table> --}}
 
                 <p class="page-no">16</p>
             </div>
@@ -3092,7 +3115,7 @@
                     <tr>
                         <td class="border0" colspan="2">
                             <p class="ft131">
-                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of Demand Promissory Note {{$data->rateofinterest}} % per annum with monthly interests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3156,7 +3179,7 @@
                         <td class="border0" colspan="2">
 
                             <p class="ft131">
-                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly interests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3665,7 +3688,6 @@
             <div class="page-break"></div>
 
             <div class="page" id="page_31">
-
                 <P class="stamp">
                     Rs 10/- Non Judicial Stamp to be affixed
                 </P>
@@ -3677,7 +3699,6 @@
                 <p style="font-size: 12px; text-align: center;">
                     <b>(This PDC Letter cum Undertaking executed at the place and date stated in the Schedule I therein under written)</b>
                 </p>
-
 
                 <table class="border0">
                     <tr>
@@ -3716,12 +3737,12 @@
                     </tr>
                     <tr>
                         <td class="border0"  colspan="10" style="padding-top: 0; text-align: center;">
-                            <table class="border0 empty-table">
+                            <table class="border0 empty-table text-left">
                                 <tr>
                                     <th>
                                         <b>Sr. No</b>
                                     </th>
-                                    <th>
+                                    <th style="width:500px">
                                         <b>Description</b>
                                     </th>
                                     <th>
@@ -3739,45 +3760,73 @@
                                 </tr>
                                 <tr>
                                     <td>1.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque1description }}</td>
+                                    <td>{{ $data->postdatecheque1chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque1date }}</td>
+                                    <td>{{ ($data->postdatecheque1amount) ? 'Rs. '.$data->postdatecheque1amount : '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque2description }}</td>
+                                    <td>{{ $data->postdatecheque2chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque2date }}</td>
+                                    <td>{{ ($data->postdatecheque2amount) ? 'Rs. '.$data->postdatecheque2amount : '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>3.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque3description }}</td>
+                                    <td>{{ $data->postdatecheque3chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque3date }}</td>
+                                    <td>{{ ($data->postdatecheque3amount) ? 'Rs. '.$data->postdatecheque3amount : '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>4.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque4description }}</td>
+                                    <td>{{ $data->postdatecheque4chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque4date }}</td>
+                                    <td>{{ ($data->postdatecheque4amount) ? 'Rs. '.$data->postdatecheque4amount : '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>5.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque5description }}</td>
+                                    <td>{{ $data->postdatecheque5chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque5date }}</td>
+                                    <td>{{ ($data->postdatecheque5amount) ? 'Rs. '.$data->postdatecheque5amount : '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>6.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $data->postdatecheque6description }}</td>
+                                    <td>{{ $data->postdatecheque6chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque6date }}</td>
+                                    <td>{{ ($data->postdatecheque6amount) ? 'Rs. '.$data->postdatecheque6amount : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>7.</td>
+                                    <td>{{ $data->postdatecheque7description }}</td>
+                                    <td>{{ $data->postdatecheque7chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque7date }}</td>
+                                    <td>{{ ($data->postdatecheque7amount) ? 'Rs. '.$data->postdatecheque7amount : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>8.</td>
+                                    <td>{{ $data->postdatecheque8description }}</td>
+                                    <td>{{ $data->postdatecheque8chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque8date }}</td>
+                                    <td>{{ ($data->postdatecheque8amount) ? 'Rs. '.$data->postdatecheque8amount : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>9.</td>
+                                    <td>{{ $data->postdatecheque9description }}</td>
+                                    <td>{{ $data->postdatecheque9chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque9date }}</td>
+                                    <td>{{ ($data->postdatecheque9amount) ? 'Rs. '.$data->postdatecheque9amount : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>10.</td>
+                                    <td>{{ $data->postdatecheque10description }}</td>
+                                    <td>{{ $data->postdatecheque10chequenumber }}</td>
+                                    <td>{{ $data->postdatecheque10date }}</td>
+                                    <td>{{ ($data->postdatecheque10amount) ? 'Rs. '.$data->postdatecheque10amount : '' }}</td>
                                 </tr>
                             </table>
                         </td>
@@ -3795,10 +3844,7 @@
                                 </li>
                                 <li>
                                     <p>
-                                        I/ We shall not close our <b> Savings / Current Account No. ___________________ with
-                                        _____________________(bank name) , ____________________________( branch name)
-                                        ,_______________________ ___________________________ ( address) </b> on which the aforesaid
-                                        cheques are drawn until such time the cheques issued to you are honoured by the drawee bank.
+                                        I/ We shall not close our <b> Savings / Current Account No. {{$data->bankaccountnumberoftheborrower}} with {{$data->banknameofborrower}} (bank name) , {{$data->branchnameofborrower}} (branch name), {{$data->bankaddressofborrower}} (address) </b> on which the aforesaid cheques are drawn until such time the cheques issued to you are honoured by the drawee bank.
                                     </p>
                                 </li>
                                 <li>

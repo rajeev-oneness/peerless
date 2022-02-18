@@ -474,6 +474,11 @@ mark {
     border: 0;
 }
 
+.btn-primary:hover {
+    background-color: #2a5685 !important;
+    border: 0;
+}
+
 .sidebar nav {
     max-height: 360px;
     overflow-y: scroll;

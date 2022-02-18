@@ -15,10 +15,8 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
                                 </button>
-                                <a href="javascript: void(0)" class="btn btn-sm btn-primary" onclick="openSidebarModal()"><i
-                                        class="fas fa-plus"></i> Create</a>
-                                <a href="{{ route('user.employee.list') }}" class="btn btn-sm btn-primary"> <i
-                                        class="fas fa-chevron-left"></i> Back to users</a>
+                                <a href="javascript: void(0)" class="btn btn-sm btn-primary" onclick="openSidebarModal()"><i class="fas fa-plus"></i> Create</a>
+                                <a href="{{ route('user.employee.list') }}" class="btn btn-sm btn-primary"> <i class="fas fa-chevron-left"></i> Back to users</a>
                             </div>
                         </div>
                         <div class="card-body">

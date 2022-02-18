@@ -30,8 +30,6 @@ class BorrowerController extends Controller
      */
     public function index(Request $request)
     {
-        // return view('admin.borrower.index');
-
         $data = Borrower::where([
             [function ($query) use ($request) {
                 if ($term = $request->term) {
@@ -46,11 +44,9 @@ class BorrowerController extends Controller
             }]
         ])
         ->with(['agreement', 'borrowerAgreementRfq'])
-        ->latest('CUSTOMER_ID')
+        ->latest('id')
         ->paginate(15)
         ->appends(request()->query());
-
-        // dd($data);
 
         return view('admin.borrower.index', compact('data'));
     }
@@ -104,7 +100,7 @@ class BorrowerController extends Controller
         // dd($request->all());
         $request->validate([
             // manual entry customer id
-            'customer_id' => 'required|integer|min:1|digits_between:1,20',
+            // 'customer_id' => 'required|integer|min:1|digits_between:1,20',
             'name_prefix' => 'required|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
@@ -141,7 +137,8 @@ class BorrowerController extends Controller
 
             $user = new Borrower;
             // $user->CUSTOMER_ID = ($past_data == null) ? 1 : (int)$past_data->CUSTOMER_ID + 1;
-            $user->CUSTOMER_ID = $request->customer_id;
+            // $user->CUSTOMER_ID = $request->customer_id;
+            $user->CUSTOMER_ID = 0;
             $user->name_prefix = $request->name_prefix;
             $user->first_name = $request->first_name;
             $user->middle_name = $request->middle_name;
@@ -258,7 +255,7 @@ class BorrowerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'customer_id' => 'required|integer|min:1|digits_between:1,20',
+            // 'customer_id' => 'required|integer|min:1|digits_between:1,20',
             'name_prefix' => 'required|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
@@ -288,7 +285,7 @@ class BorrowerController extends Controller
         ]);
 
         $user = Borrower::findOrFail($id);
-        $user->CUSTOMER_ID = $request->customer_id;
+        // $user->CUSTOMER_ID = $request->customer_id;
         $user->name_prefix = $request->name_prefix;
         $user->first_name = $request->first_name;
         $user->middle_name = $request->middle_name;
@@ -473,6 +470,30 @@ class BorrowerController extends Controller
         // return view('admin.borrower.fields', compact('data', 'id'));
     }
 
+    public function agreementFieldsView(Request $request, $id)
+    {
+        $data = (object)[];
+        $data->borrower_agreement = BorrowerAgreement::with('borrowerDetails', 'agreementDetails')->where('id', $id)->first();
+
+        // foreach ($data->borrower_agreement as $borrower_agreement) {
+            $data->borrower_id = $data->borrower_agreement->borrower_id;
+            $data->name_prefix = $data->borrower_agreement->borrowerDetails->name_prefix;
+            $data->full_name = $data->borrower_agreement->borrowerDetails->full_name;
+            $data->agreement_id = $data->borrower_agreement->agreement_id;
+            $data->agreement_name = $data->borrower_agreement->agreementDetails->name;
+            // break;
+        // }
+
+        $data->parentFields = FieldParent::orderBy('position')->with('childRelation')->get();
+
+        $data->fields = AgreementField::with('fieldDetails')->where('agreement_id', $data->agreement_id)->get();
+        $data->agreementRfq = AgreementRfq::where('borrower_id', $data->borrower_id)->where('agreement_id', $data->agreement_id)->count();
+
+        // $data->requiredDocuments = AgreementDocument::with('siblingsDocuments')->where('agreement_id', $data->agreement_id)->where('parent_id', null)->get();
+
+        return view('admin.borrower.agreement', compact('data', 'id'));
+    }
+
     public function agreementStore(Request $request)
     {
         // dd($request->all());
@@ -531,6 +552,45 @@ class BorrowerController extends Controller
         } else {
             return response()->json(['error' => true, 'message' => $validate->errors()->first()]);
         }
+    }
+
+    public function agreementSetups(Request $request, $id)
+    {
+        $borrower = Borrower::select('name_prefix', 'full_name')->findOrFail($id);
+        $agreements = Agreement::orderBy('name')->get();
+        $data = BorrowerAgreement::with('borrowerDetails', 'agreementDetails')->where('borrower_id', $id)->get();
+        return view('admin.borrower.agreement-setup', compact('data', 'borrower', 'agreements', 'id'));
+    }
+
+    public function agreementCreate(Request $request)
+    {
+        $rules = [
+            'borrower' => 'required|integer|min:1',
+            'agreement' => 'required|integer|min:1',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if (!$validator->fails()) {
+            $borrowerAgreement = new BorrowerAgreement();
+            $borrowerAgreement->borrower_id = $request->borrower;
+            $borrowerAgreement->agreement_id = $request->agreement;
+            $borrowerAgreement->uploaded_by = Auth::user()->id;
+            $borrowerAgreement->save();
+
+            // $route = "'".route('user.designation.show')."'";
+            $route = '';
+
+            return response()->json(['status' => 200, 'title' => 'success', 'message' => 'New Agreement added', 'id' => $borrowerAgreement->id, 'viewRoute' => $route]);
+        } else {
+            return response()->json(['status' => 400, 'title' => 'failure', 'message' => $validator->errors()->first()]);
+        }
+    }
+
+    public function agreementDestroy(Request $request)
+    {
+        BorrowerAgreement::where('id', $request->id)->delete();
+        return response()->json(['error' => false, 'title' => 'Deleted', 'message' => 'Record deleted', 'type' => 'success']);
     }
 
     public function uploadToServer(Request $request)

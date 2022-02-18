@@ -19,14 +19,14 @@
                         <div class="card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('user.borrower.store') }}" id="profile-form">
                             @csrf
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="customer_id" class="col-sm-2 col-form-label">Customer ID<span class="text-danger">*</span></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control @error('customer_id') {{ 'is-invalid' }} @enderror" id="customer_id" name="customer_id" placeholder="Customer ID" value="{{ old('customer_id') }}">
                                         @error('customer_id') <p class="small mb-0 text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name <span class="text-danger">*</span></label>
                                     <div class="col-sm-1">

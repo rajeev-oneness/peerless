@@ -52,6 +52,9 @@ class CreateFieldsTable extends Migration
         // other date of emi credit
         $otherDateOfEmiCreditValue = '1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th, 26th, 27th, 28th, 29th, 30th, 31st';
 
+        // check of company lists
+        $checkOffCompanyList = 'Peerless Sec, Peerless Hosp, Peerless Hotel, DIC Nadia, Peerless FPDL, Bengal Peerless, Peerless Gen & Fin, PS Group, Peerless Finance, Pathfinder, Smart Stainless, Indus Nursing Home, Shree Automative, United eServices, South Calcutta Girls&apos; Academy, Bichitra Holding, Sikha Holding';
+
         $data = [
             ['name' => 'Name of the authorised signatory', 'type' => 1, 'value' => '', 'key_name' => 'nameoftheauthorisedsignatory'],
 
@@ -250,6 +253,78 @@ class CreateFieldsTable extends Migration
             ['name' => 'Passport issue date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'passportissuedateofthecoborrower2'],
             ['name' => 'Passport expiry date of the Co-Borrower 2', 'type' => 4, 'value' => '', 'key_name' => 'passportexpirydateofthecoborrower2'],
             // co-borrower valid documents information ends
+
+            // id starts from 155
+            ['name' => 'Prefix of the authorised signatory', 'type' => 7, 'value' => $namePrefixList, 'key_name' => 'prefixoftheauthorisedsignatory'],
+            ['name' => 'Sanction letter date', 'type' => 4, 'value' => '', 'key_name' => 'sanctionletterdate'],
+            // this field is used, only if nature of loan is Loan against salary with check -off selected
+            ['name' => 'Name of the check-off Company', 'type' => 7, 'value' => $checkOffCompanyList, 'key_name' => 'nameofthecheckoffcompany'],
+
+            // post dates cheques information starts
+            ['name' => 'Post date cheque 1', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque1'],
+            ['name' => 'Post date cheque 2', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque2'],
+            ['name' => 'Post date cheque 3', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque3'],
+            ['name' => 'Post date cheque 4', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque4'],
+            ['name' => 'Post date cheque 5', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque5'],
+            ['name' => 'Post date cheque 6', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque6'],
+            ['name' => 'Post date cheque 7', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque7'],
+            ['name' => 'Post date cheque 8', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque8'],
+            ['name' => 'Post date cheque 9', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque9'],
+            ['name' => 'Post date cheque 10', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque10'],
+
+            ['name' => 'Post date cheque 1 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque1description'],
+            ['name' => 'Post date cheque 1 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque1chequenumber'],
+            ['name' => 'Post date cheque 1 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque1date'],
+            ['name' => 'Post date cheque 1 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque1amount'],
+
+            ['name' => 'Post date cheque 2 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque2description'],
+            ['name' => 'Post date cheque 2 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque2chequenumber'],
+            ['name' => 'Post date cheque 2 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque2date'],
+            ['name' => 'Post date cheque 2 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque2amount'],
+
+            ['name' => 'Post date cheque 3 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque3description'],
+            ['name' => 'Post date cheque 3 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque3chequenumber'],
+            ['name' => 'Post date cheque 3 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque3date'],
+            ['name' => 'Post date cheque 3 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque3amount'],
+
+            ['name' => 'Post date cheque 4 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque4description'],
+            ['name' => 'Post date cheque 4 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque4chequenumber'],
+            ['name' => 'Post date cheque 4 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque4date'],
+            ['name' => 'Post date cheque 4 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque4amount'],
+
+            ['name' => 'Post date cheque 5 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque5description'],
+            ['name' => 'Post date cheque 5 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque5chequenumber'],
+            ['name' => 'Post date cheque 5 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque5date'],
+            ['name' => 'Post date cheque 5 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque5amount'],
+
+            ['name' => 'Post date cheque 6 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque6description'],
+            ['name' => 'Post date cheque 6 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque6chequenumber'],
+            ['name' => 'Post date cheque 6 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque6date'],
+            ['name' => 'Post date cheque 6 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque6amount'],
+
+            ['name' => 'Post date cheque 7 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque7description'],
+            ['name' => 'Post date cheque 7 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque7chequenumber'],
+            ['name' => 'Post date cheque 7 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque7date'],
+            ['name' => 'Post date cheque 7 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque7amount'],
+
+            ['name' => 'Post date cheque 8 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque8description'],
+            ['name' => 'Post date cheque 8 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque8chequenumber'],
+            ['name' => 'Post date cheque 8 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque8date'],
+            ['name' => 'Post date cheque 8 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque8amount'],
+
+            ['name' => 'Post date cheque 9 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque9description'],
+            ['name' => 'Post date cheque 9 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque9chequenumber'],
+            ['name' => 'Post date cheque 9 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque9date'],
+            ['name' => 'Post date cheque 9 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque9amount'],
+
+            ['name' => 'Post date cheque 10 description', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque10description'],
+            ['name' => 'Post date cheque 10 cheque number', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque10chequenumber'],
+            ['name' => 'Post date cheque 10 date', 'type' => 4, 'value' => '', 'key_name' => 'postdatecheque10date'],
+            ['name' => 'Post date cheque 10 amount', 'type' => 1, 'value' => '', 'key_name' => 'postdatecheque10amount'],
+            // post dates cheques information ends
+
+            // id starts from 208
+            ['name' => 'Sanction letter number', 'type' => 1, 'value' => '', 'key_name' => 'sanctionletternumber'],
         ];
 
         DB::table('fields')->insert($data);

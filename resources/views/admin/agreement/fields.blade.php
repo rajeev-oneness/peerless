@@ -117,6 +117,5 @@
             selectorMinimalHeight : 200
         });
 
-
     </script>
 @endsection

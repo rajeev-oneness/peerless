@@ -76,6 +76,7 @@ class PDFController extends Controller
         // loan application number is loan reference number, application number is removed 
         $data->loanapplicationnumber = $this->getData($agreement, 'loanreferencenumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
+        $data->sanctionletternumber = $this->getData($agreement, 'sanctionletternumber');
 
         // witness 1
         $data->witness1fullname = $this->getData($agreement, 'witness1fullname');
@@ -230,6 +231,57 @@ class PDFController extends Controller
         $data->nachdeclarationname2 = $this->getData($agreement, 'nachdeclarationname2');
         $data->nachdeclarationname3 = $this->getData($agreement, 'nachdeclarationname3');
         $data->nachdeclarationname4 = $this->getData($agreement, 'nachdeclarationname4');
+
+        // page 31
+        $data->postdatecheque1description = $this->getData($agreement, 'postdatecheque1description');
+        $data->postdatecheque1chequenumber = $this->getData($agreement, 'postdatecheque1chequenumber');
+        $data->postdatecheque1date = ($this->getData($agreement, 'postdatecheque1date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque1date'))) : '';
+        $data->postdatecheque1amount = $this->getData($agreement, 'postdatecheque1amount');
+
+        $data->postdatecheque2description = $this->getData($agreement, 'postdatecheque2description');
+        $data->postdatecheque2chequenumber = $this->getData($agreement, 'postdatecheque2chequenumber');
+        $data->postdatecheque2date = ($this->getData($agreement, 'postdatecheque2date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque2date'))) : '';
+        $data->postdatecheque2amount = $this->getData($agreement, 'postdatecheque2amount');
+
+        $data->postdatecheque3description = $this->getData($agreement, 'postdatecheque3description');
+        $data->postdatecheque3chequenumber = $this->getData($agreement, 'postdatecheque3chequenumber');
+        $data->postdatecheque3date = ($this->getData($agreement, 'postdatecheque3date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque3date'))) : '';
+        $data->postdatecheque3amount = $this->getData($agreement, 'postdatecheque3amount');
+
+        $data->postdatecheque4description = $this->getData($agreement, 'postdatecheque4description');
+        $data->postdatecheque4chequenumber = $this->getData($agreement, 'postdatecheque4chequenumber');
+        $data->postdatecheque4date = ($this->getData($agreement, 'postdatecheque4date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque4date'))) : '';
+        $data->postdatecheque4amount = $this->getData($agreement, 'postdatecheque4amount');
+
+        $data->postdatecheque5description = $this->getData($agreement, 'postdatecheque5description');
+        $data->postdatecheque5chequenumber = $this->getData($agreement, 'postdatecheque5chequenumber');
+        $data->postdatecheque5date = ($this->getData($agreement, 'postdatecheque5date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque5date'))) : '';
+        $data->postdatecheque5amount = $this->getData($agreement, 'postdatecheque5amount');
+
+        $data->postdatecheque6description = $this->getData($agreement, 'postdatecheque6description');
+        $data->postdatecheque6chequenumber = $this->getData($agreement, 'postdatecheque6chequenumber');
+        $data->postdatecheque6date = ($this->getData($agreement, 'postdatecheque6date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque6date'))) : '';
+        $data->postdatecheque6amount = $this->getData($agreement, 'postdatecheque6amount');
+
+        $data->postdatecheque7description = $this->getData($agreement, 'postdatecheque7description');
+        $data->postdatecheque7chequenumber = $this->getData($agreement, 'postdatecheque7chequenumber');
+        $data->postdatecheque7date = ($this->getData($agreement, 'postdatecheque7date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque7date'))) : '';
+        $data->postdatecheque7amount = $this->getData($agreement, 'postdatecheque7amount');
+
+        $data->postdatecheque8description = $this->getData($agreement, 'postdatecheque8description');
+        $data->postdatecheque8chequenumber = $this->getData($agreement, 'postdatecheque8chequenumber');
+        $data->postdatecheque8date = ($this->getData($agreement, 'postdatecheque8date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque8date'))) : '';
+        $data->postdatecheque8amount = $this->getData($agreement, 'postdatecheque8amount');
+
+        $data->postdatecheque9description = $this->getData($agreement, 'postdatecheque9description');
+        $data->postdatecheque9chequenumber = $this->getData($agreement, 'postdatecheque9chequenumber');
+        $data->postdatecheque9date = ($this->getData($agreement, 'postdatecheque9date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque9date'))) : '';
+        $data->postdatecheque9amount = $this->getData($agreement, 'postdatecheque9amount');
+
+        $data->postdatecheque10description = $this->getData($agreement, 'postdatecheque10description');
+        $data->postdatecheque10chequenumber = $this->getData($agreement, 'postdatecheque10chequenumber');
+        $data->postdatecheque10date = ($this->getData($agreement, 'postdatecheque10date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque10date'))) : '';
+        $data->postdatecheque10amount = $this->getData($agreement, 'postdatecheque10amount');
 
         return view('admin.agreement.dynamic.personal-loan-agreement', compact('data'));
     }

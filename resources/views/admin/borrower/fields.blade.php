@@ -38,7 +38,9 @@
                             </div>
                             <div class="col-md-4 text-right">
                                 @if ($data->agreementRfq > 0)
-                                    <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                                    <a href="{{ route('user.borrower.agreement.view', $id) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View agreement details</a>
+
+                                    <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                                     {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>View PDF</a> --}}
 
@@ -90,17 +92,16 @@
                                             @if (count($data->fields) > 0)
                                                 <form action="{{ route('user.borrower.agreement.store') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <table class="table table-sm table-bordered table-hover" id="agreementFieldsTable">
-                                                        {{-- @foreach ($data->fields as $index => $item) --}}
+                                                    <table class="table table-sm table-bordered table-hover table-striped" id="agreementFieldsTable">
                                                         @forelse ($data->parentFields as $indexParent => $parent)
-                                                            {{-- {{dd($parent->childRelation);}} --}}
                                                             <tr>
                                                                 <td colspan="3" class="field-heading">{{ $parent->name }}</td>
                                                             </tr>
                                                             @foreach ($parent->childRelation as $indexChild => $item)
-                                                                {{-- {{dd($item->childField->inputType)}} --}}
+                                                                <!-- concept of customer id is removed -->
+                                                                @if ($item->childField->name == "Customer ID")
                                                                 <!-- borrower officially valid documents hidden by default -->
-                                                                @if ($item->childField->name == "Aadhar card number of the Borrower")
+                                                                @elseif ($item->childField->name == "Aadhar card number of the Borrower")
                                                                 @elseif ($item->childField->name == "Voter card number of the Borrower")
                                                                 @elseif ($item->childField->name == "Bank account number of the Borrower")
                                                                 @elseif ($item->childField->name == "Bank name of the Borrower")
@@ -158,13 +159,56 @@
                                                                 <!-- other date of emi credit hidden by default -->
                                                                 @elseif ($item->childField->name == "Other date of EMI credit")
 
+                                                                <!-- Name of the check-off Company hidden by default -->
+                                                                @elseif ($item->childField->name == "Name of the check-off Company")
+
+                                                                <!-- Post-dated cheques hidden by default -->
+                                                                @elseif ($item->childField->name == "Post date cheque 1 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 1 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 1 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 1 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 2 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 2 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 2 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 2 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 3 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 3 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 3 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 3 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 4 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 4 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 4 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 4 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 5 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 5 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 5 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 5 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 6 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 6 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 6 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 6 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 7 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 7 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 7 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 7 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 8 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 8 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 8 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 8 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 9 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 9 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 9 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 9 amount")
+                                                                @elseif ($item->childField->name == "Post date cheque 10 description")
+                                                                @elseif ($item->childField->name == "Post date cheque 10 cheque number")
+                                                                @elseif ($item->childField->name == "Post date cheque 10 date")
+                                                                @elseif ($item->childField->name == "Post date cheque 10 amount")
+
                                                                 @else
                                                                 <tr>
                                                                     <td style="width: 50px">{{ $indexChild + 1 }}</td>
                                                                     <td class="fields_col-1">
-                                                                        <label
-                                                                            class="font-weight-bold">{!! $item->childField->name !!}
-                                                                            {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
+                                                                        <label class="font-weight-bold">{!! $item->childField->name !!} {!! $item->childField->required == 1 ? '<span class="text-danger" title="This field is required">*</span>' : '' !!}</label>
                                                                     </td>
                                                                     <td class="fields_col-2">
                                                                         @php
@@ -179,7 +223,6 @@
                                                                     </td>
                                                                 </tr>
                                                                 @endif
-                                                                
                                                             @endforeach
                                                         @empty
                                                             <tr>
@@ -202,7 +245,7 @@
 
                                                                         {{-- <button type="button" class="btn btn-sm btn-primary" onclick="stepper.next()">Go to Documents <i class="fas fa-chevron-right"></i></button> --}}
 
-                                                                        <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                                                                        <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                                                                         {{-- <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i>
                                                                         View PDF</a> --}}
@@ -344,7 +387,7 @@
 </section>
 
 <!-- view pdf MODAL -->
-<div class="modal" id="viewPdfModal" tabindex="-1">
+<div class="modal" id="viewPdfModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -355,7 +398,7 @@
             </div>
             <div class="modal-body">
                 <p class="small mb-2">Main agreement</p>
-                <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                 <br><br>
 
@@ -971,5 +1014,23 @@
         var otherDateEmiSelected = $('input[name="field_name[dateofcreditofemiintolendersbankaccount]"]:checked').val();
         otherdateEmiCheck(otherDateEmiSelected);
         // Date of credit of EMI into Lender's Bank Account on click ends
+
+        // Nature of Loan on click starts
+        $('select[name="field_name[natureofloan]"]').on('change', function(){
+            var inputValue = $(this).val();
+            // console.log(inputValue);
+            natureOfLoanCheck(inputValue);
+        });
+        function natureOfLoanCheck(val) {
+            if(val == 'Loan against salary with check-off') {
+                console.log(val);
+                $('select[name="field_name[nameofthecheckoffcompany]"]').show();
+            } else {
+                $('select[name="field_name[nameofthecheckoffcompany]"]').hide();
+            }
+        }
+        var natureOfLoanSelected = $('select[name="field_name[natureofloan]"]').val();
+        natureOfLoanCheck(natureOfLoanSelected);
+        // Nature of Loan on click ends
     </script>
 @endsection

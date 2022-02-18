@@ -253,17 +253,6 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 break;
 
 
-
-
-
-
-
-
-
-
-
-
-
                 // Officially Valid Documents of the Co-Borrower 1
                 case 'officiallyvaliddocumentsofthecoborrower' :
                     // 	Officially Valid Documents entry fields
@@ -421,17 +410,6 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                     $optionalFieldsData = '<div class="w-100 mt-3">'.$optionalFieldsInsideData.'</div>';
 
                 break;
-
-
-
-
-
-
-
-
-
-
-
 
 
                 // Officially Valid Documents of the Co-Borrower 2
@@ -593,17 +571,6 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 break;
 
 
-
-
-
-
-
-
-
-
-
-
-
                 // Officially Valid Documents of the Guarantor
                 case 'officiallyvaliddocumentsoftheguarantor' :
                     // 	Officially Valid Documents entry fields
@@ -763,21 +730,279 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
                 break;
 
 
+                // Nature of loan
+                case 'natureofloan' :
+                    $checkoffCompanyNames = Field::select('value')->where('key_name', 'nameofthecheckoffcompany')->first();
 
+                    $explodedNames = explode(', ', $checkoffCompanyNames->value);
 
+                    $optionalFieldsInsideData = '<select class="form-control form-control-sm" name="field_name[nameofthecheckoffcompany]" style="display: none;"><option value="" selected="" hidden="">Select Name of the check-off Company</option>';
 
+                    if ($form_type == 'show') {
+                        // if rfq found, fetch filled data
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $checkOffCompanyName = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'nameofthecheckoffcompany')->first();
+                            if ($checkOffCompanyName) {
+                                // if data is filled & watching only
+                                $checkOffCompanyName = $checkOffCompanyName->field_value;
+                            }
+                        }
+                    } else {
+                        $checkOffCompanyName = '';
+                    }
 
+                    foreach ($explodedNames as $key => $checkoffCompanyItem) {
+                        ($checkOffCompanyName == $checkoffCompanyItem) ? $checkoffCompanyChecked = 'selected' : $checkoffCompanyChecked = '';
 
+                        $optionalFieldsInsideData .= '<option value="'.$checkoffCompanyItem.'" '.$checkoffCompanyChecked.'>'.$checkoffCompanyItem.'</option>';
+                    }
 
+                    $optionalFieldsInsideData .= '</select>';
 
+                    $optionalFieldsData = '<div class="w-100 mt-3">'.$optionalFieldsInsideData.'</div>';
 
+                break;
 
+                // Post date cheque 1
+                case 'postdatecheque1' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque1desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque1description')->first();
+                            $cheque1numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque1chequenumber')->first();
+                            $cheque1date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque1date')->first();
+                            $cheque1amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque1amount')->first();
 
+                            $value1 = $cheque1desc->field_value;
+                            $value2 = $cheque1numb->field_value;
+                            $value3 = $cheque1date->field_value;
+                            $value4 = $cheque1amount->field_value;
+                        }
+                    } else {
+                        $value1 = $value2 = $value3 = $value4 = '';
+                    }
 
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 1 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque1description]">'.$value1.'</textarea> <input type="hidden" value="159" name="field_id[159]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 1 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque1chequenumber]" value="'.$value2.'"><input type="hidden" value="160" name="field_id[160]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 1 date" class="form-control form-control-sm" name="field_name[postdatecheque1date]" value="'.$value3.'"><input type="hidden" value="161" name="field_id[161]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 1 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque1amount]" value="'.$value4.'"><input type="hidden" value="162" name="field_id[162]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
 
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
 
+                // Post date cheque 2
+                case 'postdatecheque2' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque2desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque2description')->first();
+                            $cheque2numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque2chequenumber')->first();
+                            $cheque2date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque2date')->first();
+                            $cheque2amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque2amount')->first();
 
+                            ($cheque2desc) ? $cheque2value1 = $cheque2desc->field_value : $cheque2value1 = '';
+                            ($cheque2numb) ? $cheque2value2 = $cheque2numb->field_value : $cheque2value2 = '';
+                            ($cheque2date) ? $cheque2value3 = $cheque2date->field_value : $cheque2value3 = '';
+                            ($cheque2amount) ? $cheque2value4 = $cheque2amount->field_value : $cheque2value4 = '';
+                        }
+                    } else {
+                        $cheque2value1 = $cheque2value2 = $cheque2value3 = $cheque2value4 = '';
+                    }
 
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 2 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque2description]">'.$cheque2value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 2 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque2chequenumber]" value="'.$cheque2value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 2 date" class="form-control form-control-sm" name="field_name[postdatecheque2date]" value="'.$cheque2value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 2 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque2amount]" value="'.$cheque2value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 3
+                case 'postdatecheque3' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque3desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque3description')->first();
+                            $cheque3numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque3chequenumber')->first();
+                            $cheque3date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque3date')->first();
+                            $cheque3amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque3amount')->first();
+
+                            ($cheque3desc) ? $cheque3value1 = $cheque3desc->field_value : $cheque3value1 = '';
+                            ($cheque3numb) ? $cheque3value2 = $cheque3numb->field_value : $cheque3value2 = '';
+                            ($cheque3date) ? $cheque3value3 = $cheque3date->field_value : $cheque3value3 = '';
+                            ($cheque3amount) ? $cheque3value4 = $cheque3amount->field_value : $cheque3value4 = '';
+                        }
+                    } else {
+                        $cheque3value1 = $cheque3value2 = $cheque3value3 = $cheque3value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 3 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque3description]">'.$cheque3value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 3 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque3chequenumber]" value="'.$cheque3value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 3 date" class="form-control form-control-sm" name="field_name[postdatecheque3date]" value="'.$cheque3value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 3 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque3amount]" value="'.$cheque3value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 4
+                case 'postdatecheque4' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque4desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque4description')->first();
+                            $cheque4numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque4chequenumber')->first();
+                            $cheque4date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque4date')->first();
+                            $cheque4amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque4amount')->first();
+
+                            ($cheque4desc) ? $cheque4value1 = $cheque4desc->field_value : $cheque4value1 = '';
+                            ($cheque4numb) ? $cheque4value2 = $cheque4numb->field_value : $cheque4value2 = '';
+                            ($cheque4date) ? $cheque4value3 = $cheque4date->field_value : $cheque4value3 = '';
+                            ($cheque4amount) ? $cheque4value4 = $cheque4amount->field_value : $cheque4value4 = '';
+                        }
+                    } else {
+                        $cheque4value1 = $cheque4value2 = $cheque4value3 = $cheque4value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque4description]">'.$cheque4value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque4chequenumber]" value="'.$cheque4value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque4date]" value="'.$cheque4value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque4amount]" value="'.$cheque4value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 5
+                case 'postdatecheque5' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque5desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque5description')->first();
+                            $cheque5numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque5chequenumber')->first();
+                            $cheque5date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque5date')->first();
+                            $cheque5amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque5amount')->first();
+
+                            ($cheque5desc) ? $cheque5value1 = $cheque5desc->field_value : $cheque5value1 = '';
+                            ($cheque5numb) ? $cheque5value2 = $cheque5numb->field_value : $cheque5value2 = '';
+                            ($cheque5date) ? $cheque5value3 = $cheque5date->field_value : $cheque5value3 = '';
+                            ($cheque5amount) ? $cheque5value4 = $cheque5amount->field_value : $cheque5value4 = '';
+                        }
+                    } else {
+                        $cheque5value1 = $cheque5value2 = $cheque5value3 = $cheque5value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque5description]">'.$cheque5value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque5chequenumber]" value="'.$cheque5value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque5date]" value="'.$cheque5value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque5amount]" value="'.$cheque5value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 6
+                case 'postdatecheque6' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque6desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque6description')->first();
+                            $cheque6numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque6chequenumber')->first();
+                            $cheque6date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque6date')->first();
+                            $cheque6amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque6amount')->first();
+
+                            ($cheque6desc) ? $cheque6value1 = $cheque6desc->field_value : $cheque6value1 = '';
+                            ($cheque6numb) ? $cheque6value2 = $cheque6numb->field_value : $cheque6value2 = '';
+                            ($cheque6date) ? $cheque6value3 = $cheque6date->field_value : $cheque6value3 = '';
+                            ($cheque6amount) ? $cheque6value4 = $cheque6amount->field_value : $cheque6value4 = '';
+                        }
+                    } else {
+                        $cheque6value1 = $cheque6value2 = $cheque6value3 = $cheque6value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque6description]">'.$cheque6value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque6chequenumber]" value="'.$cheque6value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque6date]" value="'.$cheque6value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque6amount]" value="'.$cheque6value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 7
+                case 'postdatecheque7' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque7desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque7description')->first();
+                            $cheque7numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque7chequenumber')->first();
+                            $cheque7date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque7date')->first();
+                            $cheque7amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque7amount')->first();
+
+                            ($cheque7desc) ? $cheque7value1 = $cheque7desc->field_value : $cheque7value1 = '';
+                            ($cheque7numb) ? $cheque7value2 = $cheque7numb->field_value : $cheque7value2 = '';
+                            ($cheque7date) ? $cheque7value3 = $cheque7date->field_value : $cheque7value3 = '';
+                            ($cheque7amount) ? $cheque7value4 = $cheque7amount->field_value : $cheque7value4 = '';
+                        }
+                    } else {
+                        $cheque7value1 = $cheque7value2 = $cheque7value3 = $cheque7value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque7description]">'.$cheque7value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque7chequenumber]" value="'.$cheque7value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque7date]" value="'.$cheque7value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque7amount]" value="'.$cheque7value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 8
+                case 'postdatecheque8' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque8desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque8description')->first();
+                            $cheque8numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque8chequenumber')->first();
+                            $cheque8date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque8date')->first();
+                            $cheque8amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque8amount')->first();
+
+                            ($cheque8desc) ? $cheque8value1 = $cheque8desc->field_value : $cheque8value1 = '';
+                            ($cheque8numb) ? $cheque8value2 = $cheque8numb->field_value : $cheque8value2 = '';
+                            ($cheque8date) ? $cheque8value3 = $cheque8date->field_value : $cheque8value3 = '';
+                            ($cheque8amount) ? $cheque8value4 = $cheque8amount->field_value : $cheque8value4 = '';
+                        }
+                    } else {
+                        $cheque8value1 = $cheque8value2 = $cheque8value3 = $cheque8value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque8description]">'.$cheque8value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque8chequenumber]" value="'.$cheque8value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque8date]" value="'.$cheque8value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque8amount]" value="'.$cheque8value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 9
+                case 'postdatecheque9' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque9desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque9description')->first();
+                            $cheque9numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque9chequenumber')->first();
+                            $cheque9date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque9date')->first();
+                            $cheque9amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque9amount')->first();
+
+                            ($cheque9desc) ? $cheque9value1 = $cheque9desc->field_value : $cheque9value1 = '';
+                            ($cheque9numb) ? $cheque9value2 = $cheque9numb->field_value : $cheque9value2 = '';
+                            ($cheque9date) ? $cheque9value3 = $cheque9date->field_value : $cheque9value3 = '';
+                            ($cheque9amount) ? $cheque9value4 = $cheque9amount->field_value : $cheque9value4 = '';
+                        }
+                    } else {
+                        $cheque9value1 = $cheque9value2 = $cheque9value3 = $cheque9value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque9description]">'.$cheque9value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque9chequenumber]" value="'.$cheque9value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque9date]" value="'.$cheque9value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque9amount]" value="'.$cheque9value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
+
+                // Post date cheque 10
+                case 'postdatecheque10' :
+                    if ($form_type == 'show') {
+                        $rfq = AgreementRfq::select('id')->where('borrower_id', $borrowerId)->first();
+                        if ($rfq) {
+                            $cheque10desc = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque10description')->first();
+                            $cheque10numb = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque10chequenumber')->first();
+                            $cheque10date = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque10date')->first();
+                            $cheque10amount = AgreementData::where('rfq_id', $rfq->id)->where('field_name', 'postdatecheque10amount')->first();
+
+                            ($cheque10desc) ? $cheque10value1 = $cheque10desc->field_value : $cheque10value1 = '';
+                            ($cheque10numb) ? $cheque10value2 = $cheque10numb->field_value : $cheque10value2 = '';
+                            ($cheque10date) ? $cheque10value3 = $cheque10date->field_value : $cheque10value3 = '';
+                            ($cheque10amount) ? $cheque10value4 = $cheque10amount->field_value : $cheque10value4 = '';
+                        }
+                    } else {
+                        $cheque10value1 = $cheque10value2 = $cheque10value3 = $cheque10value4 = '';
+                    }
+
+                    $optionalFieldsInsideData = '<div class="row"> <div class="col-12"> <textarea placeholder="Post date cheque 4 description" class="form-control form-control-sm" style="min-height:100px;max-height:200px" name="field_name[postdatecheque10description]">'.$cheque10value1.'</textarea> <input type="hidden" value="163" name="field_id[163]"> <p class="small text-muted my-1">Description</p> </div><div class="col-4"> <input type="text" placeholder="Post date cheque 4 cheque number" class="form-control form-control-sm" name="field_name[postdatecheque10chequenumber]" value="'.$cheque10value2.'"><input type="hidden" value="164" name="field_id[164]"> <p class="small text-muted my-1">Cheque number</p> </div><div class="col-4"> <input type="date" placeholder="Post date cheque 4 date" class="form-control form-control-sm" name="field_name[postdatecheque10date]" value="'.$cheque10value3.'"><input type="hidden" value="165" name="field_id[165]"> <p class="small text-muted my-1">Date</p> </div> <div class="col-4"> <input type="text" placeholder="Post date cheque 4 amount" class="form-control form-control-sm numberField" name="field_name[postdatecheque10amount]" value="'.$cheque10value4.'"><input type="hidden" value="166" name="field_id[166]"> <p class="small text-muted my-1">Amount</p> </div> </div>';
+
+                    $optionalFieldsData = '<div class="w-100">'.$optionalFieldsInsideData.'</div>';
+                break;
 
                 // borrower date of birth
                 case 'dateofbirthoftheborrower' :
@@ -930,7 +1155,12 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
 
     switch ($type) {
         case 'text':
-            $response = $extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm '.$extraClass.'" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
+            if ($key_name == 'postdatecheque1' || $key_name == 'postdatecheque2' || $key_name == 'postdatecheque3' || $key_name == 'postdatecheque4' || $key_name == 'postdatecheque5' || $key_name == 'postdatecheque6' || $key_name == 'postdatecheque7' || $key_name == 'postdatecheque8' || $key_name == 'postdatecheque9' || $key_name == 'postdatecheque10') {
+                $response = $optionalFieldsData;
+            } else {
+                $response = '<div class="w-100">'.$extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm '.$extraClass.'" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField.$optionalFieldsData.'</div>';
+            }
+
             break;
         case 'email':
             $response = $extraPreField.'<input type="email" placeholder="' . $name . '" class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.'><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField;
@@ -962,7 +1192,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
 
                 $option .= '<option value="' . $val . '" ' . $selected . '>' . $val . '</option>';
             }
-            $response = '<select class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">';
+            $response = '<div class="w-100"><select class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$optionalFieldsData.'</div>';
             break;
         case 'checkbox':
             // print_r($respValue);
