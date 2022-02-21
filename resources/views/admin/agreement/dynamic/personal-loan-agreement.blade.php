@@ -267,6 +267,12 @@
         .text-left {
             text-align: left;
         }
+        .check-option {
+            font-size: 22px;
+            position: absolute;
+            top: -5px;
+            left: -25px;
+        }
     </style>
 </head>
 <body>
@@ -1988,8 +1994,7 @@
                         </td>
                         <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             
-                            <p class="ft1" style="text-align: center">Mr./Ms. <span>
-                                    {{$data->nameoftheauthorisedsignatory}} </span> </p>
+                            <p class="ft1" style="text-align: center">{{$data->prefixoftheauthorisedsignatory}} <span> {{$data->nameoftheauthorisedsignatory}} </span> </p>
 
                         </td>
 
@@ -2528,13 +2533,12 @@
                     <tr>
                         <td>i. Nature of Loan</td>
                         <td>
-                            {{$data->natureofloan}}
+                            {{$data->natureofloan}} {{($data->nameofthecheckoffcompany) ? '('.$data->nameofthecheckoffcompany.')' : ''}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            ii. Sanctioned Loan Amount Sanction
-                            letter / Letter of intent reference
+                            ii. Sanctioned Loan Amount / Letter of intent reference
                         </td>
                         <td>
                             <p>
@@ -2860,79 +2864,56 @@
                     <P class="p241 ft8">Please ( ) Tick Whichever Applicable</P>
 
                     @php
+                    // all values
                     $originalData = [
                     'Salary Certificate from current Employer',
                     'Proof of identity',
                     'Proof of current residential & official address',
-                    'Latest three months&apos Bank Statement (where salary / income is credited or accumulated)',
+                    'Latest three months&apos; Bank Statement (where salary / income is credited or accumulated)',
                     'Salary slips for last three months preceding application date',
                     'Two passport size photographs',
-                    'Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to
-                    designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which
-                    are required to be paid by the Borrower(s), as specified in terms of Repayment in Schedule II',
+
+                    'Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank of the Borrower(s) to transfer to the Lender on the Due Dates the amounts which are required to be paid by the Borrower(s) as specified in terms of Repayment in Schedule II',
+
                     'Copies of last 2 years&apos; ITR',
                     'Signature Verification by banker (as per PFSL format)',
                     'Proof of other income',
-                    'Proof of assets (copy of registered deed of house property / statement of accounts of mutual fund /
-                    insurance policy / statement of demat account)',
-                    'Guarantor&apos;s net worth certificate (as per PFSL format)',
+                    'Proof of assets (copy of registered deed of house property / statement of accounts of mutual fund / insurance policy / statement of demat account)',
+                    'Guarantor&apos;s net worth certificate (as per PFSL format)'
                     ];
+
+                    $original22Data = 'Salary Certificate from current Employer, Proof of identity, Proof of current residential & official address, Latest three months&apos; Bank Statement (where salary / income is credited or accumulated), Salary slips for last three months preceding application date, Two passport size photographs, Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank of the Borrower(s) to transfer to the Lender on the Due Dates the amounts which are required to be paid by the Borrower(s) as specified in terms of Repayment in Schedule II, Copies of last 2 years&apos; ITR, Signature Verification by banker (as per PFSL format), Proof of other income, Proof of assets (copy of registered deed of house property / statement of accounts of mutual fund / insurance policy / statement of demat account), Guarantor&apos;s net worth certificate (as per PFSL format)';
+
+                    // response/ selected values
                     $commaSeperatedSelectedData = $data->documentstobeattachedwithapplicationforloan;
 
-                    if(!empty($commaSeperatedSelectedData)) {
-                    $selectedData = explode(',', $commaSeperatedSelectedData);
+                    // TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+                    // all values, showing properly
+                    $expValue = explode(', ', $original22Data);
 
-                    echo '<ol type="i">';
-                        foreach($originalData as $item) {
-                        $show = '';
-                        if(in_array($item, $selectedData)) {
-                        $show = '<i class="fas fa-check"></i>';
-                        }
-                        echo '<li>'.$show.$item.'</li>';
-                        }
-                        echo '<li>
-                            Others (please specify)<br>
-                            '.$data->otherdocumentstobeattachedwithapplicationforloan.'
-                        </li>';
-                        echo '</ol>';
+                    // response/ selected values
+                    $explodedRespValues = explode(',', strtolower($data->documentstobeattachedwithapplicationforloan));
+
+                    foreach ($explodedRespValues as $key => $singleRespValue) {
+                        $newCheckedValues[] = generateKeyForForm($singleRespValue);
                     }
+
+                    $option = '<ol type="i">';
+                    foreach ($expValue as $index => $selectedDocVal) {
+                        $checked = '';
+                        if(in_array(generateKeyForForm(strReplace($selectedDocVal)), $newCheckedValues)) $checked = '<i class="fas fa-check check-option"></i> ';
+
+                        $option .= '<li style="position: relative">'.$checked.$selectedDocVal.'</li>';
+                    }
+                    $option .= '<li>Others (please specify)<br>'.$data->otherdocumentstobeattachedwithapplicationforloan.'</li>';
+                    $option .= '</ol>';
+
+                    echo $option;
+                    // TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
                     @endphp
 
-                    {{-- <P><SPAN class="ft1">(I)</SPAN><SPAN class="ft133">Salary Certificate from
-                            current Employer;</SPAN></P>
-                    <P><SPAN class="ft1">(ii)</SPAN><SPAN class="ft134">Proof of identity;</SPAN></P>
-                    <P><SPAN class="ft1">(iii)</SPAN><SPAN class="ft135">Proof of current residential &
-                            official address;</SPAN></P>
-                    <P><SPAN class="ft1">(iv)</SPAN><SPAN class="ft136">Latest three months' Bank
-                            Statement (where salary / income is credited or accumulated);</SPAN></P>
-                    <P><SPAN class="ft1">(v)</SPAN><SPAN class="ft99">Salary slips for last three
-                            months preceding application date;</SPAN></P>
-                    <P><SPAN class="ft1">(vi)</SPAN><SPAN class="ft136">Two passport size photographs
-                            ;</SPAN></P>
-                    <P class="p245 ft131"><SPAN class="ft69">(vii)</SPAN><SPAN class="ft137">Certified copy of standing
-                            Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank, of the
-                            Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be
-                            paid by the Borrower(s), as specified in terms of Repayment in Schedule II;</SPAN></P>
-                    <P><SPAN class="ft1">(viii)</SPAN><SPAN class="ft116">Copies of last 2 years' ITR
-                            ;</SPAN></P>
-                    <P><SPAN class="ft1">(ix)</SPAN><SPAN class="ft138">Signature Verification by
-                            banker (as per PFSL format)</SPAN></P>
-                    <P><SPAN class="ft1">(x)</SPAN><SPAN class="ft139">Proof of other income</SPAN></P>
-                    <P><SPAN class="ft1">(xi)</SPAN><SPAN class="ft138">Proof of assets (copy of
-                            registered deed of house property / statement of accounts of</SPAN></P>
-                    <P>mutual fund / insurance policy / statement of demat account)</P>
-                    <P><SPAN class="ft1">(xii)</SPAN><SPAN class="ft107">Guarantor's net worth
-                            certificate (as per PFSL format)</SPAN></P> --}}
-
-
-                    {{-- <P class="p251 ft1"><SPAN class="ft69">(xiii)</SPAN><SPAN class="ft116">Others (please specify)
-                            {{$data->otherdocumentstobeattachedwithapplicationforloan}} </SPAN></P> --}}
-
-
                     <br><br><br><br>
                     <br><br><br><br>
-
-
 
                     <table cellpadding=0 cellspacing=0 class="sign-table">
                         <tr>
@@ -3343,17 +3324,7 @@
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}}
-                                <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span>
-                                I/ We ,{{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) and
-                                {{$data->nameofthecoborrower }} ( <span class="ft2">“the Co borrower”</span> ) refer to
-                                the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us
-                                in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of
-                                <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No.
-                                {{$data->letterofintentnumber}} dated {{$data->undertakingcumindemnitydate}}.
-                                In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan
-                                Facility Agreement, I/we do
-                                here by irrevocably and unconditionally agree and undertake as follows :
+                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span> I/ We ,{{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!} refer to the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No. {{$data->letterofintentnumber}} dated {{$data->undertakingcumindemnitydate}}. In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan Facility Agreement, I/we do here by irrevocably and unconditionally agree and undertake as follows :
                                 <br><br>
                             </p>
                         </td>
@@ -3505,7 +3476,7 @@
                                 sanctioned loan of Rs. {{$data->loanamountindigits}}/- (Rupees
                                 {{$data->loanamountindigitsinwords}}) only<br>
                                 This is with reference to your Letter Of Intent No. {{$data->letterofintentnumber}}
-                                dated {{$data->dateofagreement}} conveying sanction of the
+                                dated {{$data->sanctionletterdate}} conveying sanction of the
                                 subject facility. I / We have since completed all the formalities regarding
                                 documentation of the facility in terms of the
                                 Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed between you

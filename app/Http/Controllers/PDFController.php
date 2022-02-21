@@ -144,6 +144,7 @@ class PDFController extends Controller
         $data->dateofagreement = ($this->getData($agreement, 'dateofagreement') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofagreement'))) : '';
 
         // page 16
+        $data->prefixoftheauthorisedsignatory = $this->getData($agreement, 'prefixoftheauthorisedsignatory');
         $data->nameoftheauthorisedsignatory = $this->getData($agreement, 'nameoftheauthorisedsignatory');
 
         // page 17
@@ -170,6 +171,7 @@ class PDFController extends Controller
 
         // page 18
         $data->natureofloan = $this->getData($agreement, 'natureofloan');
+        $data->nameofthecheckoffcompany = $this->getData($agreement, 'nameofthecheckoffcompany');
         $data->loanamountindigits = $this->getData($agreement, 'loanamountindigits');
         $data->loanamountindigitsinwords = $this->getData($agreement, 'loanamountindigitsinwords');
         $data->loanamountinlakh = $this->getData($agreement, 'loanamountinlakh');
@@ -223,6 +225,7 @@ class PDFController extends Controller
         $data->undertakingcumindemnitydate = ($this->getData($agreement, 'undertakingcumindemnitydate') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'undertakingcumindemnitydate'))) : '';
 
         // page 27
+        $data->sanctionletterdate = ($this->getData($agreement, 'sanctionletterdate') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'sanctionletterdate'))) : '';
         $data->letterofintentnumber = $this->getData($agreement, 'letterofintentnumber');
 
         // page 30

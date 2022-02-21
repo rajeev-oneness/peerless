@@ -369,10 +369,11 @@ mark {
 }
 
 .fields_col-2 span.post-text {
-    min-width: 10%;
+    min-width: max-content;
     background-color: #e9ecef;
     border-bottom: 1px solid #53aae0;
     font-weight: 600;
+    padding: 2px 8px;
     color: #285381;
 }
 

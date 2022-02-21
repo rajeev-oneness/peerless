@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-md-4 text-right">
                                 @if ($data->agreementRfq > 0)
-                                    <a href="{{ route('user.borrower.agreement.view', $id) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View agreement details</a>
+                                    {{-- <a href="{{ route('user.borrower.agreement.view', $id) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View agreement details</a> --}}
 
                                     <a href="#viewPdfModal" data-toggle="modal" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 

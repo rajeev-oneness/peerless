@@ -1158,7 +1158,7 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             if ($key_name == 'postdatecheque1' || $key_name == 'postdatecheque2' || $key_name == 'postdatecheque3' || $key_name == 'postdatecheque4' || $key_name == 'postdatecheque5' || $key_name == 'postdatecheque6' || $key_name == 'postdatecheque7' || $key_name == 'postdatecheque8' || $key_name == 'postdatecheque9' || $key_name == 'postdatecheque10') {
                 $response = $optionalFieldsData;
             } else {
-                $response = '<div class="w-100">'.$extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm '.$extraClass.'" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField.$optionalFieldsData.'</div>';
+                $response = '<div class="w-100 d-flex">'.$extraPreField.'<input type="text" placeholder="' . $name . '" class="form-control form-control-sm '.$extraClass.'" name="field_name[' . $key_name . ']" ' . $required . ' value="' . $respValue . '" '.$disabledField.' ><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$extraPostField.$optionalFieldsData.'</div>';
             }
 
             break;
@@ -1195,21 +1195,20 @@ function form3lements($field_id, $name, $type, $value=null, $key_name, $required
             $response = '<div class="w-100"><select class="form-control form-control-sm" name="field_name[' . $key_name . ']" ' . $required . ' '.$disabledField.'>' . $option . '</select><input type="hidden" value="' . $field_id . '" name="field_id[' . $field_id . ']">'.$optionalFieldsData.'</div>';
             break;
         case 'checkbox':
-            // print_r($respValue);
+            // all values, showing properly
             $expValue = explode(', ', $value);
-            $checkedValues = explode(',', strtolower($respValue));
 
-            foreach ($checkedValues as $key => $values) {
-                $newCheckedValues[] = generateKeyForForm($values);
+            // response/ selected values
+            $explodedRespValues = explode(',', strtolower($respValue));
+
+            foreach ($explodedRespValues as $key => $singleRespValue) {
+                $newCheckedValues[] = generateKeyForForm($singleRespValue);
             }
 
-            // echo '<pre>';print_r($checkedValues);
-            // echo '<pre>';print_r($newCheckedValues);
             $option = '';
             foreach ($expValue as $index => $val) {
-                // echo $index.' ';print_r(generateKeyForForm($val));echo '<br>';
                 $checked = '';
-                if(in_array(generateKeyForForm($val), $newCheckedValues)) $checked = 'checked';
+                if(in_array(generateKeyForForm(strReplace($val)), $newCheckedValues)) $checked = 'checked';
 
                 $option .= '<div class="single-checkbox-holder"><input class="form-check-input" type="checkbox" name="field_name[' . $key_name . '][]" id="' . $key_name . '-' . $index . '" value="' . $val . '" '.$checked.' '.$disabledField.'> <label for="' . $key_name . '-' . $index . '" class="form-check-label mr-1">' . $val.' </label></div>';
             }
@@ -1246,6 +1245,11 @@ function generateKeyForForm(string $string)
         }
     }
     return $key;
+}
+
+// str replace for apos
+function strReplace(string $string) {
+    return str_replace(['apos', '('], '', $string);
 }
 
 // send mail helper

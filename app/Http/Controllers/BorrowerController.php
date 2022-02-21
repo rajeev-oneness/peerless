@@ -109,7 +109,7 @@ class BorrowerController extends Controller
             'date_of_birth' => 'required',
             'email' => 'required|string|email',
             'mobile' => 'required|integer|digits:10',
-            'pan_card_number' => 'required|string|min:10|max:10',
+            'pan_card_number' => 'required|string|min:10|max:10|unique:borrowers',
             'occupation' => 'required|string|min:1|max:200',
             'marital_status' => 'required|string|min:1|max:30',
 
@@ -520,6 +520,32 @@ class BorrowerController extends Controller
 
                 // agreement data - fields & values
                 foreach ($request->field_name as $index => $field) {
+                    // $mainArray = $request->field_name;
+                    // $targetArray = $request->field_name['documentstobeattachedwithapplicationforloan'];
+
+                    // $targetStr = 'Certified copy of standing Instructions/ Signed ECS / ACH mandate/other relevant mandate to designated bank, of the Borrower(s) to transfer to the Lender on the Due Dates, the amounts which are required to be paid by the Borrower(s), as specified in terms of Repayment in Schedule II';
+
+                    // if(in_array($targetStr, $targetArray)) {
+                    //     // dd($request->field_name);
+                    //     // removing the target string
+                    //     $targetArray = array_diff($targetArray, [$targetStr]);
+
+                    //     // adding modified string
+                    //     $modifiedStr = str_replace(', ', '&#44;', $targetStr);
+
+                    //     // adding new str into the array
+                    //     array_push($targetArray, $modifiedStr);
+
+                    //     // dd($mainArray);
+                    //     $tttt = array_diff($mainArray, [$targetArray]);
+                    //     dd($mainArray);
+                    //     // removing old array from complete field
+                    //     // $newTargetArray = array_diff($request->field_name, [$targetArray]);
+                    //     array_push($request->field_name, $targetArray);
+
+                    //     dd($request->field_name);
+                    // }
+
                     $agreement = new AgreementData();
                     $agreement->rfq_id = $rfq->id;
                     $agreement->field_id = 0;
