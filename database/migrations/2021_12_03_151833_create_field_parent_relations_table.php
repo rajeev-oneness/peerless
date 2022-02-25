@@ -37,6 +37,7 @@ class CreateFieldParentRelationsTable extends Migration
         array_push($data, ['parent_id' => 6, 'child_id' => 157]);
         // for Sanction letter number
         array_push($data, ['parent_id' => 6, 'child_id' => 208]);
+        array_push($data, ['parent_id' => 6, 'child_id' => 209]);
 
         // id of borrower, co-borrower 1, co-borrower 2, guarantor, witness1, witness2
         for ($i = 1; $i <= $totalFieldsParentsCount; $i++) {
@@ -78,7 +79,7 @@ class CreateFieldParentRelationsTable extends Migration
                 if ($i == 8) array_push($data, ['parent_id' => $i, 'child_id' => $j]);
             }
 
-            // id 208 skipped
+            // id 208, 209 skipped
         }
 
         DB::table('field_parent_relations')->insert($data);

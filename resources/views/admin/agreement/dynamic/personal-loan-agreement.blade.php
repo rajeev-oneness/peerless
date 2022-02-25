@@ -314,15 +314,15 @@
                                 </p> --}}
 
                                 <div style="width:100%;">
-                                    <div style="width:55%;margin:0 auto">
+                                    <div style="width:70%;margin:0 auto">
                                         <table style="border: 0">
                                             <tr>
                                                 <td style="width: 50%; border: 0;text-align: left; padding-left: 30px;"><b>Customer name</b></td>
                                                 <td style="width: 50%; border: 0;text-align: left"><b>: {{$data->prefixoftheborrower}} {{$data->nameoftheborrower}}</b></td>
                                             </tr>
                                             <tr>
-                                                <td style="width: 50%; border: 0;text-align: left; padding-left: 30px;"><b>Sanction Letter No</b></td>
-                                                <td style="width: 50%; border: 0;text-align: left"><b>: {{$data->sanctionletternumber}}</b></td>
+                                                <td style="border: 0;text-align: left; padding-left: 30px;"><b>Sanction Letter No</b></td>
+                                                <td style="border: 0;text-align: left"><b>: {{$data->sanctionletternumber}}</b></td>
                                             </tr>
                                             <tr>
                                                 <td style="border: 0;text-align: left; padding-left: 30px;"><b>Loan Account No</b></td>
@@ -374,12 +374,12 @@
                             {{ ($data->nameofthecoborrower) ? $data->nameofthecoborrower : 'NOT APPLICABLE' }}
                         </td>
                     </tr>
-                    {{-- <tr>
+                    <tr style="display:{{ ($data->nameoftheguarantor) ? 'table-row' : 'none' }}">
                         <td>Name of the Guarantor:</td>
                         <td>
-                            {{ ($data->nameoftheguarantor) ? $data->nameoftheguarantor : 'NOT APPLICABLE' }}
+                            {{ ($data->nameoftheguarantor) }}
                         </td>
-                    </tr> --}}
+                    </tr>
                     <tr>
                         <td>Loan Application Number:</td>
                         <td>
@@ -621,20 +621,17 @@
                 <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
                     <tr style="border: 0">
                         <td>
-                            {{-- <img src="{{asset($data->signatureoftheauthorisedsignatory)}}" alt=""
-                                style="height: 50px"> --}}
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
-                            {{-- <img src="{{asset($data->signatureoftheborrower)}}" alt="" style="height: 50px">
-                            --}}
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
-                            {{-- <img src="{{asset($data->signatureofthecoborrower)}}" alt="" style="height: 50px">
-                            --}}
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -760,24 +757,21 @@
                     </ol>
 
 
-                    <br><br><br><br><br><br>
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <br><br><br><br><br><br>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
-                            {{-- <img src="{{asset($data->signatureoftheauthorisedsignatory)}}" alt=""
-                                style="height: 50px"> --}}
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
-                            {{-- <img src="{{asset($data->signatureoftheborrower)}}" alt="" style="height: 50px">
-                            --}}
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
-                            {{-- <img src="{{asset($data->signatureofthecoborrower)}}" alt="" style="height: 50px">
-                            --}}
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -875,17 +869,20 @@
 
                     
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -958,17 +955,20 @@
 
                 <br><br><br><br><br><br>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -1055,17 +1055,20 @@
                     to time.</P>
                 
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -1149,17 +1152,20 @@
 
                     
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -1210,8 +1216,7 @@
                     <P class="p114 ft30">of the Lender and the Borrower(s), where common intention is to fill in the
                         cheques / instruments with the amounts that may be due by the Borrower(s) to the Lender from
                         time to time.</P>
-                    <P class="p115 ft52"> <b>6.ii.8.</b> The Borrower(s) hereby confirm(s) that the Borrower(s) shall always
-                        ensure that sufficient funds are available in the account to which the cheques /other mandates
+                    <P class="p115 ft52"> <b>6.ii.8.</b> The Borrower(s) hereby confirm(s) that the Borrower(s) shall always ensure that sufficient funds are available in the account to which the cheques /other mandates
                         relate, so that the cheques /other mandates when presented by PFSL are honoured by the Bank .
                         The Borrower(s) is/are aware of the fact that the dishonour of any of the cheques / other
                         mandates so issued by the Borrower(s) and presented by Lender for paymentwould constitute an
@@ -1244,17 +1249,20 @@
                     not deposit any PDCs, inchoate cheques and/or UDCs which remain in its possession.</P>
 
 
-                    <table cellpadding=0 cellspacing=0 class="sign-table">
-                        <tr>
+                    <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                        <tr style="border: 0">
                             <td>
+                                {{$data->nameoftheauthorisedsignatory}}
                                 <div class="sign-line"></div>
                                 <b>Authorised Signatories For PFSL</b>
                             </td>
                             <td>
+                                {{$data->nameoftheborrower}}
                                 <div class="sign-line"></div>
                                 <b>Borrower</b>
                             </td>
                             <td>
+                                {{$data->nameofthecoborrower}}
                                 <div class="sign-line"></div>
                                 <b>Co-Borrower</b>
                             </td>
@@ -1354,23 +1362,26 @@
                     </li>
                 </ol>
 
-
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
+
                 <p class="page-no">10</p>
             </div>
 
@@ -1455,22 +1466,26 @@
                         claim for breach of representation or warranty or any representation given by the
                         Borrower(s) to PFSL in the Application for the Loan.</SPAN></P>
 
-                    <table cellpadding=0 cellspacing=0 class="sign-table">
-                        <tr>
+                    <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                        <tr style="border: 0">
                             <td>
+                                {{$data->nameoftheauthorisedsignatory}}
                                 <div class="sign-line"></div>
                                 <b>Authorised Signatories For PFSL</b>
                             </td>
                             <td>
+                                {{$data->nameoftheborrower}}
                                 <div class="sign-line"></div>
                                 <b>Borrower</b>
                             </td>
                             <td>
+                                {{$data->nameofthecoborrower}}
                                 <div class="sign-line"></div>
                                 <b>Co-Borrower</b>
                             </td>
                         </tr>
                     </table>
+
                     <p class="page-no">11</p>
                 </div>
 
@@ -1843,17 +1858,20 @@
                 <br>
                 <br>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -1994,7 +2012,7 @@
                         </td>
                         <td class="border0" style="margin: 0; padding:0; line-height:0;">
                             
-                            <p class="ft1" style="text-align: center">{{$data->prefixoftheauthorisedsignatory}} <span> {{$data->nameoftheauthorisedsignatory}} </span> </p>
+                            <p class="ft1" style="text-align: center;margin-top: 70px;">{{$data->prefixoftheauthorisedsignatory}} <span> {{$data->nameoftheauthorisedsignatory}} </span> </p>
 
                         </td>
 
@@ -2376,13 +2394,13 @@
                         </td>
                     </tr>
                 </table>
-                <table class="table_17">
+                <table class="table_17" style="display:{{ ($data->nameoftheguarantor) ? 'table' : 'none' }}">
                     <tr>
                         <td>
-                            <b class="p203 ">Name of the Co Borrower</b>
+                            <b class="p203 ">Name of the Guarantor</b>
                         </td>
                         <td>
-                            {{$data->nameofthecoborrower2 ? $data->nameofthecoborrower2 : 'NOT APPLICABLE'}}
+                            {{$data->nameoftheguarantor ? $data->nameoftheguarantor : 'NOT APPLICABLE'}}
                         </td>
                     </tr>
                     <tr>
@@ -2390,7 +2408,7 @@
                             <b class="p204">Permanent Address</b>
                         </td>
                         <td>
-                            {{$data->streetaddressofthecoborrower2}}
+                            {{$data->streetaddressoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2398,7 +2416,7 @@
                             <b class="p205">PAN</b>
                         </td>
                         <td>
-                            {{$data->pancardnumberofthecoborrower2}}
+                            {{$data->pancardnumberoftheguarantor}}
                         </td>
                     </tr>
 
@@ -2407,20 +2425,20 @@
                             <b class="p204">Officially Valid Documents</b>
                         </td>
                         <td>
-                            {{$data->officiallyvaliddocumentsofthecoborrower2}}
+                            {{$data->officiallyvaliddocumentsoftheguarantor}}
 
-                            @if ($data->officiallyvaliddocumentsofthecoborrower2 == "Aadhar card")
-                            ({{$data->aadharcardnumberofthecoborrower2}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Voter card")
-                            ({{$data->votercardnumberofthecoborrower2}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Bank statement")
-                            ({{$data->bankaccountnumberofthecoborrower2}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Driving license")
-                            ({{$data->drivinglicensenumberofthecoborrower2}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Electricity bill")
-                            ({{$data->electricitybillnumberofthecoborrower2}})
-                            @elseif ($data->officiallyvaliddocumentsofthecoborrower2 == "Passport")
-                            ({{$data->passportnumberofthecoborrower2}})
+                            @if ($data->officiallyvaliddocumentsoftheguarantor == "Aadhar card")
+                            ({{$data->aadharcardnumberoftheguarantor}})
+                            @elseif ($data->officiallyvaliddocumentsoftheguarantor == "Voter card")
+                            ({{$data->votercardnumberoftheguarantor}})
+                            @elseif ($data->officiallyvaliddocumentsoftheguarantor == "Bank statement")
+                            ({{$data->bankaccountnumberoftheguarantor}})
+                            @elseif ($data->officiallyvaliddocumentsoftheguarantor == "Driving license")
+                            ({{$data->drivinglicensenumberoftheguarantor}})
+                            @elseif ($data->officiallyvaliddocumentsoftheguarantor == "Electricity bill")
+                            ({{$data->electricitybillnumberoftheguarantor}})
+                            @elseif ($data->officiallyvaliddocumentsoftheguarantor == "Passport")
+                            ({{$data->passportnumberoftheguarantor}})
                             @endif
                         </td>
                     </tr>
@@ -2429,7 +2447,7 @@
                             <b class="p204">Occupation</b>
                         </td>
                         <td>
-                            {{$data->occupationofthecoborrower2}}
+                            {{$data->occupationoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2437,7 +2455,7 @@
                             <b class="p204">Resident Status</b>
                         </td>
                         <td>
-                            {{$data->residentstatusofthecoborrower2}}
+                            {{$data->residentstatusoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2445,7 +2463,7 @@
                             <b class="p205">Date of birth</b>
                         </td>
                         <td>
-                            {{$data->dateofbirthofthecoborrower2}}
+                            {{$data->dateofbirthoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2453,7 +2471,7 @@
                             <b class="p204">Marital Status</b>
                         </td>
                         <td>
-                            {{$data->maritalstatusofthecoborrower2}}
+                            {{$data->maritalstatusoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2461,7 +2479,7 @@
                             <b class="p205">Highest Education</b>
                         </td>
                         <td>
-                            {{$data->highesteducationofthecoborrower2}}
+                            {{$data->highesteducationoftheguarantor}}
                         </td>
                     </tr>
                     <tr>
@@ -2469,8 +2487,8 @@
                             <b class="p204">Tel no / Email ID</b>
                         </td>
                         <td>
-                            {{$data->mobilenumberofthecoborrower2}} {{($data->emailidofthecoborrower2 != null) ? '/
-                            '.$data->emailidofthecoborrower2 : ''}}
+                            {{$data->mobilenumberoftheguarantor}} {{($data->emailidoftheguarantor != null) ? '/
+                            '.$data->emailidoftheguarantor : ''}}
                         </td>
                     </tr>
                 </table>
@@ -2495,17 +2513,20 @@
 
                 <br><br><br><br><br><br>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
@@ -2526,14 +2547,13 @@
                     <b class=" ft5">KEY FACTS OF THE LOAN</b>
                 </h3>
 
-                <br>
-                <br>
+                <br><br>
 
                 <table class="border0 table_18">
                     <tr>
-                        <td>i. Nature of Loan</td>
+                        <td>i. Nature of Loan {{ ($data->nameofthecheckoffcompany) ? '/ check-off company name' : '' }}</td>
                         <td>
-                            {{$data->natureofloan}} {{($data->nameofthecheckoffcompany) ? '('.$data->nameofthecheckoffcompany.')' : ''}}
+                            {{$data->natureofloan}} {!! ($data->nameofthecheckoffcompany) ? '<br>('.$data->nameofthecheckoffcompany.')' : '' !!}
                         </td>
                     </tr>
                     <tr>
@@ -2544,7 +2564,7 @@
                             <p>
                                 Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only
                                 <br>
-                                Reference no {{$data->loanreferencenumber}} dated {{$data->dateofagreement}}
+                                Reference no {{$data->loanreferencenumber}} dated {{$data->sanctionletterdate}}
                             </p>
                         </td>
                     </tr>
@@ -2618,22 +2638,26 @@
 
                 <br><br><br><br><br><br>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
+
                 <p class="page-no">18</p>
             </div>
 
@@ -2721,22 +2745,26 @@
                 </table>
 
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
+
                 <p class="page-no">19</p>
 
             </div>
@@ -2827,25 +2855,28 @@
                         </li>
                     </ol>
 
-
                     <br><br><br><br><br><br><br><br>
 
-                    <table cellpadding=0 cellspacing=0 class="sign-table">
-                        <tr>
+                    <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                        <tr style="border: 0">
                             <td>
+                                {{$data->nameoftheauthorisedsignatory}}
                                 <div class="sign-line"></div>
                                 <b>Authorised Signatories For PFSL</b>
                             </td>
                             <td>
+                                {{$data->nameoftheborrower}}
                                 <div class="sign-line"></div>
                                 <b>Borrower</b>
                             </td>
                             <td>
+                                {{$data->nameofthecoborrower}}
                                 <div class="sign-line"></div>
                                 <b>Co-Borrower</b>
                             </td>
                         </tr>
                     </table>
+
                     <p class="page-no">20</p>
                 </div>
 
@@ -2912,25 +2943,28 @@
                     // TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
                     @endphp
 
-                    <br><br><br><br>
-                    <br><br><br><br>
+                    <br><br><br><br><br><br><br><br>
 
-                    <table cellpadding=0 cellspacing=0 class="sign-table">
-                        <tr>
+                    <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                        <tr style="border: 0">
                             <td>
+                                {{$data->nameoftheauthorisedsignatory}}
                                 <div class="sign-line"></div>
                                 <b>Authorised Signatories For PFSL</b>
                             </td>
                             <td>
+                                {{$data->nameoftheborrower}}
                                 <div class="sign-line"></div>
                                 <b>Borrower</b>
                             </td>
                             <td>
+                                {{$data->nameofthecoborrower}}
                                 <div class="sign-line"></div>
                                 <b>Co-Borrower</b>
                             </td>
                         </tr>
                     </table>
+
                     <p class="page-no">21</p>
 
                 </div>
@@ -3053,24 +3087,27 @@
 
                 <br><br><br><br><br>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">22</p>
 
+                <p class="page-no">22</p>
 
             </div>
 
@@ -3096,10 +3133,9 @@
                     <tr>
                         <td class="border0" colspan="2">
                             <p class="ft131">
-                                ON DEMAND, I / We {{$data->nameoftheborrower}}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DEMAND, I/ We, {{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs. {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFS may from time to time fix or at a rate which may from time to time be as signed by PFSL for value received. I/ We also agree that this note may be assigned/ pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
-
                         </td>
                     </tr>
 
@@ -3107,6 +3143,7 @@
 
                     <tr class="stamp-tr">
                         <td class="border0">
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <p style="display:inline-block; border-top:1px solid #000;">
                                 Signature of Borrower
                             </p>
@@ -3124,6 +3161,7 @@
 
                     <tr class="stamp-tr">
                         <td class="border0">
+                            <p style="margin-bottom: 0">{{$data->prefixofthecoborrower}} {{$data->nameofthecoborrower}}</p>
                             <p style="display:inline-block; border-top:1px solid #000;">
                                 Signature of Co Borrower
                             </p>
@@ -3160,7 +3198,7 @@
                         <td class="border0" colspan="2">
 
                             <p class="ft131">
-                                ON DE MAND, I / We, {{$data->nameofthecoborrower}} unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
+                                ON DEMAND, I/ We, {{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!}, unconditionally and irrevocably promise to pay Peerless Financial Services Limited (PFSL), having their Registered Office at Peerless Bhavan, 3, Esplanade East, Kolkata - 700 069, or order for value received the sum of Rs {{$data->loanamountindigits}} (Rupees {{$data->loanamountindigitsinwords}}) only with interest there on at the rate of {{$data->rateofinterest}} % per annum with monthly rests along with all costs, charges, expenses, taxes, cess, levies, duties and penalty (ies) or at such rate as PFSL may from time to time fix or at a rate which may from time to time be Assigned by PFSL for value received. I / We also agree that this note may be assigned /pledged/ hypothecated to any one as required by PFSL, the lender, without notice to me / us. Presentment for payment and requirement of prior notice and protest of this Note are hereby unconditionally and irrevocably waived.
                                 <br><br>
                             </p>
 
@@ -3171,6 +3209,7 @@
 
                     <tr class="stamp-tr">
                         <td class="border0">
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <p style="display:inline-block; border-top:1px solid #000;">
                                 Signature of Borrower
                             </p>
@@ -3188,6 +3227,7 @@
 
                     <tr class="stamp-tr">
                         <td class="border0">
+                            <p style="margin-bottom: 0">{{$data->prefixofthecoborrower}} {{$data->nameofthecoborrower}}</p>
                             <p style="display:inline-block; border-top:1px solid #000;">
                                 Signature of Co Borrower
                             </p>
@@ -3237,14 +3277,14 @@
 
                     <tr>
                         <td class="border0">
-                            <p>Dear Sir,</p><br><br>
+                            <p>Dear Sir/ Madam,</p><br><br>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="border0">
                             <p>
-                                I / We {{$data->nameoftheborrower}}, enclose Demand Promissory Note dated
+                                I/ We, {{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!}, enclose Demand Promissory Note dated
                                 {{$data->continuingsecurityletterdate1}} for Rs. {{$data->loanamountindigits}} /-
                                 (Rupees {{$data->loanamountindigitsinwords}}) Only payable and dated NIL for
                                 Rs.{{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) Only on
@@ -3274,10 +3314,12 @@
                 <table cellpadding=0 cellspacing=0 class="sign-table">
                     <tr>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Borrower</b>
                         </td>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameofthecoborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Co-Borrower</b>
                         </td>
@@ -3293,14 +3335,11 @@
 
                 <div style="text-align:center;">
                     <P class="stamp">100/- Non Judicial Stamp to be affixed</P>
-
                     <h3>ANNEXURE III</h3>
                     <h5>UNDERTAKING-CUM-INDEMNITY</h5>
-                    <P><b>(This Undertaking Cum Indemnity executed at the place and date stated in the Schedule
-                        I therein under written )</b> </P>
+                    <P><b>(This Undertaking Cum Indemnity executed at the place and date stated in the Schedule I therein under written )</b> </P>
                     <br><br><br>
                 </div>
-
 
                 <table class="table_24 border0">
                     <tr>
@@ -3317,14 +3356,14 @@
 
                     <tr>
                         <td class="border0">
-                            <p>Dear Sir,</p><br><br>
+                            <p>Dear Sir/ Madam,</p><br><br>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span> I/ We ,{{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!} refer to the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No. {{$data->letterofintentnumber}} dated {{$data->undertakingcumindemnitydate}}. In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan Facility Agreement, I/we do here by irrevocably and unconditionally agree and undertake as follows :
+                                <span class="ft2"> Re: Loan Account No</span> {{$data->loanaccountnumber}} <span class="ft2">Personal Loan Rs.</span> {{$data->loanamountindigits}} <span class="ft2"> (Rupees {{$data->loanamountindigitsinwords}}) Only</span> I/ We ,{{$data->nameoftheborrower}} ( <span class="ft2">'the Borrower'</span> ) {!! ($data->nameofthecoborrower) ? 'and '.$data->nameofthecoborrower.' ( <span class="ft2">“the Co borrower”</span> )' : '' !!} refer to the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed by me/ us in favour of Peerless Financial Services Limited pursuant to the sanction of Loan of <span class="ft2"> Rs. {{$data->loanamountindigits}} /- (Rupees {{$data->loanamountindigitsinwords}})</span> Only by PFSL vide Letter of Intent No. {{$data->letterofintentnumber}} dated {{$data->sanctionletterdate}}. In consideration of PFSL agreeing at my/our request to rely on the said Personal Loan Facility Agreement, I/we do here by irrevocably and unconditionally agree and undertake as follows :
                                 <br><br>
                             </p>
                         </td>
@@ -3425,10 +3464,12 @@
                     <table cellpadding=0 cellspacing=0 class="sign-table" style="position: relative;">
                         <tr>
                             <td>
+                                <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                                 <div class="sign-line"></div>
                                 <b>Signature of Borrower</b>
                             </td>
                             <td>
+                                <p style="margin-bottom: 0">{{$data->nameofthecoborrower}}</p>
                                 <div class="sign-line"></div>
                                 <b>Signature of Co-Borrower</b>
                             </td>
@@ -3465,27 +3506,14 @@
 
                     <tr>
                         <td class="border0">
-                            <p>Dear Sir,</p><br><br>
+                            <p>Dear Sir/ Madam,</p><br><br>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="border0">
                             <p class="ft1">
-                                Re: Loan Account No {{$data->loanaccountnumber}} Request for disbursement of
-                                sanctioned loan of Rs. {{$data->loanamountindigits}}/- (Rupees
-                                {{$data->loanamountindigitsinwords}}) only<br>
-                                This is with reference to your Letter Of Intent No. {{$data->letterofintentnumber}}
-                                dated {{$data->sanctionletterdate}} conveying sanction of the
-                                subject facility. I / We have since completed all the formalities regarding
-                                documentation of the facility in terms of the
-                                Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed between you
-                                and me/ us . I / us now request you to
-                                disburse the loan after deduction of Processing fees, Documentation charges etc. as
-                                stipulated in the Letter of ln tent
-                                under the sanctioned facility. You may also adjust the disbursal amount with the
-                                Insurance Premium amount for onward
-                                payment to the Insurer . <br><br>
+                                Re: Loan Account No {{$data->loanaccountnumber}} Request for disbursement of sanctioned loan of Rs. {{$data->loanamountindigits}}/- (Rupees {{$data->loanamountindigitsinwords}}) only. This is with reference to your Letter Of Intent No. {{$data->letterofintentnumber}} dated {{$data->sanctionletterdate}} conveying sanction of the subject facility. I / We have since completed all the formalities regarding documentation of the facility in terms of the Personal Loan Facility Agreement dated {{$data->dateofagreement}} executed between you and me/ us . I / us now request you to disburse the loan after deduction of Processing fees, Documentation charges etc. as stipulated in the Letter of ln tent under the sanctioned facility. You may also adjust the disbursal amount with the Insurance Premium amount for onward payment to the Insurer . <br><br>
 
                                 The bank details for remittance of funds are as under
                                 <br><br>
@@ -3543,10 +3571,12 @@
                 <table cellpadding=0 cellspacing=0 class="sign-table" style="position: relative;">
                     <tr>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Borrower</b>
                         </td>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameofthecoborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Co-Borrower</b>
                         </td>
@@ -3688,7 +3718,7 @@
 
                     <tr>
                         <td class="border0"  colspan="10">
-                            <b>Dear Sir,</b>
+                            <b>Dear Sir/ Madam,</b>
                         </td>
                     </tr>
                     <tr>
@@ -3876,10 +3906,12 @@
                 <table cellpadding=0 cellspacing=0 class="sign-table" style="position: relative;">
                     <tr>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Borrower</b>
                         </td>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameofthecoborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Co-Borrower</b>
                         </td>
@@ -3998,10 +4030,12 @@
                 <table cellpadding=0 cellspacing=0 class="sign-table" style="position: relative;">
                     <tr>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameoftheborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Signature of Borrower</b>
                         </td>
                         <td>
+                            <p style="margin-bottom: 0">{{$data->nameofthecoborrower}}</p>
                             <div class="sign-line"></div>
                             <b>Co Borrower</b>
                         </td>
@@ -4045,22 +4079,26 @@
 
                 <h3>MISCELLANEOUS DOCUMENTS</h3>
 
-                <table cellpadding=0 cellspacing=0 class="sign-table">
-                    <tr>
+                <table class="sign-table" cellpadding="0" cellspacing="0" style="border: 0">
+                    <tr style="border: 0">
                         <td>
+                            {{$data->nameoftheauthorisedsignatory}}
                             <div class="sign-line"></div>
                             <b>Authorised Signatories For PFSL</b>
                         </td>
                         <td>
+                            {{$data->nameoftheborrower}}
                             <div class="sign-line"></div>
                             <b>Borrower</b>
                         </td>
                         <td>
+                            {{$data->nameofthecoborrower}}
                             <div class="sign-line"></div>
                             <b>Co-Borrower</b>
                         </td>
                     </tr>
                 </table>
+
                 <p class="page-no">34</p>
 
             </div>

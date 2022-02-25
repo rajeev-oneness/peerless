@@ -327,6 +327,7 @@ class CreateFieldsTable extends Migration
 
             // id starts from 208
             ['name' => 'Sanction letter number', 'type' => 1, 'value' => '', 'key_name' => 'sanctionletternumber'],
+            ['name' => 'Loan application number', 'type' => 1, 'value' => '', 'key_name' => 'loanapplicationnumber'],
         ];
 
         DB::table('fields')->insert($data);

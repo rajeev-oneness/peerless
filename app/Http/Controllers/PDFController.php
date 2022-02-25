@@ -74,7 +74,9 @@ class PDFController extends Controller
         $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
         $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
         // loan application number is loan reference number, application number is removed 
-        $data->loanapplicationnumber = $this->getData($agreement, 'loanreferencenumber');
+        $data->loanreferencenumber = $this->getData($agreement, 'loanreferencenumber');
+        // added again
+        $data->loanapplicationnumber = $this->getData($agreement, 'loanapplicationnumber');
         $data->loanaccountnumber = $this->getData($agreement, 'loanaccountnumber');
         $data->sanctionletternumber = $this->getData($agreement, 'sanctionletternumber');
 
@@ -93,12 +95,21 @@ class PDFController extends Controller
         $data->witness2state = $this->getData($agreement, 'witness2state');
 
         // guarantor
-        $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
+        // $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
         $data->guarantorfullname = $this->getData($agreement, 'guarantorfullname');
         $data->streetaddressoftheguarantor = $this->getData($agreement, 'streetaddressoftheguarantor');
         $data->cityoftheguarantor = $this->getData($agreement, 'cityoftheguarantor');
         $data->pincodeoftheguarantor = $this->getData($agreement, 'pincodeoftheguarantor');
         $data->stateoftheguarantor = $this->getData($agreement, 'stateoftheguarantor');
+        $data->pancardnumberoftheguarantor = $this->getData($agreement, 'pancardnumberoftheguarantor');
+        $data->officiallyvaliddocumentsoftheguarantor = $this->getData($agreement, 'officiallyvaliddocumentsoftheguarantor');
+        $data->occupationoftheguarantor = $this->getData($agreement, 'occupationoftheguarantor');
+        $data->residentstatusoftheguarantor = $this->getData($agreement, 'residentstatusoftheguarantor');
+        $data->dateofbirthoftheguarantor = ($this->getData($agreement, 'dateofbirthoftheguarantor') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'dateofbirthoftheguarantor'))) : '';
+        $data->maritalstatusoftheguarantor = $this->getData($agreement, 'maritalstatusoftheguarantor');
+        $data->highesteducationoftheguarantor = $this->getData($agreement, 'highesteducationoftheguarantor');
+        $data->mobilenumberoftheguarantor = $this->getData($agreement, 'mobilenumberoftheguarantor');
+        $data->emailidoftheguarantor = $this->getData($agreement, 'emailidoftheguarantor');
 
         // borrower
         $data->streetaddressoftheborrower = $this->getData($agreement, 'streetaddressoftheborrower');
@@ -168,6 +179,13 @@ class PDFController extends Controller
         $data->drivinglicensenumberofthecoborrower2 = $this->getData($agreement, 'drivinglicensenumberofthecoborrower2');
         $data->electricitybillnumberofthecoborrower2 = $this->getData($agreement, 'electricitybillnumberofthecoborrower2');
         $data->passportnumberofthecoborrower2 = $this->getData($agreement, 'passportnumberofthecoborrower2');
+
+        $data->aadharcardnumberoftheguarantor = $this->getData($agreement, 'aadharcardnumberoftheguarantor');
+        $data->votercardnumberoftheguarantor = $this->getData($agreement, 'votercardnumberoftheguarantor');
+        $data->bankaccountnumberoftheguarantor = $this->getData($agreement, 'bankaccountnumberoftheguarantor');
+        $data->drivinglicensenumberoftheguarantor = $this->getData($agreement, 'drivinglicensenumberoftheguarantor');
+        $data->electricitybillnumberoftheguarantor = $this->getData($agreement, 'electricitybillnumberoftheguarantor');
+        $data->passportnumberoftheguarantor = $this->getData($agreement, 'passportnumberoftheguarantor');
 
         // page 18
         $data->natureofloan = $this->getData($agreement, 'natureofloan');
