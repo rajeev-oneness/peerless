@@ -3,6 +3,7 @@
 use App\Models\Activity;
 use App\Models\AgreementData;
 use App\Models\AgreementRfq;
+use App\Models\Estamp;
 use App\Models\Field;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
@@ -1346,4 +1347,10 @@ function documentSrc(int $agreement_document_id, int $borrower_id, string $type)
     } else {
         return $detailsShow;
     }
+}
+
+//Check available stamp count
+function availableStamp($amount){
+    $availableStamp = Estamp::where('amount',$amount)->latest()->get();
+    return $availableStamp;
 }

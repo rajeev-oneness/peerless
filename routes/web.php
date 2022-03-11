@@ -157,4 +157,17 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
     // pdf
     // Route::get('/agreement/view', [PDFController::class, 'showPdf'])->name('user.loan.pdf.view');
     // Route::get('/pdf', [PDFController::class, 'generatePdf'])->name('user.loan.pdf.download');
+
+
+     // Estamp
+     Route::group(['prefix' => 'estamp'], function () {
+        Route::get('/', [EstampController::class, 'index'])->name('user.estamp.list');
+        // Route::get('/create', [FieldController::class, 'create'])->name('user.field.create');
+        Route::post('/store', [EstampController::class, 'store'])->name('user.estamp.store');
+        Route::post('/show', [EstampController::class, 'show'])->name('user.estamp.show');
+        Route::get('/{id}/view', [EstampController::class, 'details'])->name('user.estamp.details');
+        Route::get('/{id}/edit', [EstampController::class, 'edit'])->name('user.estamp.edit');
+        Route::put('/{id}/update', [EstampController::class, 'update'])->name('user.estamp.update');
+        Route::post('/destroy', [EstampController::class, 'destroy'])->name('user.estamp.destroy');
+    });
 });

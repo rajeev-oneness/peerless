@@ -143,6 +143,15 @@
                                     </a>
                                 </li>
                             @endif
+                            @if (auth()->user()->user_type == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('user.estamp.list') }}"
+                                    class="nav-link {{ request()->is('user/estamp*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-stamp"></i>
+                                    <p>E Stamp Inventory</p>
+                                </a>
+                            </li>
+                            @endif
                             <li class="nav-header">SETTINGS</li>
                             @if (auth()->user()->user_type == 1)
                                 <li class="nav-item">
