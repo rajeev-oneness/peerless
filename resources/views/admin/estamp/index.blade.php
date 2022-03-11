@@ -232,6 +232,14 @@
 @endsection
 @section('script')
     <script>
+        $(document).ready(function(){
+            activaTab('home');
+        });
+
+        function activaTab(tab){
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        };
+
         function viewDeta1ls(route, id) {
             $.ajax({
                 url : route,
