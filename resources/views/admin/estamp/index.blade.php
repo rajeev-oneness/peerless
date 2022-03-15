@@ -25,19 +25,98 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">50Rs</a>
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">10Rs</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">100Rs</a>
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">50Rs</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">150Rs</a>
+                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">100Rs</a>
                             </li>
                           </ul>
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                                <form action="{{ route('user.estamp.store') }}" method="POST"  enctype="multipart/form-data" id="ten_rs_stamp_form">
+                                    @csrf
+                                    <input type="hidden" name="amount" value="10">
+                                    <div class="form-group row">
+                                        <label for="unique_stamp_code" class="col-sm-2 col-form-label">Unique Stamp Code <span class="text-danger">*</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('unique_stamp_code') {{'is-invalid'}} @enderror" id="ten_rs_unique_stamp_code" name="unique_stamp_code" placeholder="Unique Stamp Code" value="{{old('unique_stamp_code')}}" autofocus>
+                                            @error('unique_stamp_code') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_unique_stamp_code_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="unique_stamp_code" class="col-sm-2 col-form-label">Front Page <span class="text-danger">*</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control @error('front_page') {{'is-invalid'}} @enderror" id="ten_rs_front_page" name="front_page" placeholder="Unique stamp code" value="{{old('front_page')}}" autofocus>
+                                            @error('front_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_front_page_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="unique_stamp_code" class="col-sm-2 col-form-label">Back Page <span class="text-danger">*</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control @error('back_page') {{'is-invalid'}} @enderror" id="ten_rs_back_page" name="back_page" placeholder="Unique stamp code" value="{{old('back_page')}}" autofocus>
+                                            @error('back_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_back_page_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-primary" name="ten_rs_stamp" id="ten_rs_stamp">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title font-weight-bold">All 10Rs Estamps</div>
+                                    </div>    
+                                    <div class="card-body">
+                                        <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Unique Stamp Code</th>
+                                                    <th>Amount(Rs)</th>
+                                                    <th class="text-right">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (availableStamp(10)->count() > 0)
+                                                    @foreach (availableStamp(10) as $key => $stamp)
+                                                        
+                                                            <tr>
+                                                                <td>{{ $key + 1 }}</td>
+                                                                <td>{{ $stamp->unique_stamp_code }}</td>
+                                                                <td>{{ $stamp->amount }}</td>
+                                                                <td class="text-right">
+                                                                    <div class="single-line">
+                                                                        <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
+                            
+                                                                        <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                                
+                                                                        {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td>No Data Found</td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(50)->count() }}</h6>
-                                <form action="{{ route('user.estamp.store') }}" method="POST"  enctype="multipart/form-data">
+                                <form action="{{ route('user.estamp.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="amount" value="50">
                                     <div class="form-group row">
@@ -76,28 +155,35 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach (availableStamp(50) as $key => $stamp)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $stamp->unique_stamp_code }}</td>
-                                                        <td>{{ $stamp->amount }}</td>
-                                                        <td class="text-right">
-                                                            <div class="single-line">
-                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
-                    
-                                                                <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                                                @if (availableStamp(50)->count() > 0)
+                                                    @foreach (availableStamp(50) as $key => $stamp)
+                                                        
+                                                        <tr>
+                                                            <td>{{ $key + 1 }}</td>
+                                                            <td>{{ $stamp->unique_stamp_code }}</td>
+                                                            <td>{{ $stamp->amount }}</td>
+                                                            <td class="text-right">
+                                                                <div class="single-line">
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
                         
-                                                                {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
-                                                            </div>
-                                                        </td>
+                                                                    <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                            
+                                                                    {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                                </div>
+                                                            </td>
+                                                        </tr> 
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td>No Date Found</td>
                                                     </tr>
-                                                @endforeach
+                                                 @endif
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(100)->count() }}</h6>
                                 <form action="{{ route('user.estamp.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -139,82 +225,26 @@
                                             </thead>
                                             <tbody>
                                                 @foreach (availableStamp(100) as $key => $stamp)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $stamp->unique_stamp_code }}</td>
-                                                        <td>{{ $stamp->amount }}</td>
-                                                        <td class="text-right">
-                                                            <div class="single-line">
-                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
-                    
-                                                                <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                                                    @if (availableStamp(100)->count() > 0)
+                                                        <tr>
+                                                            <td>{{ $key + 1 }}</td>
+                                                            <td>{{ $stamp->unique_stamp_code }}</td>
+                                                            <td>{{ $stamp->amount }}</td>
+                                                            <td class="text-right">
+                                                                <div class="single-line">
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
                         
-                                                                {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(150)->count() }}</h6>
-                                <form action="{{ route('user.estamp.store') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" name="amount" value="150">
-                                    <div class="form-group row">
-                                        <label for="unique_stamp_code" class="col-sm-2 col-form-label">Unique Stamp Code <span class="text-danger">*</span></label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('unique_stamp_code') {{'is-invalid'}} @enderror" id="unique_stamp_code" name="unique_stamp_code" placeholder="Unique Stamp Code" value="{{old('unique_stamp_code')}}" autofocus>
-                                            @error('unique_stamp_code') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="unique_stamp_code" class="col-sm-2 col-form-label">File <span class="text-danger">*</span></label>
-                                        <div class="col-sm-10">
-                                            <input type="file" class="form-control @error('file') {{'is-invalid'}} @enderror" id="file" name="file" placeholder="Unique stamp code" value="{{old('file')}}" autofocus>
-                                            @error('file') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <hr>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="card-title font-weight-bold">All 150Rs Estamps</div>
-                                    </div>    
-                                    <div class="card-body">
-                                        <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Unique Stamp Code</th>
-                                                    <th>Amount(Rs)</th>
-                                                    <th class="text-right">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (availableStamp(150) as $key => $stamp)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $stamp->unique_stamp_code }}</td>
-                                                        <td>{{ $stamp->amount }}</td>
-                                                        <td class="text-right">
-                                                            <div class="single-line">
-                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
-                    
-                                                                <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
-                        
-                                                                {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                                    <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                            
+                                                                    {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @else
+                                                        <tr>
+                                                            <td>No Date Found</td>
+                                                        </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -232,6 +262,43 @@
 @endsection
 @section('script')
     <script>
+        $('#ten_rs_stamp').on('click',function(){
+            var errorFlagOne = 0;
+            event.preventDefault();
+            var ten_rs_unique_stamp_code = $('#ten_rs_unique_stamp_code').val();
+            var ten_rs_back_page = $('#ten_rs_back_page').val();
+            var ten_rs_front_page = $('#ten_rs_front_page').val();
+            if (ten_rs_unique_stamp_code == '') {
+                $('#ten_rs_unique_stamp_code_err').text('This field is required');
+                errorFlagOne = 1;
+            }
+            if (ten_rs_back_page == '') {
+                $('#ten_rs_back_page_err').text('This field is required');
+                errorFlagOne = 1;
+            }
+            if (ten_rs_front_page == '') {
+                $('#ten_rs_front_page_err').text('This field is required');
+                errorFlagOne = 1;
+            }
+
+            var allowedImageExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (!allowedImageExtensions.exec(ten_rs_back_page) && ten_rs_back_page != '') {
+                $('#ten_rs_back_page_err').html(
+                    'Please upload file having jpg,jpeg,png and pdf extensions').fadeIn(100);
+                errorFlagOne = 1;
+            }
+            if (!allowedImageExtensions.exec(ten_rs_front_page) && ten_rs_front_page != '') {
+                $('#ten_rs_front_page_err').html(
+                    'Please upload file having jpg,jpeg,png and pdf extensions').fadeIn(100);
+                errorFlagOne = 1;
+            }
+
+            if (errorFlagOne == 1) {
+                return false;
+            } else {
+                $("#ten_rs_stamp_form").submit();
+            }
+        });
         $(document).ready(function(){
             activaTab('home');
         });
@@ -246,7 +313,8 @@
                 method : 'post',
                 data : {'_token' : '{{csrf_token()}}', id : id},
                 success : function(result) {
-                    file_extension = result.data.file_path.split(".")[1];
+                    front_file_extension = result.data.front_file_path.split(".")[1];
+                    back_file_extension = result.data.back_file_path.split(".")[1];
                     let content = '';
                     if (result.error == false) {
 
@@ -255,14 +323,28 @@
                         content += '<p class="text-muted small mb-0">Amount(Rs)</p>';
                         content += '<p class="text-dark small">'+result.data.amount+'</p>';
 
-                        if (file_extension === 'jpg' || file_extension === 'jpeg' || file_extension === 'png'){
-                            content += '<p class="text-muted small mb-0">File</p>';
+                        if (front_file_extension === 'jpg' || front_file_extension === 'jpeg' || front_file_extension === 'png'){
+                            content += '<p class="text-muted small mb-0">Front Page</p>';
                             content += `<div class="bl_img">
-                                <img src="{{ asset('${result.data.file_path}') }}" alt="" class="img-fluid mx-auto">
+                                <img src="{{ asset('${result.data.front_file_path}') }}" alt="" class="img-fluid mx-auto">
                             </div>`;
                         }else{
-                            content += '<p class="text-muted small mb-0">File</p>';
-                            content += ` <a href="{{ asset('${result.data.file_path}') }}" target="_blank"
+                            content += '<p class="text-muted small mb-0">Front Page</p>';
+                            content += ` <a href="{{ asset('${result.data.front_file_path}') }}" target="_blank"
+                                    class="img-fluid mx-auto w-100">View file
+                                    <span
+                                        title="Update on"></span>
+                                    <i class="fas fa-arrow-right"></i></a>`;
+                        }
+
+                        if (back_file_extension === 'jpg' || back_file_extension === 'jpeg' || back_file_extension === 'png'){
+                            content += '<p class="text-muted small mb-0">Front Page</p>';
+                            content += `<div class="bl_img">
+                                <img src="{{ asset('${result.data.front_file_path}') }}" alt="" class="img-fluid mx-auto">
+                            </div>`;
+                        }else{
+                            content += '<p class="text-muted small mb-0">Front Page</p>';
+                            content += ` <a href="{{ asset('${result.data.front_file_path}') }}" target="_blank"
                                     class="img-fluid mx-auto w-100">View file
                                     <span
                                         title="Update on"></span>
