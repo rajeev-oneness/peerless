@@ -27,8 +27,6 @@ class EstampController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255|unique:estamps',
             'back_page' => 'required|mimes:png,jpg,jpeg,pdf',
@@ -107,22 +105,34 @@ class EstampController extends Controller
     {
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255',
-            'file' => 'nullable|mimes:png,jpg,jpeg,pdf',
+            'back_page' => 'required|mimes:png,jpg,jpeg,pdf',
+            'front_page' => 'required|mimes:png,jpg,jpeg,pdf',
         ], [
+            'back_page.required' => 'This field is required',
+            'front_page.required' => 'This field is required',
             'unique_stamp_code.required' => 'This field is required',
             'unique_stamp_code.max' => 'Maximum character reached',
+            'unique_stamp_code.unique' => 'Already taken'
         ]);
 
         $estamp = Estamp::findOrFail($id);
 
-        if($request->hasFile('file')){
-            $image = $request->file('file');
-            $fileName = fileUpload($image,'estamp');
+        if($request->hasFile('back_page')){
+            $image = $request->file('back_page');
+            $fileNameForBack = fileUpload($image,'estamp');
         }else{
-            $fileName = $estamp->file_path;
-        }        
+            $fileNameForBack = $estamp->file_path;
+        }
+        
+        if($request->hasFile('front_page')){
+            $image = $request->file('front_page');
+            $fileNameForFront = fileUpload($image,'estamp');
+        }else{
+            $fileNameForFront = $estamp->file_path;
+        }
         $estamp->unique_stamp_code = $request->unique_stamp_code;
-        $estamp->file_path = $fileName;
+        $estamp->back_file_path = $fileNameForBack;
+        $estamp->front_file_path = $fileNameForFront;
         $estamp->save();
 
         return redirect()->route('user.estamp.list')->with('success', 'Estamp updated');

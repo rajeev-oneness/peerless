@@ -28,10 +28,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="unique_stamp_code" class="col-sm-2 col-form-label">File <span class="text-danger">*</span></label>
+                                <label for="unique_stamp_code" class="col-sm-2 col-form-label">Front Page <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="file" class="form-control @error('file') {{'is-invalid'}} @enderror" id="file" name="file" placeholder="Unique stamp code" value="{{ old('file')}}" autofocus>
-                                    @error('file') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                    <input type="file" class="form-control @error('front_page') {{'is-invalid'}} @enderror" id="hundred_rs_front_page" name="front_page" placeholder="Unique stamp code" value="{{old('front_page')}}" autofocus>
+                                    @error('front_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                    <p class="small mb-0 text-danger" id="hundred_rs_front_page_err">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="unique_stamp_code" class="col-sm-2 col-form-label">Back Page <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input type="file" class="form-control @error('back_page') {{'is-invalid'}} @enderror" id="hundred_rs_back_page" name="back_page" placeholder="Unique stamp code" value="{{old('back_page')}}" autofocus>
+                                    @error('back_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                    <p class="small mb-0 text-danger" id="hundred_rs_back_page_err">
                                 </div>
                             </div>
                             <div class="form-group row">
