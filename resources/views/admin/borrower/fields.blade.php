@@ -388,7 +388,7 @@
 
 <!-- view pdf MODAL -->
 <div class="modal" id="viewPdfModal" data-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">View PDF</h5>
