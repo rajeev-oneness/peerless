@@ -27,7 +27,7 @@ class EstampController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255|unique:estamps',
