@@ -403,13 +403,162 @@
                 <br><br>
 
                 <p class="small mb-2">Stamp paper</p>
-                <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
+                {{-- <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
 
                 <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
 
                 <a href="{{ route('user.borrower.agreement.pdf.page25.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 25-Rs 50 Stamp paper</a>
 
-                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a> --}}
+                
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">10Rs</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">50Rs</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">100Rs</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 10Rs Estamps1</div>
+                            </div>    
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th>Availability</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (availableStamp(10)->count() > 0)
+                                            @foreach (availableStamp(10) as $key => $stamp)
+                                                
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $stamp->unique_stamp_code }}</td>
+                                                        <td>Yes</td>
+                                                        <td class="text-right">
+                                                            <div class="single-line">
+                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }})">Use</a>
+                                                                {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a> --}}
+                    
+                                                                {{-- <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a> --}}
+                        
+                                                                {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Data Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(50)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 50Rs Estamps</div>
+                            </div>    
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th>Amount(Rs)</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (availableStamp(50)->count() > 0)
+                                            @foreach (availableStamp(50) as $key => $stamp)
+                                                
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stamp->unique_stamp_code }}</td>
+                                                    <td>{{ $stamp->amount }}</td>
+                                                    <td class="text-right">
+                                                        <div class="single-line">
+                                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
+                
+                                                            <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                    
+                                                            {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                        </div>
+                                                    </td>
+                                                </tr> 
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Date Found</td>
+                                            </tr>
+                                         @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(100)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 100Rs Estamps</div>
+                            </div>    
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th>Amount(Rs)</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (availableStamp(100) as $key => $stamp)
+                                            @if (availableStamp(100)->count() > 0)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stamp->unique_stamp_code }}</td>
+                                                    <td>{{ $stamp->amount }}</td>
+                                                    <td class="text-right">
+                                                        <div class="single-line">
+                                                            <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
+                
+                                                            <a href="{{route('user.estamp.edit', $stamp->id)}}" class="badge badge-dark action-button" title="Edit">Edit</a>
+                    
+                                                            {{-- <a href="javascript: void(0)" class="badge badge-dark action-button" title="Delete" onclick="confirm4lert('{{route('user.agreement.destroy')}}', {{$item->id}}, 'delete')">Delete</a> --}}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                <tr>
+                                                    <td>No Date Found</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
@@ -1032,5 +1181,65 @@
         var natureOfLoanSelected = $('select[name="field_name[natureofloan]"]').val();
         natureOfLoanCheck(natureOfLoanSelected);
         // Nature of Loan on click ends
+
+
+        function useStamp(stamp_id,borrower_id,agreement_id){
+            console.log(stamp_id,borrower_id,agreement_id);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You want to use this stamp',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#f44336',
+                cancelButtonColor: '#8b8787',
+                customClass: {
+                    confirmButton: 'box-shadow-danger',
+                },
+                confirmButtonText: 'Yes, use it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('user.borrower.agreement.stamp.use') }}',
+                        method: 'post',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            stamp_id: stamp_id,
+                            borrower_id: borrower_id,
+                            agreement_id: agreement_id
+                        },
+                        success: function(result) {
+                            if (result.response_code == 200) {
+                                if (result.updateStatusCode == 1) {
+                                    $('#verifyDocBigger').html(
+                                        '<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument(' +
+                                        id +
+                                        ', 0)">Document is verified. Tap here to remove verification</a>'
+                                        );
+
+                                    $('#verifyDocToggle' + id).removeClass('btn-danger').addClass(
+                                        'btn-success').html(
+                                        '<i class="fas fa-clipboard-check"></i>');
+                                } else {
+                                    $('#verifyDocBigger').html(
+                                        '<a href="javascript: void(0)" class="btn btn-sm btn-danger" onclick="verifyUploadedDocument(' +
+                                        id + ', 1)">Document is unverified. Tap here to verify</a>');
+
+                                    $('#verifyDocToggle' + id).removeClass('btn-success').addClass(
+                                        'btn-danger').html('<i class="fas fa-question-circle"></i>');
+                                }
+                            } else {
+                                $('#verifyDocBigger').html(
+                                    '<a href="javascript: void(0)" class="btn btn-sm btn-success" onclick="verifyUploadedDocument(' +
+                                    id + ')">Something happened. Try again</a>');
+                            }
+                            // $('#appendContent').html(content);
+                            // $('#userDetailsModalLabel').text('Borrower details');
+                            // $('#userDetails').modal('show');
+                        }
+                    });
+                }
+            });
+        }
+        
     </script>
 @endsection

@@ -10,6 +10,7 @@ use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
 use App\Models\BorrowerAgreement;
+use App\Models\Estamp;
 use App\Models\FieldParent;
 use App\Models\UserType;
 use Exception;
@@ -961,5 +962,10 @@ class BorrowerController extends Controller
         }
 
         return redirect()->route('user.borrower.list');
+    }
+
+    public function stampUseInAgreement(Request $request){
+        $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$request->borrower_id)->where('agreement_id',$request->agreement_id)->first();
+        $borrower_agreement_id = $borrower_agreement_details->id;
     }
 }
