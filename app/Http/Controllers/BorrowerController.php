@@ -10,6 +10,7 @@ use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
 use App\Models\BorrowerAgreement;
+use App\Models\BorrowerStamp;
 use App\Models\Estamp;
 use App\Models\FieldParent;
 use App\Models\UserType;
@@ -965,7 +966,18 @@ class BorrowerController extends Controller
     }
 
     public function stampUseInAgreement(Request $request){
-        $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$request->borrower_id)->where('agreement_id',$request->agreement_id)->first();
+        $stamp_id = $request->stamp_id;
+        $borrower_id = $request->borrower_id;
+        $agreement_id = $request->agreement_id;
+
+        $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$borrower_id)->where('agreement_id',$agreement_id)->first();
         $borrower_agreement_id = $borrower_agreement_details->id;
+
+        $estamp = Estamp::find($stamp_id);
+        $estamp->used_in_agreement = $borrower_agreement_id;
+        $estamp->used_flag =  1;
+        $estamp->pdf_page_no = $request->page_no;
+        $estamp->save();
+        return response()->json(['response_code' => 200, 'tile' => 'success', 'message' => 'Stamp Used Successfully']);
     }
 }

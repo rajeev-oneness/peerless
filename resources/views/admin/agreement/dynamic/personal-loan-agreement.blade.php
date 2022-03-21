@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-aruppanda01
 <head>
     <title>{{ $data->fileName }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -505,6 +504,7 @@ aruppanda01
                 </table>
                 <p class="page-no">1</p>
             </div>
+
             <div class="page-break"></div>
 
             <div class="page" id="page_2">
@@ -631,11 +631,67 @@ aruppanda01
                 <p class="page-no">2</p>
 
             </div>
+
             <div class="page-break"></div>
 
+            <!--
+                3rd page - stamp front page
+                <div class="page-break"></div>
+                4th page - stamp back page
+                <div class="page-break"></div>
+                5th page
+            -->
+
+                {{-- 100Rs Available Stamp --}}
+                @php
+                    $hundred_rs_stamps = availableStamp(100);
+
+
+                @endphp
+
+                @foreach ($hundred_rs_stamps as $hundred_rs_stamp)
+                <div class="page" id="page_3">
+                    @if (checkUsedStamp( $hundred_rs_stamp->id,$data->borrowerId,$data->agreementId ) == 1 && $hundred_rs_stamp->pdf_page_no == 3 )
+                        @php
+                            $back_file_path = $hundred_rs_stamp->back_file_path;
+                            $back_file_extension= explode('.',$back_file_path)[1];
+
+                            $front_file_path = $hundred_rs_stamp->front_file_path;
+                            $front_file_extension= explode('.',$front_file_path)[1];
+                        @endphp
+
+                        @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
+                            <div class="bl_img">
+                                <img src="{{ asset($back_file_path) }}" alt="">
+                            </div>
+                        @else
+                            <div class="bl_img">
+                                <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
+                                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                                </iframe>
+                            </div>
+                        @endif
+                            <br>
+                        @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
+                            <div style="width: 100%; height: 100%;">
+                                <img src="{{ asset($front_file_path) }}" alt="">
+                            </div>
+                        @else
+                            <div class="bl_img">
+                                <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
+                                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                                </iframe>
+                            </div>
+                        @endif
+                    @endif
+                </div>
+                <div class="page-break"></div>
+                @endforeach 
+            </div>
             <div class="page" id="page_3">
 
-                <P class="stamp" style="top: 5px;">100/-Non Judicial Stamp to be affixed</p>
+                {{-- <P class="stamp" style="top: 5px;">100/-Non Judicial Stamp to be affixed</p> --}}
+                {{-- 100Rs Available Stamp --}}
 
                 <h3 style="margin-bottom: 0; margin-top: 30px;">PERSONAL LOAN FACILITY AGREEMENT</h3>
                 <h5>This Personal Loan Agreement is made and executed at the place and date stated in the <br>

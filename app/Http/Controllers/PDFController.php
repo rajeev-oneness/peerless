@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agreement;
 use App\Models\AgreementData;
+use App\Models\BorrowerAgreement;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -62,6 +63,8 @@ class PDFController extends Controller
         $data = (object)[];
         $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
 
+        $data->borrowerId = $borrowerId;
+        $data->agreementId = $agreementId;
         $data->date = date('d-m-Y');
         $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
         $data->fileName = $customBorrowerName.'-personal-loan-agreement-'.$data->date;

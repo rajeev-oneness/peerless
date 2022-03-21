@@ -63,7 +63,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/agreement/stamp/use/', [BorrowerController::class, 'stampUseInAgreement'])->name('user.borrower.agreement.stamp.use');
 
         // pdf
-        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view/{borrowerAgreementsId}', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-3/view', [PDFController::class, 'showDynamicPdfPage3'])->name('user.borrower.agreement.pdf.page3.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-24/view', [PDFController::class, 'showDynamicPdfPage24'])->name('user.borrower.agreement.pdf.page24.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-25/view', [PDFController::class, 'showDynamicPdfPage25'])->name('user.borrower.agreement.pdf.page25.view');

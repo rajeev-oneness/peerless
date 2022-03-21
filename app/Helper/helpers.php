@@ -3,6 +3,7 @@
 use App\Models\Activity;
 use App\Models\AgreementData;
 use App\Models\AgreementRfq;
+use App\Models\BorrowerAgreement;
 use App\Models\Estamp;
 use App\Models\Field;
 use Illuminate\Support\Facades\Mail;
@@ -1353,4 +1354,22 @@ function documentSrc(int $agreement_document_id, int $borrower_id, string $type)
 function availableStamp($amount){
     $availableStamp = Estamp::where('amount',$amount)->latest()->get();
     return $availableStamp;
+}
+
+//Check borrower used the specific stamp or not
+function checkUsedStamp($stamp_id,$borrower_id,$agreement_id){
+    $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$borrower_id)->where('agreement_id',$agreement_id)->first();
+    $borrower_agreement_id = $borrower_agreement_details->id;
+
+    $borrower_stamp = Estamp::where('used_flag',1)->where('used_in_agreement',$borrower_agreement_id)->where('id',$stamp_id)->count();
+    if ($borrower_stamp > 0) {
+       return 1;
+    } else {
+       return 0;
+    }
+}
+
+function stamps($agreementId, $amount) {
+    $data = Estamp::where('used_in_agreement', $agreementId)->where('amount', $amount)->get();
+    return $data;
 }
