@@ -1369,7 +1369,8 @@ function checkUsedStamp($stamp_id,$borrower_id,$agreement_id){
     }
 }
 
-function stamps($agreementId, $amount) {
-    $data = Estamp::where('used_in_agreement', $agreementId)->where('amount', $amount)->get();
+// Check avaialble stamp agreement & amount wise
+function avaialbleStampsAgreementWise($agreementId, $amount,$page_no) {
+    $data = Estamp::where('used_in_agreement', $agreementId)->where('amount', $amount)->where('pdf_page_no',$page_no)->first();
     return $data;
 }

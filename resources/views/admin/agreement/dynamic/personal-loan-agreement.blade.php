@@ -642,52 +642,44 @@
                 5th page
             -->
 
-                {{-- 100Rs Available Stamp --}}
-                @php
-                    $hundred_rs_stamps = availableStamp(100);
+            {{-- 100Rs Available Stamp --}}
+            @php
+                $hundred_rs_stamp = avaialbleStampsAgreementWise($data->borrowerAgreementsId,100,3);
 
+                $back_file_path = $hundred_rs_stamp->back_file_path;
+                $back_file_extension= explode('.',$back_file_path)[1];
 
-                @endphp
-
-                @foreach ($hundred_rs_stamps as $hundred_rs_stamp)
-                <div class="page" id="page_3">
-                    @if (checkUsedStamp( $hundred_rs_stamp->id,$data->borrowerId,$data->agreementId ) == 1 && $hundred_rs_stamp->pdf_page_no == 3 )
-                        @php
-                            $back_file_path = $hundred_rs_stamp->back_file_path;
-                            $back_file_extension= explode('.',$back_file_path)[1];
-
-                            $front_file_path = $hundred_rs_stamp->front_file_path;
-                            $front_file_extension= explode('.',$front_file_path)[1];
-                        @endphp
-
-                        @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
-                            <div class="bl_img">
-                                <img src="{{ asset($back_file_path) }}" alt="">
-                            </div>
-                        @else
-                            <div class="bl_img">
-                                <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
-                                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
-                                </iframe>
-                            </div>
-                        @endif
-                            <br>
-                        @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
-                            <div style="width: 100%; height: 100%;">
-                                <img src="{{ asset($front_file_path) }}" alt="">
-                            </div>
-                        @else
-                            <div class="bl_img">
-                                <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
-                                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
-                                </iframe>
-                            </div>
-                        @endif
-                    @endif
-                </div>
-                <div class="page-break"></div>
-                @endforeach 
+                $front_file_path = $hundred_rs_stamp->front_file_path;
+                $front_file_extension= explode('.',$front_file_path)[1];
+            @endphp
+            <div class="page" id="page_3">
+                @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
+                    <div class="bl_img">
+                        <img src="{{ asset($back_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
             </div>
+            <div class="page-break"></div>
+            <div class="page" id="page_3">
+                @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
+                    <div style="width: 100%; height: 100%;">
+                        <img src="{{ asset($front_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+            </div>
+            <div class="page-break"></div>
             <div class="page" id="page_3">
 
                 {{-- <P class="stamp" style="top: 5px;">100/-Non Judicial Stamp to be affixed</p> --}}
@@ -4365,10 +4357,51 @@
             </div>
             <div class="page-break"></div>
 
+                {{-- 100Rs Available Stamp --}}
+                @php
+                $hundred_rs_stamp = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,24);
+
+                $back_file_path = $hundred_rs_stamp->back_file_path;
+                $back_file_extension= explode('.',$back_file_path)[1];
+
+                $front_file_path = $hundred_rs_stamp->front_file_path;
+                $front_file_extension= explode('.',$front_file_path)[1];
+            @endphp
+            <div class="page" id="page_3">
+                @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
+                    <div class="bl_img">
+                        <img src="{{ asset($back_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+            </div>
+            <div class="page-break"></div>
+            <div class="page" id="page_3">
+                @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
+                    <div style="width: 100%; height: 100%;">
+                        <img src="{{ asset($front_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+            </div>
+            <div class="page-break"></div>
+            <div class="page" id="page_3">
+
             <div class="page" id="page_25">
 
                 <div style="text-align:center;">
-                    <P class="stamp">100/- Non Judicial Stamp to be affixed</p>
+                    {{-- <P class="stamp">100/- Non Judicial Stamp to be affixed</p> --}}
+                    
                     <h3>ANNEXURE III</h3>
                     <h5>UNDERTAKING-CUM-INDEMNITY</h5>
                     <p><b>(This Undertaking Cum Indemnity executed at the place and date stated in the Schedule I

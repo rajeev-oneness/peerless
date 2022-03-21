@@ -58,13 +58,14 @@ class PDFController extends Controller
     }
 
     // dynamic PDF after filling up data
-    public function showDynamicPdf(Request $request, $borrowerId, $agreementId)
+    public function showDynamicPdf(Request $request, $borrowerId, $agreementId,$borrowerAgreementsId)
     {
         $data = (object)[];
         $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
 
         $data->borrowerId = $borrowerId;
         $data->agreementId = $agreementId;
+        $data->borrowerAgreementsId = $borrowerAgreementsId;
         $data->date = date('d-m-Y');
         $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
         $data->fileName = $customBorrowerName.'-personal-loan-agreement-'.$data->date;
