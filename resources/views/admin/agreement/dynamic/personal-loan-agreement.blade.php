@@ -652,7 +652,7 @@ aruppanda01
             <div class="page" id="page_3">
                 @if ($hundred_rs_stamp_back_file_extension === 'jpg' || $hundred_rs_stamp_back_file_extension === 'jpeg' || $hundred_rs_stamp_back_file_extension === 'png')
                     <div class="bl_img">
-                        <img src="{{ asset($hundred_rs_stamp_back_file_path) }}" alt="">
+                        <img src="{{ asset($hundred_rs_stamp_back_file_path) }}" alt="" width="100%" height="600px">
                     </div>
                 @else
                     <div class="bl_img">
@@ -669,7 +669,7 @@ aruppanda01
             <div class="page" id="page_4">
                 @if ($hundred_rs_stamp_front_file_extension === 'jpg' || $hundred_rs_stamp_front_file_extension === 'jpeg' || $hundred_rs_stamp_front_file_extension === 'png')
                     <div style="width: 100%; height: 100%;">
-                        <img src="{{ asset($hundred_rs_stamp_front_file_path) }}" alt="">
+                        <img src="{{ asset($hundred_rs_stamp_front_file_path) }}" alt="" width="100%">
                     </div>
                 @else
                     <div class="bl_img">
@@ -4133,7 +4133,7 @@ aruppanda01
             <div class="page" id="page_24">
                 @if ($ten_rs_stamp_for_page_24_back_file_extension === 'jpg' || $ten_rs_stamp_for_page_24_back_file_extension === 'jpeg' || $ten_rs_stamp_for_page_24_back_file_extension === 'png')
                     <div class="bl_img">
-                        <img src="{{ asset($ten_rs_stamp_for_page_24_back_file_path) }}" alt="">
+                        <img src="{{ asset($ten_rs_stamp_for_page_24_back_file_path) }}" alt="" width="100%">
                     </div>
                 @else
                     <div class="bl_img">
@@ -4151,7 +4151,7 @@ aruppanda01
             <div class="page" id="page_25">
                 @if ($ten_rs_stamp_for_page_24_front_file_extension === 'jpg' || $ten_rs_stamp_for_page_24_front_file_extension === 'jpeg' || $ten_rs_stamp_for_page_24_front_file_extension === 'png')
                     <div style="width: 100%; height: 100%;">
-                        <img src="{{ asset($ten_rs_stamp_for_page_24_front_file_path) }}" alt="">
+                        <img src="{{ asset($ten_rs_stamp_for_page_24_front_file_path) }}" alt="" width="100%">
                     </div>
                 @else
                     <div class="bl_img">
@@ -4184,7 +4184,7 @@ aruppanda01
                 <div class="page" id="page_26">
                     @if ($fifty_rs_stamp_for_page_25_back_file_extension === 'jpg' || $fifty_rs_stamp_for_page_25_back_file_extension === 'jpeg' || $fifty_rs_stamp_for_page_25_back_file_extension === 'png')
                         <div class="bl_img">
-                            <img src="{{ asset($fifty_rs_stamp_for_page_25_back_file_path) }}" alt="">
+                            <img src="{{ asset($fifty_rs_stamp_for_page_25_back_file_path) }}" alt="" width="100%">
                         </div>
                     @else
                         <div class="bl_img">
@@ -4201,7 +4201,7 @@ aruppanda01
                 <div class="page" id="page_27">
                     @if ($fifty_rs_stamp_for_page_25_front_file_extension === 'jpg' || $fifty_rs_stamp_for_page_25_front_file_extension === 'jpeg' || $fifty_rs_stamp_for_page_25_front_file_extension === 'png')
                         <div style="width: 100%; height: 100%;">
-                            <img src="{{ asset($fifty_rs_stamp_for_page_25_front_file_path) }}" alt="">
+                            <img src="{{ asset($fifty_rs_stamp_for_page_25_front_file_path) }}" alt="" width="100%">
                         </div>
                     @else
                         <div class="bl_img">
@@ -4619,7 +4619,7 @@ aruppanda01
             <div class="page" id="page_3">
                 @if ($ten_rs_stamp_for_page_31_back_file_extension === 'jpg' || $ten_rs_stamp_for_page_31_back_file_extension === 'jpeg' || $ten_rs_stamp_for_page_31_back_file_extension === 'png')
                     <div class="bl_img">
-                        <img src="{{ asset($ten_rs_stamp_for_page_31_back_file_path) }}" alt="">
+                        <img src="{{ asset($ten_rs_stamp_for_page_31_back_file_path) }}" alt="" width="100%" height="auto">
                     </div>
                 @else
                     <div class="bl_img">
@@ -4635,7 +4635,7 @@ aruppanda01
             <div class="page" id="page_3">
                 @if ($ten_rs_stamp_for_page_31_front_file_extension === 'jpg' || $ten_rs_stamp_for_page_31_front_file_extension === 'jpeg' || $ten_rs_stamp_for_page_31_front_file_extension === 'png')
                     <div style="width: 100%; height: 100%;">
-                        <img src="{{ asset($ten_rs_stamp_for_page_31_front_file_path) }}" alt="">
+                        <img src="{{ asset($ten_rs_stamp_for_page_31_front_file_path) }}" alt="" width="100%">
                     </div>
                 @else
                     <div class="bl_img">
