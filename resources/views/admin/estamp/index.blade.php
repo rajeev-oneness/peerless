@@ -82,6 +82,7 @@
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
                                                     <th>Amount(Rs)</th>
+                                                    <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
                                             </thead>
@@ -93,6 +94,13 @@
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td>{{ $stamp->unique_stamp_code }}</td>
                                                                 <td>{{ $stamp->amount }}</td>
+                                                                <td>
+                                                                    @if (specificStampWiseBorrowerDetails($stamp->id) == null)
+                                                                        Not Used
+                                                                    @else
+                                                                        {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                    @endif
+                                                                </td>
                                                                 <td class="text-right">
                                                                     <div class="single-line">
                                                                         <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
@@ -161,6 +169,7 @@
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
                                                     <th>Amount(Rs)</th>
+                                                    <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
                                             </thead>
@@ -172,6 +181,13 @@
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $stamp->unique_stamp_code }}</td>
                                                             <td>{{ $stamp->amount }}</td>
+                                                            <td>
+                                                                @if (specificStampWiseBorrowerDetails($stamp->id) == null)
+                                                                Not Used
+                                                                @else
+                                                                {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                @endif
+                                                            </td>
                                                             <td class="text-right">
                                                                 <div class="single-line">
                                                                     <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>
@@ -240,6 +256,7 @@
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
                                                     <th>Amount(Rs)</th>
+                                                    <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
                                             </thead>
@@ -250,6 +267,13 @@
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $stamp->unique_stamp_code }}</td>
                                                             <td>{{ $stamp->amount }}</td>
+                                                            <td>
+                                                                @if (specificStampWiseBorrowerDetails($stamp->id) == null)
+                                                                Not Used
+                                                                @else
+                                                                {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                @endif
+                                                            </td>
                                                             <td class="text-right">
                                                                 <div class="single-line">
                                                                     <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="viewDeta1ls('{{route('user.estamp.show')}}', {{$stamp->id}})">View</a>

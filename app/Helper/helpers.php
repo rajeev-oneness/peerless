@@ -3,6 +3,7 @@
 use App\Models\Activity;
 use App\Models\AgreementData;
 use App\Models\AgreementRfq;
+use App\Models\Borrower;
 use App\Models\BorrowerAgreement;
 use App\Models\Estamp;
 use App\Models\Field;
@@ -1373,4 +1374,18 @@ function checkUsedStamp($stamp_id,$borrower_id,$agreement_id){
 function avaialbleStampsAgreementWise($agreementId, $amount,$page_no) {
     $data = Estamp::where('used_in_agreement', $agreementId)->where('amount', $amount)->where('pdf_page_no',$page_no)->first();
     return $data;
+}
+
+
+// Check specific stamp is used or not
+function specificStampWiseBorrowerDetails($stamp_id){
+    $estamp_details = Estamp::find($stamp_id);
+    if ($estamp_details->used_flag == 1) {
+        $borrower_agreement_details = BorrowerAgreement::find($estamp_details->used_in_agreement);
+        $borrower_details = Borrower::find($borrower_agreement_details->borrower_id);
+        $borrower_name = $borrower_details->full_name;
+        return $borrower_name;
+    }else{
+        return null;
+    }
 }

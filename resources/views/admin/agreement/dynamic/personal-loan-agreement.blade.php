@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+aruppanda01
 <head>
     <title>{{ $data->fileName }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -504,7 +505,6 @@
                 </table>
                 <p class="page-no">1</p>
             </div>
-
             <div class="page-break"></div>
 
             <div class="page" id="page_2">
@@ -535,31 +535,31 @@
                         <td></td>
                         <td>(i) Schedule - I</td>
                         <td>Details of Borrower(s), Guarantor with date and place of execution</td>
-                        <td>17</td>
+                        <td>18</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(ii) Schedule - II</td>
                         <td>Key Facts of Loan Agreement</td>
-                        <td>18</td>
+                        <td>19</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(iii) Schedule - III</td>
                         <td>Other Terms and Conditions of Sanction of Personal Loan</td>
-                        <td>20</td>
+                        <td>21</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(iv) Schedule - IV</td>
                         <td>Documents to be attached with Application for loan</td>
-                        <td>21</td>
+                        <td>22</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(v) Schedule - V</td>
                         <td>Facility Specific Documents to be attached with the Loan Agreement</td>
-                        <td>22</td>
+                        <td>25</td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -573,43 +573,43 @@
                         <td></td>
                         <td>(v) Annexure - I</td>
                         <td>Demand Promissory Note</td>
-                        <td>23</td>
+                        <td>28</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(vi) Annexure - II</td>
                         <td>Letter of Continuity to secure recovery of loan amount until completely paid off</td>
-                        <td>24</td>
+                        <td>29</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(vii) Annexure - III</td>
                         <td>Undertaking Cum Indemnity</td>
-                        <td>25</td>
+                        <td>30</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(viii) Annexure - IV</td>
                         <td>Request for disbursement</td>
-                        <td>27</td>
+                        <td>34</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(ix) Annexure - V</td>
                         <td>Borrower's request to employer for EMI deduction from salary</td>
-                        <td>28</td>
+                        <td>35</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(x) Annexure - VI</td>
                         <td>NACH Declaration</td>
-                        <td>30</td>
+                        <td>37</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>(xi) Annexure - VII</td>
                         <td>PDC LETTER CUM UNDERTAKING</td>
-                        <td>31</td>
+                        <td>38</td>
                     </tr>
                     <tr>
                         <td>4</td>
@@ -618,72 +618,76 @@
                                 VERNACULAR CERTIFICATE BY VERBAL TRANSLATOR AND
                                 INTERPRETER(IN ENGLISH)</b>
                         </td>
-                        <td>33</td>
+                        <td>40</td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td colspan="2">
                             <b>MISCELLANEOUS DOCUMENTS</b>
                         </td>
-                        <td>34</td>
+                        <td>41</td>
                     </tr>
                 </table>
                 <p class="page-no">2</p>
 
             </div>
-
             <div class="page-break"></div>
 
-            <!--
-                3rd page - stamp front page
-                <div class="page-break"></div>
-                4th page - stamp back page
-                <div class="page-break"></div>
-                5th page
-            -->
-
-            {{-- 100Rs Available Stamp --}}
+            <!-- Page 3 100Rs Stamp Start-->
             @php
                 $hundred_rs_stamp = avaialbleStampsAgreementWise($data->borrowerAgreementsId,100,3);
 
-                $back_file_path = $hundred_rs_stamp->back_file_path;
-                $back_file_extension= explode('.',$back_file_path)[1];
+                if ($hundred_rs_stamp) {
+                    $hundred_rs_stamp_back_file_path = $hundred_rs_stamp->back_file_path;
+                    $hundred_rs_stamp_back_file_extension= explode('.',$hundred_rs_stamp_back_file_path)[1];
 
-                $front_file_path = $hundred_rs_stamp->front_file_path;
-                $front_file_extension= explode('.',$front_file_path)[1];
+                    $hundred_rs_stamp_front_file_path = $hundred_rs_stamp->front_file_path;
+                    $hundred_rs_stamp_front_file_extension= explode('.',$hundred_rs_stamp_front_file_path)[1];
+                }
             @endphp
+
+            @if ($hundred_rs_stamp)
+                
+             <!-- Page 3 100Rs Stamp Front Page-->
             <div class="page" id="page_3">
-                @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
+                @if ($hundred_rs_stamp_back_file_extension === 'jpg' || $hundred_rs_stamp_back_file_extension === 'jpeg' || $hundred_rs_stamp_back_file_extension === 'png')
                     <div class="bl_img">
-                        <img src="{{ asset($back_file_path) }}" alt="">
+                        <img src="{{ asset($hundred_rs_stamp_back_file_path) }}" alt="">
                     </div>
                 @else
                     <div class="bl_img">
-                        <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
-                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        <iframe src="{{ asset($hundred_rs_stamp_back_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($hundred_rs_stamp_back_file_path) }}">Download PDF</a>
                         </iframe>
                     </div>
                 @endif
+                <p class="page-no">3</p>
             </div>
             <div class="page-break"></div>
-            <div class="page" id="page_3">
-                @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
+
+            <!-- Page 3 100Rs Stamp Back Page-->
+            <div class="page" id="page_4">
+                @if ($hundred_rs_stamp_front_file_extension === 'jpg' || $hundred_rs_stamp_front_file_extension === 'jpeg' || $hundred_rs_stamp_front_file_extension === 'png')
                     <div style="width: 100%; height: 100%;">
-                        <img src="{{ asset($front_file_path) }}" alt="">
+                        <img src="{{ asset($hundred_rs_stamp_front_file_path) }}" alt="">
                     </div>
                 @else
                     <div class="bl_img">
-                        <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
-                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        <iframe src="{{ asset($hundred_rs_stamp_front_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($hundred_rs_stamp_front_file_path) }}">Download PDF</a>
                         </iframe>
                     </div>
                 @endif
+                <p class="page-no">4</p>
             </div>
+
+            @endif
             <div class="page-break"></div>
-            <div class="page" id="page_3">
+             <!-- Page 3 100Rs Stamp End-->
+
+            <div class="page" id="page_5">
 
                 {{-- <P class="stamp" style="top: 5px;">100/-Non Judicial Stamp to be affixed</p> --}}
-                {{-- 100Rs Available Stamp --}}
 
                 <h3 style="margin-bottom: 0; margin-top: 30px;">PERSONAL LOAN FACILITY AGREEMENT</h3>
                 <h5>This Personal Loan Agreement is made and executed at the place and date stated in the <br>
@@ -788,11 +792,12 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">3</p>
+                <p class="page-no">5</p>
             </div>
+
             <div class="page-break"></div>
 
-            <div class="page" id="page_4">
+            <div class="page" id="page_6">
                 <p>
                     <b>“LOAN” </b>means the principal amount of Loan sanctioned and disbursed by PFSL to the Borrower(s)
                     (as
@@ -964,11 +969,11 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">4</p>
+                <p class="page-no">6</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_5">
+            <div class="page" id="page_7">
 
                 <table class="bullet-table border0">
                     <tr>
@@ -1219,11 +1224,11 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">5</p>
+                <p class="page-no">7</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_6">
+            <div class="page" id="page_8">
 
                 <table class="bullet-table">
                     
@@ -1402,11 +1407,11 @@
                     </tr>
                 </table>
 
-                <p class="page-no">6</p>
+                <p class="page-no">8</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_7">
+            <div class="page" id="page_9">
 
 
                 <table class="bullet-table">
@@ -1573,11 +1578,11 @@
                     </tr>
                 </table>
 
-                <p class="page-no">7</p>
+                <p class="page-no">9</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_8">
+            <div class="page" id="page_10">
 
                 <table class="bullet-table">
                     
@@ -1732,12 +1737,12 @@
                     </tr>
                 </table>
 
-                <p class="page-no">8</p>
+                <p class="page-no">10</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_9">
+            <div class="page" id="page_11">
 
 
                 <table class="bullet-table">
@@ -1878,12 +1883,12 @@
                     </tr>
                 </table>
 
-                <p class="page-no">9</p>
+                <p class="page-no">11</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_10">
+            <div class="page" id="page_12">
 
                 <table class="bullet-table">
                     <tr>
@@ -2041,11 +2046,11 @@
                     </tr>
                 </table>
 
-                <p class="page-no">10</p>
+                <p class="page-no">12</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_11">
+            <div class="page" id="page_13">
 
                 <table class="bullet-table">
                     <tr>
@@ -2226,12 +2231,12 @@
                     </tr>
                 </table>
 
-                <p class="page-no">11</p>
+                <p class="page-no">13</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_12">
+            <div class="page" id="page_14">
 
                 <table class="bullet-table">
                     <tr>
@@ -2413,11 +2418,11 @@
                         </p>
                     </li>
                 </ol>
-
+                <p class="page-no">14</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_13">
+            <div class="page" id="page_15">
 
                 <p><b>11. Security</b></p>
                 <P style="padding-left: 35px;">The Borrower(s) confirm(s) that as per terms of Sanction Letter and that
@@ -2560,12 +2565,12 @@
                 </table>
 
 
-                <p class="page-no">13</p>
+                <p class="page-no">15</p>
             </div>
 
             <div class="page-break"></div>
 
-            <div class="page" id="page_14">
+            <div class="page" id="page_16">
 
                 <table class="bullet-table">
                     <tr>
@@ -2720,7 +2725,7 @@
 
                 </table>
 
-                <p class="page-no">14</p>
+                <p class="page-no">16</p>
             </div>
             <div class="page-break"></div>
 
@@ -2835,7 +2840,7 @@
             </div>
             <div class="page-break"></div> -->
 
-            <div class="page" id="page_16">
+            <div class="page" id="page_17">
 
                 <h5 style="padding: 0 30px;">IN WITNESS WHEREOF the Parties hereto have executed / caused to be executed
                     these presents
@@ -3150,11 +3155,11 @@
                 </tr>
                 </table> --}}
 
-                <p class="page-no">15</p>
+                <p class="page-no">17</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_17">
+            <div class="page" id="page_18">
                 <h3>
                     <b class="p202 ft5">SCHEDULE I</b>
                     <br>
@@ -3496,12 +3501,12 @@
                     </tr>
                 </table>
 
-                <p class="page-no">16</p>
+                <p class="page-no">18</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_18">
+            <div class="page" id="page_19">
                 <h3>
                     <b class=" ft5">SCHEDULE II</b>
                     <br>
@@ -3622,11 +3627,11 @@
                     </tr>
                 </table>
 
-                <p class="page-no">17</p>
+                <p class="page-no">19</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_19">
+            <div class="page" id="page_20">
                 <table class="border0 table_19">
                     <tr>
                         <td>
@@ -3728,12 +3733,12 @@
                     </tr>
                 </table>
 
-                <p class="page-no">18</p>
+                <p class="page-no">20</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_20">
+            <div class="page" id="page_21">
 
                 <div id="id20_1">
                     <h3>
@@ -3861,13 +3866,13 @@
                         </tr>
                     </table>
 
-                    <p class="page-no">19</p>
+                    <p class="page-no">21</p>
                 </div>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_21">
+            <div class="page" id="page_22">
 
                 <div id="id21_1">
                     <h3>
@@ -3962,14 +3967,14 @@
                         </tr>
                     </table>
 
-                    <p class="page-no">20</p>
+                    <p class="page-no">22</p>
 
                 </div>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_22">
+            <div class="page" id="page_23">
 
                 <div id="id22_1">
                     <h3>SCHEDULE V</h3>
@@ -4104,12 +4109,115 @@
                     </tr>
                 </table>
 
-                <p class="page-no">21</p>
+                <p class="page-no">23</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_23">
+            <!-- Page 24 10Rs stamp Start-->
+            @php
+                $ten_rs_stamp_for_page_24 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,24);
+
+                if ($ten_rs_stamp_for_page_24) {
+
+                    $ten_rs_stamp_for_page_24_back_file_path = $ten_rs_stamp_for_page_24->back_file_path;
+                    $ten_rs_stamp_for_page_24_back_file_extension= explode('.',$ten_rs_stamp_for_page_24_back_file_path)[1];
+
+                    $ten_rs_stamp_for_page_24_front_file_path = $ten_rs_stamp_for_page_24->front_file_path;
+                    $ten_rs_stamp_for_page_24_front_file_extension = explode('.',$ten_rs_stamp_for_page_24_front_file_path)[1];
+                }
+            @endphp
+            <!-- Page 24 10Rs stamp Back Page -->
+            @if ($ten_rs_stamp_for_page_24)
+            
+            <div class="page" id="page_24">
+                @if ($ten_rs_stamp_for_page_24_back_file_extension === 'jpg' || $ten_rs_stamp_for_page_24_back_file_extension === 'jpeg' || $ten_rs_stamp_for_page_24_back_file_extension === 'png')
+                    <div class="bl_img">
+                        <img src="{{ asset($ten_rs_stamp_for_page_24_back_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($ten_rs_stamp_for_page_24_back_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($ten_rs_stamp_for_page_24_back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+                <p class="page-no">24</p>
+            </div>
+
+            <div class="page-break"></div>
+
+            <!-- Page 24 10Rs stamp Back Front Start-->
+            <div class="page" id="page_25">
+                @if ($ten_rs_stamp_for_page_24_front_file_extension === 'jpg' || $ten_rs_stamp_for_page_24_front_file_extension === 'jpeg' || $ten_rs_stamp_for_page_24_front_file_extension === 'png')
+                    <div style="width: 100%; height: 100%;">
+                        <img src="{{ asset($ten_rs_stamp_for_page_24_front_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($ten_rs_stamp_for_page_24_front_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($ten_rs_stamp_for_page_24_front_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+                <p class="page-no">25</p>
+            </div>
+            <div class="page-break"></div>
+            @endif
+            <!-- Page 24 10Rs stamp End-->
+
+            <!-- Page 25 50Rs stamp Start-->
+            @php
+                $fifty_rs_stamp_for_page_25 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,50,25);
+                if ($fifty_rs_stamp_for_page_25) {
+
+                    $fifty_rs_stamp_for_page_25_back_file_path = $fifty_rs_stamp_for_page_25->back_file_path;
+                    $fifty_rs_stamp_for_page_25_back_file_extension= explode('.',$fifty_rs_stamp_for_page_25_back_file_path)[1];
+
+                    $fifty_rs_stamp_for_page_25_front_file_path = $fifty_rs_stamp_for_page_25->front_file_path;
+                    $fifty_rs_stamp_for_page_25_front_file_extension = explode('.',$fifty_rs_stamp_for_page_25_front_file_path)[1];
+                }
+            @endphp
+
+            @if ($fifty_rs_stamp_for_page_25)
+                <!-- Page 25 50Rs stamp Back Page -->
+                <div class="page" id="page_26">
+                    @if ($fifty_rs_stamp_for_page_25_back_file_extension === 'jpg' || $fifty_rs_stamp_for_page_25_back_file_extension === 'jpeg' || $fifty_rs_stamp_for_page_25_back_file_extension === 'png')
+                        <div class="bl_img">
+                            <img src="{{ asset($fifty_rs_stamp_for_page_25_back_file_path) }}" alt="">
+                        </div>
+                    @else
+                        <div class="bl_img">
+                            <iframe src="{{ asset($fifty_rs_stamp_for_page_25_back_file_path) }}" width="50%" height="600">
+                                This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($fifty_rs_stamp_for_page_25_back_file_path) }}">Download PDF</a>
+                            </iframe>
+                        </div>
+                    @endif
+                    <p class="page-no">26</p>
+                </div>
+                <div class="page-break"></div>
+
+                <!-- Page 25 50Rs stamp Front Page -->
+                <div class="page" id="page_27">
+                    @if ($fifty_rs_stamp_for_page_25_front_file_extension === 'jpg' || $fifty_rs_stamp_for_page_25_front_file_extension === 'jpeg' || $fifty_rs_stamp_for_page_25_front_file_extension === 'png')
+                        <div style="width: 100%; height: 100%;">
+                            <img src="{{ asset($fifty_rs_stamp_for_page_25_front_file_path) }}" alt="">
+                        </div>
+                    @else
+                        <div class="bl_img">
+                            <iframe src="{{ asset($fifty_rs_stamp_for_page_25_front_file_path) }}" width="50%" height="600">
+                                This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($fifty_rs_stamp_for_page_25_front_file_path) }}">Download PDF</a>
+                            </iframe>
+                        </div>
+                    @endif
+                    <p class="page-no">27</p>
+                </div>
+            @endif
+            <div class="page-break"></div>
+
+            <!-- Page 25 50Rs stamp End-->
+
+            <div class="page" id="page_28">
 
                 <div id="id22_1" style="text-align:center;">
                     <h3>ANNEXURE I</h3>
@@ -4267,17 +4375,17 @@
 
                 </table>
 
-                <p class="page-no">22</p>
+                <p class="page-no">28</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_24">
+            <div class="page" id="page_29">
 
                 <div style="text-align:center;">
-                    <P class="stamp"
+                    {{-- <P class="stamp"
                         style="border: 1px solid #000;margin-top: 20px;padding: 2px; display: inline-block;">
                         100/- Non Judicial Stamp to be affixed
-                    </p>
+                    </p> --}}
 
                     <h3>ANNEXURE II</h3>
                     <h5><b>CONTINUING SECURITY LETTER</b></h5>
@@ -4352,56 +4460,15 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">23</p>
+                <p class="page-no">29</p>
 
             </div>
             <div class="page-break"></div>
 
-                {{-- 100Rs Available Stamp --}}
-                @php
-                $hundred_rs_stamp = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,24);
-
-                $back_file_path = $hundred_rs_stamp->back_file_path;
-                $back_file_extension= explode('.',$back_file_path)[1];
-
-                $front_file_path = $hundred_rs_stamp->front_file_path;
-                $front_file_extension= explode('.',$front_file_path)[1];
-            @endphp
-            <div class="page" id="page_3">
-                @if ($back_file_extension === 'jpg' || $back_file_extension === 'jpeg' || $back_file_extension === 'png')
-                    <div class="bl_img">
-                        <img src="{{ asset($back_file_path) }}" alt="">
-                    </div>
-                @else
-                    <div class="bl_img">
-                        <iframe src="{{ asset($back_file_path) }}" width="50%" height="600">
-                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
-                        </iframe>
-                    </div>
-                @endif
-            </div>
-            <div class="page-break"></div>
-            <div class="page" id="page_3">
-                @if ($front_file_extension === 'jpg' || $front_file_extension === 'jpeg' || $front_file_extension === 'png')
-                    <div style="width: 100%; height: 100%;">
-                        <img src="{{ asset($front_file_path) }}" alt="">
-                    </div>
-                @else
-                    <div class="bl_img">
-                        <iframe src="{{ asset($front_file_path) }}" width="50%" height="600">
-                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
-                        </iframe>
-                    </div>
-                @endif
-            </div>
-            <div class="page-break"></div>
-            <div class="page" id="page_3">
-
-            <div class="page" id="page_25">
+            <div class="page" id="page_30">
 
                 <div style="text-align:center;">
                     {{-- <P class="stamp">100/- Non Judicial Stamp to be affixed</p> --}}
-                    
                     <h3>ANNEXURE III</h3>
                     <h5>UNDERTAKING-CUM-INDEMNITY</h5>
                     <p><b>(This Undertaking Cum Indemnity executed at the place and date stated in the Schedule I
@@ -4531,12 +4598,58 @@
 
                 <br><br>
 
-                <p class="page-no">24</p>
+                <p class="page-no">30</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_26">
+            <!-- Page 31 10Rs stamp Start-->
+            @php
+                $ten_rs_stamp_for_page_31 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,31);
+                if ($ten_rs_stamp_for_page_31) {
+                    $ten_rs_stamp_for_page_31_back_file_path = $ten_rs_stamp_for_page_31->back_file_path;
+                    $ten_rs_stamp_for_page_31_back_file_extension= explode('.',$ten_rs_stamp_for_page_31_back_file_path)[1];
+
+                    $ten_rs_stamp_for_page_31_front_file_path = $ten_rs_stamp_for_page_31->front_file_path;
+                    $ten_rs_stamp_for_page_31_front_file_extension= explode('.',$ten_rs_stamp_for_page_31_front_file_path)[1];
+                }
+            @endphp
+            @if ($ten_rs_stamp_for_page_31)
+            <!-- Page 31 10Rs stamp Front Page-->
+            <div class="page" id="page_3">
+                @if ($ten_rs_stamp_for_page_31_back_file_extension === 'jpg' || $ten_rs_stamp_for_page_31_back_file_extension === 'jpeg' || $ten_rs_stamp_for_page_31_back_file_extension === 'png')
+                    <div class="bl_img">
+                        <img src="{{ asset($ten_rs_stamp_for_page_31_back_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($ten_rs_stamp_for_page_31_back_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($ten_rs_stamp_for_page_31_back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+                <p class="page-no">31</p>
+            </div>
+            <div class="page-break"></div>
+            <!-- Page 31 10Rs stamp Back Page-->
+            <div class="page" id="page_3">
+                @if ($ten_rs_stamp_for_page_31_front_file_extension === 'jpg' || $ten_rs_stamp_for_page_31_front_file_extension === 'jpeg' || $ten_rs_stamp_for_page_31_front_file_extension === 'png')
+                    <div style="width: 100%; height: 100%;">
+                        <img src="{{ asset($ten_rs_stamp_for_page_31_front_file_path) }}" alt="">
+                    </div>
+                @else
+                    <div class="bl_img">
+                        <iframe src="{{ asset($ten_rs_stamp_for_page_31_front_file_path) }}" width="50%" height="600">
+                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset($back_file_path) }}">Download PDF</a>
+                        </iframe>
+                    </div>
+                @endif
+                <p class="page-no">32</p>
+            </div>
+            @endif
+            <div class="page-break"></div>
+            <!-- Page 31 10Rs stamp End-->
+            <div class="page" id="page_33">
                 <div id="id26_1">
                     <P class="p304 ft28">This Letter of Undertaking- <nobr>cum-Indemnity</nobr> shall remain in force
                         till the entire principal amount of the Loan together with interest and all other moneys payable
@@ -4557,12 +4670,12 @@
                             </td>
                         </tr>
                     </table>
-                    <p class="page-no">25</p>
+                    <p class="page-no">33</p>
                 </div>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_27">
+            <div class="page" id="page_34">
                 <div style="text-align:center;">
                     <h3>ANNEXURE IV</h3>
                     <h5>REQUEST FOR DISBURSEMENT</h5>
@@ -4674,11 +4787,11 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">26</p>
+                <p class="page-no">34</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_28">
+            <div class="page" id="page_35">
                 <div style="text-align:center;">
                     <h3>ANNEXURE V</h3>
                     <h5>BORROWER'S REQUEST TO EMPLOYER FOR EMI DEDUCTION FROM SALARY</h5>
@@ -4687,11 +4800,11 @@
                             Employer</b>
                     </p>
                 </div>
-                <p class="page-no">27</p>
+                <p class="page-no">35</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_29">
+            <div class="page" id="page_36">
                 <div style="text-align:center;">
                     <h3>ANNEXURE V</h3>
                     <h5>BORROWER'S REQUEST TO EMPLOYER FOR EMI DEDUCTION FROM SALARY</h5>
@@ -4701,11 +4814,11 @@
                     </p>
                     <br><br><br>
                 </div>
-                <p class="page-no">28</p>
+                <p class="page-no">36</p>
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_30">
+            <div class="page" id="page_37">
 
 
                 <P class="stamp">
@@ -4774,14 +4887,14 @@
                         </TD>
                     </TR>
                 </TABLE>
-                <p class="page-no">29</p>
+                <p class="page-no">37</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_31">
+            <div class="page" id="page_38">
                 <P class="stamp">
-                    Rs 10/- Non Judicial Stamp to be affixed
+                    {{-- Rs 10/- Non Judicial Stamp to be affixed --}}
                 </p>
 
                 <h3>ANNEXURE VII</h3>
@@ -4977,12 +5090,12 @@
 
 
 
-                <p class="page-no">30</p>
+                <p class="page-no">38</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_32">
+            <div class="page" id="page_39">
 
 
                 <br><br><br><br>
@@ -5036,13 +5149,13 @@
                     </tr>
                 </table>
 
-                <p class="page-no">31</p>
+                <p class="page-no">39</p>
 
             </div>
 
             <div class="page-break"></div>
 
-            <div class="page" id="page_33">
+            <div class="page" id="page_40">
 
                 <div style="text-align:center;">
                     <h3>VERNACULAR DECLARATION</h3>
@@ -5187,12 +5300,12 @@
                         </td>
                     </tr>
                 </table>
-                <p class="page-no">32</p>
+                <p class="page-no">40</p>
 
             </div>
             <div class="page-break"></div>
 
-            <div class="page" id="page_34">
+            <div class="page" id="page_41">
 
                 <h3>MISCELLANEOUS DOCUMENTS</h3>
 
@@ -5216,7 +5329,7 @@
                     </tr>
                 </table>
 
-                <p class="page-no">33</p>
+                <p class="page-no">41</p>
 
             </div>
         </div>
