@@ -69,7 +69,7 @@ class ApiController extends Controller
                 'occupation' => $borrowerValue->occupation,
                 'date_of_birth' => $borrowerValue->date_of_birth,
                 'marital_status' => $borrowerValue->marital_status,
-                'image_path' => $borrowerValue->image_path,
+                'image_path' => asset($borrowerValue->image_path),
                 'signature_path' => $borrowerValue->signature_path,
                 'street_address' => $borrowerValue->street_address,
                 'city' => $borrowerValue->city,
