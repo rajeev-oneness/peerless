@@ -51,7 +51,9 @@ class ApiController extends Controller
             $agreement = [];
 
             foreach ($borrowerValue->agreement as $key => $value) {
-                $agreement[] = $value->agreementDetails;
+                $agreement[] = [
+                    'name' => $value->agreementDetails->name
+                ];
             }
 
             $data[] = [
