@@ -15,8 +15,19 @@ return [
 
     'defaults' => [
         'guard' => 'web',
+        // 'guard' => 'api',
         'passwords' => 'users',
     ],
+    // 'jwt'=>[
+    //     'driver'=>'eloquent',
+    //     'model'=>App\Models\User::class,
+    // ],
+    // 'jwt'=>[
+    //     'guard' => 'jwt',
+    //     'passwords' => 'users',
+    //     // 'driver'=>'eloquent',
+    //     // 'model'=>App\Models\Admin::class,
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +51,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        // 'jwt' => [
+        //     'driver' => 'jwt',
+        //     'provider' => 'users',
+        // ],
+        // 'jwt'=>[
+        //     'driver'=>'session',
+        //     'provider'=>'admins',
+        // ],
     ],
 
     /*

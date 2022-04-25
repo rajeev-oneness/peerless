@@ -155,7 +155,9 @@
                                             <div class="single-line">
                                                 @if (count($recentBorrower->agreement) > 0)
                                                     @foreach ($recentBorrower->agreement as $agreement)
-                                                        <a href="{{route('user.borrower.agreement', $recentBorrower->id)}}" class="badge {{ ($recentBorrower->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">{{ $agreement->agreementDetails->name }}</a>
+                                                        @if($agreement->agreementDetails)
+                                                            <a href="{{route('user.borrower.agreement', $recentBorrower->id)}}" class="badge {{ ($recentBorrower->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">{{ $agreement->agreementDetails ? $agreement->agreementDetails->name : '' }}</a>
+                                                        @endif
                                                     @endforeach
                                                 @else
                                                     <p class="small text-muted"> <em>No agreement yet</em> </p>
