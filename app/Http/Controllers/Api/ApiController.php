@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Borrower;
+use App\Models\BorrowerAgreement;
 
 class ApiController extends Controller
 {
@@ -43,7 +44,29 @@ class ApiController extends Controller
     }
 
     public function borrowerList() {
-        $data = Borrower::with('agreement')->get();
+        $borrowerData = Borrower::with('agreement', 'borrowerAgreementRfq')->get();
+
+        $data = [];
+        foreach($borrowerData as $borrowerKey => $borrowerValue) {
+            $agreement = [];
+
+            foreach ($borrowerValue->agreement as $key => $value) {
+                $agreement[] = $value->agreementDetails;
+            }
+
+            $data[] = [
+                'customer_id' => $borrowerValue->CUSTOMER_ID,
+                'name_prefix' => $borrowerValue->name_prefix,
+                'full_name' => $borrowerValue->full_name,
+                'first_name' => $borrowerValue->first_name,
+                'middle_name' => $borrowerValue->middle_name,
+                'last_name' => $borrowerValue->last_name,
+                'gender' => $borrowerValue->gender,
+                'email' => $borrowerValue->email,
+                'agreement_details' => $agreement
+            ];
+        }
+
         return response()->json(['message' => 'Borrower List', 'data' => $data]);
     }
 }
