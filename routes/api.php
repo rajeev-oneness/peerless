@@ -26,8 +26,14 @@ Route::middleware('jwt.auth')->prefix('auth')->group(function() {
     Route::post('profile', [ApiController::class, 'profile']);
     Route::post('logout', [ApiController::class, 'logout']);
 
-    // borrowers' list
+    // borrower
     Route::prefix('borrower')->group(function() {
-        Route::get('list', [ApiController::class, 'borrowerList']);
+        Route::post('create', [BorrowerController::class, 'borrowerCreate']);
+        Route::get('list', [BorrowerController::class, 'borrowerList']);
+    });
+
+    // agreement
+    Route::prefix('agreement')->group(function() {
+        Route::get('download', [AgreementController::class, 'agreementDownload']);
     });
 });
