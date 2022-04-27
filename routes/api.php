@@ -30,6 +30,7 @@ Route::middleware('jwt.auth')->prefix('auth')->group(function() {
     Route::prefix('borrower')->group(function() {
         Route::post('create', [BorrowerController::class, 'borrowerCreate']);
         Route::get('list', [BorrowerController::class, 'borrowerList']);
+        Route::get('/{id}', [BorrowerController::class, 'borrowerDetail']);
     });
 
     // agreement

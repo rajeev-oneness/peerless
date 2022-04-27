@@ -13,6 +13,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// API ROUTE PDF DOWNLOAD
+Route::get('user/borrower/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+
 // user common routes
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], function () {
     // profile
@@ -62,7 +65,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/agreement/document/verify', [BorrowerController::class, 'verifyDocument'])->name('user.borrower.agreement.document.verify');
 
         // pdf
-        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+        // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-3/view', [PDFController::class, 'showDynamicPdfPage3'])->name('user.borrower.agreement.pdf.page3.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-24/view', [PDFController::class, 'showDynamicPdfPage24'])->name('user.borrower.agreement.pdf.page24.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-25/view', [PDFController::class, 'showDynamicPdfPage25'])->name('user.borrower.agreement.pdf.page25.view');

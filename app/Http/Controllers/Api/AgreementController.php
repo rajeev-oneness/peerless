@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\AgreementRfq;
 
 class AgreementController extends Controller
 {
@@ -34,9 +35,15 @@ class AgreementController extends Controller
         activityLog($logData);
 
         if (!$validate->fails()) {
-            return response()->json(['Agreement download url' => url('/').'/user/borrower/'.$request->borrower_id.'/agreement/'.$request->agreement_id.'/pdf/view']);
+            $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $request->borrower_id)->where('agreement_id', $request->agreement_id)->count();
+
+            if ($borrowerAgreementDataExists > 0) {
+                return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$request->borrower_id.'/agreement/'.$request->agreement_id.'/pdf/view'], 200);
+            } else {
+                return response()->json(['status' => 400, 'message' => 'No document found'], 400);
+            }
         } else {
-            return response()->json(['message' => $validate->errors()->first()], 400);
+            return response()->json(['status' => 400, 'message' => $validate->errors()->first()], 400);
         }
     }
 }

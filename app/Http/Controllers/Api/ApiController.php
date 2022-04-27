@@ -18,6 +18,7 @@ class ApiController extends Controller
 
     protected function respondWithToken($token) {
         return response()->json([
+            'status' => 200,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60,
@@ -29,18 +30,18 @@ class ApiController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->guard('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['status' => 401, 'error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
     public function profile() {
-        return response()->json(auth()->guard('api')->user());
+        return response()->json(['status' => 200, 'data' => auth()->guard('api')->user()]);
     }
 
     public function logout() {
         auth()->guard('api')->logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['status' => 200, 'message' => 'Successfully logged out']);
     }
 }
