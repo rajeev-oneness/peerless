@@ -23,7 +23,7 @@ class BorrowerController extends Controller
         $validate = validator()->make($request->all(), [
             'auth_user_id' => 'required|integer|min:1',
             'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
-            'application_id' => 'required|integer|min:1|unique:borrowers',
+            'application_id' => 'required|unique:borrowers',
             'agreement_id' => 'nullable|integer|min:1',
             'name_prefix' => 'nullable|string|min:1|max:50|in:Mr, Miss, Mrs, Prof, Dr, CA',
             'first_name' => 'required|string|min:1|max:200',
