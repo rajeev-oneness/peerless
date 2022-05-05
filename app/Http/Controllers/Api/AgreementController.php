@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\Borrower;
+use App\Models\Agreement;
 use App\Models\AgreementRfq;
 
 class AgreementController extends Controller
@@ -17,28 +19,46 @@ class AgreementController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function agreementList() {
+        $agreement = Agreement::get();
+        $data = [];
+        foreach($agreement as $agreementKey => $agreementVal) {
+            $data[] = [
+                'agreement_id' => $agreementVal->id,
+                'name' => $agreementVal->name,
+            ];
+        }
+        return response()->json(['status' => 200, 'data' => $data]);
+    }
+
     public function agreementDownload(Request $request)
     {
         $validate = Validator::make($request->all(), [
             'auth_user_id' => 'required|integer|min:1',
             'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
-            'borrower_id'=> 'required|integer|min:1',
-            'agreement_id'=> 'required|integer|min:1',
+            'application_id'=> 'required',
+            // 'borrower_id'=> 'required|integer|min:1',
+            // 'agreement_id'=> 'required|integer|min:1',
         ]);
 
-        // activity log
-        $logData = [
-            'type' => 'agreement_download_request',
-            'title' => 'Agreement download request',
-            'desc' => 'Agreement download request generated for Agreement id: '.$request->agreement_id.' and Borrower id: '.$request->borrower_id.' by EMP ID '.$request->auth_user_emp_id
-        ];
-        activityLog($logData);
-
         if (!$validate->fails()) {
-            $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $request->borrower_id)->where('agreement_id', $request->agreement_id)->count();
+            // $borrowerData = Borrower::where('application_id', $request->application_id)->first();
+            $agreementData = BorrowerAgreement::where('application_id', $request->application_id)->first();
+
+            $borrowerAgreementDataExists = AgreementRfq::where('application_id', $request->application_id)->count();
+            // $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $request->borrower_id)->where('agreement_id', $request->agreement_id)->count();
 
             if ($borrowerAgreementDataExists > 0) {
-                return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$request->borrower_id.'/agreement/'.$request->agreement_id.'/pdf/view'], 200);
+                // activity log
+                $logData = [
+                    'type' => 'agreement_download_request',
+                    'title' => 'Agreement download request',
+                    'desc' => 'Agreement download request generated for Application id: '.$request->application_id.' by EMP ID '.$request->auth_user_emp_id
+                    // 'desc' => 'Agreement download request generated for Agreement id: '.$request->agreement_id.' and Borrower id: '.$request->borrower_id.' by EMP ID '.$request->auth_user_emp_id
+                ];
+                activityLog($logData);
+
+                return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'], 200);
             } else {
                 return response()->json(['status' => 400, 'message' => 'No document found'], 400);
             }

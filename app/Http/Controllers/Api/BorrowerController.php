@@ -23,6 +23,7 @@ class BorrowerController extends Controller
         $validate = validator()->make($request->all(), [
             'auth_user_id' => 'required|integer|min:1',
             'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
+            'application_id' => 'required|integer|min:1|unique:borrowers',
             'agreement_id' => 'nullable|integer|min:1',
             'name_prefix' => 'nullable|string|min:1|max:50|in:Mr, Miss, Mrs, Prof, Dr, CA',
             'first_name' => 'required|string|min:1|max:200',
@@ -32,7 +33,7 @@ class BorrowerController extends Controller
             'date_of_birth' => 'nullable|date|date_format:Y-m-d',
             'email' => 'nullable|string|email',
             'mobile' => 'nullable|integer|digits:10',
-            'pan_card_number' => 'required|string|min:10|max:10|unique:borrowers',
+            'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'nullable|string|min:1|max:200',
             'marital_status' => 'nullable|string|min:1|max:30|in: Married, Unmarried, Single, Divorced, Widowed',
 
@@ -62,6 +63,7 @@ class BorrowerController extends Controller
 
                 $user = new Borrower;
                 $user->CUSTOMER_ID = 0;
+                $user->application_id = $request->application_id;
                 $user->name_prefix = $request->name_prefix;
                 $user->first_name = $request->first_name;
                 $user->middle_name = $request->middle_name;
@@ -304,6 +306,7 @@ class BorrowerController extends Controller
                 }
 
                 $data[] = [
+                    'application_id' => $borrowerValue->application_id,
                     'borrower_id' => $borrowerValue->id,
                     'customer_id' => $borrowerValue->CUSTOMER_ID,
                     'name_prefix' => $borrowerValue->name_prefix,
@@ -510,6 +513,7 @@ class BorrowerController extends Controller
                 }
 
                 $data[] = [
+                    'application_id' => $borrowerValue->application_id,
                     'borrower_id' => $borrowerValue->id,
                     'customer_id' => $borrowerValue->CUSTOMER_ID,
                     'name_prefix' => $borrowerValue->name_prefix,
@@ -698,7 +702,7 @@ class BorrowerController extends Controller
         } else {
             return response()->json(['status' => 404, 'data' => 'not found'], 404);
         }
-        
+
         /* $borrowerData = Borrower::with('agreement', 'borrowerAgreementRfq')->findOrFail($id);
         // $borrowerData = Borrower::where()->with('agreement', 'borrowerAgreementRfq')->first();
 
