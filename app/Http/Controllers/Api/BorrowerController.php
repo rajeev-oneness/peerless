@@ -60,7 +60,6 @@ class BorrowerController extends Controller
             DB::beginTransaction();
 
             try {
-
                 $user = new Borrower;
                 $user->CUSTOMER_ID = 0;
                 $user->application_id = $request->application_id;
@@ -511,11 +510,13 @@ class BorrowerController extends Controller
             foreach($borrowerData as $borrowerKey => $borrowerValue) {
                 $agreement = [];
 
-                foreach ($borrowerValue->agreement as $key => $value) {
-                    $agreement[] = [
-                        'id' => $value->agreementDetails->id,
-                        'name' => $value->agreementDetails->name
-                    ];
+                if($borrowerValue->agreement) {
+                    foreach ($borrowerValue->agreement as $key => $value) {
+                        $agreement[] = [
+                            'id' => $value->agreementDetails->id,
+                            'name' => $value->agreementDetails->name
+                        ];
+                    }
                 }
 
                 $data[] = [
