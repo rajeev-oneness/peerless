@@ -9,6 +9,7 @@ use App\Models\AgreementDocumentUpload;
 use App\Models\AgreementField;
 use App\Models\AgreementRfq;
 use App\Models\Borrower;
+use App\Models\Product;
 use App\Models\BorrowerAgreement;
 use App\Models\FieldParent;
 use App\Models\UserType;
@@ -697,7 +698,7 @@ class BorrowerController extends Controller
         if (!empty($request->file)) {
             // if ($request->input('submit') != null ) {
             $file = $request->file('file');
-            // File Details 
+            // File Details
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
             $tempPath = $file->getRealPath();
@@ -847,7 +848,7 @@ class BorrowerController extends Controller
                             "marital_status" => isset($importData[98]) ? $importData[98] : null,
                             "NO_OF_DEPEND" => isset($importData[99]) ? $importData[99] : null,
                             "SPOUSE" => isset($importData[100]) ? $importData[100] : null,
-                            // checked with CSV, STATUS - okay 
+                            // checked with CSV, STATUS - okay
 
                             "CHILDREN" => isset($importData[101]) ? $importData[101] : null,
                             "PARENTS" => isset($importData[102]) ? $importData[102] : null,
@@ -892,7 +893,7 @@ class BorrowerController extends Controller
                             "Maiden_Title" => isset($importData[138]) ? $importData[138] : null,
                             "Maiden_First_Name" => isset($importData[139]) ? $importData[139] : null,
                             "Maiden_Middle_Name" => isset($importData[140]) ? $importData[140] : null,
-                            // checked with CSV, STATUS - okay 
+                            // checked with CSV, STATUS - okay
 
                             "Maiden_Last_Name" => isset($importData[141]) ? $importData[141] : null,
                             "Father_Title" => isset($importData[142]) ? $importData[142] : null,
@@ -904,7 +905,7 @@ class BorrowerController extends Controller
                             "Mothers_Maiden_Name" => isset($importData[148]) ? $importData[148] : null,
                             "Generic_Surname" => isset($importData[149]) ? $importData[149] : null,
                             "Spouse_Title" => isset($importData[150]) ? $importData[150] : null,
-                            // checked with CSV, STATUS - okay 
+                            // checked with CSV, STATUS - okay
 
                             "Spouse_First_Name" => isset($importData[151]) ? $importData[151] : null,
                             "Spouse_Family_Name" => isset($importData[152]) ? $importData[152] : null,
@@ -916,7 +917,7 @@ class BorrowerController extends Controller
                             "Offences" => isset($importData[158]) ? $importData[158] : null,
                             "Politically_Exposed" => isset($importData[159]) ? $importData[159] : null,
                             "Residence_Type" => isset($importData[160]) ? $importData[160] : null,
-                            // checked with CSV, STATUS - okay 
+                            // checked with CSV, STATUS - okay
 
                             // "Spouse_First_Name" => isset($importData[161]) ? $importData[161] : null,
                             // "Spouse_Family_Name" => isset($importData[162]) ? $importData[162] : null,
@@ -948,6 +949,103 @@ class BorrowerController extends Controller
                         );
                         // echo '<pre>';print_r($insertData);exit();
                         Borrower::insertData($insertData);
+                    }
+                    Session::flash('message', 'Import Successful.');
+                } else {
+                    Session::flash('message', 'File too large. File must be less than 50MB.');
+                }
+            } else {
+                Session::flash('message', 'Invalid File Extension. supported extensions are ' . implode(', ', $valid_extension));
+            }
+        } else {
+            Session::flash('message', 'No file found.');
+        }
+
+        return redirect()->route('user.borrower.list');
+    }
+
+    public function uploadTest(Request $request)
+    {
+        if (!empty($request->file)) {
+            // if ($request->input('submit') != null ) {
+            $file = $request->file('file');
+            // File Details
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $tempPath = $file->getRealPath();
+            $fileSize = $file->getSize();
+            $mimeType = $file->getMimeType();
+
+            // Valid File Extensions
+            $valid_extension = array("csv");
+            // 50MB in Bytes
+            $maxFileSize = 50097152;
+            // Check file extension
+            if (in_array(strtolower($extension), $valid_extension)) {
+                // Check file size
+                if ($fileSize <= $maxFileSize) {
+                    // File upload location
+                    $location = 'upload/borrower/csv';
+                    // Upload file
+                    $file->move($location, $filename);
+                    // Import CSV to Database
+                    $filepath = public_path($location . "/" . $filename);
+                    // Reading file
+                    $file = fopen($filepath, "r");
+                    $importData_arr = array();
+                    $i = 0;
+                    while (($filedata = fgetcsv($file, 10000, ",")) !== FALSE) {
+                        $num = count($filedata);
+                        // Skip first row
+                        if ($i == 0) {
+                            $i++;
+                            continue;
+                        }
+                        for ($c = 0; $c < $num; $c++) {
+                            $importData_arr[$i][] = $filedata[$c];
+                        }
+                        $i++;
+                    }
+                    fclose($file);
+
+                    // echo '<pre>';print_r($importData_arr);exit();
+
+                    // Insert into database
+                    foreach ($importData_arr as $importData) {
+                        $insertData = array(
+                            "name" => $importData[0],
+                            "image" => isset($importData[1]) ? $importData[1] : null,
+                            "category_id" => isset($importData[2]) ? $importData[2] : null,
+                            "level1_id" => isset($importData[3]) ? $importData[3] : null,
+                            "level2_id" => isset($importData[4]) ? $importData[4] : null,
+                            "level3_id" => isset($importData[5]) ? $importData[5] : null,
+                            "level4_id" => isset($importData[6]) ? $importData[6] : null,
+                            "level5_id" => isset($importData[7]) ? $importData[7] : null,
+                            "description" => isset($importData[8]) ? $importData[8] : null,
+                            "brand" => isset($importData[9]) ? $importData[9] : null,
+                            "code" => isset($importData[10]) ? $importData[10] : null,
+                            "stock" => isset($importData[11]) ? $importData[11] : null,
+                            "price" => isset($importData[12]) ? $importData[12] : null,
+                            "offered_price" => isset($importData[13]) ? $importData[13] : null,
+                            "gst" => isset($importData[14]) ? $importData[14] : null,
+                            "author" => isset($importData[15]) ? $importData[15] : null,
+                            "pages" => isset($importData[16]) ? $importData[16] : null,
+                            "edition" => isset($importData[17]) ? $importData[17] : null,
+                            "language" => isset($importData[18]) ? $importData[18] : null,
+                            "isbn_no" => isset($importData[19]) ? $importData[19] : null,
+                            "binding" => isset($importData[20]) ? $importData[20] : null,
+                            "publish_year" => isset($importData[21]) ? $importData[21] : null,
+                            "weight" => isset($importData[22]) ? $importData[22] : null,
+                            "weight_denomination" => isset($importData[23]) ? $importData[23] : null,
+                            "views" => isset($importData[24]) ? $importData[24] : null,
+                            "meta_key" => isset($importData[25]) ? $importData[25] : null,
+                            "meta_description" => isset($importData[26]) ? $importData[26] : null,
+                            "product_tags" => isset($importData[27]) ? $importData[27] : null,
+                            "seo_keywords" => isset($importData[28]) ? $importData[28] : null,
+                            "shipping" => isset($importData[29]) ? $importData[29] : null,
+                        );
+                        // echo '<pre>';print_r($insertData);exit();
+                        Product::insertData($insertData);
                     }
                     Session::flash('message', 'Import Successful.');
                 } else {

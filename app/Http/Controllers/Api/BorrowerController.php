@@ -21,8 +21,8 @@ class BorrowerController extends Controller
 
     public function borrowerCreate(Request $request) {
         $validate = validator()->make($request->all(), [
-            'auth_user_id' => 'required|integer|min:1',
-            'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
+            // 'auth_user_id' => 'required|integer|min:1',
+            // 'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
             'application_id' => 'required|unique:borrowers',
             'agreement_id' => 'nullable|integer|min:1',
             'name_prefix' => 'nullable|string|min:1|max:50|in:Mr, Miss, Mrs, Prof, Dr, CA',
@@ -47,7 +47,7 @@ class BorrowerController extends Controller
 
             'Aadhar_Number' => 'nullable|integer|digits:12',
         ], [
-            'auth_user_emp_id.exists' => 'Auth user employee id is invalid',
+            // 'auth_user_emp_id.exists' => 'Auth user employee id is invalid',
             'name_prefix.*' => 'The name prefix field is invalid. Please provide the name prefix as Mr, Miss, Mrs, Prof, Dr, CA',
             'gender.*' => 'The gender field is invalid. Please provide the gender as Male, Female, Transgender, Rather not say',
             'marital_status.*' => 'The marital status field is invalid. Please provide the marital status as Married, Unmarried, Single, Divorced, Widowed',
@@ -83,7 +83,7 @@ class BorrowerController extends Controller
                 $user->state = $request->state ? $request->state : null;
                 $user->pan_card_number = strtoupper($request->pan_card_number);
 
-                $user->uploaded_by = $request->auth_user_id;
+                // $user->uploaded_by = $request->auth_user_id;
 
                 $user->Customer_Type = $request->Customer_Type ? $request->Customer_Type : null;
                 $user->Resident_Status = $request->Resident_Status ? $request->Resident_Status : null;
@@ -256,7 +256,6 @@ class BorrowerController extends Controller
                 $data = $user->save();
 
                 // borrower agreement
-
                 if (!empty($request->agreement_id)) {
                     $borrower_agreement = new BorrowerAgreement();
                     $borrower_agreement->borrower_id = $user->id;
@@ -266,7 +265,7 @@ class BorrowerController extends Controller
                 }
 
                 // notification fire
-                createNotification($request->auth_user_id, 1, 'new_borrower', 'New borrower, ' . $request->name_prefix . ' ' . $request->full_name . ' added by ' . $request->auth_user_emp_id);
+                // createNotification($request->auth_user_id, 1, 'new_borrower', 'New borrower, ' . $request->name_prefix . ' ' . $request->full_name . ' added by ' . $request->auth_user_emp_id);
 
                 // activity log
                 $logData = [
@@ -274,7 +273,7 @@ class BorrowerController extends Controller
                     'title' => 'New borrower created',
                     'desc' => 'New borrower, ' . $request->full_name . ' created by ' . $request->auth_user_emp_id
                 ];
-                activityLog($logData);
+                // activityLog($logData);
 
                 DB::commit();
                 // return redirect()->route('user.borrower.list')->with('success', 'Borrower created');
@@ -283,7 +282,7 @@ class BorrowerController extends Controller
                 DB::rollback();
                 // $error['email'] = 'Something went wrong';
                 // return redirect(route('user.borrower.create'))->withErrors($error)->withInput($request->all());
-                return response()->json(['status' => 400, 'message' => $e], 400);
+                return response()->json(['status' => 400, 'message' => 'Something happened'], 400);
             }
         } else {
             return response()->json(['status' => 400, 'message' => $validate->errors()->first()], 400);
@@ -291,7 +290,7 @@ class BorrowerController extends Controller
     }
 
     public function borrowerList() {
-        $borrowerData = Borrower::with('agreement', 'borrowerAgreementRfq')->get();
+        $borrowerData = Borrower::with('agreement', 'borrowerAgreementRfq')->latest('id')->get();
 
         if ($borrowerData->count() > 0) {
             $data = [];

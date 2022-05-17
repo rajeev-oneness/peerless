@@ -51,6 +51,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/{id}/update', [BorrowerController::class, 'update'])->name('user.borrower.update');
         Route::post('/destroy', [BorrowerController::class, 'destroy'])->name('user.borrower.destroy');
         Route::post('/csv/upload', [BorrowerController::class, 'upload'])->name('user.borrower.csv.upload');
+        Route::post('/csv/upload/test', [BorrowerController::class, 'uploadTest'])->name('user.borrower.csv.upload.test');
 
         // borrwoer agreement setup
         Route::get('/{id}/agreement/setup', [BorrowerController::class, 'agreementSetups'])->name('user.borrower.agreement.setup');

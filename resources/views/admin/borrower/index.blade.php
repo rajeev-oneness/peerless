@@ -16,6 +16,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
+                            <a href="#csvUploadModalTest" data-toggle="modal" class="btn btn-sm btn-primary"> <i class="fas fa-file-csv"></i> Upload CSV test</a>
                             <a href="#csvUploadModal" data-toggle="modal" class="btn btn-sm btn-primary"> <i class="fas fa-file-csv"></i> Upload CSV</a>
                             <a href="{{route('user.borrower.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create new borrower</a>
                         </div>
@@ -26,7 +27,7 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                                <strong>{{ Session::get('message') }}</strong> 
+                                <strong>{{ Session::get('message') }}</strong>
                             </div>
                         @endif
 
@@ -152,6 +153,25 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="{{route('user.borrower.csv.upload')}}" enctype="multipart/form-data" id="borrowerCsvUpload">
+                    @csrf
+                    <input type="file" name="file" class="form-control" accept=".csv">
+                    <br>
+                    <button type="submit" class="btn btn-sm btn-primary" id="csvImportBtn">Import <i class="fas fa-upload"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="csvUploadModalTest" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Import CSV data
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{{route('user.borrower.csv.upload.test')}}" enctype="multipart/form-data" id="borrowerCsvUpload">
                     @csrf
                     <input type="file" name="file" class="form-control" accept=".csv">
                     <br>
