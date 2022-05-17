@@ -510,14 +510,14 @@ class BorrowerController extends Controller
             foreach($borrowerData as $borrowerKey => $borrowerValue) {
                 $agreement = [];
 
-                if($borrowerValue->agreement) {
-                    foreach ($borrowerValue->agreement as $key => $value) {
-                        $agreement[] = [
-                            'id' => $value->agreementDetails->id,
-                            'name' => $value->agreementDetails->name
-                        ];
-                    }
-                }
+                // if($borrowerValue->agreement) {
+                //     foreach ($borrowerValue->agreement as $key => $value) {
+                //         $agreement[] = [
+                //             'id' => $value->agreementDetails->id,
+                //             'name' => $value->agreementDetails->name
+                //         ];
+                //     }
+                // }
 
                 $data[] = [
                     'application_id' => $borrowerValue->application_id,
@@ -700,7 +700,7 @@ class BorrowerController extends Controller
                     'Ancestral' => $borrowerValue->Ancestral,
                     'Staying_Since' => $borrowerValue->Staying_Since,
                     'EMPLOYERRS' => $borrowerValue->EMPLOYERRS,
-                    'agreement_details' => $agreement
+                    // 'agreement_details' => $agreement
                 ];
             }
 
