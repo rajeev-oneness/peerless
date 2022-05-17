@@ -255,24 +255,31 @@ class BorrowerController extends Controller
 
                 $data = $user->save();
 
+
+                $borrower_agreement = new BorrowerAgreement();
+                $borrower_agreement->borrower_id = $user->id;
+                // $borrower_agreement->agreement_id = $request->agreement_id;
+                $borrower_agreement->application_id = $request->application_id;
+                $borrower_agreement->save();
+
                 // borrower agreement
-                if (!empty($request->agreement_id)) {
+                /* if (!empty($request->agreement_id)) {
                     $borrower_agreement = new BorrowerAgreement();
                     $borrower_agreement->borrower_id = $user->id;
                     $borrower_agreement->agreement_id = $request->agreement_id;
                     $borrower_agreement->uploaded_by = $request->auth_user_id;
                     $borrower_agreement->save();
-                }
+                } */
 
                 // notification fire
                 // createNotification($request->auth_user_id, 1, 'new_borrower', 'New borrower, ' . $request->name_prefix . ' ' . $request->full_name . ' added by ' . $request->auth_user_emp_id);
 
                 // activity log
-                $logData = [
+                /* $logData = [
                     'type' => 'new_borrower',
                     'title' => 'New borrower created',
                     'desc' => 'New borrower, ' . $request->full_name . ' created by ' . $request->auth_user_emp_id
-                ];
+                ]; */
                 // activityLog($logData);
 
                 DB::commit();
