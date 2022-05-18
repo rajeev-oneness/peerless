@@ -34,6 +34,24 @@ class AgreementController extends Controller
     public function agreementDownload(Request $request)
     {
         $validate = Validator::make($request->all(), [
+            'application_id' => 'required'
+        ]);
+
+        if (!$validate->fails()) {
+            $agreementData = BorrowerAgreement::where('application_id', $request->application_id)->first();
+
+            $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $agreementData->borrower_id)->where('agreement_id', $agreementData->agreement_id)->count();
+
+            if ($borrowerAgreementDataExists > 0) {
+                return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'], 200);
+            } else {
+                return response()->json(['status' => 400, 'message' => 'No document found'], 400);
+            }
+        } else {
+            return response()->json(['status' => 400, 'message' => $validate->errors()->first()], 400);
+        }
+
+        /* $validate = Validator::make($request->all(), [
             'auth_user_id' => 'required|integer|min:1',
             'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
             'application_id'=> 'required',
@@ -64,6 +82,6 @@ class AgreementController extends Controller
             }
         } else {
             return response()->json(['status' => 400, 'message' => $validate->errors()->first()], 400);
-        }
+        } */
     }
 }
