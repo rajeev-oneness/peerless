@@ -36,6 +36,6 @@ Route::middleware('jwt.auth')->prefix('auth')->group(function() {
     // agreement
     Route::prefix('agreement')->group(function() {
         Route::get('list', [AgreementController::class, 'agreementList']);
-        Route::get('download', [AgreementController::class, 'agreementDownload']);
+        Route::post('download', [AgreementController::class, 'agreementDownload']);
     });
 });
