@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Borrower;
 use App\Models\Agreement;
 use App\Models\AgreementRfq;
+use App\Models\BorrowerAgreement;
 
 class AgreementController extends Controller
 {
@@ -40,13 +41,20 @@ class AgreementController extends Controller
         if (!$validate->fails()) {
             $agreementData = BorrowerAgreement::where('application_id', $request->application_id)->first();
 
-            $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $agreementData->borrower_id)->where('agreement_id', $agreementData->agreement_id)->count();
+            if ($agreementData) {
+                // return response()->json(['status' => 200, 'message' => $agreementData], 200);
 
-            if ($borrowerAgreementDataExists > 0) {
-                return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'], 200);
+                $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $agreementData->borrower_id)->where('agreement_id', $agreementData->agreement_id)->count();
+
+                if ($borrowerAgreementDataExists > 0) {
+                    return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'], 200);
+                } else {
+                    return response()->json(['status' => 400, 'message' => 'No document found'], 400);
+                }
             } else {
-                return response()->json(['status' => 400, 'message' => 'No document found'], 400);
+                return response()->json(['status' => 400, 'message' => 'No agreement found for this application id'], 400);
             }
+
         } else {
             return response()->json(['status' => 400, 'message' => $validate->errors()->first()], 400);
         }
