@@ -13,7 +13,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// API ROUTE PDF DOWNLOAD
+// API ROUTE PDF DOWNLOAD - no auth needed
 Route::get('user/borrower/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
 
 // user common routes
@@ -64,9 +64,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/agreement/document/upload', [BorrowerController::class, 'uploadToServer'])->name('user.borrower.agreement.document.upload');
         Route::post('/agreement/document/show', [BorrowerController::class, 'showDocument'])->name('user.borrower.agreement.document.show');
         Route::post('/agreement/document/verify', [BorrowerController::class, 'verifyDocument'])->name('user.borrower.agreement.document.verify');
+        Route::post('/agreement/stamp/use/', [BorrowerController::class, 'stampUseInAgreement'])->name('user.borrower.agreement.stamp.use');
 
         // pdf
-        // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/{borrowerAgreementsId}/view/web', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view.web');
+        // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view/{borrowerAgreementsId}', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-3/view', [PDFController::class, 'showDynamicPdfPage3'])->name('user.borrower.agreement.pdf.page3.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-24/view', [PDFController::class, 'showDynamicPdfPage24'])->name('user.borrower.agreement.pdf.page24.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-25/view', [PDFController::class, 'showDynamicPdfPage25'])->name('user.borrower.agreement.pdf.page25.view');

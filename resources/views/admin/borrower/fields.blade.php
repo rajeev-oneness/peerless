@@ -388,7 +388,7 @@
 
 <!-- view pdf MODAL -->
 <div class="modal" id="viewPdfModal" data-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">View PDF</h5>
@@ -398,18 +398,211 @@
             </div>
             <div class="modal-body">
                 <p class="small mb-2">Main agreement</p>
-                <a href="{{ route('user.borrower.agreement.pdf.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
+                <a href="{{ route('user.borrower.agreement.pdf.view.web', [$data->borrower_id, $data->agreement_id, $id]) }}" class="btn btn-sm btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> View PDF</a>
 
                 <br><br>
 
                 <p class="small mb-2">Stamp paper</p>
-                <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
+                {{-- <a href="{{ route('user.borrower.agreement.pdf.page3.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 3-Rs 100 Stamp paper</a>
 
                 <a href="{{ route('user.borrower.agreement.pdf.page24.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 24-Rs 10 Stamp paper</a>
 
                 <a href="{{ route('user.borrower.agreement.pdf.page25.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 25-Rs 50 Stamp paper</a>
 
-                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a>
+                <a href="{{ route('user.borrower.agreement.pdf.page31.view', [$data->borrower_id, $data->agreement_id]) }}" class="btn btn-sm btn-primary mb-2" target="_blank"><i class="fas fa-file-pdf"></i> Page 31-Rs 10 Stamp paper</a> --}}
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page 3-Rs 100 Stamp paper</a>
+                      </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> Page 24-Rs 10 Stamp</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Page 25-Rs 50 Stamp </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="home-tab1" data-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true"> Page 31-Rs 10 Stamp</a>
+                      </li>
+
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 10Rs Estamps</div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (availableStamp(10)->count() > 0)
+                                            @foreach (availableStamp(10) as $key => $stamp)
+
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $stamp->unique_stamp_code }}</td>
+                                                        <td class="text-right">
+                                                            <div class="single-line">
+                                                                @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 24)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                                @else
+                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                                @endif
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Data Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="home1" role="tabpanel" aria-labelledby="home-tab1">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 10Rs Estamps</div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (availableStamp(10)->count() > 0)
+                                            @foreach (availableStamp(10) as $key => $stamp)
+
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $stamp->unique_stamp_code }}</td>
+                                                        <td class="text-right">
+                                                            <div class="single-line">
+                                                                @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 31)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                                @else
+                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                                @endif
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Data Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(50)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 50Rs Estamps</div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (availableStamp(50)->count() > 0)
+                                            @foreach (availableStamp(50) as $key => $stamp)
+
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stamp->unique_stamp_code }}</td>
+                                                    <td class="text-right">
+                                                        <div class="single-line">
+                                                            @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }},25)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                            @else
+                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                            @endif
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Date Found</td>
+                                            </tr>
+                                         @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(100)->count() }}</h6>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title font-weight-bold">All 100Rs Estamps</div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Unique Stamp Code</th>
+                                            <th class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (availableStamp(100) as $key => $stamp)
+                                            @if (availableStamp(100)->count() > 0)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stamp->unique_stamp_code }}</td>
+                                                    <td class="text-right">
+                                                        <div class="single-line">
+                                                            @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 3)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                            @else
+                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                            @endif
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                <tr>
+                                                    <td>No Date Found</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
@@ -420,7 +613,7 @@
 
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <!-- bs stepper --> 
+    <!-- bs stepper -->
     <script src="{{ asset('admin/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
     <!-- Select2 -->
     <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
@@ -1032,5 +1225,46 @@
         var natureOfLoanSelected = $('select[name="field_name[natureofloan]"]').val();
         natureOfLoanCheck(natureOfLoanSelected);
         // Nature of Loan on click ends
+
+
+        function useStamp(stamp_id,borrower_id,agreement_id,page_no){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You want to use this stamp',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#f44336',
+                cancelButtonColor: '#8b8787',
+                customClass: {
+                    confirmButton: 'box-shadow-danger',
+                },
+                confirmButtonText: 'Yes, use it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('user.borrower.agreement.stamp.use') }}',
+                        method: 'post',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            stamp_id: stamp_id,
+                            borrower_id: borrower_id,
+                            agreement_id: agreement_id,
+                            page_no: page_no
+                        },
+                        success: function(result) {
+                            if (result.response_code == 200) {
+                                $('#stamp_'+stamp_id).replaceWith(`<a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>`);
+                                Swal.fire(
+                                    'Used!',
+                                    'This stamp is successfully used.',
+                                    'success'
+                                )
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
     </script>
 @endsection

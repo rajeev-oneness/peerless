@@ -16,7 +16,7 @@
                             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                 <i class="fas fa-expand"></i>
                             </button>
-                            <a href="#csvUploadModalTest" data-toggle="modal" class="btn btn-sm btn-primary"> <i class="fas fa-file-csv"></i> Upload CSV test</a>
+                            {{-- <a href="#csvUploadModalTest" data-toggle="modal" class="btn btn-sm btn-primary"> <i class="fas fa-file-csv"></i> Upload CSV test</a> --}}
                             <a href="#csvUploadModal" data-toggle="modal" class="btn btn-sm btn-primary"> <i class="fas fa-file-csv"></i> Upload CSV</a>
                             <a href="{{route('user.borrower.create')}}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Create new borrower</a>
                         </div>

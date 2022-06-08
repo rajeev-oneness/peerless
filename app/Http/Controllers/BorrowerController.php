@@ -11,6 +11,8 @@ use App\Models\AgreementRfq;
 use App\Models\Borrower;
 use App\Models\Product;
 use App\Models\BorrowerAgreement;
+use App\Models\BorrowerStamp;
+use App\Models\Estamp;
 use App\Models\FieldParent;
 use App\Models\UserType;
 use Exception;
@@ -964,100 +966,19 @@ class BorrowerController extends Controller
         return redirect()->route('user.borrower.list');
     }
 
-    public function uploadTest(Request $request)
-    {
-        if (!empty($request->file)) {
-            // if ($request->input('submit') != null ) {
-            $file = $request->file('file');
-            // File Details
-            $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $tempPath = $file->getRealPath();
-            $fileSize = $file->getSize();
-            $mimeType = $file->getMimeType();
+    public function stampUseInAgreement(Request $request){
+        $stamp_id = $request->stamp_id;
+        $borrower_id = $request->borrower_id;
+        $agreement_id = $request->agreement_id;
 
-            // Valid File Extensions
-            $valid_extension = array("csv");
-            // 50MB in Bytes
-            $maxFileSize = 50097152;
-            // Check file extension
-            if (in_array(strtolower($extension), $valid_extension)) {
-                // Check file size
-                if ($fileSize <= $maxFileSize) {
-                    // File upload location
-                    $location = 'upload/borrower/csv';
-                    // Upload file
-                    $file->move($location, $filename);
-                    // Import CSV to Database
-                    $filepath = public_path($location . "/" . $filename);
-                    // Reading file
-                    $file = fopen($filepath, "r");
-                    $importData_arr = array();
-                    $i = 0;
-                    while (($filedata = fgetcsv($file, 10000, ",")) !== FALSE) {
-                        $num = count($filedata);
-                        // Skip first row
-                        if ($i == 0) {
-                            $i++;
-                            continue;
-                        }
-                        for ($c = 0; $c < $num; $c++) {
-                            $importData_arr[$i][] = $filedata[$c];
-                        }
-                        $i++;
-                    }
-                    fclose($file);
+        $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$borrower_id)->where('agreement_id',$agreement_id)->first();
+        $borrower_agreement_id = $borrower_agreement_details->id;
 
-                    // echo '<pre>';print_r($importData_arr);exit();
-
-                    // Insert into database
-                    foreach ($importData_arr as $importData) {
-                        $insertData = array(
-                            "name" => $importData[0],
-                            "image" => isset($importData[1]) ? $importData[1] : null,
-                            "category_id" => isset($importData[2]) ? $importData[2] : null,
-                            "level1_id" => isset($importData[3]) ? $importData[3] : null,
-                            "level2_id" => isset($importData[4]) ? $importData[4] : null,
-                            "level3_id" => isset($importData[5]) ? $importData[5] : null,
-                            "level4_id" => isset($importData[6]) ? $importData[6] : null,
-                            "level5_id" => isset($importData[7]) ? $importData[7] : null,
-                            "description" => isset($importData[8]) ? $importData[8] : null,
-                            "brand" => isset($importData[9]) ? $importData[9] : null,
-                            "code" => isset($importData[10]) ? $importData[10] : null,
-                            "stock" => isset($importData[11]) ? $importData[11] : null,
-                            "price" => isset($importData[12]) ? $importData[12] : null,
-                            "offered_price" => isset($importData[13]) ? $importData[13] : null,
-                            "gst" => isset($importData[14]) ? $importData[14] : null,
-                            "author" => isset($importData[15]) ? $importData[15] : null,
-                            "pages" => isset($importData[16]) ? $importData[16] : null,
-                            "edition" => isset($importData[17]) ? $importData[17] : null,
-                            "language" => isset($importData[18]) ? $importData[18] : null,
-                            "isbn_no" => isset($importData[19]) ? $importData[19] : null,
-                            "binding" => isset($importData[20]) ? $importData[20] : null,
-                            "publish_year" => isset($importData[21]) ? $importData[21] : null,
-                            "weight" => isset($importData[22]) ? $importData[22] : null,
-                            "weight_denomination" => isset($importData[23]) ? $importData[23] : null,
-                            "views" => isset($importData[24]) ? $importData[24] : null,
-                            "meta_key" => isset($importData[25]) ? $importData[25] : null,
-                            "meta_description" => isset($importData[26]) ? $importData[26] : null,
-                            "product_tags" => isset($importData[27]) ? $importData[27] : null,
-                            "seo_keywords" => isset($importData[28]) ? $importData[28] : null,
-                            "shipping" => isset($importData[29]) ? $importData[29] : null,
-                        );
-                        // echo '<pre>';print_r($insertData);exit();
-                        Product::insertData($insertData);
-                    }
-                    Session::flash('message', 'Import Successful.');
-                } else {
-                    Session::flash('message', 'File too large. File must be less than 50MB.');
-                }
-            } else {
-                Session::flash('message', 'Invalid File Extension. supported extensions are ' . implode(', ', $valid_extension));
-            }
-        } else {
-            Session::flash('message', 'No file found.');
-        }
-
-        return redirect()->route('user.borrower.list');
+        $estamp = Estamp::find($stamp_id);
+        $estamp->used_in_agreement = $borrower_agreement_id;
+        $estamp->used_flag =  1;
+        $estamp->pdf_page_no = $request->page_no;
+        $estamp->save();
+        return response()->json(['response_code' => 200, 'tile' => 'success', 'message' => 'Stamp Used Successfully']);
     }
 }

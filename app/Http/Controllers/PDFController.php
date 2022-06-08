@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agreement;
 use App\Models\AgreementData;
+use App\Models\BorrowerAgreement;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -52,16 +53,21 @@ class PDFController extends Controller
                 break;
             }
         }
-        
+
         return $response;
     }
 
     // dynamic PDF after filling up data
-    public function showDynamicPdf(Request $request, $borrowerId, $agreementId)
+    // public function showDynamicPdf($borrowerId, $agreementId, $borrowerAgreementsId)
+    public function showDynamicPdf(Request $request, $borrowerId, $agreementId, $borrowerAgreementsId)
     {
+        // dd($request->all());
         $data = (object)[];
         $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
 
+        $data->borrowerId = $borrowerId;
+        $data->agreementId = $agreementId;
+        $data->borrowerAgreementsId = $borrowerAgreementsId;
         $data->date = date('d-m-Y');
         $customBorrowerName = str_replace(' ', '-', strtolower($this->getData($agreement, 'nameoftheborrower')));
         $data->fileName = $customBorrowerName.'-personal-loan-agreement-'.$data->date;
@@ -73,7 +79,7 @@ class PDFController extends Controller
         $data->nameofthecoborrower = $this->getData($agreement, 'nameofthecoborrower');
         $data->prefixoftheguarantor = $this->getData($agreement, 'prefixoftheguarantor');
         $data->nameoftheguarantor = $this->getData($agreement, 'nameoftheguarantor');
-        // loan application number is loan reference number, application number is removed 
+        // loan application number is loan reference number, application number is removed
         $data->loanreferencenumber = $this->getData($agreement, 'loanreferencenumber');
         // added again
         $data->loanapplicationnumber = $this->getData($agreement, 'loanapplicationnumber');

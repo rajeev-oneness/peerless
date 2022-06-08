@@ -27,27 +27,35 @@ class EstampController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255|unique:estamps',
-            'file' => 'required|mimes:png,jpg,jpeg,pdf',
+            'back_page' => 'required|mimes:png,jpg,jpeg,pdf',
+            'front_page' => 'required|mimes:png,jpg,jpeg,pdf',
         ], [
-            'file.required' => 'This field is required',
+            'back_page.required' => 'This field is required',
+            'front_page.required' => 'This field is required',
             'unique_stamp_code.required' => 'This field is required',
             'unique_stamp_code.max' => 'Maximum character reached',
             'unique_stamp_code.unique' => 'Already taken'
         ]);
 
-        if($request->hasFile('file')){
-            $file = $request->file('file');
-            $fileName = fileUpload($file,'estamp');
+        if($request->hasFile('back_page')){
+            $file = $request->file('back_page');
+            $fileNameForBack = fileUpload($file,'estamp');
         }else{
-            $fileName = null;
+            $fileNameForBack = null;
+        }
+        if($request->hasFile('front_page')){
+            $file = $request->file('front_page');
+            $fileNameForFront = fileUpload($file,'estamp');
+        }else{
+            $fileNameForFront = null;
         }
 
         $estamp = new Estamp();
         $estamp->unique_stamp_code = $request->unique_stamp_code;
-        $estamp->file_path = $fileName;
+        $estamp->back_file_path = $fileNameForBack;
+        $estamp->front_file_path = $fileNameForFront;
         $estamp->amount = $request->amount;
         $estamp->save();
 
@@ -97,22 +105,34 @@ class EstampController extends Controller
     {
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255',
-            'file' => 'nullable|mimes:png,jpg,jpeg,pdf',
+            'back_page' => 'required|mimes:png,jpg,jpeg,pdf',
+            'front_page' => 'required|mimes:png,jpg,jpeg,pdf',
         ], [
+            'back_page.required' => 'This field is required',
+            'front_page.required' => 'This field is required',
             'unique_stamp_code.required' => 'This field is required',
             'unique_stamp_code.max' => 'Maximum character reached',
+            'unique_stamp_code.unique' => 'Already taken'
         ]);
 
         $estamp = Estamp::findOrFail($id);
 
-        if($request->hasFile('file')){
-            $image = $request->file('file');
-            $fileName = fileUpload($image,'estamp');
+        if($request->hasFile('back_page')){
+            $image = $request->file('back_page');
+            $fileNameForBack = fileUpload($image,'estamp');
         }else{
-            $fileName = $estamp->file_path;
-        }        
+            $fileNameForBack = $estamp->file_path;
+        }
+        
+        if($request->hasFile('front_page')){
+            $image = $request->file('front_page');
+            $fileNameForFront = fileUpload($image,'estamp');
+        }else{
+            $fileNameForFront = $estamp->file_path;
+        }
         $estamp->unique_stamp_code = $request->unique_stamp_code;
-        $estamp->file_path = $fileName;
+        $estamp->back_file_path = $fileNameForBack;
+        $estamp->front_file_path = $fileNameForFront;
         $estamp->save();
 
         return redirect()->route('user.estamp.list')->with('success', 'Estamp updated');
@@ -129,7 +149,6 @@ class EstampController extends Controller
         Estamp::where('id', $request->id)->delete();
         return response()->json(['error' => false, 'title' => 'Deleted', 'message' => 'Estamp deleted', 'type' => 'success']);
     }
-
 
 
 }
