@@ -310,6 +310,8 @@ class PDFController extends Controller
         $data->postdatecheque10date = ($this->getData($agreement, 'postdatecheque10date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque10date'))) : '';
         $data->postdatecheque10amount = $this->getData($agreement, 'postdatecheque10amount');
 
+        dd($data);
+        
         return view('admin.agreement.dynamic.personal-loan-agreement', compact('data'));
     }
 
