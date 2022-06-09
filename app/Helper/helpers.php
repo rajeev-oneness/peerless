@@ -1357,6 +1357,11 @@ function availableStamp($amount){
     return $availableStamp;
 }
 
+function availableStampNew($amount){
+    $availableStamp = Estamp::where('amount',$amount)->where('used_flag', 0)->get();
+    return $availableStamp;
+}
+
 //Check borrower used the specific stamp or not
 function checkUsedStamp($stamp_id,$borrower_id,$agreement_id){
     $borrower_agreement_details = BorrowerAgreement::where('borrower_id',$borrower_id)->where('agreement_id',$agreement_id)->first();
@@ -1385,6 +1390,20 @@ function specificStampWiseBorrowerDetails($stamp_id){
         $borrower_details = Borrower::find($borrower_agreement_details->borrower_id);
         $borrower_name = $borrower_details->full_name;
         return $borrower_name;
+    }else{
+        return null;
+    }
+}
+
+function specificStampWiseBorrowerDetailedLink($stamp_id){
+    $estamp_details = Estamp::find($stamp_id);
+    if ($estamp_details->used_flag == 1) {
+        $borrower_agreement_details = BorrowerAgreement::find($estamp_details->used_in_agreement);
+        $borrower_details = Borrower::find($borrower_agreement_details->borrower_id);
+        $borrower_agreements_id = $borrower_agreement_details->id;
+        $borrower_name = $borrower_details->full_name;
+        return array('borrower_agreements_id' => $borrower_agreements_id , 'borrower_name' => $borrower_name);
+        // return '<a href="'.url('/user/borrower/'.$borrower_agreements_id.'/agreement').'">'.$borrower_name.'</a>';
     }else{
         return null;
     }

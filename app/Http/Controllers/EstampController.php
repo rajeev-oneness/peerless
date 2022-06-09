@@ -30,13 +30,17 @@ class EstampController extends Controller
         $request->validate([
             'unique_stamp_code' => 'required|string|min:1|max:255|unique:estamps',
             'back_page' => 'required|mimes:png,jpg,jpeg,pdf',
+            'front_text' => 'max:250',
+            'back_text' => 'max:250',
             'front_page' => 'required|mimes:png,jpg,jpeg,pdf',
         ], [
             'back_page.required' => 'This field is required',
             'front_page.required' => 'This field is required',
             'unique_stamp_code.required' => 'This field is required',
             'unique_stamp_code.max' => 'Maximum character reached',
-            'unique_stamp_code.unique' => 'Already taken'
+            'unique_stamp_code.unique' => 'Already taken',
+            'front_text.max' => 'Maximum character reached',
+            'back_text.max' => 'Maximum character reached'
         ]);
 
         if($request->hasFile('back_page')){
@@ -56,6 +60,8 @@ class EstampController extends Controller
         $estamp->unique_stamp_code = $request->unique_stamp_code;
         $estamp->back_file_path = $fileNameForBack;
         $estamp->front_file_path = $fileNameForFront;
+        $estamp->front_text = $request->front_text;
+        $estamp->back_text = $request->back_text;
         $estamp->amount = $request->amount;
         $estamp->save();
 

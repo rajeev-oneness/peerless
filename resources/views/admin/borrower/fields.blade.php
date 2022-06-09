@@ -416,15 +416,14 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="home-tab1" data-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true"> Page 31-Rs 10 Stamp</a>
-                      </li>
-
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h6 class="badge badge-primary">Available Stamp: <span id="span-contact">{{ availableStampNew(100)->count() }}</span></h6>
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title font-weight-bold">All 10Rs Estamps</div>
+                                <div class="card-title font-weight-bold">All Available 100Rs Estamps</div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
@@ -436,27 +435,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (availableStamp(10)->count() > 0)
-                                            @foreach (availableStamp(10) as $key => $stamp)
+                                        
+                                        @if (availableStampNew(100)->count() > 0)
+                                            @foreach (availableStampNew(100) as $key => $stamp)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $stamp->unique_stamp_code }}</td>
+                                                    <td class="text-right">
+                                                        <div class="single-line">
+                                                            @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 3)" id="stamp_{{ $stamp->id }}_3">Use</a>
+                                                            @else
+                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}_3">Used</a>
+                                                            @endif
 
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $stamp->unique_stamp_code }}</td>
-                                                        <td class="text-right">
-                                                            <div class="single-line">
-                                                                @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
-                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 24)" id="stamp_{{ $stamp->id }}">Use</a>
-                                                                @else
-                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
-                                                                @endif
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                        </div>
+                                                    </td>
+                                                </tr>                                            
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td>No Data Found</td>
+                                                <td>No Date Found</td>
                                             </tr>
                                         @endif
                                     </tbody>
@@ -464,11 +463,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="home1" role="tabpanel" aria-labelledby="home-tab1">
-                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(10)->count() }}</h6>
+                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h6 class="badge badge-primary">Available Stamp: <span id="span-home">{{ availableStampNew(10)->count() }}</span></h6>
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title font-weight-bold">All 10Rs Estamps</div>
+                                <div class="card-title font-weight-bold">All Available 10Rs Estamps</div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
@@ -480,8 +479,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (availableStamp(10)->count() > 0)
-                                            @foreach (availableStamp(10) as $key => $stamp)
+                                        @if (availableStampNew(10)->count() > 0)
+                                            @foreach (availableStampNew(10) as $key => $stamp)
 
                                                     <tr>
                                                         <td>{{ $key + 1 }}</td>
@@ -489,9 +488,9 @@
                                                         <td class="text-right">
                                                             <div class="single-line">
                                                                 @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
-                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 31)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 24)" id="stamp_{{ $stamp->id }}_24">Use</a>
                                                                 @else
-                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}_24">Used</a>
                                                                 @endif
 
                                                             </div>
@@ -509,10 +508,10 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(50)->count() }}</h6>
+                        <h6 class="badge badge-primary">Available Stamp: <span id="span-profile">{{ availableStampNew(50)->count() }}</span></h6>
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title font-weight-bold">All 50Rs Estamps</div>
+                                <div class="card-title font-weight-bold">All Available 50Rs Estamps</div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
@@ -524,8 +523,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (availableStamp(50)->count() > 0)
-                                            @foreach (availableStamp(50) as $key => $stamp)
+                                        @if (availableStampNew(50)->count() > 0)
+                                            @foreach (availableStampNew(50) as $key => $stamp)
 
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
@@ -533,9 +532,9 @@
                                                     <td class="text-right">
                                                         <div class="single-line">
                                                             @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
-                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }},25)" id="stamp_{{ $stamp->id }}">Use</a>
+                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }},25)" id="stamp_{{ $stamp->id }}_25">Use</a>
                                                             @else
-                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
+                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}_25">Used</a>
                                                             @endif
 
                                                         </div>
@@ -552,11 +551,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <h6 class="badge badge-primary">Available Stamp: {{ availableStamp(100)->count() }}</h6>
+                    <div class="tab-pane fade" id="home1" role="tabpanel" aria-labelledby="home-tab1">
+                        <h6 class="badge badge-primary">Available Stamp: <span id="span-home-tab1">{{ availableStampNew(10)->count() }}</span></h6>
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title font-weight-bold">All 100Rs Estamps</div>
+                                <div class="card-title font-weight-bold">All Available 10Rs Estamps</div>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-bordered table-hover table-striped" id="showRoleTable">
@@ -568,34 +567,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (availableStamp(100) as $key => $stamp)
-                                            @if (availableStamp(100)->count() > 0)
-                                                <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $stamp->unique_stamp_code }}</td>
-                                                    <td class="text-right">
-                                                        <div class="single-line">
-                                                            @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
-                                                                <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 3)" id="stamp_{{ $stamp->id }}">Use</a>
-                                                            @else
-                                                                <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>
-                                                            @endif
+                                        @if (availableStampNew(10)->count() > 0)
+                                            @foreach (availableStampNew(10) as $key => $stamp)
 
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td>No Date Found</td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
+                                                    <tr>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $stamp->unique_stamp_code }}</td>
+                                                        <td class="text-right">
+                                                            <div class="single-line">
+                                                                @if (checkUsedStamp( $stamp->id,$data->borrower_id,$data->agreement_id ) == 0)
+                                                                    <a href="javascript: void(0)" class="badge badge-dark action-button" title="View" onclick="useStamp({{ $stamp->id }},{{ $data->borrower_id }}, {{  $data->agreement_id }}, 31)" id="stamp_{{ $stamp->id }}_31">Use</a>
+                                                                @else
+                                                                    <a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}_31">Used</a>
+                                                                @endif
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No Data Found</td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
-                  </div>
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>
@@ -1221,6 +1221,12 @@
 
 
         function useStamp(stamp_id,borrower_id,agreement_id,page_no){
+            // console.log('stamp_id:- ' + stamp_id);
+            // console.log('borrower_id:- ' + borrower_id);
+            // console.log('agreement_id:- ' + agreement_id);
+            // console.log('page_no:- ' + page_no);
+            // return true;
+
             Swal.fire({
                 title: 'Are you sure?',
                 text: 'You want to use this stamp',
@@ -1246,12 +1252,33 @@
                         },
                         success: function(result) {
                             if (result.response_code == 200) {
-                                $('#stamp_'+stamp_id).replaceWith(`<a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_{{ $stamp->id }}">Used</a>`);
-                                Swal.fire(
-                                    'Used!',
-                                    'This stamp is successfully used.',
-                                    'success'
-                                )
+                                if(result.tile == 'success'){
+                                    var availableStampCount = result.availableStampCount;
+                                    $('#stamp_'+stamp_id+'_'+page_no).replaceWith(`<a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_`+stamp_id+`_`+page_no+`">Used</a>`);
+                                    if(page_no == 3){
+                                        $('#span-contact').text(availableStampCount);
+                                    }else if(page_no == 24) {
+                                        $('#span-home').text(availableStampCount);
+                                    }else if(page_no == 25) {
+                                        $('#span-profile').text(availableStampCount);
+                                    }else if(page_no == 31) {
+                                        $('#span-home1').text(availableStampCount);
+                                    }
+                                    
+                                    Swal.fire(
+                                        'Used!',
+                                        'This stamp is successfully used.',
+                                        'success'
+                                    )
+                                }else{
+                                    $('#stamp_'+stamp_id+'_'+page_no).replaceWith(`<a href="javascript: void(0)" class="badge badge-danger action-button" title="View" id="stamp_`+stamp_id+`_`+page_no+`">Used</a>`);
+                                    Swal.fire(
+                                        'Used!',
+                                        'This stamp is already used.',
+                                        'error'
+                                    )
+                                }
+                                
                             }
                         }
                     });

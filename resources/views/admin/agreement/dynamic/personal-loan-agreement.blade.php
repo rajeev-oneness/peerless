@@ -631,7 +631,7 @@
             <div class="page-break"></div>
 
             <!-- Page 3 100Rs Stamp Start-->
-            @php
+            {{-- @php
                 $hundred_rs_stamp = avaialbleStampsAgreementWise($data->borrowerAgreementsId,100,3);
 
                 if ($hundred_rs_stamp) {
@@ -678,7 +678,7 @@
                 <p class="page-no">4</p>
             </div>
 
-            @endif
+            @endif --}}
             <div class="page-break"></div>
              <!-- Page 3 100Rs Stamp End-->
 
@@ -4112,7 +4112,7 @@
             <div class="page-break"></div>
 
             <!-- Page 24 10Rs stamp Start-->
-            @php
+            {{-- @php
                 $ten_rs_stamp_for_page_24 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,24);
 
                 if ($ten_rs_stamp_for_page_24) {
@@ -4160,11 +4160,11 @@
                 <p class="page-no">25</p>
             </div>
             <div class="page-break"></div>
-            @endif
+            @endif --}}
             <!-- Page 24 10Rs stamp End-->
 
             <!-- Page 25 50Rs stamp Start-->
-            @php
+            {{-- @php
                 $fifty_rs_stamp_for_page_25 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,50,25);
                 if ($fifty_rs_stamp_for_page_25) {
 
@@ -4209,7 +4209,7 @@
                     @endif
                     <p class="page-no">27</p>
                 </div>
-            @endif
+            @endif --}}
             <div class="page-break"></div>
 
             <!-- Page 25 50Rs stamp End-->
@@ -4601,7 +4601,7 @@
             <div class="page-break"></div>
 
             <!-- Page 31 10Rs stamp Start-->
-            @php
+            {{-- @php
                 $ten_rs_stamp_for_page_31 = avaialbleStampsAgreementWise($data->borrowerAgreementsId,10,31);
                 if ($ten_rs_stamp_for_page_31) {
                     $ten_rs_stamp_for_page_31_back_file_path = $ten_rs_stamp_for_page_31->back_file_path;
@@ -4643,7 +4643,7 @@
                 @endif
                 <p class="page-no">32</p>
             </div>
-            @endif
+            @endif --}}
             <div class="page-break"></div>
             <!-- Page 31 10Rs stamp End-->
             <div class="page" id="page_33">

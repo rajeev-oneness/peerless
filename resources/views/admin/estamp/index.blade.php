@@ -57,11 +57,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="front_text" class="col-sm-2 col-form-label">Front Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('front_text') {{'is-invalid'}} @enderror" id="ten_rs_front_text" name="front_text" placeholder="Please add front page text" value="{{old('front_text')}}" autofocus>                                            
+                                            @error('front_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_front_text_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="unique_stamp_code" class="col-sm-2 col-form-label">Back Page <span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
                                             <input type="file" class="form-control @error('back_page') {{'is-invalid'}} @enderror" id="ten_rs_back_page" name="back_page" placeholder="Unique stamp code" value="{{old('back_page')}}" autofocus>
                                             @error('back_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                             <p class="small mb-0 text-danger" id="ten_rs_back_page_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="back_text" class="col-sm-2 col-form-label">Back Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('back_text') {{'is-invalid'}} @enderror" id="ten_rs_back_text" name="back_text" placeholder="Please add front page text" value="{{old('back_text')}}" autofocus>                                            
+                                            @error('back_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_back_text_err">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -81,7 +99,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
-                                                    <th>Amount(Rs)</th>
                                                     <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
@@ -93,12 +110,18 @@
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
                                                                 <td>{{ $stamp->unique_stamp_code }}</td>
-                                                                <td>{{ $stamp->amount }}</td>
                                                                 <td>
                                                                     @if (specificStampWiseBorrowerDetails($stamp->id) == null)
-                                                                        Not Used
+                                                                        <strong>Not Used</strong>
                                                                     @else
-                                                                        {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                        @php
+                                                                            $usedStampDetails = specificStampWiseBorrowerDetailedLink($stamp->id);
+
+                                                                            $borrower_agreements_id = $usedStampDetails['borrower_agreements_id'];
+                                                                            $borrower_name = $usedStampDetails['borrower_name'];
+
+                                                                        @endphp
+                                                                        <a href="{{ url('/user/borrower/') }}/{{$borrower_agreements_id}}/agreement">{{ $borrower_name }}</a>
                                                                     @endif
                                                                 </td>
                                                                 <td class="text-right">
@@ -144,11 +167,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="front_text" class="col-sm-2 col-form-label">Front Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('front_text') {{'is-invalid'}} @enderror" id="ten_rs_front_text" name="front_text" placeholder="Please add front page text" value="{{old('front_text')}}" autofocus>                                            
+                                            @error('front_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_front_text_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="unique_stamp_code" class="col-sm-2 col-form-label">Back Page <span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
                                             <input type="file" class="form-control @error('back_page') {{'is-invalid'}} @enderror" id="fifty_rs_back_page" name="back_page" placeholder="Unique stamp code" value="{{old('back_page')}}" autofocus>
                                             @error('back_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                             <p class="small mb-0 text-danger" id="fifty_rs_back_page_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="back_text" class="col-sm-2 col-form-label">Back Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('back_text') {{'is-invalid'}} @enderror" id="ten_rs_back_text" name="back_text" placeholder="Please add front page text" value="{{old('back_text')}}" autofocus>                                            
+                                            @error('back_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_back_text_err">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -168,7 +209,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
-                                                    <th>Amount(Rs)</th>
                                                     <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
@@ -180,12 +220,18 @@
                                                         <tr>
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $stamp->unique_stamp_code }}</td>
-                                                            <td>{{ $stamp->amount }}</td>
                                                             <td>
                                                                 @if (specificStampWiseBorrowerDetails($stamp->id) == null)
-                                                                Not Used
+                                                                <strong>Not Used</strong>
                                                                 @else
-                                                                {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                    @php
+                                                                    $usedStampDetails = specificStampWiseBorrowerDetailedLink($stamp->id);
+
+                                                                    $borrower_agreements_id = $usedStampDetails['borrower_agreements_id'];
+                                                                    $borrower_name = $usedStampDetails['borrower_name'];
+
+                                                                @endphp
+                                                                <a href="{{ url('/user/borrower/') }}/{{$borrower_agreements_id}}/agreement">{{ $borrower_name }}</a>
                                                                 @endif
                                                             </td>
                                                             <td class="text-right">
@@ -231,11 +277,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="front_text" class="col-sm-2 col-form-label">Front Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('front_text') {{'is-invalid'}} @enderror" id="ten_rs_front_text" name="front_text" placeholder="Please add front page text" value="{{old('front_text')}}" autofocus>                                            
+                                            @error('front_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_front_text_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="unique_stamp_code" class="col-sm-2 col-form-label">Back Page <span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
                                             <input type="file" class="form-control @error('back_page') {{'is-invalid'}} @enderror" id="hundred_rs_back_page" name="back_page" placeholder="Unique stamp code" value="{{old('back_page')}}" autofocus>
                                             @error('back_page') <p class="small mb-0 text-danger">{{$message}}</p> @enderror
                                             <p class="small mb-0 text-danger" id="hundred_rs_back_page_err">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="back_text" class="col-sm-2 col-form-label">Back Text </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('back_text') {{'is-invalid'}} @enderror" id="ten_rs_back_text" name="back_text" placeholder="Please add front page text" value="{{old('back_text')}}" autofocus>                                            
+                                            @error('back_text') 
+                                            <p class="small mb-0 text-danger">{{$message}}</p> @enderror
+                                            <p class="small mb-0 text-danger" id="ten_rs_back_text_err">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -255,7 +319,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Unique Stamp Code</th>
-                                                    <th>Amount(Rs)</th>
                                                     <th>Used By</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
@@ -266,12 +329,18 @@
                                                         <tr>
                                                             <td>{{ $key + 1 }}</td>
                                                             <td>{{ $stamp->unique_stamp_code }}</td>
-                                                            <td>{{ $stamp->amount }}</td>
                                                             <td>
                                                                 @if (specificStampWiseBorrowerDetails($stamp->id) == null)
-                                                                Not Used
+                                                                <strong>Not Used</strong>
                                                                 @else
-                                                                {{ specificStampWiseBorrowerDetails($stamp->id) }}
+                                                                    @php
+                                                                    $usedStampDetails = specificStampWiseBorrowerDetailedLink($stamp->id);
+
+                                                                    $borrower_agreements_id = $usedStampDetails['borrower_agreements_id'];
+                                                                    $borrower_name = $usedStampDetails['borrower_name'];
+
+                                                                @endphp
+                                                                <a href="{{ url('/user/borrower/') }}/{{$borrower_agreements_id}}/agreement">{{ $borrower_name }}</a>
                                                                 @endif
                                                             </td>
                                                             <td class="text-right">

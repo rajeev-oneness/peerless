@@ -65,6 +65,8 @@ class PDFController extends Controller
         $data = (object)[];
         $agreement = AgreementData::join('agreement_rfqs', 'agreement_data.rfq_id', '=', 'agreement_rfqs.id')->where('borrower_id', $borrowerId)->where('agreement_id', $agreementId)->get();
 
+        // dd($agreement); 
+
         $data->borrowerId = $borrowerId;
         $data->agreementId = $agreementId;
         $data->borrowerAgreementsId = $borrowerAgreementsId;
@@ -310,7 +312,7 @@ class PDFController extends Controller
         $data->postdatecheque10date = ($this->getData($agreement, 'postdatecheque10date') != null) ? date('d-m-Y', strtotime($this->getData($agreement, 'postdatecheque10date'))) : '';
         $data->postdatecheque10amount = $this->getData($agreement, 'postdatecheque10amount');
 
-        //dd($data);
+        // dd($data);
 
         return view('admin.agreement.dynamic.personal-loan-agreement', compact('data'));
     }
