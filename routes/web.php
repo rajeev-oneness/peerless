@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return redirect()->route('home');
     // return view('welcome');
+    return redirect()->route('home');
 })->name('welcome');
 
 Auth::routes();
@@ -15,6 +15,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // API ROUTE PDF DOWNLOAD - no auth needed
 Route::get('user/borrower/{borrowerId}/agreement/{agreementId}/pdf/view', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
+Route::get('user/borrower/{borrowerId}/agreement/{agreementId}/pdf/{borrowerAgreementsId}/view/web', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view.web');
 
 // user common routes
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], function () {
@@ -67,7 +68,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'permission']], funct
         Route::post('/agreement/stamp/use/', [BorrowerController::class, 'stampUseInAgreement'])->name('user.borrower.agreement.stamp.use');
 
         // pdf
-        Route::get('/{borrowerId}/agreement/{agreementId}/pdf/{borrowerAgreementsId}/view/web', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view.web');
+        // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/{borrowerAgreementsId}/view/web', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view.web');
         // Route::get('/{borrowerId}/agreement/{agreementId}/pdf/view/{borrowerAgreementsId}', [PDFController::class, 'showDynamicPdf'])->name('user.borrower.agreement.pdf.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-3/view', [PDFController::class, 'showDynamicPdfPage3'])->name('user.borrower.agreement.pdf.page3.view');
         Route::get('/{borrowerId}/agreement/{agreementId}/pdf/page-24/view', [PDFController::class, 'showDynamicPdfPage24'])->name('user.borrower.agreement.pdf.page24.view');

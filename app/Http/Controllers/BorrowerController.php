@@ -975,10 +975,22 @@ class BorrowerController extends Controller
         $borrower_agreement_id = $borrower_agreement_details->id;
 
         $estamp = Estamp::find($stamp_id);
-        $estamp->used_in_agreement = $borrower_agreement_id;
-        $estamp->used_flag =  1;
-        $estamp->pdf_page_no = $request->page_no;
-        $estamp->save();
-        return response()->json(['response_code' => 200, 'tile' => 'success', 'message' => 'Stamp Used Successfully']);
+        if(empty($estamp->used_flag)){
+            $estamp->used_in_agreement = $borrower_agreement_id;
+            $estamp->used_flag =  1;
+            $estamp->pdf_page_no = $request->page_no;
+            $estamp->save();
+
+            $newStamp = Estamp::find($stamp_id);
+            $amount = $newStamp->amount;
+
+            $availableStampNew = availableStampNew($amount);
+            $availableStampCount = count($availableStampNew);
+
+            return response()->json(['response_code' => 200, 'availableStampCount' => $availableStampCount, 'tile' => 'success', 'message' => 'Stamp Used Successfully']);
+        }else{
+            return response()->json(['response_code' => 200, 'tile' => 'error', 'message' => 'Sorry! This Stamp Paper Already Used']);
+        }
+        
     }
 }

@@ -42,12 +42,16 @@ class AgreementController extends Controller
             $agreementData = BorrowerAgreement::where('application_id', $request->application_id)->first();
 
             if ($agreementData) {
-                // return response()->json(['status' => 200, 'message' => $agreementData], 200);
+                $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $agreementData->borrower_id)->where('agreement_id', $agreementData->agreement_id)->get();
 
-                $borrowerAgreementDataExists = AgreementRfq::where('borrower_id', $agreementData->borrower_id)->where('agreement_id', $agreementData->agreement_id)->count();
-
-                if ($borrowerAgreementDataExists > 0) {
-                    return response()->json(['status' => 200, 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'], 200);
+                if (count($borrowerAgreementDataExists) > 0) {
+                    return response()->json([
+                        'status' => 200, 
+                        // 'data' => $borrowerAgreementDataExists->id, 
+                        // 'borrowerAgreementDataExists' => count($borrowerAgreementDataExists)
+                        // 'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/view'
+                        'Agreement download url' => url('/').'/user/borrower/'.$agreementData->borrower_id.'/agreement/'.$agreementData->agreement_id.'/pdf/'.$agreementData->id.'/view/web'
+                    ], 200);
                 } else {
                     return response()->json(['status' => 400, 'message' => 'No document found'], 400);
                 }

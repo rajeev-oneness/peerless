@@ -60,6 +60,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>App. id</th>
                                     <th>Name</th>
                                     <th>Contact</th>
                                     <th>PAN card</th>
@@ -72,6 +73,7 @@
                                 @forelse ($data as $index => $item)
                                 <tr id="tr_{{$item->id}}">
                                     <td>{{$index + 1}}</td>
+                                    <td>{{$item->application_id}}</td>
                                     <td>
                                         <div class="user-profile-holder">
                                             {{-- <div class="flex-shrink-0">
@@ -104,7 +106,8 @@
                                         <div class="single-line">
                                             @if (count($item->agreement) > 0)
                                                 @foreach ($item->agreement as $agreement)
-                                                    <a href="{{route('user.borrower.agreement', $agreement->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">{{ $agreement->agreementDetails->name }}</a>
+                                                    
+                                                    <a href="{{route('user.borrower.agreement', $agreement->id)}}" class="badge {{ ($item->borrowerAgreementRfq) ? 'badge-primary' : 'badge-danger' }} action-button d-inline-block" title="Setup loan application form">View Agreement</a>
                                                 @endforeach
 
                                                 @if (!$item->borrowerAgreementRfq)

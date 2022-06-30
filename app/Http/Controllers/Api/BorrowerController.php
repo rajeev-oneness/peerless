@@ -25,17 +25,17 @@ class BorrowerController extends Controller
             // 'auth_user_emp_id' => 'required|string|min:1|exists:users,emp_id',
             'application_id' => 'required|unique:borrowers',
             'agreement_id' => 'nullable|integer|min:1',
-            'name_prefix' => 'nullable|string|min:1|max:50|in:Mr, Miss, Mrs, Prof, Dr, CA',
+            'name_prefix' => 'nullable|string|min:1|max:50',
             'first_name' => 'required|string|min:1|max:200',
             'middle_name' => 'nullable|string|min:1|max:200',
             'last_name' => 'required|string|min:1|max:200',
-            'gender' => 'nullable|string|min:1|max:30|in:Male, Female, Transgender, Rather not say',
-            'date_of_birth' => 'nullable|date|date_format:Y-m-d',
+            'gender' => 'nullable|string|min:1|max:30',
+            'date_of_birth' => 'nullable|date',
             'email' => 'nullable|string|email',
             'mobile' => 'nullable|integer|digits:10',
-            'pan_card_number' => 'required|string|min:10|max:10',
+            //'pan_card_number' => 'required|string|min:10|max:10',
             'occupation' => 'nullable|string|min:1|max:200',
-            'marital_status' => 'nullable|string|min:1|max:30|in: Married, Unmarried, Single, Divorced, Widowed',
+            'marital_status' => 'nullable|string|min:1|max:30',
 
             'KYC_HOUSE_NO' => 'nullable|string|min:1|max:200',
             'KYC_Street' => 'nullable|string|min:1|max:200',
@@ -257,7 +257,7 @@ class BorrowerController extends Controller
 
                 $borrower_agreement = new BorrowerAgreement();
                 $borrower_agreement->borrower_id = $user->id;
-                // $borrower_agreement->agreement_id = $request->agreement_id;
+                $borrower_agreement->agreement_id = 1;
                 $borrower_agreement->application_id = $request->application_id;
                 $borrower_agreement->save();
 

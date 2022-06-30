@@ -1,1 +1,4 @@
 [30-Nov-2021 14:08:09 UTC] PHP Fatal error:  Out of memory (allocated 367009792) (tried to allocate 4096 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 113
+[09-Jun-2022 06:27:24 America/Chicago] PHP Fatal error:  Out of memory (allocated 359145472) (tried to allocate 20480 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/GenericRule.php on line 35
+[09-Jun-2022 06:35:27 America/Chicago] PHP Fatal error:  Out of memory (allocated 359145472) (tried to allocate 12288 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/GenericRule.php on line 35
+[09-Jun-2022 07:20:05 America/Chicago] PHP Fatal error:  Out of memory (allocated 357048320) (tried to allocate 8192 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/GenericRule.php on line 35
